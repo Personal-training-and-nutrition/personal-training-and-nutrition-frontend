@@ -1,0 +1,19 @@
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28px;
+  color: #6F6AF6;
+  width: 600px;
+  height: 600px;
+  margin: 150px auto;
+  background-color: #3AFDDC;
+  border-radius: 50%;
+  border: 1px solid #000;
+  transition: all .3s ease;
+}
+
+.App:hover {
+  background-color: #F6D16A;
+  color: #FF4754;
+}
