@@ -2,7 +2,7 @@ import React from 'react';
 import ButtonAuth from '../components/ButtonAuth';
 import AuthForm from '../components//AuthForm';
 import { Link } from 'react-router-dom';
-import google from '../assets/image/google_icon.jpg';
+import google from '../assets/images/authorize/icon-google.jpg';
 
 const AuthByEmail: React.FC = () => {
   return (
