@@ -18,6 +18,7 @@ const Login: React.FC = () => {
             placeholder="Почта/телефон"
             required
           />
+          <span className="authorize__error authorize__error_active">Ошибка!!</span>
           <img className="authorize__icon" alt="" src={iconUser} />
         </label>
         <label className="authorize__login-label">
@@ -30,11 +31,12 @@ const Login: React.FC = () => {
             required
             autoComplete="on"
           />
+          <span className="authorize__error authorize__error_active">Ошибка!!</span>
           <img className="authorize__icon" alt="" src={padlock} />
         </label>
       </div>
 
-      <ButtonAuth textBtn="Войти/зарегистрироваться" />
+      <ButtonAuth textBtn="Войти" />
       <div className="wrap">
         <div className="wrap__line"></div>
         <span>ИЛИ</span>

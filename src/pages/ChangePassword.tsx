@@ -16,7 +16,7 @@ const ChangePassword: React.FC = () => {
           required
           autoComplete="on"
         />
-
+        <span className="authorize__error authorize__error_active">Ошибка!!</span>
         <input
           className="authorize__input"
           id="retryPassword"
@@ -26,6 +26,7 @@ const ChangePassword: React.FC = () => {
           required
           autoComplete="on"
         />
+        <span className="authorize__error authorize__error_active">Ошибка!!</span>
       </div>
 
       <ButtonAuth textBtn="Сохранить" />

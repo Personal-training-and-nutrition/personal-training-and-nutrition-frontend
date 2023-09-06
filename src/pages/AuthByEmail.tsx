@@ -3,6 +3,7 @@ import ButtonAuth from '../components/ButtonAuth';
 import AuthForm from '../components//AuthForm';
 import { Link } from 'react-router-dom';
 import google from '../assets/images/authorize/icon-google.jpg';
+import iconUser from '../assets/images/authorize/icon-input-user.svg';
 
 const AuthByEmail: React.FC = () => {
   return (
@@ -29,12 +30,8 @@ const AuthByEmail: React.FC = () => {
             placeholder="Почта/телефон"
             required
           />
-          <svg className="authorize__icon" viewBox="0 0 17 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M0.666992 21C0.666992 18.8783 1.50985 16.8434 3.01014 15.3431C4.51043 13.8429 6.54526 13 8.66699 13C10.7887 13 12.8236 13.8429 14.3238 15.3431C15.8241 16.8434 16.667 18.8783 16.667 21H0.666992ZM8.66699 12C5.35199 12 2.66699 9.315 2.66699 6C2.66699 2.685 5.35199 0 8.66699 0C11.982 0 14.667 2.685 14.667 6C14.667 9.315 11.982 12 8.66699 12Z"
-              fill="#363D29"
-            />
-          </svg>
+          <span className="authorize__error authorize__error_active">Ошибка!!</span>
+          <img className="authorize__icon" alt="" src={iconUser} />
         </label>
       </div>
 
