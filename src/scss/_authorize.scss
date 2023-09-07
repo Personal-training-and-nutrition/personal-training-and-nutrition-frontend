@@ -1,12 +1,14 @@
 .authorize {
-  margin: 0 auto;
+  // margin: 0 auto;
   padding: 0 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 100vh;
-  max-width: 343px;
+  width: 100%;
+  max-width: 375px;
   background-color: #eff3f2;
+  box-sizing: border-box;
 
   &__title {
     align-self: flex-start;
@@ -66,10 +68,12 @@
   }
   &__iconItem {
     display: inline-block;
-    margin-right: 20px;
-    width: 24px;
-    height: 24px;
+
+    width: 70px;
+    height: 40px;
     cursor: pointer;
+    padding: 0;
+    border: none;
   }
   &__icon {
     width: 24px;

@@ -2,7 +2,9 @@ import React from 'react';
 import ButtonAuth from '../components/ButtonAuth';
 import AuthForm from '../components//AuthForm';
 import { Link } from 'react-router-dom';
-import google from '../assets/images/authorize/icon-google.jpg';
+import yandex from '../assets/images/authorize/icon-yandex.svg';
+import mail from '../assets/images/authorize/icon-mail.svg';
+import vk from '../assets/images/authorize/icon-vk.svg';
 import iconUser from '../assets/images/authorize/icon-input-user.svg';
 
 const AuthByEmail: React.FC = () => {
@@ -10,15 +12,15 @@ const AuthByEmail: React.FC = () => {
     <AuthForm>
       <h2 className="authorize__title_authByEmail">Почта</h2>
       <div className="authorize__iconsEmail">
-        <a href="google.com" className="authorize__iconItem">
-          <img src={google} alt="" />
-        </a>
-        <a href="google.com" className="authorize__iconItem">
-          <img src={google} alt="" />
-        </a>
-        <a href="google.com" className="authorize__iconItem">
-          <img src={google} alt="" />
-        </a>
+        <button className="authorize__iconItem">
+          <img src={yandex} alt="Яндекс" />
+        </button>
+        <button className="authorize__iconItem">
+          <img src={mail} alt="Mail" />
+        </button>
+        <button className="authorize__iconItem">
+          <img src={vk} alt="Вконтакте" />
+        </button>
       </div>
       <div className="authorize__container_authByEmail">
         <label className="authorize__login-label">
