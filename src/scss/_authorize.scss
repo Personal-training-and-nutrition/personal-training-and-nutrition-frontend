@@ -1,12 +1,14 @@
 .authorize {
-  margin: 0 auto;
+  // margin: 0 auto;
   padding: 0 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 100vh;
-  max-width: 343px;
+  width: 100%;
+  max-width: 375px;
   background-color: #eff3f2;
+  box-sizing: border-box;
 
   &__title {
     align-self: flex-start;
@@ -54,7 +56,7 @@
   }
   &__input {
     height: 56px;
-    margin-bottom: 24px;
+    // margin-bottom: 24px;
     border: 2px solid #00be6e;
     border-radius: 10px;
     box-sizing: border-box;
@@ -66,10 +68,12 @@
   }
   &__iconItem {
     display: inline-block;
-    margin-right: 20px;
-    width: 24px;
-    height: 24px;
+
+    width: 70px;
+    height: 40px;
     cursor: pointer;
+    padding: 0;
+    border: none;
   }
   &__icon {
     width: 24px;
@@ -81,7 +85,7 @@
   &__label {
     display: flex;
     flex-direction: row;
-    margin-top: 24px;
+    // margin-top: 24px;
   }
   &__checkbox {
     margin: 0 14px;
@@ -95,6 +99,23 @@
     text-align: center;
     text-decoration: none;
     margin-top: 26px;
+  }
+  &__error {
+    opacity: 0;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 1.2;
+    color: #ee3465;
+    display: block;
+    height: 24px;
+
+    padding: 5px;
+    padding-top: 0px;
+    box-sizing: border-box;
+
+    &_active {
+      opacity: 1;
+    }
   }
 
   p {
