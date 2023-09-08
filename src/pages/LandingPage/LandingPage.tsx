@@ -42,13 +42,16 @@ const LandingPage: React.FC = () => {
     <main className={styles.landing__container}>
       <Sidebar />
       <section className={styles.landing__content}>
+        <div className={styles.button__small}>
+          <BtnStart text={'Начать'} size={'small'} />
+        </div>
         <ul className={styles.landing__list}>
           {items.map((item, index) => {
             return <CardItem key={index} {...item} />;
           })}
         </ul>
 
-        <div className={styles.button__container}>
+        <div className={styles.button__large}>
           <BtnStart text={'Начать'} size={'large'} />
         </div>
       </section>

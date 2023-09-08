@@ -16,11 +16,11 @@
 
   &__content {
     background-color: #F2F2F2;
-    padding: 180px 160px 60px 60px;
+    padding: 0 160px 60px 60px;
 
     @media (max-width: 768px) {
       background-color: #FFF;
-      padding: 117px 20px 0;
+      padding: 40px 20px 0;
     }
   }
 
@@ -34,10 +34,26 @@
 
 }
 
-.button__container {
+.button__small {
+  margin: 60px 20px 80px;
+  display: flex;
+  justify-content: right;
+
+  @media (max-width: 768px) {
+    justify-content: center;
+    margin: 0 0 40px;
+  }
+}
+
+.button__large {
+  margin: 80px auto 0;
   display: flex;
   justify-content: center;
-  margin-top: 80px;
+
+  @media (max-width: 768px) {
+    display: block;
+    margin: 20px auto 0;
+  }
 }
 
 
