@@ -5,7 +5,7 @@ import Register from './pages/Register';
 import ChangePassword from './pages/ChangePassword';
 import AuthByEmail from './pages/AuthByEmail';
 import PasswordSaved from './components/PasswordSaved';
-import LandingPage from './pages/LandingPage.tsx';
+import LandingPage from './pages/LandingPage/LandingPage.tsx';
 import Profile from './components/Profile.tsx';
 
 function App() {
