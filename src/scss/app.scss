@@ -1,2 +1,17 @@
 @import './authorize';
 @import './buttonAuth';
+@import './profile';
+@import './userStatus';
+
+.App {
+  @media (max-width: 820px) {
+    max-width: 375px;
+    margin: 0 auto;
+  }
+  @media (max-width: 560px) {
+    padding: 0 20px;
+    box-sizing: border-box;
+    height: 100vh;
+    max-width: 375px;
+  }
+}

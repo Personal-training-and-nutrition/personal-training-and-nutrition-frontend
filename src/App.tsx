@@ -6,8 +6,11 @@ import ChangePassword from './pages/ChangePassword';
 import AuthByEmail from './pages/AuthByEmail';
 import PasswordSaved from './components/PasswordSaved';
 import LandingPage from './pages/LandingPage/LandingPage.tsx';
+import Profile from './components/Profile.tsx';
 
 function App() {
+  // const [statusSpec, setStatusSpec] = useState(false)
+
   return (
     <div className="App">
       <Routes>
@@ -19,6 +22,8 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/nutrition" element={<LandingPage />} />
         <Route path="/trainer" element={<LandingPage />} />
+        <Route path="/spec" element={<Profile statusSpec={true} />} />
+        <Route path="/client" element={<Profile statusSpec={false} />} />
       </Routes>
     </div>
   );
