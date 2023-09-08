@@ -1,6 +1,4 @@
 .landing {
-
-
   &__container {
     max-width: 1440px;
     display: flex;
@@ -20,7 +18,7 @@
 
     @media (max-width: 768px) {
       background-color: #FFF;
-      padding: 40px 20px 0;
+      padding: 40px 0 0;
     }
   }
 

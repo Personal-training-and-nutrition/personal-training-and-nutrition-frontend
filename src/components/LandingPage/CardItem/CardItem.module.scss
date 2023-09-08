@@ -60,8 +60,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 334px;
-    height: 332px;
+    max-width: 334px;
+    max-height: 332px;
     background-color: #727272;
     opacity: .3;
     z-index: 0;
