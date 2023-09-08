@@ -18,7 +18,7 @@ const CardItem: React.FC<CardItemType> = ({ title, subtitle, isReverse, imageUrl
         <h2 className={styles.card__title}>{title}</h2>
         <p className={styles.card__subtitle}>{subtitle}</p>
       </div>
-      <div className={`${styles.cardItem__column} ${styles.card__image_container_temp}`}>
+      <div className={`${styles.card__column} ${styles.card__image_container_temp}`}>
         <img className={styles.card__image} src={imageUrl} alt={imageAlt} />
       </div>
     </li>
