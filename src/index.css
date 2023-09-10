@@ -1,7 +1,7 @@
 @import './scss/normalize.css';
 
 :root {
-  font-family: 'Roboto', Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: Inter, 'Roboto', system-ui, Avenir, Helvetica, Arial, sans-serif;
 
   background-color: #ffffff;
   color: black;

@@ -1,11 +1,11 @@
 import React from 'react';
-import ButtonAuth from '../components/ButtonAuth';
-import AuthForm from '../components//AuthForm';
+import Button, { TypeBtnEnum } from '../../components/Button/Button';
+import AuthForm from '../../components/AuthForm';
 import { Link } from 'react-router-dom';
-import yandex from '../assets/images/authorize/icon-yandex.svg';
-import mail from '../assets/images/authorize/icon-mail.svg';
-import vk from '../assets/images/authorize/icon-vk.svg';
-import iconUser from '../assets/images/authorize/icon-input-user.svg';
+import yandex from '../../assets/images/authorize/icon-yandex.svg';
+import mail from '../../assets/images/authorize/icon-mail.svg';
+import vk from '../../assets/images/authorize/icon-vk.svg';
+import iconUser from '../../assets/images/authorize/icon-input-user.svg';
 
 const AuthByEmail: React.FC = () => {
   return (
@@ -37,7 +37,7 @@ const AuthByEmail: React.FC = () => {
         </label>
       </div>
 
-      <ButtonAuth textBtn="Войти" />
+      <Button textBtn="Войти" type={TypeBtnEnum.SUBMIT} />
       <Link to="/password" className="authorize__link">
         Забыли пароль? Нажмите тут
       </Link>

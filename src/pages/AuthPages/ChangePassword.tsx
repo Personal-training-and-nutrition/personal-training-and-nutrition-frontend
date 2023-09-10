@@ -1,6 +1,6 @@
-import ButtonAuth from '../components/ButtonAuth';
-import AuthForm from '../components/AuthForm';
-import React from "react";
+import Button, { TypeBtnEnum } from '../../components/Button/Button';
+import AuthForm from '../../components/AuthForm';
+import React from 'react';
 
 const ChangePassword: React.FC = () => {
   return (
@@ -29,7 +29,7 @@ const ChangePassword: React.FC = () => {
         <span className="authorize__error authorize__error_active">Ошибка!!</span>
       </div>
 
-      <ButtonAuth textBtn="Сохранить" />
+      <Button textBtn="Сохранить" type={TypeBtnEnum.SUBMIT} />
     </AuthForm>
   );
 };
