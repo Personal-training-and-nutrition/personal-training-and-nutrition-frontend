@@ -1,9 +1,9 @@
 import React from 'react';
-import ButtonAuth from '../components/ButtonAuth';
-import AuthForm from '../components/AuthForm';
+import Button, { TypeBtnEnum } from '../../components/Button/Button';
+import AuthForm from '../../components/AuthForm';
 import { Link } from 'react-router-dom';
-import iconUser from '../assets/images/authorize/icon-input-user.svg';
-import padlock from '../assets/images/authorize/icon-padlock.svg';
+import iconUser from '../../assets/images/authorize/icon-input-user.svg';
+import padlock from '../../assets/images/authorize/icon-padlock.svg';
 
 const Login: React.FC = () => {
   return (
@@ -36,14 +36,14 @@ const Login: React.FC = () => {
         </label>
       </div>
 
-      <ButtonAuth textBtn="Войти" />
+      <Button textBtn="Войти" type={TypeBtnEnum.SUBMIT} />
       <div className="wrap">
         <div className="wrap__line"></div>
         <span>ИЛИ</span>
         <div className="wrap__line"></div>
       </div>
       <Link to="/signin-netw">
-        <ButtonAuth textBtn="Войти через почту" className="buttonAuthMail" />
+        <Button textBtn="Войти через почту" className="button__mail" type={TypeBtnEnum.BUTTON} />
       </Link>
       <Link to="/password" className="authorize__link">
         Забыли пароль? Нажмите тут

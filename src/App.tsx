@@ -1,12 +1,12 @@
 import './scss/app.scss';
 import { Route, Routes } from 'react-router-dom';
-import Login from './pages/Login';
-import Register from './pages/Register';
-import ChangePassword from './pages/ChangePassword';
-import AuthByEmail from './pages/AuthByEmail';
+import Login from './pages/AuthPages/Login';
+import Register from './pages/AuthPages/Register';
+import ChangePassword from './pages/AuthPages/ChangePassword';
+import AuthByEmail from './pages/AuthPages/AuthByEmail.tsx';
 import PasswordSaved from './components/PasswordSaved';
 import LandingPage from './pages/LandingPage/LandingPage.tsx';
-import Profile from './components/Profile.tsx';
+import Profile from './pages/ProfilePage/Profile.tsx';
 
 function App() {
   // const [statusSpec, setStatusSpec] = useState(false)

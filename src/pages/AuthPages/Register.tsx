@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import ButtonAuth from '../components/ButtonAuth';
-import AuthForm from '../components/AuthForm';
+import Button, { TypeBtnEnum } from '../../components/Button/Button';
+import AuthForm from '../../components/AuthForm';
 
 const Register: React.FC = () => {
   type PropsValues = { name?: string; email?: string; password?: string; retryPassword?: string };
@@ -86,7 +86,7 @@ const Register: React.FC = () => {
           <p>Я согласен с условиями обслуживания и политикой конфиденциальности</p>
         </label>
       </div>
-      <ButtonAuth textBtn="Зарегистрироваться" />
+      <Button textBtn="Зарегистрироваться" type={TypeBtnEnum.SUBMIT} />
     </AuthForm>
   );
 };
