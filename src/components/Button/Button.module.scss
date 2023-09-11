@@ -1,6 +1,6 @@
 .button {
   background-color: #aeaeae;
-  border-radius: 25px;
+  border-radius: 32px;
   color: white;
   height: 44px;
   border: none;
@@ -14,9 +14,14 @@
   width: 100%;
 }
 
-.button__profile {
+.button__blue {
   background-color: #5caddc;
   font-size: 16px;
   font-weight: 600;
   line-height: 20px;
+
+  &:disabled {
+    background-color: #b1bbc0;
+    color: white;
+  }
 }

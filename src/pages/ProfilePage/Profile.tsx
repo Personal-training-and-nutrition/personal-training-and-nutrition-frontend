@@ -88,7 +88,7 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
             <img src={penIcon} alt="Кнопка редактировать" />
           </button>
         </label>
-        <Button textBtn="Сохранить" className="button__profile" type={TypeBtnEnum.SUBMIT} />
+        <Button textBtn="Сохранить" className="button__blue" type={TypeBtnEnum.SUBMIT} />
       </form>
       <button className={styles.profile__delete} type="button">
         Удалить профиль

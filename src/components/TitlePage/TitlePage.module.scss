@@ -2,9 +2,18 @@
   &__container {
     display: flex;
     width: 100%;
-    justify-content: flex-end;
+    justify-content: space-between;
+    &_position {
+      justify-content: flex-end;
+    }
   }
-
+  &__back {
+    padding: 0;
+    font-size: 22px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+  }
   &__title {
     font-weight: 700;
     font-size: 15px;
