@@ -1,0 +1,100 @@
+.plan {
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 375px;
+  }
+  &__userData {
+    font-size: 22px;
+    margin: 32px 0;
+    font-weight: 700;
+    line-height: 26px;
+    text-align: end;
+  }
+  &__form {
+    display: grid;
+    row-gap: 32px;
+    width: 100%;
+  }
+  &__title {
+    margin: 0 0 12px 0;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 21px;
+    &_tip {
+      font-weight: 400;
+      font-size: 15px;
+      line-height: 18px;
+      color: #6b8ca4;
+      padding-left: 5px;
+    }
+  }
+  &__input {
+    height: 40px;
+    background-color: #f7f7f6;
+    border-radius: 8px;
+    padding: 8px 12px;
+    box-sizing: border-box;
+    border: #d4d4cf 1px solid;
+    font-size: 16px;
+    font-weight: 400;
+    width: 100%;
+    &::placeholder {
+      color: #d4d4cf;
+    }
+    &_textarea {
+      min-height: 80px;
+    }
+    &_invisible {
+      display: none;
+    }
+  }
+
+  &__items {
+    display: grid;
+    grid-template-columns: 100px repeat(3, 72px);
+    grid-column-gap: 9px;
+    label {
+      display: flex;
+      flex-direction: column;
+      span {
+        margin-bottom: 8px;
+        font-weight: 400;
+        font-size: 15px;
+        line-height: 18px;
+      }
+    }
+  }
+  &__wraptitle {
+    display: flex;
+  }
+  &__day {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+  &__add {
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    color: #0068a5;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 18px;
+    cursor: pointer;
+  }
+  &__cancel {
+    margin: 19px auto 32px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    border: none;
+    background-color: transparent;
+    color: #5caddc;
+    &_disabled {
+      color: #b1bbc0;
+    }
+  }
+}

@@ -11,17 +11,19 @@ type ButtonType = {
   textBtn: string;
   className?: string;
   type: TypeBtnEnum;
+  isValidForm?: boolean;
 };
 
-const Button: React.FC<ButtonType> = ({ textBtn, className, type }) => {
-  console.log(type);
+const Button: React.FC<ButtonType> = ({ textBtn, className, type, isValidForm }) => {
+  console.log(isValidForm);
   return (
     // <button className={`buttonAuth ${className}`} type="submit">
     <button
       className={`${styles.button} ${className === 'button__mail' && styles.button__mail} ${
-        className === 'button__profile' && styles.button__profile
+        className === 'button__blue' && styles.button__blue
       }`}
       type={type}
+      disabled={!isValidForm}
     >
       {textBtn}
     </button>
