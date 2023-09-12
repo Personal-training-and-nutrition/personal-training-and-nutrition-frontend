@@ -10,12 +10,14 @@
     line-height: 20px;
     padding: 8px 12px;
     height: 40px;
-    background-color: #c7edb6;
+    background-color: #deeff8;
     border-radius: 8px;
     border: none;
     color: #173b05;
     cursor: pointer;
-
+    &_client {
+      background-color: #c7edb6;
+    }
     &_active {
       background-color: #595959;
       color: white;

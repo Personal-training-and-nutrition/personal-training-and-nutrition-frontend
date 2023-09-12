@@ -5,6 +5,11 @@
   height: 44px;
   border: none;
   cursor: pointer;
+  &:disabled {
+    background-color: #b1bbc0;
+    color: white;
+    cursor: default;
+  }
 }
 
 .button__mail {

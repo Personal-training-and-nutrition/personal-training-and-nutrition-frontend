@@ -1,12 +1,12 @@
+// import { useState } from 'react';
 import useValidation from './useValidate';
 import Button, { TypeBtnEnum } from '../Button/Button';
-import DaysInput from './DaysInput';
-
-import TitlePage from '../TitlePage/TitlePage';
+import DayBlock from './DayBlock';
+import TitleBlock from '../TitleBlock/TitleBlock';
 import styles from './PlanMeal.module.scss';
-// import { useState } from 'react';
+import { weekday } from '../../utils/constants';
 
-const PlanMeal = () => {
+const PlanMeal: React.FC = () => {
   const { values, onChange, isValidForm } = useValidation();
 
   const handleChangeInput = (evt: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -15,7 +15,7 @@ const PlanMeal = () => {
 
   return (
     <div className={styles.plan__content}>
-      <TitlePage text="ПЛАН ПИТАНИЯ" isBack={true} />
+      <TitleBlock text="ПЛАН ПИТАНИЯ" isBack={true} />
       <h1 className={styles.plan__userData}>Никитина Александра Сергеевна, 35 лет</h1>
       <form className={styles.plan__form}>
         <label className={styles.plan__label}>
@@ -93,7 +93,10 @@ const PlanMeal = () => {
           />
         </label>
 
-        <DaysInput />
+        {weekday.map((item, index) => (
+          <DayBlock item={item} key={index} />
+        ))}
+
         <Button textBtn="Сохранить" type={TypeBtnEnum.SUBMIT} className="button__blue" isValidForm={isValidForm} />
       </form>
       <button

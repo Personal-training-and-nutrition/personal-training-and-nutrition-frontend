@@ -2,9 +2,9 @@
   &__container {
     display: flex;
     width: 100%;
-    justify-content: space-between;
+    justify-content: flex-end;
     &_position {
-      justify-content: flex-end;
+      justify-content: space-between;
     }
   }
   &__back {

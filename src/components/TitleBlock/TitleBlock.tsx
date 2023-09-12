@@ -1,6 +1,6 @@
-import styles from './TitlePage.module.scss';
+import styles from './TitleBlock.module.scss';
 import { useNavigate } from 'react-router-dom';
-const TitlePage = ({ text, isBack }: { text: string; isBack?: boolean }) => {
+const TitleBlock = ({ text, isBack }: { text: string; isBack?: boolean }) => {
   const navigate = useNavigate();
   const goBack = () => {
     navigate(-1);
@@ -9,8 +9,8 @@ const TitlePage = ({ text, isBack }: { text: string; isBack?: boolean }) => {
     <div
       className={
         isBack
-          ? `${styles.titlePage__container}`
-          : `${styles.titlePage__container}${styles.titlePage__container_position}`
+          ? `${styles.titlePage__container} ${styles.titlePage__container_position}`
+          : `${styles.titlePage__container}`
       }
     >
       {isBack && (
@@ -23,4 +23,4 @@ const TitlePage = ({ text, isBack }: { text: string; isBack?: boolean }) => {
   );
 };
 
-export default TitlePage;
+export default TitleBlock;
