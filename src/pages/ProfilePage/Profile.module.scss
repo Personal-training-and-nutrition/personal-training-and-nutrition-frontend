@@ -81,12 +81,16 @@
     &_params {
       width: 72px;
       margin: 0 32px 0 4px;
+      padding: 2px 7px;
     }
   }
   &__error {
     display: block;
     opacity: 0;
+    font-size: 12px;
     &_active {
+      opacity: 1;
+      color: #dd1b49;
     }
   }
   &__title {

@@ -2,7 +2,7 @@
 import useValidation from './useValidate';
 import Button, { TypeBtnEnum } from '../Button/Button';
 import DayBlock from './DayBlock';
-import TitlePage from '../TitlePage/TitlePage';
+import TitleBlock from '../TitleBlock/TitleBlock';
 import styles from './PlanMeal.module.scss';
 import { weekday } from '../../utils/constants';
 
@@ -15,7 +15,7 @@ const PlanMeal: React.FC = () => {
 
   return (
     <div className={styles.plan__content}>
-      <TitlePage text="ПЛАН ПИТАНИЯ" isBack={true} />
+      <TitleBlock text="ПЛАН ПИТАНИЯ" isBack={true} />
       <h1 className={styles.plan__userData}>Никитина Александра Сергеевна, 35 лет</h1>
       <form className={styles.plan__form}>
         <label className={styles.plan__label}>
