@@ -15,7 +15,6 @@ const useValidation = () => {
   const onChange = (evt: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
     const { name, value } = evt.target;
     setValues((values) => ({ ...values, [name]: value }));
-    console.log('я в хуке', evt.target.validity);
     // if (validity.valid) {
     //   setError((errors) => ({ ...errors, [name]: false }));
     // } else setError((errors) => ({ ...errors, [name]: true }));

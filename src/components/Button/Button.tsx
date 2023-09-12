@@ -15,7 +15,6 @@ type ButtonType = {
 };
 
 const Button: React.FC<ButtonType> = ({ textBtn, className, type, isValidForm }) => {
-  console.log(isValidForm);
   return (
     // <button className={`buttonAuth ${className}`} type="submit">
     <button

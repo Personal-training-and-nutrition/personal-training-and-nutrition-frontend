@@ -1,4 +1,4 @@
-import styles from './UserStatus.module.scss';
+import styles from './UserStatusBtn.module.scss';
 
 const UserStatus = ({ statusSpec }: { statusSpec: boolean }) => {
   return (

@@ -1,6 +1,6 @@
 import styles from './Profile.module.scss';
 import Button, { TypeBtnEnum } from '../../components/Button/Button';
-import UserStatus from '../../components/UserStatus/UserStatus';
+import UserStatusBtn from '../../components/UserStatusBtn/UserStatusBtn';
 import penIcon from '../../assets/images/profile/pen-icon.svg';
 import TitlePage from '../../components/TitlePage/TitlePage';
 const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
@@ -14,7 +14,7 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
           <img src={addIcon} alt="Кнопка добавить аватарку" />
         </button> */}
       </div>
-      <UserStatus statusSpec={statusSpec} />
+      <UserStatusBtn statusSpec={statusSpec} />
       <form className={styles.profile__form}>
         <label className={styles.profile__label}>
           <span className={styles.profile__title}>Фамилия</span>
