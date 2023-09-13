@@ -5,6 +5,7 @@ import DayBlock from './DayBlock';
 import TitleBlock from '../TitleBlock/TitleBlock';
 import styles from './PlanMeal.module.scss';
 import { weekday } from '../../utils/constants';
+import React from 'react';
 
 const PlanMeal: React.FC = () => {
   const { values, onChange, isValidForm } = useValidation();
