@@ -7,7 +7,7 @@ import AuthByEmail from './pages/AuthPages/AuthByEmail.tsx';
 import PasswordSaved from './components/PasswordSaved';
 import LandingPage from './pages/LandingPage/LandingPage.tsx';
 import Profile from './pages/ProfilePage/Profile.tsx';
-import PlanMeal from './components/PlanPage/PlanMeal.tsx';
+import PlanMeal from './pages/PlanPage/PlanMeal.tsx';
 
 function App() {
   // const [statusSpec, setStatusSpec] = useState(false)

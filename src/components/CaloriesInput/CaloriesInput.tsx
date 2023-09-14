@@ -1,5 +1,8 @@
 import styles from './CaloriesInput.module.scss';
-const CaloriesInput = () => {
+import { UseFormRegister  } from 'react-hook-form';
+import {PlanMealInputType} from '../../pages/PlanPage/PlanMeal'
+
+const CaloriesInput = ({ register }: {register:UseFormRegister<PlanMealInputType>}) => {
   return (
     <div className={styles.calories__label}>
           <div className={styles.calories__wrap}>
@@ -12,10 +15,9 @@ const CaloriesInput = () => {
               <input
                 className={`${styles.calories__input} ${styles.calories__input_params}`}
                 type="text"
-                name="calories"
+                // name="calories"
+                {...register('calories')}
                 placeholder="ккал"
-                // value={values?.calories || ''}
-                // onChange={handleChangeInput}
               />
             </label>
             <label>
@@ -23,10 +25,9 @@ const CaloriesInput = () => {
               <input
                 className={`${styles.calories__input} ${styles.calories__input_params}`}
                 type="text"
-                name="protein"
+                // name="protein"
+                {...register('protein')}
                 placeholder="г"
-                // value={values?.protein || ''}
-                // onChange={handleChangeInput}
               />
             </label>
             <label>
@@ -34,10 +35,10 @@ const CaloriesInput = () => {
               <input
                 className={`${styles.calories__input} ${styles.calories__input_params}`}
                 type="text"
-                name="fats"
+                // name="fats"
+                {...register('fats')}
                 placeholder="г"
-                // value={values?.fats || ''}
-                // onChange={handleChangeInput}
+
               />
             </label>
             <label>
@@ -45,10 +46,9 @@ const CaloriesInput = () => {
               <input
                 className={`${styles.calories__input} ${styles.calories__input_params}`}
                 type="text"
-                name="carbohydrates"
+                // name="carbohydrates"
+                {...register('carbohydrates')}
                 placeholder="г"
-                // value={values?.carbohydrates || ''}
-                // onChange={handleChangeInput}
               />
             </label>
           </div>

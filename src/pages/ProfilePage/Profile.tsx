@@ -5,6 +5,7 @@ import UserStatusBtn from '../../components/UserStatusBtn/UserStatusBtn';
 import penIcon from '../../assets/images/profile/pen-icon.svg';
 import TitleBlock from '../../components/TitleBlock/TitleBlock';
 import GenderInput from '../../components/GenderInput/GenderInput';
+import ButtonDelete from '../../components/ButtonDelete/ButtonDelete';
 export type InputsType = {
   surname: string;
   name: string;
@@ -17,12 +18,14 @@ export type InputsType = {
   email: string;
   tel: number;
   password: string | number;
-
 };
 // const data = { surname: 'Vbv', weight: 22, height: 165 };
 const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
-
-  const { register, handleSubmit, formState: { errors, isDirty, isValid } } = useForm<InputsType>({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isDirty, isValid },
+  } = useForm<InputsType>({
     mode: 'onChange',
     // defaultValues: {
     //   surname: data.surname,
@@ -42,7 +45,7 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
         <p className={styles.profile__surname}>A</p>
       </div>
       <UserStatusBtn statusSpec={statusSpec} />
-            <form className={styles.profile__form} onSubmit={onSubmit}>
+      <form className={styles.profile__form} onSubmit={onSubmit}>
         <label className={styles.profile__label}>
           <span className={styles.profile__title}>Фамилия</span>
           <input
@@ -183,16 +186,12 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
         </label>
         <Button
           textBtn="Сохранить"
-          className="button__blue"
-          type='submit'
+          type="submit"
           isDirty={isDirty}
           isValid={isValid}
         />
       </form>
-
-      <button className={styles.profile__delete} type="button">
-        Удалить профиль
-      </button>
+      <ButtonDelete text="Удалить профиль" />
     </div>
   );
 };
