@@ -1,30 +1,28 @@
 import { useForm } from 'react-hook-form';
 import styles from './Profile.module.scss';
-import Button, { TypeBtnEnum } from '../../components/Button/Button';
+import Button from '../../components/Button/Button';
 import UserStatusBtn from '../../components/UserStatusBtn/UserStatusBtn';
 import penIcon from '../../assets/images/profile/pen-icon.svg';
 import TitleBlock from '../../components/TitleBlock/TitleBlock';
+import GenderInput from '../../components/GenderInput/GenderInput';
+export type InputsType = {
+  surname: string;
+  name: string;
+  middlename?: string;
+  birthday?: number;
+  gender?: '';
+  weight?: string;
+  height?: string;
+  aboutMe?: string;
+  email: string;
+  tel: number;
+  password: string | number;
 
+};
 // const data = { surname: 'Vbv', weight: 22, height: 165 };
 const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
-  type InputsType = {
-    surname: string;
-    name: string;
-    middlename?: string;
-    birthday?: number;
-    gender?: '';
-    weight?: string;
-    height?: string;
-    aboutMe?: string;
-    email: string;
-    tel: number;
-    password: string | number;
-  };
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isDirty, isValid },
-  } = useForm<InputsType>({
+
+  const { register, handleSubmit, formState: { errors, isDirty, isValid } } = useForm<InputsType>({
     mode: 'onChange',
     // defaultValues: {
     //   surname: data.surname,
@@ -44,7 +42,7 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
         <p className={styles.profile__surname}>A</p>
       </div>
       <UserStatusBtn statusSpec={statusSpec} />
-      <form className={styles.profile__form} onSubmit={onSubmit}>
+            <form className={styles.profile__form} onSubmit={onSubmit}>
         <label className={styles.profile__label}>
           <span className={styles.profile__title}>Фамилия</span>
           <input
@@ -87,7 +85,7 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
             {errors?.surname?.message || 'Ошибка!'}
           </span>
           <span className={styles.profile__title}>Дата рождения</span>
-          <input className={styles.profile__input} type="date" {...register('birthday')} />
+          <input className={styles.profile__input} type="text" {...register('birthday')} />
           <span
             className={
               errors?.birthday ? `${styles.profile__error} ${styles.profile__error_active}` : `${styles.profile__error}`
@@ -96,19 +94,7 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
             {errors?.birthday?.message || 'Ошибка!'}
           </span>
         </label>
-        <div className={styles.profile__label}>
-          <span className={styles.profile__title_big}>Пол</span>
-          <div className={styles.profile__wrap}>
-            <label className={styles.profile__radio}>
-              <input type="radio" value="Женский" {...register('gender')} />
-              <p>Женский</p>
-            </label>
-            <label className={styles.profile__radio}>
-              <input type="radio" value="Мужской" {...register('gender')} />
-              <p>Мужской</p>
-            </label>
-          </div>
-        </div>
+        <GenderInput register={register} />
         {/* в зависимости от статуса - будем показывать один из двух нижеидущих лейблов */}
         {statusSpec ? (
           <label className={styles.profile__label}>
@@ -123,16 +109,14 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
               <input
                 className={`${styles.profile__input} ${styles.profile__input_params}`}
                 type="number"
-                {...register('weight', { required: 'Введите число' })}
+                {...register('weight')}
                 placeholder="кг"
               />
               <span className={styles.profile__title}>Рост</span>
               <input
                 className={`${styles.profile__input} ${styles.profile__input_params}`}
                 type="number"
-                {...register('height', {
-                  required: 'Введите число',
-                })}
+                {...register('height')}
                 placeholder="см"
               />
             </div>
@@ -200,11 +184,12 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
         <Button
           textBtn="Сохранить"
           className="button__blue"
-          type={TypeBtnEnum.SUBMIT}
+          type='submit'
           isDirty={isDirty}
           isValid={isValid}
         />
       </form>
+
       <button className={styles.profile__delete} type="button">
         Удалить профиль
       </button>

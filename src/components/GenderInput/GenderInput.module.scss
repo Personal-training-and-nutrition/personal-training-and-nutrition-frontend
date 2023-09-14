@@ -1,0 +1,60 @@
+.gender {
+  &__label {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  &__title {
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 18px;
+    margin-bottom: 8px;
+    color: #b1bbc0;
+    &_big {
+      font-weight: 700;
+      font-size: 17px;
+      line-height: 22px;
+      margin-bottom: 16px;
+    }
+  }
+
+  &__wrap {
+    display: flex;
+  }
+  &__radio {
+    display: flex;
+
+    p {
+      margin: 0;
+      padding: 0 25px 0 35px;
+      display: inline-block;
+      cursor: pointer;
+      position: relative;
+      margin-right: 0;
+      top: -2px;
+      &:before {
+        content: '';
+        display: inline-block;
+        width: 22px;
+        height: 22px;
+        position: absolute;
+        left: 0;
+        background: url(../../assets/images/profile/radio-button.svg) 0 0 no-repeat;
+      }
+    }
+
+    input {
+      display: none;
+    }
+
+    input:checked + p:before {
+      background-size: 22px;
+      background: url(../../assets/images/profile/radio-button-checked.svg) 0 0 no-repeat;
+      background-position: center;
+    }
+    p:hover:before {
+      // opacity: 0.2;
+      filter: brightness(120%);
+    }
+  }
+}

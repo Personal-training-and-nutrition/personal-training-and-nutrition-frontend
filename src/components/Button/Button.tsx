@@ -1,27 +1,21 @@
-/* eslint-disable no-unused-vars */
 import React from 'react';
 import styles from './Button.module.scss';
 
-export enum TypeBtnEnum {
-  BUTTON = 'button',
-  SUBMIT = 'submit',
-}
+type TypeBtn = 'button' | 'submit'
 
 type ButtonType = {
   textBtn: string;
-  className?: string;
-  type: TypeBtnEnum;
-  isDirty: boolean;
-  isValid: boolean;
+  type: TypeBtn;
+  isDirty?: boolean;
+  isValid?: boolean;
 };
 
-const Button: React.FC<ButtonType> = ({ textBtn, className, type, isDirty, isValid }) => {
+const Button: React.FC<ButtonType> = ({ textBtn, type, isDirty, isValid }) => {
+  console.log(type, isValid, isDirty)
   return (
     <button
-      className={`${styles.button} ${className === 'button__mail' && styles.button__mail} ${
-        className === 'button__blue' && styles.button__blue
-      }`}
-      type={type}
+      className={styles.button}
+      type='submit'
       disabled={!isDirty || !isValid}
     >
       {textBtn}

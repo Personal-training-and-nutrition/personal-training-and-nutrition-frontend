@@ -1,6 +1,6 @@
 // import { useState } from 'react';
 import useValidation from './useValidate';
-import Button, { TypeBtnEnum } from '../Button/Button';
+import Button from '../Button/Button';
 import DayBlock from './DayBlock';
 import TitleBlock from '../TitleBlock/TitleBlock';
 import styles from './PlanMeal.module.scss';
@@ -98,7 +98,7 @@ const PlanMeal: React.FC = () => {
           <DayBlock item={item} key={index} />
         ))}
 
-        <Button textBtn="Сохранить" type={TypeBtnEnum.SUBMIT} className="button__blue" isValidForm={isValidForm} />
+        <Button textBtn="Сохранить" type='submit' className="button__blue" />
       </form>
       <button
         className={isValidForm ? `${styles.plan__cancel}` : `${styles.plan__cancel} ${styles.plan__cancel_disabled}`}
