@@ -6,6 +6,7 @@ import TitleBlock from '../TitleBlock/TitleBlock';
 import styles from './PlanMeal.module.scss';
 import { weekday } from '../../utils/constants';
 import React from 'react';
+import CaloriesInput from '../CaloriesInput/CaloriesInput'
 
 const PlanMeal: React.FC = () => {
   const { values, onChange, isValidForm } = useValidation();
@@ -31,58 +32,7 @@ const PlanMeal: React.FC = () => {
             required
           />
         </label>
-        <div className={styles.plan__label}>
-          <div className={styles.plan__wraptitle}>
-            <h3 className={styles.plan__title}>КБЖУ</h3>
-            <span className={styles.plan__title_tip}>(Введите план на день)</span>
-          </div>
-          <div className={styles.plan__items}>
-            <label>
-              <span className={styles.plan__item}>Калории</span>
-              <input
-                className={`${styles.plan__input} ${styles.plan__input_params}`}
-                type="text"
-                name="calories"
-                placeholder="ккал"
-                value={values?.calories || ''}
-                onChange={handleChangeInput}
-              />
-            </label>
-            <label>
-              <span className={styles.plan__item}>Белки</span>
-              <input
-                className={`${styles.plan__input} ${styles.plan__input_params}`}
-                type="text"
-                name="protein"
-                placeholder="г"
-                value={values?.protein || ''}
-                onChange={handleChangeInput}
-              />
-            </label>
-            <label>
-              <span className={styles.plan__item}>Жиры</span>
-              <input
-                className={`${styles.plan__input} ${styles.plan__input_params}`}
-                type="text"
-                name="fats"
-                placeholder="г"
-                value={values?.fats || ''}
-                onChange={handleChangeInput}
-              />
-            </label>
-            <label>
-              <span className={styles.plan__item}>Углеводы</span>
-              <input
-                className={`${styles.plan__input} ${styles.plan__input_params}`}
-                type="text"
-                name="carbohydrates"
-                placeholder="г"
-                value={values?.carbohydrates || ''}
-                onChange={handleChangeInput}
-              />
-            </label>
-          </div>
-        </div>
+        <CaloriesInput />
         <label className={styles.plan__label}>
           <h3 className={styles.plan__title}>Рекомендации</h3>
           <textarea
@@ -98,7 +48,7 @@ const PlanMeal: React.FC = () => {
           <DayBlock item={item} key={index} />
         ))}
 
-        <Button textBtn="Сохранить" type='submit' className="button__blue" />
+        <Button textBtn="Сохранить" type='submit' />
       </form>
       <button
         className={isValidForm ? `${styles.plan__cancel}` : `${styles.plan__cancel} ${styles.plan__cancel_disabled}`}

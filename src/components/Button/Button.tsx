@@ -11,11 +11,10 @@ type ButtonType = {
 };
 
 const Button: React.FC<ButtonType> = ({ textBtn, type, isDirty, isValid }) => {
-  console.log(type, isValid, isDirty)
   return (
     <button
       className={styles.button}
-      type='submit'
+      type={type}
       disabled={!isDirty || !isValid}
     >
       {textBtn}
