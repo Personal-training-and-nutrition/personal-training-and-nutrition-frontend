@@ -1,26 +1,29 @@
+
+@import '../../scss/colors/buttons';
+@import '../../scss/colors/texts';
+
 .status {
+
   display: grid;
   grid-template-columns: repeat(2, auto);
   grid-template-rows: 1fr;
   // gap: 0px 20px;
   margin-bottom: 32px;
+
   &__btn {
     font-weight: 400;
     font-size: 16px;
     line-height: 20px;
     padding: 8px 12px;
     height: 40px;
-    background-color: #deeff8;
+    background-color: $blue-100;
     border-radius: 8px;
     border: none;
-    color: #173b05;
+    color: $black-600;
     cursor: pointer;
     &_client {
-      background-color: #c7edb6;
+      background-color: $green-300;
     }
-    &_active {
-      background-color: #595959;
-      color: white;
-    }
+
   }
 }
