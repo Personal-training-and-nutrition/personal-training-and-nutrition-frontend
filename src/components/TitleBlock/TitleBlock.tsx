@@ -18,7 +18,7 @@ const TitleBlock = ({ text, isBack }: { text: string; isBack?: boolean }) => {
           ←
         </button>
       )}
-      <p className={styles.titlePage__title}>{text}</p>
+      <p className={styles.titlePage__title}>{text.toUpperCase()}</p>
     </div>
   );
 };

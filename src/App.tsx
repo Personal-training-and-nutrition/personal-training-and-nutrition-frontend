@@ -8,6 +8,7 @@ import PasswordSaved from './components/PasswordSaved';
 import LandingPage from './pages/LandingPage/LandingPage.tsx';
 import Profile from './pages/ProfilePage/Profile.tsx';
 import PlanMeal from './components/PlanPage/PlanMeal.tsx';
+import ClientCardPage from './pages/ClientCardPage/ClientCardPage.tsx';
 
 function App() {
   // const [statusSpec, setStatusSpec] = useState(false)
@@ -27,6 +28,7 @@ function App() {
 
         <Route path="/client" element={<Profile statusSpec={false} />} />
         <Route path="/planMeal" element={<PlanMeal />} />
+        <Route path="client-card" element={<ClientCardPage />} />
       </Routes>
     </div>
   );

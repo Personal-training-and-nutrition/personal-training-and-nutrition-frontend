@@ -1,0 +1,159 @@
+.clientCard {
+  &__content {
+    display: flex;
+    flex-direction: column;
+    // align-items: center;
+    margin: 0 auto;
+    padding-bottom: 80px;
+    max-width: 375px;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 12px;
+    margin: 32px 0;
+  }
+
+  &__button {
+    position: relative;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+    width: 165.5px;
+    height: 180px;
+    text-align: left;
+    padding: 20px 16px 0;
+    padding-bottom: 40px;
+    border-radius: 32px;
+    border: none;
+    cursor: pointer;
+  }
+
+  &__buttonPlusIcon {
+    position: absolute;
+    top: 20px;
+    right: 16px;
+    // height: 24px;
+    // width: 24px;
+  }
+
+  &__mealPlanBtn {
+    background: url('../../assets/images/client-card/button-images/add-meal-plan.png');
+    background-size: contain;
+  }
+
+  &__workoutPlanBtn {
+    background: url('../../assets/images/client-card/button-images/add-workout-plan.png');
+    background-size: contain;
+  }
+
+  &__moreBlock {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__title {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+    margin: 0;
+    margin-bottom: 12px;
+  }
+
+  &__note {
+    color: #6b8ca4;
+
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%; /* 18px */
+  }
+
+  &__textContainer {
+    padding: 16px;
+    margin: 0;
+    background: #f7f7f6;
+    border-radius: 12px;
+  }
+
+  &__detailsSection {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__details {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 130%;
+    color: #0068a5;
+  }
+
+  &__details span {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%;
+    color: #0d2f43;
+  }
+
+  &__contact {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #0d2f43;
+  }
+
+  &__contact:first-child {
+    margin-bottom: 11px;
+  }
+
+  &__section {
+    margin-bottom: 32px;
+  }
+
+  &__moreBtn {
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%; /* 18px */
+    text-decoration-line: underline;
+    color: #0068a5;
+  }
+}
+
+.planCard {
+  display: grid;
+  grid-template-columns: min-content 1fr 44px;
+  align-items: center;
+  gap: 4px;
+  border-radius: 14px;
+  border: 1px solid #efefe8;
+  background: rgba(247, 247, 246, 0.2);
+  padding-right: 16px;
+  overflow: hidden;
+
+  &__title {
+    margin: 0 0 5px;
+    color: #192024;
+
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 130%; /* 20.8px */
+  }
+
+  &__createdDate {
+    margin: 0;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    color: #869095;
+  }
+}
