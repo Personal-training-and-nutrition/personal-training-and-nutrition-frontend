@@ -7,8 +7,15 @@ import AuthByEmail from './pages/AuthPages/AuthByEmail.tsx';
 import PasswordSaved from './components/PasswordSaved';
 import LandingPage from './pages/LandingPage/LandingPage.tsx';
 import Profile from './pages/ProfilePage/Profile.tsx';
+
 import PlanMealAdd from './pages/PlanPage/PlanMealAdd.tsx';
 import PlanTrainingAdd from './pages/PlanPage/PlanTrainingAdd.tsx';
+import AuthModal from './components/Modal/AuthModal/AuthModal.tsx';
+import RegisterModal from './components/Modal/RegisterModal/RegisterModal.tsx';
+import ForgotPasswordModal from './components/Modal/ForgotPasswordModal/ForgotPasswordModal.tsx';
+import ForgotPasswordTooltipModal from './components/Modal/ForgotPasswordTooltipModal/ForgotPasswordTooltipModal.tsx';
+import ResetPasswordModal from './components/Modal/ResetPasswordModal/ResetPasswordModal.tsx';
+import ResetPasswordTooltip from './components/Modal/ResetPasswordTooltip/ResetPasswordTooltip.tsx';
 
 function App() {
   // const [statusSpec, setStatusSpec] = useState(false)
@@ -25,11 +32,19 @@ function App() {
         <Route path="/nutrition" element={<LandingPage />} />
         <Route path="/trainer" element={<LandingPage />} />
         <Route path="/spec" element={<Profile statusSpec={true} />} />
-
+        
         <Route path="/client" element={<Profile statusSpec={false} />} />
+        
         <Route path="/planMeal" element={<PlanMealAdd />} />
         <Route path="/planTraining" element={<PlanTrainingAdd />} />
-      </Routes>
+        
+        <Route path='/authModal' element={<AuthModal/>} />
+        <Route path='/registerModal' element={<RegisterModal/>}/>
+        <Route path='/forgotPassword' element={<ForgotPasswordModal/>}/>
+        <Route path='/forgotPasswordTooltip' element={<ForgotPasswordTooltipModal/>}/>
+        <Route path='/resetPassword' element={<ResetPasswordModal/>}/>
+        <Route path='/resetPasswordTooltip' element={<ResetPasswordTooltip/>} />
+       </Routes>
     </div>
   );
 }
