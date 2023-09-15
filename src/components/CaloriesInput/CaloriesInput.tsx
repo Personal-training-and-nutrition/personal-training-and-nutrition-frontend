@@ -1,8 +1,8 @@
 import styles from './CaloriesInput.module.scss';
 import { UseFormRegister  } from 'react-hook-form';
-import {PlanMealInputType} from '../../pages/PlanPage/PlanMeal'
+import {PlanInputType} from '../PlanForm/PlanForm';
 
-const CaloriesInput = ({ register }: {register:UseFormRegister<PlanMealInputType>}) => {
+const CaloriesInput = ({ register }: {register:UseFormRegister<PlanInputType>}) => {
   return (
     <div className={styles.calories__label}>
           <div className={styles.calories__wrap}>
