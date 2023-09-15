@@ -4,12 +4,18 @@
 .navbar {
   display: flex;
   padding: 8px 0;
+  width: 100%;
+  justify-content: center;
   max-width: 375px;
   background-color: $gray-300;
   position: fixed;
   bottom: 0;
   box-shadow: 0 -1px 5px 0 rgba(228, 228, 227, .73);
   border-top: .5px solid $gray-300;
+
+  @media (min-width: 768px) {
+    display: none;
+  }
 
   &__navlink {
     text-decoration: none;
@@ -34,8 +40,11 @@
   &__image {
     width: 28px;
     height: 28px;
-    color: $blue-700;
-    fill: $blue-700;
+
+    &_active {
+      filter: brightness(0) saturate(100%) invert(22%) sepia(69%) saturate(2286%) hue-rotate(182deg) brightness(105%) contrast(102%);
+    }
+
 
     svg {
       fill: $blue-700;

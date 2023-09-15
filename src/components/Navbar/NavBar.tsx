@@ -1,9 +1,13 @@
 import styles from './NavBar.module.scss';
 import { NavLink } from 'react-router-dom';
 import React from 'react';
-import { navBarItemList } from '../../utils/NabBarParams.ts';
+import { navBarSpecialistItemList, navBarUserItemList } from '../../utils/NabBarParams.ts';
 
-const NavBar: React.FC = () => {
+type NavBarParams = { statusSpec: boolean };
+
+const NavBar: React.FC<NavBarParams> = ({ statusSpec }) => {
+  const listIcon = statusSpec ? navBarSpecialistItemList : navBarUserItemList;
+
   const activeClassName = ({ isActive }: { isActive: boolean }) => {
     if (isActive) {
       return `${styles.navbar__navlink} ${styles.navbar__navlink_active}`;
@@ -13,13 +17,13 @@ const NavBar: React.FC = () => {
 
   return (
     <nav className={styles.navbar}>
-      {navBarItemList.map((item, index) => (
+      {listIcon.map((item, index) => (
         <NavLink className={activeClassName} key={index} to={`/${item.link}`}>
           {({ isActive }) => (
             <div className={styles.navbar__container}>
               <img
-                className={styles.navbar__image}
-                src={isActive ? item.imgActive : item.imgNotActive}
+                className={isActive ? `${styles.navbar__image} ${styles.navbar__image_active}` : styles.navbar__image}
+                src={item.img}
                 alt={item.alt}
               />
               {item.textLink}

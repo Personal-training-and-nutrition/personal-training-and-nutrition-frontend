@@ -1,46 +1,66 @@
-import recordsNotActiveIcon from '../assets/images/navbar/notActive/account-not-active-icon.svg';
-import recordsActiveIcon from '../assets/images/navbar/active/account-active-icon.svg';
-import clientsNotActiveIcon from '../assets/images/navbar/notActive/clients-not-active-icon.svg';
-import clientsActiveIcon from '../assets/images/navbar/active/clients-active-icon.svg';
-import messagesNotActiveIcon from '../assets/images/navbar/notActive/messages-not-active-icon.svg';
-import messagesActiveIcon from '../assets/images/navbar/active/messages-active-icon.svg';
-import profileNotActiveIcon from '../assets/images/navbar/notActive/profile-not-active-icon.svg';
-import profileActiveIcon from '../assets/images/navbar/active/profile-active-icon.svg';
+import recordsNotActiveIcon from '../assets/images/navbar/account-not-active-icon.svg';
+import clientsNotActiveIcon from '../assets/images/navbar/clients-not-active-icon.svg';
+import messagesNotActiveIcon from '../assets/images/navbar/messages-not-active-icon.svg';
+import profileNotActiveIcon from '../assets/images/navbar/profile-not-active-icon.svg';
+import dietsNotActiveIcon from '../assets/images/navbar/food-not-active-icon.svg';
+import trainingNotActiveIcon from '../assets/images/navbar/sport-not-active-icon.svg';
 
-type navBarItemListType = {
+export type navBarItemListType = {
   link: string;
-  imgNotActive: string;
-  imgActive: string;
+  img: string;
   alt: string;
   textLink: string;
 };
 
-export const navBarItemList: navBarItemListType[] = [
+export const navBarUserItemList: navBarItemListType[] = [
   {
-    link: 'records',
-    imgNotActive: recordsNotActiveIcon,
-    imgActive: recordsActiveIcon,
+    link: 'planMeal',
+    img: recordsNotActiveIcon,
     alt: 'Иконка кнопки "Записи"',
     textLink: 'Записи',
   },
   {
-    link: 'clients',
-    imgNotActive: clientsNotActiveIcon,
-    imgActive: clientsActiveIcon,
+    link: 'client',
+    img: clientsNotActiveIcon,
     alt: 'Иконка кнопки "Клиенты"',
     textLink: 'Клиенты',
   },
   {
-    link: 'messages',
-    imgNotActive: messagesNotActiveIcon,
-    imgActive: messagesActiveIcon,
+    link: '',
+    img: messagesNotActiveIcon,
     alt: 'Иконка кнопки "Сообщения"',
     textLink: 'Сообщения',
   },
   {
-    link: 'profile',
-    imgNotActive: profileNotActiveIcon,
-    imgActive: profileActiveIcon,
+    link: 'spec',
+    img: profileNotActiveIcon,
+    alt: 'Иконка кнопки "Профиль"',
+    textLink: 'Профиль',
+  },
+];
+
+export const navBarSpecialistItemList: navBarItemListType[] = [
+  {
+    link: 'planMeal',
+    img: dietsNotActiveIcon,
+    alt: 'Иконка кнопки "Питание"',
+    textLink: 'Питание',
+  },
+  {
+    link: 'planTraining',
+    img: trainingNotActiveIcon,
+    alt: 'Иконка кнопки "Тренировки"',
+    textLink: 'Тренировки',
+  },
+  {
+    link: '',
+    img: messagesNotActiveIcon,
+    alt: 'Иконка кнопки "Сообщения"',
+    textLink: 'Сообщения',
+  },
+  {
+    link: 'spec',
+    img: profileNotActiveIcon,
     alt: 'Иконка кнопки "Профиль"',
     textLink: 'Профиль',
   },
