@@ -43,15 +43,6 @@
     left: 49px;
   }
 
-  // &__add {
-  //   padding: 0;
-  //   background-color: transparent;
-  //   border: none;
-  //   position: absolute;
-  //   top: 77%;
-  //   left: 77%;
-  // }
-
   &__form {
     display: grid;
     row-gap: 32px;
@@ -66,15 +57,29 @@
     height: 40px;
     background-color: #f7f7f6;
     border-radius: 8px;
-    padding: 9px 12px;
+    padding: 8px 12px;
     box-sizing: border-box;
-    border: #d4d4cf 1px solid;
+    border: #d4d4cf 0.5px solid;
     font-size: 16px;
     font-weight: 400;
+    line-height: 20.8px;
+    color: #0D2F43;
 
+    &::placeholder {
+      color: #94BED5;
+    }
+    &:focus{
+      border-color: #0D2F43;
+    }
+    &:disabled{
+      color: #D4D4CF;
+    }
+    &:invalid {
+      color: #9D1435;
+    }
     &_style {
       background-color: transparent;
-      border: #f7f7f6 1px solid;
+      border: #f7f7f6 0.5px solid;
     }
 
     &_big {
@@ -89,10 +94,11 @@
   &__error {
     display: block;
     opacity: 0;
-    font-size: 12px;
+    font-size: 15px;
+    line-height: 18px;
     &_active {
       opacity: 1;
-      color: #dd1b49;
+      color: #9D1435;
     }
   }
   &__title {
@@ -100,12 +106,16 @@
     font-size: 15px;
     line-height: 18px;
     margin-bottom: 8px;
-    color: #b1bbc0;
+    // color: #b1bbc0;
+
     &_big {
       font-weight: 700;
-      font-size: 17px;
-      line-height: 22px;
+      font-size: 18px;
+      line-height: 21.6px;
       margin-bottom: 16px;
+    }
+    &_style{
+      color: #869095;
     }
   }
   &__item {
@@ -113,62 +123,12 @@
     font-size: 16px;
     line-height: 22px;
   }
-  // &__wrap {
-  //   display: flex;
-  // }
-  // &__radio {
-  //   display: flex;
-
-  //   p {
-  //     margin: 0;
-  //     padding: 0 25px 0 35px;
-  //     display: inline-block;
-  //     cursor: pointer;
-  //     position: relative;
-  //     margin-right: 0;
-  //     top: -2px;
-  //     &:before {
-  //       content: '';
-  //       display: inline-block;
-  //       width: 22px;
-  //       height: 22px;
-  //       position: absolute;
-  //       left: 0;
-  //       background: url(../../assets/images/profile/radio-button.svg) 0 0 no-repeat;
-  //     }
-  //   }
-
-  //   input {
-  //     display: none;
-  //   }
-
-  //   input:checked + p:before {
-  //     background-size: 22px;
-  //     background: url(../../assets/images/profile/radio-button-checked.svg) 0 0 no-repeat;
-  //     background-position: center;
-  //   }
-  //   p:hover:before {
-  //     // opacity: 0.2;
-  //     filter: brightness(120%);
-  //   }
-  // }
 
   &__size {
     display: flex;
     flex-direction: row;
     align-items: center;
   }
-  &__delete {
-    margin: 20px 0px 32px;
-    border: none;
-    background-color: transparent;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 20px;
-    padding: 0;
-    color: #dd1b49;
-  }
-
   &__pen {
     width: 12px;
     position: absolute;
