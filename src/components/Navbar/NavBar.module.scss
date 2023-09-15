@@ -8,7 +8,8 @@
   background-color: $gray-300;
   position: fixed;
   bottom: 0;
-
+  box-shadow: 0 -1px 5px 0 rgba(228, 228, 227, .73);
+  border-top: .5px solid $gray-300;
 
   &__navlink {
     text-decoration: none;
@@ -33,6 +34,12 @@
   &__image {
     width: 28px;
     height: 28px;
+    color: $blue-700;
+    fill: $blue-700;
+
+    svg {
+      fill: $blue-700;
+    }
   }
 
   &__item {
