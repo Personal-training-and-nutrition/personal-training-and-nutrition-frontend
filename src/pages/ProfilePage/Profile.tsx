@@ -76,17 +76,6 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
           >
             {errors?.name?.message || 'Ошибка!'}
           </span>
-          <span className={styles.profile__title}>Отчество</span>
-          <input className={styles.profile__input} type="text" {...register('middlename')} />
-          <span
-            className={
-              errors?.middlename
-                ? `${styles.profile__error} ${styles.profile__error_active}`
-                : `${styles.profile__error}`
-            }
-          >
-            {errors?.surname?.message || 'Ошибка!'}
-          </span>
           <span className={styles.profile__title}>Дата рождения</span>
           <input className={styles.profile__input} type="text" {...register('birthday')} />
           <span
@@ -127,7 +116,7 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
         )}
 
         <label className={styles.profile__label}>
-          <span className={styles.profile__title}>Email</span>
+          <span className={`${styles.profile__title} ${styles.profile__title_style}`}>Email</span>
           <input
             className={`${styles.profile__input} ${styles.profile__input_style}`}
             type="email"
@@ -147,7 +136,7 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
           </span>
         </label>
         <label className={styles.profile__label}>
-          <span className={styles.profile__title}>Телефон</span>
+          <span className={`${styles.profile__title} ${styles.profile__title_style}`}>Телефон</span>
           <input
             className={`${styles.profile__input} ${styles.profile__input_style}`}
             type="number"
@@ -167,7 +156,7 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
           </span>
         </label>
         <label className={styles.profile__label}>
-          <span className={styles.profile__title}>Пароль</span>
+          <span className={`${styles.profile__title} ${styles.profile__title_style}`}>Пароль</span>
           <input
             className={`${styles.profile__input} ${styles.profile__input_style}`}
             type="password"

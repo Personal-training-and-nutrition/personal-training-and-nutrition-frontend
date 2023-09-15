@@ -7,7 +7,8 @@ import AuthByEmail from './pages/AuthPages/AuthByEmail.tsx';
 import PasswordSaved from './components/PasswordSaved';
 import LandingPage from './pages/LandingPage/LandingPage.tsx';
 import Profile from './pages/ProfilePage/Profile.tsx';
-import PlanMeal from './pages/PlanPage/PlanMeal.tsx';
+import PlanMealAdd from './pages/PlanPage/PlanMealAdd.tsx';
+import PlanTrainingAdd from './pages/PlanPage/PlanTrainingAdd.tsx';
 
 function App() {
   // const [statusSpec, setStatusSpec] = useState(false)
@@ -26,7 +27,8 @@ function App() {
         <Route path="/spec" element={<Profile statusSpec={true} />} />
 
         <Route path="/client" element={<Profile statusSpec={false} />} />
-        <Route path="/planMeal" element={<PlanMeal />} />
+        <Route path="/planMeal" element={<PlanMealAdd />} />
+        <Route path="/planTraining" element={<PlanTrainingAdd />} />
       </Routes>
     </div>
   );
