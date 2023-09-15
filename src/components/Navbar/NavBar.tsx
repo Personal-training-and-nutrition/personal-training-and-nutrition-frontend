@@ -6,7 +6,7 @@ import { navBarSpecialistItemList, navBarUserItemList } from '../../utils/NabBar
 type NavBarParams = { statusSpec: boolean };
 
 const NavBar: React.FC<NavBarParams> = ({ statusSpec }) => {
-  const listIcon = statusSpec ? navBarSpecialistItemList : navBarUserItemList;
+  const listIcons = statusSpec ? navBarSpecialistItemList : navBarUserItemList;
 
   const activeClassName = ({ isActive }: { isActive: boolean }) => {
     if (isActive) {
@@ -17,7 +17,7 @@ const NavBar: React.FC<NavBarParams> = ({ statusSpec }) => {
 
   return (
     <nav className={styles.navbar}>
-      {listIcon.map((item, index) => (
+      {listIcons.map((item, index) => (
         <NavLink className={activeClassName} key={index} to={`/${item.link}`}>
           {({ isActive }) => (
             <div className={styles.navbar__container}>
