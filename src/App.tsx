@@ -18,7 +18,7 @@ import ResetPasswordModal from './components/Modal/ResetPasswordModal/ResetPassw
 import ResetPasswordTooltip from './components/Modal/ResetPasswordTooltip/ResetPasswordTooltip.tsx';
 
 function App() {
-  // const [statusSpec, setStatusSpec] = useState(false)
+  // const [isStatusSpec, setIsStatusSpec] = useState(false)
 
   return (
     <div className="App">
@@ -32,19 +32,19 @@ function App() {
         <Route path="/nutrition" element={<LandingPage />} />
         <Route path="/trainer" element={<LandingPage />} />
         <Route path="/spec" element={<Profile statusSpec={true} />} />
-        
+
         <Route path="/client" element={<Profile statusSpec={false} />} />
-        
+
         <Route path="/planMeal" element={<PlanMealAdd />} />
         <Route path="/planTraining" element={<PlanTrainingAdd />} />
-        
-        <Route path='/authModal' element={<AuthModal/>} />
-        <Route path='/registerModal' element={<RegisterModal/>}/>
-        <Route path='/forgotPassword' element={<ForgotPasswordModal/>}/>
-        <Route path='/forgotPasswordTooltip' element={<ForgotPasswordTooltipModal/>}/>
-        <Route path='/resetPassword' element={<ResetPasswordModal/>}/>
-        <Route path='/resetPasswordTooltip' element={<ResetPasswordTooltip/>} />
-       </Routes>
+
+        <Route path="/authModal" element={<AuthModal />} />
+        <Route path="/registerModal" element={<RegisterModal />} />
+        <Route path="/forgotPassword" element={<ForgotPasswordModal />} />
+        <Route path="/forgotPasswordTooltip" element={<ForgotPasswordTooltipModal />} />
+        <Route path="/resetPassword" element={<ResetPasswordModal />} />
+        <Route path="/resetPasswordTooltip" element={<ResetPasswordTooltip />} />
+      </Routes>
     </div>
   );
 }
