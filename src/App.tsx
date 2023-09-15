@@ -16,6 +16,8 @@ import ForgotPasswordModal from './components/Modal/ForgotPasswordModal/ForgotPa
 import ForgotPasswordTooltipModal from './components/Modal/ForgotPasswordTooltipModal/ForgotPasswordTooltipModal.tsx';
 import ResetPasswordModal from './components/Modal/ResetPasswordModal/ResetPasswordModal.tsx';
 import ResetPasswordTooltip from './components/Modal/ResetPasswordTooltip/ResetPasswordTooltip.tsx';
+import ConfirmationTooltip from './components/Modal/ConfirmationTooltip/ConfirmationTooltip.tsx';
+import PlanItem from './components/PlanItem/PlanItem.tsx';
 
 function App() {
   // const [isStatusSpec, setIsStatusSpec] = useState(false)
@@ -44,6 +46,25 @@ function App() {
         <Route path="/forgotPasswordTooltip" element={<ForgotPasswordTooltipModal />} />
         <Route path="/resetPassword" element={<ResetPasswordModal />} />
         <Route path="/resetPasswordTooltip" element={<ResetPasswordTooltip />} />
+        <Route
+          path="/confirmationTooltip"
+          element={
+            <ConfirmationTooltip
+              title="План тренировок сохранен"
+              subtitle="Отправьте его клиенту"
+              btnText="Скопировать ссылку"
+            />
+          }
+        />
+
+        <Route
+          path="/planItem"
+          element={
+            <ul style={{ margin: '0', padding: '0' }}>
+              <PlanItem />
+            </ul>
+          }
+        />
       </Routes>
     </div>
   );
