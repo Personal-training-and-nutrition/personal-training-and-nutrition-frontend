@@ -1,0 +1,33 @@
+@import '../../../scss/colors/texts';
+
+.registerModal {
+  &__title {
+    margin: 0;
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 120%;
+    color: $black-800;
+  }
+  &__text {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 120%;
+    color: $black-800;
+  }
+  &__link {
+    text-decoration: underline;
+    color: $blue-700;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 120%;
+    margin-bottom: 18px;
+  }
+  &__form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 12px;
+    padding: 30px 0 20px ;
+  }
+}
