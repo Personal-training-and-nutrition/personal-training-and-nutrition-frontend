@@ -25,15 +25,4 @@ input[type='number']:focus {
   appearance: none;
   -moz-appearance: textfield;
 }
-/* код, чтобы убрать календаря значок на всех браузерах: */
-/* input[type='date']::-webkit-inner-spin-button,
-input[type='date']::-webkit-calendar-picker-indicator {
-  display: none;
-  -webkit-appearance: none;
-} */
-/* убирает из поля дата буквы */
-/* input[type='date']:in-range::-webkit-datetime-edit-year-field,
-input[type='date']:in-range::-webkit-datetime-edit-month-field,
-input[type='date']:in-range::-webkit-datetime-edit-day-field {
-  color: transparent;
-} */
+

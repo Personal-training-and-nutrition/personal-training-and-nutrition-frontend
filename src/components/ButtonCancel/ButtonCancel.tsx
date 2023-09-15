@@ -1,7 +1,6 @@
 import styles from './ButtonCancel.module.scss'
 const ButtonCancel = ( {text, className, isDirty, isValid}: {text: string; className?: string; isDirty?: boolean;
   isValid?: boolean;}) => {
-    console.log(isDirty, isValid)
   return (
 
     <button onClick={()=> console.log('я нажата')}
