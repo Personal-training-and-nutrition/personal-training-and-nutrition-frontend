@@ -10,8 +10,10 @@
   background-color: $gray-300;
   position: fixed;
   bottom: 0;
-  box-shadow: 0 -1px 5px 0 rgba(228, 228, 227, .73);
-  border-top: .5px solid $gray-300;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 -1px 5px 0 rgba(228, 228, 227, 0.73);
+  border-top: 0.5px solid $gray-300;
 
   @media (min-width: 768px) {
     display: none;
@@ -42,9 +44,9 @@
     height: 28px;
 
     &_active {
-      filter: brightness(0) saturate(100%) invert(22%) sepia(69%) saturate(2286%) hue-rotate(182deg) brightness(105%) contrast(102%);
+      filter: brightness(0) saturate(100%) invert(22%) sepia(69%) saturate(2286%) hue-rotate(182deg) brightness(105%)
+        contrast(102%);
     }
-
 
     svg {
       fill: $blue-700;
@@ -52,6 +54,5 @@
   }
 
   &__item {
-
   }
 }
