@@ -16,7 +16,6 @@ import RegisterModal from './components/Modal/RegisterModal/RegisterModal.tsx';
 import ForgotPasswordModal from './components/Modal/ForgotPasswordModal/ForgotPasswordModal.tsx';
 import ForgotPasswordTooltipModal from './components/Modal/ForgotPasswordTooltipModal/ForgotPasswordTooltipModal.tsx';
 import ResetPasswordModal from './components/Modal/ResetPasswordModal/ResetPasswordModal.tsx';
-import ResetPasswordTooltip from './components/Modal/ResetPasswordTooltip/ResetPasswordTooltip.tsx';
 import ConfirmationTooltip from './components/Modal/ConfirmationTooltip/ConfirmationTooltip.tsx';
 import PlanItem from './components/PlanItem/PlanItem.tsx';
 import ClientCardPage from './pages/ClientCardPage/ClientCardPage.tsx';
@@ -49,7 +48,6 @@ function App() {
           <Route path="/forgotPassword" element={<ForgotPasswordModal />} />
           <Route path="/forgotPasswordTooltip" element={<ForgotPasswordTooltipModal />} />
           <Route path="/resetPassword" element={<ResetPasswordModal />} />
-          <Route path="/resetPasswordTooltip" element={<ResetPasswordTooltip />} />
           <Route
             path="/confirmationTooltip"
             element={
@@ -57,6 +55,7 @@ function App() {
                 title="План тренировок сохранен"
                 subtitle="Отправьте его клиенту"
                 btnText="Скопировать ссылку"
+                isTraining={false}
               />
             }
           />
