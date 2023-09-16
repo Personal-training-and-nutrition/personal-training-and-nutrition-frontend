@@ -8,7 +8,8 @@
   }
 
   &__buttons {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 12px;
     margin: 32px 0;
   }
@@ -52,6 +53,10 @@
     align-items: center;
     justify-content: space-between;
     margin-bottom: 21px;
+  }
+
+  &__moreBlock img {
+    margin-bottom: 15px;
   }
 
   &__title {
@@ -133,5 +138,22 @@
     line-height: 120%; /* 18px */
     text-decoration-line: underline;
     color: #0068a5;
+  }
+
+  @media (max-width: 370px) {
+    &__button {
+      font-size: 18px;
+      width: 160px;
+      height: 175px;
+    }
+  }
+
+  @media (max-width: 320px) {
+    &__button {
+      font-size: 18px;
+
+      width: 138px;
+      height: 150px;
+    }
   }
 }

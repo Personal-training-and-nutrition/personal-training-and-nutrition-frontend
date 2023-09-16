@@ -33,13 +33,13 @@ function App() {
           <Route path="password" element={<ChangePassword />} />
           <Route path="signin-netw" element={<AuthByEmail />} />
           <Route path="saved" element={<PasswordSaved />} />
-          <Route path="/" element={<LandingPage />} />
+          {/* <Route path="/" element={<LandingPage />} /> */}
           <Route path="/nutrition" element={<LandingPage />} />
           <Route path="/trainer" element={<LandingPage />} />
           <Route path="/spec" element={<Profile statusSpec={true} />} />
 
           <Route path="/client" element={<Profile statusSpec={false} />} />
-          <Route path="/client-card" element={<ClientCardPage />} />
+          <Route path="/" element={<ClientCardPage />} />
 
           <Route path="/planMeal" element={<PlanMealAdd />} />
           <Route path="/planTraining" element={<PlanTrainingAdd />} />
