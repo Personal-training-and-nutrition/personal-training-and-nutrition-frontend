@@ -1,12 +1,15 @@
 .titlePage {
   &__container {
+    // padding: 0 16px;
     display: flex;
-    width: 100%;
+    // width: 100%;
     justify-content: flex-end;
+
     &_position {
       justify-content: space-between;
     }
   }
+
   &__back {
     padding: 0;
     font-size: 22px;
@@ -14,9 +17,17 @@
     background-color: transparent;
     cursor: pointer;
   }
+
   &__title {
     font-weight: 700;
     font-size: 15px;
     line-height: 18px;
+  }
+
+  &__titleBox {
+    display: flex;
+    gap: 16px;
+    align-items: baseline;
+    padding-right: 16px;
   }
 }

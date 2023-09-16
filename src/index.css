@@ -1,4 +1,5 @@
 @import './scss/normalize.css';
+@import url('./vendor/fonts/Inter/inter.css');
 
 :root {
   font-family: Inter, 'Roboto', system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -25,4 +26,3 @@ input[type='number']:focus {
   appearance: none;
   -moz-appearance: textfield;
 }
-

@@ -10,6 +10,8 @@
   background-color: $gray-300;
   position: fixed;
   bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
   box-shadow: 0 -1px 5px 0 rgba(228, 228, 227, 0.73);
   border-top: 0.5px solid $gray-300;
 

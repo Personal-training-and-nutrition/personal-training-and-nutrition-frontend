@@ -2,9 +2,8 @@
   &__content {
     display: flex;
     flex-direction: column;
-    // align-items: center;
-    margin: 0 auto;
     padding-bottom: 80px;
+    margin: 0 auto;
     max-width: 375px;
   }
 
@@ -24,7 +23,7 @@
     height: 180px;
     text-align: left;
     padding: 20px 16px 0;
-    padding-bottom: 40px;
+    padding-bottom: 46px;
     border-radius: 32px;
     border: none;
     cursor: pointer;
@@ -52,6 +51,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 21px;
   }
 
   &__title {
@@ -60,7 +60,11 @@
     font-weight: 700;
     line-height: 120%;
     margin: 0;
-    margin-bottom: 12px;
+    margin-bottom: 15px;
+  }
+
+  &__contacts {
+    padding-bottom: 14px;
   }
 
   &__note {
@@ -83,6 +87,7 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
+    margin-top: -20px;
   }
 
   &__details {
@@ -109,6 +114,10 @@
     color: #0d2f43;
   }
 
+  &__contactsTitle {
+    margin-bottom: 11px;
+  }
+
   &__contact:first-child {
     margin-bottom: 11px;
   }
@@ -124,36 +133,5 @@
     line-height: 120%; /* 18px */
     text-decoration-line: underline;
     color: #0068a5;
-  }
-}
-
-.planCard {
-  display: grid;
-  grid-template-columns: min-content 1fr 44px;
-  align-items: center;
-  gap: 4px;
-  border-radius: 14px;
-  border: 1px solid #efefe8;
-  background: rgba(247, 247, 246, 0.2);
-  padding-right: 16px;
-  overflow: hidden;
-
-  &__title {
-    margin: 0 0 5px;
-    color: #192024;
-
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 130%; /* 20.8px */
-  }
-
-  &__createdDate {
-    margin: 0;
-    font-size: 13px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 120%;
-    color: #869095;
   }
 }

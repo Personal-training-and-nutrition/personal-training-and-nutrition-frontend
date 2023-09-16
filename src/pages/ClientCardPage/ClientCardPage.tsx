@@ -4,20 +4,21 @@ import styles from './ClientCardPage.module.scss';
 import plusIcon from '../../assets/images/client-card/button-images/plus-icon.svg';
 import phone from '../../assets/images/client-card/phone.svg';
 import mail from '../../assets/images/client-card/mail.svg';
-import arrowIcon from '../../assets/images/client-card/arrow.svg';
+// import arrowIcon from '../../assets/images/client-card/arrow.svg';
 import mealPlanImage from '../../assets/images/client-card/plan-image.png';
 import workoutPlanImage from '../../assets/images/client-card/workoutPlanImage.png';
 import unfold from '../../assets/images/client-card/unfold.svg';
 import fold from '../../assets/images/client-card/fold.svg';
-import NavBar from '../../components/Navbar/NavBar';
+// import NavBar from '../../components/Navbar/NavBar';
 import { useState } from 'react';
+import PlanCard from '../../components/PlanCard/PlanCard';
 
 function ClientCardPage() {
   const [showMore, setShowMore] = useState(true);
 
   return (
     <div className={styles.clientCard__content}>
-      <TitleBlock text="карточка клиента" isBack />
+      <TitleBlock text="карточка клиента" isBack isEdit />
       <UserInfo />
 
       <div className={styles.clientCard__buttons}>
@@ -29,8 +30,8 @@ function ClientCardPage() {
         </button>
       </div>
 
-      <section className={styles.clientCard__section}>
-        <h2 className={styles.clientCard__title}>Контакты</h2>
+      <section className={`${styles.clientCard__section} ${styles.clientCard__contacts}`}>
+        <h2 className={`${styles.clientCard__title} ${styles.clientCard__contactsTitle}`}>Контакты</h2>
         <div className={styles.clientCard__textContainer}>
           <p className={styles.clientCard__contact}>
             <img src={phone} alt="phone-icon" />
@@ -58,7 +59,7 @@ function ClientCardPage() {
               Вредные привычки: <span>Нет</span>
             </p>
             <p className={`${styles.clientCard__details} ${styles.clientCard__textContainer}`}>
-              Опыт диет:<span> Очень длинный текст наполненный жизненным опытом от диет, взлетов и падений...</span> ещё
+              Опыт диет:<span> Очень длинный текст наполненный жизненным опытом от диет, взлетов и падений...</span> ещё
             </p>
             <p className={`${styles.clientCard__details} ${styles.clientCard__textContainer}`}>
               Предпочтения в еде: <span>Теряет голову при виде шоколадки милка</span>
@@ -73,14 +74,7 @@ function ClientCardPage() {
       <section className={styles.clientCard__section}>
         <h2 className={styles.clientCard__title}>Планы питания</h2>
 
-        <div className={styles.planCard}>
-          <img src={mealPlanImage} alt="изображение на карточке плана" />
-          <div className={styles.planCard__data}>
-            <p className={styles.planCard__title}>Минус 2кг (1 неделя)</p>
-            <p className={styles.planCard__createdDate}>Создан 27 августа 2023</p>
-          </div>
-          <img className={styles.planCard__arrowIcon} src={arrowIcon} alt="arrow icon" />
-        </div>
+        <PlanCard image={mealPlanImage} title="Минус 2кг (1 неделя)" date="Создан 27 августа 2023" />
 
         <p className={styles.clientCard__moreBtn}>Смотреть все</p>
       </section>
@@ -88,14 +82,7 @@ function ClientCardPage() {
       <section className={styles.clientCard__section}>
         <h2 className={styles.clientCard__title}>Планы тренировок</h2>
 
-        <div className={styles.planCard}>
-          <img src={workoutPlanImage} alt="изображение на карточке плана" />
-          <div className={styles.planCard__data}>
-            <p className={styles.planCard__title}>Входим в ритм!</p>
-            <p className={styles.planCard__createdDate}>Создан 27 августа 2023</p>
-          </div>
-          <img className={styles.planCard__arrowIcon} src={arrowIcon} alt="arrow icon" />
-        </div>
+        <PlanCard image={workoutPlanImage} title="Входим в ритм!" date="Создан 27 августа 2023" />
 
         <p className={styles.clientCard__moreBtn}>Смотреть все</p>
       </section>
@@ -107,8 +94,6 @@ function ClientCardPage() {
 
         <p className={styles.clientCard__textContainer}>Обратилась с таким-то запросом, назначила то-то то-то</p>
       </div>
-
-      <NavBar />
     </div>
   );
 }
