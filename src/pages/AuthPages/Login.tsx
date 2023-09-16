@@ -1,5 +1,5 @@
 import React from 'react';
-import Button, { TypeBtnEnum } from '../../components/Button/Button';
+import Button from '../../components/Button/Button';
 import AuthForm from '../../components/AuthForm';
 import { Link } from 'react-router-dom';
 import iconUser from '../../assets/images/authorize/icon-input-user.svg';
@@ -36,14 +36,14 @@ const Login: React.FC = () => {
         </label>
       </div>
 
-      <Button textBtn="Войти" type={TypeBtnEnum.SUBMIT} />
+      <Button textBtn="Войти" type='submit' />
       <div className="wrap">
         <div className="wrap__line"></div>
         <span>ИЛИ</span>
         <div className="wrap__line"></div>
       </div>
       <Link to="/signin-netw">
-        <Button textBtn="Войти через почту" className="button__mail" type={TypeBtnEnum.BUTTON} />
+        <Button textBtn="Войти через почту" type='button' />
       </Link>
       <Link to="/password" className="authorize__link">
         Забыли пароль? Нажмите тут

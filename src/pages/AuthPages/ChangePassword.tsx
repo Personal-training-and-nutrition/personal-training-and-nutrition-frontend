@@ -1,4 +1,4 @@
-import Button, { TypeBtnEnum } from '../../components/Button/Button';
+import Button from '../../components/Button/Button';
 import AuthForm from '../../components/AuthForm';
 import React from 'react';
 
@@ -29,7 +29,7 @@ const ChangePassword: React.FC = () => {
         <span className="authorize__error authorize__error_active">Ошибка!!</span>
       </div>
 
-      <Button textBtn="Сохранить" type={TypeBtnEnum.SUBMIT} />
+      <Button textBtn="Сохранить" type='submit' />
     </AuthForm>
   );
 };

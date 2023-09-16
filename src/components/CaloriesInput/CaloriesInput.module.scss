@@ -1,0 +1,61 @@
+@import '../../scss/colors/buttons';
+@import '../../scss/colors/texts';
+
+.calories{
+  &__wrap {
+      display: flex;
+    }
+  &__title {
+    margin: 0 0 12px 0;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 21px;
+    &_tip {
+      font-weight: 400;
+      font-size: 15px;
+      line-height: 18px;
+      color: #6b8ca4;
+      padding-left: 5px;
+    }
+  }
+  &__items {
+    display: grid;
+    grid-template-columns: 100px 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 9px;
+    label {
+      display: flex;
+      flex-direction: column;
+      span {
+        margin-bottom: 8px;
+        font-weight: 400;
+        font-size: 15px;
+        line-height: 18px;
+      }
+    }
+  }
+  &__input {
+    height: 40px;
+    width: 100%;
+    background-color: $gray-300;
+    border-radius: 8px;
+    padding: 8px 12px;
+    box-sizing: border-box;
+    border: $gray-350 0.5px solid;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20.8px;
+    color: $black-700;
+
+    &::placeholder {
+    color: $gray-400;
+  }
+  &:focus{
+    border-color: $black-700;
+  }
+  &:disabled{
+    color: $gray-350;
+  }
+  }
+
+}

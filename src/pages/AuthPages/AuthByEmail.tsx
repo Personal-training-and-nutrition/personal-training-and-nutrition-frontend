@@ -1,5 +1,5 @@
 import React from 'react';
-import Button, { TypeBtnEnum } from '../../components/Button/Button';
+import Button from '../../components/Button/Button';
 import AuthForm from '../../components/AuthForm';
 import { Link } from 'react-router-dom';
 import yandex from '../../assets/images/authorize/icon-yandex.svg';
@@ -37,7 +37,7 @@ const AuthByEmail: React.FC = () => {
         </label>
       </div>
 
-      <Button textBtn="Войти" type={TypeBtnEnum.SUBMIT} />
+      <Button textBtn="Войти" type='submit' />
       <Link to="/password" className="authorize__link">
         Забыли пароль? Нажмите тут
       </Link>

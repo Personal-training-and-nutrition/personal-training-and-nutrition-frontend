@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Button, { TypeBtnEnum } from '../../components/Button/Button';
+import Button from '../../components/Button/Button';
 import AuthForm from '../../components/AuthForm';
 
 const Register: React.FC = () => {
@@ -86,7 +86,7 @@ const Register: React.FC = () => {
           <p>Я согласен с условиями обслуживания и политикой конфиденциальности</p>
         </label>
       </div>
-      <Button textBtn="Зарегистрироваться" type={TypeBtnEnum.SUBMIT} />
+      <Button textBtn="Зарегистрироваться" type='submit' />
     </AuthForm>
   );
 };

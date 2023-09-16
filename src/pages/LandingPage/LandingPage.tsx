@@ -56,7 +56,8 @@ const LandingPage: React.FC = () => {
           <BtnStart text={'Начать'} size={'large'} />
         </div>
       </section>
-      <NavBar />
+
+      <NavBar statusSpec={false} />
     </main>
   );
 };

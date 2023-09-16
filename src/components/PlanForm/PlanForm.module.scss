@@ -1,0 +1,74 @@
+.plan {
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 375px;
+  }
+  &__userData {
+    font-size: 22px;
+    margin: 32px 0;
+    font-weight: 700;
+    line-height: 26px;
+    text-align: start;
+    padding-right: 18px;
+  }
+  &__form {
+    display: grid;
+    row-gap: 32px;
+    width: 100%;
+  }
+  &__title {
+    margin: 0 0 12px 0;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 21px;
+
+  }
+  &__label {
+    &_gap{
+      display: grid;
+      row-gap: 16px;
+  }
+    }
+
+  &__input {
+    height: 40px;
+    background-color: #f7f7f6;
+    border-radius: 8px;
+    padding: 8px 12px;
+    box-sizing: border-box;
+    border: #d4d4cf 0.5px solid;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20.8px;
+    color: #0D2F43;
+    width: 100%;
+    &::placeholder {
+      color: #94BED5;
+    }
+    &:focus{
+      border-color: #0D2F43;
+    }
+    &:disabled{
+      color: #D4D4CF;
+    }
+    &_textarea {
+      min-height: 140px;
+    }
+    &_invisible {
+      display: none;
+    }
+  }
+  &__error {
+    display: block;
+    opacity: 0;
+    font-size: 15px;
+    line-height: 18px;
+    &_active {
+      opacity: 1;
+      color: #9D1435;
+    }
+  }
+}
