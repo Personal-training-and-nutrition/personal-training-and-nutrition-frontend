@@ -6,10 +6,9 @@ import friday from '../assets/images/dayblock/training/Image-4.svg';
 import saturday from '../assets/images/dayblock/training/Image-5.svg';
 import sunday from '../assets/images/dayblock/training/Image-6.svg';
 
-
 export type DayBlockType = {
   day: string;
-  name: string;
+  nameInput: string;
   placeholder: string;
   image: string;
   alt: string;
@@ -20,7 +19,7 @@ export type DayBlockType = {
 export const trainingData: DayBlockType = [
   {
     day: 'Понедельник',
-    name: 'monday',
+    nameInput: 'monday',
     placeholder: 'Напишите план на этот день',
     image: monday,
     alt: 'Картинка',
@@ -29,7 +28,7 @@ export const trainingData: DayBlockType = [
   },
   {
     day: 'Вторник',
-    name: 'tuesday',
+    nameInput: 'tuesday',
     placeholder: 'Напишите план на этот день',
     image: tuesday,
     alt: 'Картинка',
@@ -38,7 +37,7 @@ export const trainingData: DayBlockType = [
   },
   {
     day: 'Среда',
-    name: 'wednesday',
+    nameInput: 'wednesday',
     placeholder: 'Напишите план на этот день',
     image: wednes,
     alt: 'Картинка',
@@ -47,7 +46,7 @@ export const trainingData: DayBlockType = [
   },
   {
     day: 'Четверг',
-    name: 'thursday',
+    nameInput: 'thursday',
     placeholder: 'Напишите план на этот день',
     image: thursday,
     alt: 'Картинка',
@@ -56,7 +55,7 @@ export const trainingData: DayBlockType = [
   },
   {
     day: 'Пятница',
-    name: 'friday',
+    nameInput: 'friday',
     placeholder: 'Напишите план на этот день',
     image: friday,
     alt: 'Картинка',
@@ -65,7 +64,7 @@ export const trainingData: DayBlockType = [
   },
   {
     day: 'Суббота',
-    name: 'saturday',
+    nameInput: 'saturday',
     placeholder: 'Напишите план на этот день',
     image: saturday,
     alt: 'Картинка',
@@ -74,7 +73,7 @@ export const trainingData: DayBlockType = [
   },
   {
     day: 'Воскресенье',
-    name: 'sunday',
+    nameInput: 'sunday',
     placeholder: 'Напишите план на этот день',
     image: sunday,
     alt: 'Картинка',
@@ -86,7 +85,7 @@ export const trainingData: DayBlockType = [
 export const mealData: DayBlockType = [
   {
     day: 'Понедельник',
-    name: 'monday',
+    nameInput: 'monday',
     placeholder: 'Напишите меню',
     image: monday,
     alt: 'Картинка',
@@ -95,7 +94,7 @@ export const mealData: DayBlockType = [
   },
   {
     day: 'Вторник',
-    name: 'tuesday',
+    nameInput: 'tuesday',
     placeholder: 'Напишите меню',
     image: tuesday,
     alt: 'Картинка',
@@ -104,7 +103,7 @@ export const mealData: DayBlockType = [
   },
   {
     day: 'Среда',
-    name: 'wednesday',
+    nameInput: 'wednesday',
     placeholder: 'Напишите меню',
     image: wednes,
     alt: 'Картинка',
@@ -113,7 +112,7 @@ export const mealData: DayBlockType = [
   },
   {
     day: 'Четверг',
-    name: 'thursday',
+    nameInput: 'thursday',
     placeholder: 'Напишите меню',
     image: thursday,
     alt: 'Картинка',
@@ -122,7 +121,7 @@ export const mealData: DayBlockType = [
   },
   {
     day: 'Пятница',
-    name: 'friday',
+    nameInput: 'friday',
     placeholder: 'Напишите меню',
     image: friday,
     alt: 'Картинка',
@@ -131,7 +130,7 @@ export const mealData: DayBlockType = [
   },
   {
     day: 'Суббота',
-    name: 'saturday',
+    nameInput: 'saturday',
     placeholder: 'Напишите меню',
     image: saturday,
     alt: 'Картинка',
@@ -140,7 +139,7 @@ export const mealData: DayBlockType = [
   },
   {
     day: 'Воскресенье',
-    name: 'sunday',
+    nameInput: 'sunday',
     placeholder: 'Напишите меню',
     image: sunday,
     alt: 'Картинка',
