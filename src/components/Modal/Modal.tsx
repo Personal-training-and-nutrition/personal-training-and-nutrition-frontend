@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './Modal.module.scss';
 
 type Props = {
-  children?: React.ReactNode;
+  children: React.ReactNode;
 };
 
 export default function Modal({ children }: Props) {
