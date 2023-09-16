@@ -159,3 +159,4 @@ export const notes: NoteType = [
   { note: 'Вредные привычки', name: 'badhabit' },
   { note: 'Предпочтения в еде', name: 'foodprefer' },
 ];
+

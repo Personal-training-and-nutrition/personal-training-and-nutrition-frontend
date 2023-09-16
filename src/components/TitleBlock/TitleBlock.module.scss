@@ -1,9 +1,12 @@
+@import '../../scss/colors/texts';
+
 .titlePage {
   &__container {
     // padding: 0 16px;
     display: flex;
     // width: 100%;
     justify-content: flex-end;
+    align-items: center;
 
     &_position {
       justify-content: space-between;
@@ -15,19 +18,38 @@
     font-size: 22px;
     border: none;
     background-color: transparent;
-    cursor: pointer;
+    @media (pointer: fine) {
+      cursor: pointer;
+    }
+    &::after {
+      width: 44px;
+      height: 44px;
+      display: block;
+      content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44' viewBox='0 0 44 44' fill='none'%3E%3Cpath d='M0.292893 21.2929C-0.0976314 21.6834 -0.0976315 22.3166 0.292892 22.7071L6.65685 29.0711C7.04738 29.4616 7.68054 29.4616 8.07107 29.0711C8.46159 28.6805 8.46159 28.0474 8.07107 27.6569L2.41421 22L8.07107 16.3431C8.46159 15.9526 8.46159 15.3195 8.07107 14.9289C7.68054 14.5384 7.04738 14.5384 6.65686 14.9289L0.292893 21.2929ZM23 21L1 21L1 23L23 23L23 21Z' fill='%23192024'/%3E%3C/svg%3E");
+    }
+  }
+  &__edit {
+    padding: 0;
+    font-size: 22px;
+    border: none;
+    background-color: transparent;
+    @media (pointer: fine) {
+      cursor: pointer;
+    }
   }
 
   &__title {
+    margin: 0;
     font-weight: 700;
     font-size: 15px;
     line-height: 18px;
+    text-transform: uppercase;
+    color: $black-800;
   }
 
   &__titleBox {
     display: flex;
     gap: 16px;
     align-items: baseline;
-    padding-right: 16px;
   }
 }

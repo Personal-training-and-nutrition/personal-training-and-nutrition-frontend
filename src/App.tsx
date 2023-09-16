@@ -20,6 +20,7 @@ import ResetPasswordTooltip from './components/Modal/ResetPasswordTooltip/ResetP
 import ConfirmationTooltip from './components/Modal/ConfirmationTooltip/ConfirmationTooltip.tsx';
 import PlanItem from './components/PlanItem/PlanItem.tsx';
 import ClientCardPage from './pages/ClientCardPage/ClientCardPage.tsx';
+import AddClient from './pages/AddClient/AddClient.tsx';
 
 function App() {
   // const [isStatusSpec, setIsStatusSpec] = useState(false)
@@ -50,6 +51,7 @@ function App() {
           <Route path="/forgotPasswordTooltip" element={<ForgotPasswordTooltipModal />} />
           <Route path="/resetPassword" element={<ResetPasswordModal />} />
           <Route path="/resetPasswordTooltip" element={<ResetPasswordTooltip />} />
+          <Route path='/addClient' element={<AddClient/>}/>
           <Route
             path="/confirmationTooltip"
             element={
