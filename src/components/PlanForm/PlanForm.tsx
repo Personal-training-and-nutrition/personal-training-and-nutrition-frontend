@@ -1,5 +1,4 @@
 import { useLocation } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
 import styles from './PlanForm.module.scss';
 import Button from '../Button/Button';
 import ButtonCancel from '../ButtonCancel/ButtonCancel';
@@ -7,7 +6,8 @@ import TitleBlock from '../TitleBlock/TitleBlock';
 import CaloriesInput from '../CaloriesInput/CaloriesInput';
 import DayBlock from '../DayBlock/DayBlock';
 import { DayBlockType } from '../../utils/constants';
-import NavBar from '../Navbar/NavBar';
+import { UseFormRegister } from 'react-hook-form';
+import ButtonDelete from '../ButtonDelete/ButtonDelete';
 
 export type PlanInputType = {
   namePlan: string;
@@ -16,20 +16,26 @@ export type PlanInputType = {
   fats: number;
   carbohydrates: number;
   recomendations: string;
+  monday?: string;
+  tuesday?: string;
+  wednesday?: string;
+  thursday?: string;
+  friday?: string;
+  saturday?: string;
+  sunday?: string;
 };
-
-const PlanForm = ({ textTitle, namePlan, data }: { textTitle: string; namePlan: string; data: DayBlockType }) => {
+type PlanFormType = {
+  textTitle: string;
+  namePlan: string;
+  data: DayBlockType;
+  register: UseFormRegister<PlanInputType>;
+  onSubmit: React.FormEventHandler<HTMLFormElement>;
+  isDirty?: boolean;
+  isValid?: boolean;
+};
+const PlanForm = ({ textTitle, namePlan, data, register, onSubmit, isDirty, isValid }: PlanFormType) => {
   const location = useLocation();
-  const {
-    register,
-    handleSubmit,
-    formState: { isDirty, isValid },
-  } = useForm<PlanInputType>({
-    mode: 'onChange',
-  });
-  const onSubmit = handleSubmit((data) => {
-    console.log(data);
-  });
+
   return (
     <>
       <div className={styles.plan__content}>
@@ -61,14 +67,17 @@ const PlanForm = ({ textTitle, namePlan, data }: { textTitle: string; namePlan: 
           </label>
           <div className={styles.plan__label_gap}>
             {data.map((item, index) => (
-              <DayBlock item={item} key={index} />
+              <DayBlock item={item} key={index} register={register} />
             ))}
           </div>
 
           <Button textBtn="Сохранить" type="submit" isDirty={isDirty} isValid={isValid} />
         </form>
-        <ButtonCancel text="Отменить" isDirty={isDirty} isValid={isValid} />
-        <NavBar statusSpec={true} />
+        {location.pathname === '/editPlanMeal' || location.pathname === '/editPlanTrain' ? (
+          <ButtonDelete text="Удалить этот план" />
+        ) : (
+          <ButtonCancel text="Отменить" isDirty={isDirty} isValid={isValid} />
+        )}
       </div>
     </>
   );

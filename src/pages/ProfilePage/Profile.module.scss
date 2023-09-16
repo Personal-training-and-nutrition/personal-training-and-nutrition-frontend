@@ -1,5 +1,3 @@
-
-
 .profile {
   &__content {
     display: flex;
@@ -63,25 +61,25 @@
     font-size: 16px;
     font-weight: 400;
     line-height: 20.8px;
-    color: #0D2F43;
+    color: #0d2f43;
+    width: 100%;
 
     &::placeholder {
-      color: #94BED5;
+      color: #869095;
     }
-    &:focus{
-      border-color: #0D2F43;
+    &:focus {
+      border-color: #0d2f43;
     }
-    &:disabled{
-      color: #D4D4CF;
+    &:disabled {
+      color: #d4d4cf;
     }
     &:invalid {
-      color: #9D1435;
+      color: #9d1435;
     }
     &_style {
       background-color: transparent;
       border: #f7f7f6 0.5px solid;
     }
-
     &_big {
       height: 120px;
     }
@@ -91,6 +89,7 @@
       padding: 2px 7px;
     }
   }
+
   &__error {
     display: block;
     opacity: 0;
@@ -98,7 +97,7 @@
     line-height: 18px;
     &_active {
       opacity: 1;
-      color: #9D1435;
+      color: #9d1435;
     }
   }
   &__title {
@@ -114,9 +113,20 @@
       line-height: 21.6px;
       margin-bottom: 16px;
     }
-    &_style{
+    &_style {
       color: #869095;
     }
+  }
+  &__subtitle {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20.8px;
+    color: #0d2f43;
+    margin: 0;
+  }
+  &__wrap {
+    display: flex;
+    column-gap: 20px;
   }
   &__item {
     font-weight: 400;
@@ -131,9 +141,9 @@
   }
   &__pen {
     width: 12px;
-    position: absolute;
-    right: 9px;
-    top: 37px;
+    // position: absolute;
+    // right: 9px;
+    // top: 37px;
     padding: 0;
     background-color: transparent;
     border: none;

@@ -1,15 +1,15 @@
 import './scss/app.scss';
 import { Route, Routes } from 'react-router-dom';
-import Login from './pages/AuthPages/Login';
-import Register from './pages/AuthPages/Register';
-import ChangePassword from './pages/AuthPages/ChangePassword';
-import AuthByEmail from './pages/AuthPages/AuthByEmail.tsx';
-import PasswordSaved from './components/PasswordSaved';
+// import Login from './pages/AuthPages/Login';
+// import Register from './pages/AuthPages/Register';
+// import ChangePassword from './pages/AuthPages/ChangePassword';
+// import AuthByEmail from './pages/AuthPages/AuthByEmail.tsx';
+// import PasswordSaved from './components/PasswordSaved';
 import LandingPage from './pages/LandingPage/LandingPage.tsx';
 import Profile from './pages/ProfilePage/Profile.tsx';
 
-import PlanMealAdd from './pages/PlanPage/PlanMealAdd.tsx';
-import PlanTrainingAdd from './pages/PlanPage/PlanTrainingAdd.tsx';
+import AddPlanMeal from './pages/PlanPage/AddPlanMeal.tsx';
+import AddPlanTraining from './pages/PlanPage/AddPlanTraining.tsx';
 import AuthModal from './components/Modal/AuthModal/AuthModal.tsx';
 import RegisterModal from './components/Modal/RegisterModal/RegisterModal.tsx';
 import ForgotPasswordModal from './components/Modal/ForgotPasswordModal/ForgotPasswordModal.tsx';
@@ -18,6 +18,8 @@ import ResetPasswordModal from './components/Modal/ResetPasswordModal/ResetPassw
 import ResetPasswordTooltip from './components/Modal/ResetPasswordTooltip/ResetPasswordTooltip.tsx';
 import ConfirmationTooltip from './components/Modal/ConfirmationTooltip/ConfirmationTooltip.tsx';
 import PlanItem from './components/PlanItem/PlanItem.tsx';
+import EditPlanTraining from './pages/PlanPage/EditPlanTraining.tsx';
+import EditPlanMeal from './pages/PlanPage/EditPlanMeal.tsx';
 
 function App() {
   // const [isStatusSpec, setIsStatusSpec] = useState(false)
@@ -25,11 +27,11 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="signup" element={<Register />} />
+        {/* <Route path="signup" element={<Register />} />
         <Route path="signin" element={<Login />} />
         <Route path="password" element={<ChangePassword />} />
         <Route path="signin-netw" element={<AuthByEmail />} />
-        <Route path="saved" element={<PasswordSaved />} />
+        <Route path="saved" element={<PasswordSaved />} /> */}
         <Route path="/" element={<LandingPage />} />
         <Route path="/nutrition" element={<LandingPage />} />
         <Route path="/trainer" element={<LandingPage />} />
@@ -37,8 +39,8 @@ function App() {
 
         <Route path="/client" element={<Profile statusSpec={false} />} />
 
-        <Route path="/planMeal" element={<PlanMealAdd />} />
-        <Route path="/planTraining" element={<PlanTrainingAdd />} />
+        <Route path="/planMeal" element={<AddPlanMeal />} />
+        <Route path="/planTraining" element={<AddPlanTraining />} />
 
         <Route path="/authModal" element={<AuthModal />} />
         <Route path="/registerModal" element={<RegisterModal />} />
@@ -65,6 +67,8 @@ function App() {
             </ul>
           }
         />
+        <Route path="/editPlanTrain" element={<EditPlanTraining />} />
+        <Route path="/editPlanMeal" element={<EditPlanMeal />} />
       </Routes>
     </div>
   );
