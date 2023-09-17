@@ -4,8 +4,7 @@
 
 .App {
   @media (max-width: 820px) {
-    max-width: 820px;
-    // max-width: 375px;
+    max-width: 375px; // временно, для того чтобы navbar не уезжал
     margin: 0 auto;
     padding: 0 16px;
   }

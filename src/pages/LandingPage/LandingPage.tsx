@@ -4,7 +4,6 @@ import Sidebar from '../../components/LandingPage/Sidebar/Sidebar.tsx';
 import img from '../../assets/images/cardItem/bxs-camera-plus.svg';
 import CardItem from '../../components/LandingPage/CardItem/CardItem.tsx';
 import BtnStart from '../../components/LandingPage/BtnStart/BtnStart.tsx';
-import NavBar from '../../components/Navbar/NavBar.tsx';
 
 type ItemsType = {
   title: string;
@@ -56,8 +55,6 @@ const LandingPage: React.FC = () => {
           <BtnStart text={'Начать'} size={'large'} />
         </div>
       </section>
-
-      <NavBar statusSpec={false} />
     </main>
   );
 };
