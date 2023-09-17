@@ -1,0 +1,33 @@
+.addClient {
+  &__main {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+  }
+  &__form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 32px;
+    padding-top: 32px;
+  }
+  &__nameWrap {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+  }
+  &__about {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  &__characteristic {
+    display: grid;
+    grid-template-columns: 48.4% 20.99% 20.99%;
+    column-gap: 16px;
+  }
+}

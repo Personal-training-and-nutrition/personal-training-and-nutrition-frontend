@@ -1,0 +1,25 @@
+@import '../../../scss/colors/texts';
+@import '../../../scss/colors/buttons';
+
+.textarea {
+  &__input {
+    padding: 8px 12px;
+    width: calc(100% - 26px);
+    border-radius: 8px;
+    border: none;
+    border: .5px solid $gray-350;
+    background: $gray-300;
+    font-size: 16px;
+    line-height: 130%;
+    font-weight: 400;
+    color: $black-700;
+    height: 112px;
+    resize: none;
+    &::placeholder {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 130%;
+      color: $gray-400;
+    }
+  }
+}

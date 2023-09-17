@@ -1,40 +1,17 @@
-@import '../../../scss/colors/buttons';
 @import '../../../scss/colors/texts';
+@import '../../../scss/colors/buttons';
 
-.inputs {
-  &__email {
-    padding: 8px 12px;
-    border-radius: 8px;
-    border: .5px solid $gray-350 ;
-    background-color: $gray-300;
-    color: $black-700;
-    font-size: 16px;
-    font-weight: 400;
-    &::placeholder {
-      font-size: 16px;
-      font-weight: 400;
-      line-height: 130%;
-      color: $gray-400;
-    }
-    &:focus-visible {
-      outline: none;
-      border: 0.5px solid $black-700;
-    }
-    &:invalid {
-      border: .5px solid $error-500;
-      color: $error-500;
-    }
-  }
+.datePicker {
   &__wrapper {
     display: flex;
     flex-direction: column;
-    row-gap: 6px;
+    row-gap: 8px;
   }
   &__label {
     font-size: 15px;
-    font-weight: 400;
-    line-height: 120%;
     color: $black-800;
+    line-height: 120%;
+    font-weight: 400;
   }
   &__input {
     padding: 8px 12px;

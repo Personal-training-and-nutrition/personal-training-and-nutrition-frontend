@@ -1,0 +1,47 @@
+@import '../../scss/colors/texts';
+@import '../../scss/colors/buttons';
+
+.cc {
+  &__titleWrap {
+    display: flex;
+    justify-content: space-between;
+    height: 40px;
+    align-items: flex-end;
+  }
+  &__title {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 120%;
+    color: $black-800;
+  }
+  &__btn {
+    border: none;
+    background-color: transparent;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    transition: all .4s ease-in;
+    &_active {
+      transform: rotate(180deg);
+    }
+    &::after {
+      display: block;
+      width: 24px;
+      height: 24px;
+      content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M19.2124 15.6778L12.0181 8.83964L4.79198 15.7081C4.37886 16.1008 3.72178 16.1007 3.28749 15.6871C2.89597 15.2922 2.90555 14.6613 3.30888 14.2779L10.5206 7.41624L12.0179 6L13.5084 7.42313C18.3047 11.9823 20.7063 14.2654 20.7133 14.2724C21.1038 14.6663 21.0942 15.2955 20.6919 15.6779C20.2798 16.0695 19.6245 16.0695 19.2124 15.6778Z' fill='%23192024'/%3E%3C/svg%3E");
+    }
+  }
+  &__inputWrap {
+    padding-top: 12px;
+    height: 0;
+    overflow: hidden;
+    transform: scaleY(0);
+    transition: all .4s ease-in;
+    &_show {
+      transform: scaleY(1);
+      height: 134px;
+      // overflow: unset;
+    }
+  }
+}

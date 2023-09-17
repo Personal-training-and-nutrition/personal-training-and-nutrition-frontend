@@ -1,6 +1,5 @@
 import { useNavigate, Link } from 'react-router-dom';
 import styles from './TitleBlock.module.scss';
-import backArrow from '../../assets/images/icons/back-arrow.svg';
 import editIcon from '../../assets/images/icons/edit-icon.svg';
 
 type TitleBlockProps = {
@@ -17,7 +16,7 @@ const TitleBlock = ({ text, isBack, isEdit, path }: TitleBlockProps) => {
   };
 
   return (
-    <div
+    <nav
       className={
         isBack
           ? `${styles.titlePage__container} ${styles.titlePage__container_position}`
@@ -26,19 +25,18 @@ const TitleBlock = ({ text, isBack, isEdit, path }: TitleBlockProps) => {
     >
       {isBack && (
         <button className={styles.titlePage__back} type="button" onClick={goBack}>
-          <img src={backArrow} alt="стрелочка назад" />
         </button>
       )}
       <div className={styles.titlePage__titleBox}>
-        <p className={styles.titlePage__title}>{text.toUpperCase()}</p>
+        <h2 className={styles.titlePage__title}>{text}</h2>
 
         {isEdit && (
-          <Link to={path!} className={styles.titlePage__back}>
+          <Link to={path!} className={styles.titlePage__edit}>
             <img src={editIcon} alt="кнопка редактирования" />
           </Link>
         )}
       </div>
-    </div>
+    </nav>
   );
 };
 
