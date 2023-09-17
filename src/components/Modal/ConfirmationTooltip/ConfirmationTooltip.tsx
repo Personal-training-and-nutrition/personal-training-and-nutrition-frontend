@@ -7,13 +7,20 @@ type ConfirmationTooltipType = {
   title?: string;
   subtitle: string;
   btnText: string;
+  isTraining: boolean;
 };
 
-const ConfirmationTooltip: React.FC<ConfirmationTooltipType> = ({ title, subtitle, btnText }) => {
+const ConfirmationTooltip: React.FC<ConfirmationTooltipType> = ({ title, subtitle, btnText, isTraining }) => {
   return (
     <Modal>
       <div className={styles.planTraining__wrapper}>
-        <span className={styles.planTraining__img}></span>
+        <span
+          className={` ${
+            isTraining
+              ? styles.planTraining__img_isTraining
+              : styles.planTraining__img_isFood
+          }`}
+        ></span>
         <div className={styles.planTraining__textContainer}>
           {title && <h2 className={styles.planTraining__title}>{title}</h2>}
           <p className={styles.planTraining__subtitle}>{subtitle}</p>

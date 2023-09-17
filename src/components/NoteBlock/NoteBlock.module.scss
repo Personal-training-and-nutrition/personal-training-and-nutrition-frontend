@@ -4,7 +4,6 @@
     font-weight: 700;
     font-size: 18px;
     line-height: 21px;
-
   }
   &__day {
     display: flex;
@@ -31,17 +30,17 @@
     font-size: 16px;
     font-weight: 400;
     line-height: 20.8px;
-    color: #0D2F43;
+    color: #0d2f43;
     width: 100%;
 
     &::placeholder {
-      color: #94BED5;
+      color: #869095;
     }
-    &:focus{
-      border-color: #0D2F43;
+    &:focus {
+      border-color: #0d2f43;
     }
-    &:disabled{
-      color: #D4D4CF;
+    &:disabled {
+      color: #d4d4cf;
     }
     &_textarea {
       min-height: 140px;

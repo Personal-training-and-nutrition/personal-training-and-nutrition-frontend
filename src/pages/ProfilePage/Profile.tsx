@@ -6,6 +6,7 @@ import penIcon from '../../assets/images/profile/pen-icon.svg';
 import TitleBlock from '../../components/TitleBlock/TitleBlock';
 import GenderInput from '../../components/GenderInput/GenderInput';
 import ButtonDelete from '../../components/ButtonDelete/ButtonDelete';
+import { useState } from 'react';
 export type InputsType = {
   surname: string;
   name: string;
@@ -15,23 +16,24 @@ export type InputsType = {
   weight?: string;
   height?: string;
   aboutMe?: string;
-  email: string;
   tel: number;
   password: string | number;
 };
 // const data = { surname: 'Vbv', weight: 22, height: 165 };
 const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
+  const [isEditPassw, setEditPassw] = useState(false);
+  const [isEditPhone, setEditPhone] = useState(false);
   const {
     register,
     handleSubmit,
     formState: { errors, isDirty, isValid },
   } = useForm<InputsType>({
-    mode: 'onChange',
-    // defaultValues: {
-    //   surname: data.surname,
-    //   weight: data?.weight + ' кг' || '',
-    //   height: data?.height + ' см' || '',
-    // },
+    mode: 'all',
+    defaultValues: {
+      gender: '',
+      // weight: data?.weight + ' кг' || '',
+      // height: data?.height + ' см' || '',
+    },
   });
   const onSubmit = handleSubmit((data) => {
     console.log(data);
@@ -54,7 +56,6 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
             {...register('surname', {
               required: 'Поле не должно быть пустым',
             })}
-            // placeholder="Фамилия"
           />
           <span
             className={
@@ -77,7 +78,7 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
             {errors?.name?.message || 'Ошибка!'}
           </span>
           <span className={styles.profile__title}>Дата рождения</span>
-          <input className={styles.profile__input} type="text" {...register('birthday')} />
+          <input className={styles.profile__input} type="data" {...register('birthday')} />
           <span
             className={
               errors?.birthday ? `${styles.profile__error} ${styles.profile__error_active}` : `${styles.profile__error}`
@@ -114,39 +115,31 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
             </div>
           </label>
         )}
-
-        <label className={styles.profile__label}>
-          <span className={`${styles.profile__title} ${styles.profile__title_style}`}>Email</span>
-          <input
-            className={`${styles.profile__input} ${styles.profile__input_style}`}
-            type="email"
-            {...register('email', {
-              pattern: {
-                value: /^[a-zA-Z0-9]+@+[a-zA-Z0-9]+.+[A-z]/,
-                message: 'Email должен соответствовать шаблону электронной почты: name@domain.zone',
-              },
-            })}
-          />
-          <span
-            className={
-              errors?.email ? `${styles.profile__error} ${styles.profile__error_active}` : `${styles.profile__error}`
-            }
-          >
-            {errors?.email?.message || 'Ошибка!'}
-          </span>
-        </label>
+        <div>
+          <div className={`${styles.profile__title} ${styles.profile__title_style}`}>Email</div>
+          <p className={styles.profile__subtitle}>nutrisav@mail.ru</p>
+        </div>
         <label className={styles.profile__label}>
           <span className={`${styles.profile__title} ${styles.profile__title_style}`}>Телефон</span>
-          <input
-            className={`${styles.profile__input} ${styles.profile__input_style}`}
-            type="number"
-            {...register('tel', {
-              required: 'Поле не должно быть пустым',
-            })}
-          />
-          <button className={styles.profile__pen} type="button">
-            <img src={penIcon} alt="Кнопка редактировать данные профиля" />
-          </button>
+          <div className={styles.profile__wrap}>
+            {isEditPhone ? (
+              <input
+                className={`${styles.profile__input} ${styles.profile__input_style}`}
+                type="number"
+                {...register('tel', {
+                  required: 'Поле не должно быть пустым',
+                  valueAsNumber: true,
+                })}
+              />
+            ) : (
+              <p className={styles.profile__subtitle}>+7 (123) 456-78-90</p>
+            )}
+            {!isEditPhone && (
+              <button className={styles.profile__pen} type="button" onClick={() => setEditPhone(true)}>
+                <img src={penIcon} alt="Кнопка редактировать телефон" />
+              </button>
+            )}
+          </div>
           <span
             className={
               errors?.tel ? `${styles.profile__error} ${styles.profile__error_active}` : `${styles.profile__error}`
@@ -157,14 +150,22 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
         </label>
         <label className={styles.profile__label}>
           <span className={`${styles.profile__title} ${styles.profile__title_style}`}>Пароль</span>
-          <input
-            className={`${styles.profile__input} ${styles.profile__input_style}`}
-            type="password"
-            {...register('password', { required: 'Поле не должно быть пустым' })}
-          />
-          <button className={styles.profile__pen} type="button" onClick={() => console.log('редактирую пароль')}>
-            <img src={penIcon} alt="Кнопка редактировать пароль" />
-          </button>
+          <div className={styles.profile__wrap}>
+            {isEditPassw ? (
+              <input
+                className={`${styles.profile__input} ${styles.profile__input_style}`}
+                type="password"
+                {...register('password', { required: 'Поле не должно быть пустым' })}
+              />
+            ) : (
+              <p className={styles.profile__subtitle}>******</p>
+            )}
+            {!isEditPassw && (
+              <button className={styles.profile__pen} type="button" onClick={() => setEditPassw(true)}>
+                <img src={penIcon} alt="Кнопка редактировать пароль" />
+              </button>
+            )}
+          </div>
           <span
             className={
               errors?.password ? `${styles.profile__error} ${styles.profile__error_active}` : `${styles.profile__error}`
@@ -173,12 +174,7 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
             {errors?.password?.message || 'Ошибка!'}
           </span>
         </label>
-        <Button
-          textBtn="Сохранить"
-          type="submit"
-          isDirty={isDirty}
-          isValid={isValid}
-        />
+        <Button textBtn="Сохранить" type="submit" isDirty={isDirty} isValid={isValid} />
       </form>
       <ButtonDelete text="Удалить профиль" />
     </div>
