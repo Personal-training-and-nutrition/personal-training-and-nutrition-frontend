@@ -9,6 +9,9 @@ import InputNumber from '../../components/Inputs/InputNumber/InputNumber';
 import InputPhone from '../../components/Inputs/InputPhone/InputPhone';
 import InputEmail from '../../components/Inputs/InputEmail/InputEmail';
 import AboutClientCard from '../../components/AboutClientCard/AboutClientCard';
+import SpecNote from '../../components/SpecNote/SpecNote';
+import ButtonCancel from '../../components/ButtonCancel/ButtonCancel';
+import Button from '../../components/Button/Button';
 
 const AddClient = () => {
   const {
@@ -41,12 +44,17 @@ const AddClient = () => {
           <InputEmail name='clientEmail' label='Email' placeholder='Email' isLabel={true}/>
         </div>
         <ul className={styles.addClient__about}>
-          <AboutClientCard title='Заболевания'/>
-          <AboutClientCard title='Опыт диет'/>
-          <AboutClientCard title='Опыт тренировок'/>
-          <AboutClientCard title='Вредные привычки'/>
-          <AboutClientCard title='Предпочтения в еде'/>
+          <AboutClientCard title='Заболевания' textareaName='clientDiseases' textaeraPlaceholder='Добавьте важную информацию'/>
+          <AboutClientCard title='Опыт диет' textareaName='clientDietExperience' textaeraPlaceholder='Добавьте важную информацию'/>
+          <AboutClientCard title='Опыт тренировок' textareaName='clientTrainingExperience' textaeraPlaceholder='Добавьте важную информацию'/>
+          <AboutClientCard title='Вредные привычки' textareaName='clientBadHabits' textaeraPlaceholder='Добавьте важную информацию'/>
+          <AboutClientCard title='Предпочтения в еде' textareaName='clientFoodPreferences' textaeraPlaceholder='Добавьте важную информацию'/>
         </ul>
+        <SpecNote textareaName='SpecNote' textareaPlaceholder='Добавьте важную информацию'/>
+        <div className={styles.addClient__nameWrap}>
+        <Button textBtn='Сохранить' type='submit' isDirty={true} isValid={true}/>
+        <ButtonCancel text='Отменить' isDirty={true} isValid={true}/>
+        </div>
       </form>
     </main>
   )
