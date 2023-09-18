@@ -1,0 +1,11 @@
+.workoutPlans {
+  height: 100vh;
+  padding-top: 13px;
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 32px;
+  }
+}

@@ -18,6 +18,7 @@ import EditPlanMeal from './pages/PlanPage/EditPlanMeal.tsx';
 import ClientCardPage from './pages/ClientCardPage/ClientCardPage.tsx';
 import AddClient from './pages/AddClient/AddClient.tsx';
 import Clients from './pages/Clients/Clients.tsx';
+import WorkoutPlans from './pages/WorkoutPlans/WorkoutPlans.tsx';
 
 function App() {
   // const [isStatusSpec, setIsStatusSpec] = useState(false)
@@ -40,6 +41,7 @@ function App() {
         <Route path="/forgotPasswordTooltip" element={<ForgotPasswordTooltipModal />} />
         <Route path="/resetPassword" element={<ResetPasswordModal />} />
         <Route path="/addClient" element={<AddClient />} />
+        <Route path="/workoutPlans" element={<WorkoutPlans />} />
         <Route
           path="/confirmationTooltip"
           element={

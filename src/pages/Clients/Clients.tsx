@@ -21,7 +21,9 @@ const clients: ClientTypes = [
 function Clients() {
   const [searchText, setSearchText] = useState('');
   // const [filteredClients, setFilteredClients] = useState<ClientTypes>([]);
-  const filteredClients = clients.filter((client) => client.name.toLowerCase().includes(searchText.trim()));
+  const filteredClients = clients.filter((client) =>
+    client.name.toLowerCase().includes(searchText.toLowerCase().trim()),
+  );
   const navigate = useNavigate();
 
   return (
