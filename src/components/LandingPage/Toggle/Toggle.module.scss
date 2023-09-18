@@ -1,0 +1,38 @@
+@import '../../../scss/colors/buttons';
+@import '../../../scss/colors/texts';
+
+.toogle {
+  margin: 10px auto;
+  display: flex;
+  justify-content: space-between;
+  padding: 4px;
+  align-items: center;
+  border-radius: 32px;
+  border: 1px solid $gray-350;
+  background-color: $white-100;
+  max-width: 288px;
+  gap: 0;
+
+  &__button {
+    width: 140px;
+    height: 34px;
+    border: none;
+    padding: 0;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 130%;
+    border-radius: 32px;
+    color: $gray-400;
+    background-color: $white-100;
+    cursor: pointer;
+
+    &_active {
+      color: $white-100;
+      background-color: #057CC1;
+      transition: all .3s ease-in-out;
+      cursor: auto;
+    }
+  }
+
+}
