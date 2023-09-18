@@ -3,9 +3,10 @@
 @import './colors/texts';
 
 .App {
+  box-sizing: border-box;
+  
   &__container {
     padding: 0 16px;
-    box-sizing: border-box;
     height: 100vh;
     max-width: 375px;
 
