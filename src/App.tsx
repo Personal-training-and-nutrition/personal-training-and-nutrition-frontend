@@ -17,6 +17,7 @@ import EditPlanTraining from './pages/PlanPage/EditPlanTraining.tsx';
 import EditPlanMeal from './pages/PlanPage/EditPlanMeal.tsx';
 import ClientCardPage from './pages/ClientCardPage/ClientCardPage.tsx';
 import AddClient from './pages/AddClient/AddClient.tsx';
+import Clients from './pages/Clients/Clients.tsx';
 
 function App() {
   // const [isStatusSpec, setIsStatusSpec] = useState(false)
@@ -30,6 +31,7 @@ function App() {
         <Route path="/spec" element={<Profile statusSpec={true} />} />
         <Route path="/client" element={<Profile statusSpec={false} />} />
         <Route path="/client-card" element={<ClientCardPage />} />
+        <Route path="/clients" element={<Clients />} />
         <Route path="/planMeal" element={<AddPlanMeal />} />
         <Route path="/planTraining" element={<AddPlanTraining />} />
         <Route path="/authModal" element={<AuthModal />} />
