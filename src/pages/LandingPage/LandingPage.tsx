@@ -1,10 +1,9 @@
 import React from 'react';
 import styles from './LandingPage.module.scss';
-import Sidebar from '../../components/LandingPage/Sidebar/Sidebar.tsx';
 import img from '../../assets/images/cardItem/bxs-camera-plus.svg';
 import CardItem from '../../components/LandingPage/CardItem/CardItem.tsx';
-import BtnStart from '../../components/LandingPage/BtnStart/BtnStart.tsx';
 import Toggle from '../../components/LandingPage/Toggle/Toggle.tsx';
+import logo from '../../assets/logo.svg';
 
 type ItemsType = {
   title: string;
@@ -16,8 +15,8 @@ type ItemsType = {
 
 const items: ItemsType[] = [
   {
-    title: 'Сохраняйте историю о клиентах',
-    subtitle: 'Организовывайте и храните информацию о приёмах в одном месте',
+    title: 'Удобный сервис для тренеров, диетологов, нутрициологов',
+    subtitle: 'Составление планов тренировок и питания, онлайн-поддержка клиентов в одном сервисе',
     imageUrl: img,
     imageAlt: 'картинка',
     isReverse: false,
@@ -41,22 +40,16 @@ const items: ItemsType[] = [
 const LandingPage: React.FC = () => {
   return (
     <main className={styles.landing__container}>
-      <Sidebar />
+      <img className={styles.landing__logo} src={logo} alt="Логотип сайта" />
+      <Toggle />
       <section className={styles.landing__content}>
-        <div className={styles.button__small}>
-          <BtnStart text={'Начать'} size={'small'} />
-        </div>
+        <div className={styles.button__small}></div>
         <ul className={styles.landing__list}>
           {items.map((item, index) => {
             return <CardItem key={index} {...item} />;
           })}
         </ul>
-
-        <div className={styles.button__large}>
-          <BtnStart text={'Начать'} size={'large'} />
-        </div>
       </section>
-      <Toggle />
     </main>
   );
 };
