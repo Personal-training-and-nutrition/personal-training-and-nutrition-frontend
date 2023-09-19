@@ -5,6 +5,7 @@ import plusIcon from '../../assets/images/icons/white-plus.svg';
 import searchIcon from '../../assets/images/icons/search-icon.svg';
 import ClientsListCard from '../../components/ClientsListCard/ClientsListCard';
 import { useNavigate } from 'react-router-dom';
+import { useWindowPosition } from '../../hooks/useWindowPosition';
 
 type ClientTypes = {
   name: string;
@@ -16,15 +17,28 @@ const clients: ClientTypes = [
   { name: 'Никитина Александра', age: 35, description: 'Обратилась с запросом похудеть назначила то-то то-то' },
   { name: 'Агутин Леонид', age: 55, description: 'Просто красавчик' },
   { name: 'Пушкин Александр', age: 36, description: 'Хочет набрать форму перед дуэлью' },
+  { name: 'Никитина Александра', age: 35, description: 'Обратилась с запросом похудеть назначила то-то то-то' },
+  { name: 'Агутин Леонид', age: 55, description: 'Просто красавчик' },
+  { name: 'Пушкин Александр', age: 36, description: 'Хочет набрать форму перед дуэлью' },
+  { name: 'Никитина Александра', age: 35, description: 'Обратилась с запросом похудеть назначила то-то то-то' },
+  { name: 'Агутин Леонид', age: 55, description: 'Просто красавчик' },
+  { name: 'Пушкин Александр', age: 36, description: 'Хочет набрать форму перед дуэлью' },
+  { name: 'Никитина Александра', age: 35, description: 'Обратилась с запросом похудеть назначила то-то то-то' },
+  { name: 'Агутин Леонид', age: 55, description: 'Просто красавчик' },
+  { name: 'Пушкин Александр', age: 36, description: 'Хочет набрать форму перед дуэлью' },
+  { name: 'Никитина Александра', age: 35, description: 'Обратилась с запросом похудеть назначила то-то то-то' },
+  { name: 'Агутин Леонид', age: 55, description: 'Просто красавчик' },
+  { name: 'Пушкин Александр', age: 36, description: 'Хочет набрать форму перед дуэлью' },
 ];
 
 function Clients() {
   const [searchText, setSearchText] = useState('');
-  // const [filteredClients, setFilteredClients] = useState<ClientTypes>([]);
   const filteredClients = clients.filter((client) =>
     client.name.toLowerCase().includes(searchText.toLowerCase().trim()),
   );
   const navigate = useNavigate();
+  const { x, y } = useWindowPosition();
+  console.log(x, y);
 
   return (
     <div className={styles.clients__content}>
@@ -42,7 +56,10 @@ function Clients() {
         />
       </div>
 
-      <button className={styles.clients__addClientBtn} onClick={() => navigate('/addClient')}>
+      <button
+        className={`${styles.clients__addClientBtn} ${y > 230 ? styles.clients__stickyBtn : ''}`}
+        onClick={() => navigate('/addClient')}
+      >
         <img className={styles.clients__addClientBtnImage} src={addClientImg} alt="картинка кнопки" />
         <span className={styles.clients__addClientBtnText}>
           Добавить клиента <img src={plusIcon} alt="Белый плюсик" />
