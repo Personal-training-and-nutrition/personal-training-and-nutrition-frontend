@@ -19,6 +19,7 @@ import ClientCardPage from './pages/ClientCardPage/ClientCardPage.tsx';
 import AddClient from './pages/AddClient/AddClient.tsx';
 import Clients from './pages/Clients/Clients.tsx';
 import WorkoutPlans from './pages/WorkoutPlans/WorkoutPlans.tsx';
+import TrainingReport from './pages/TrainingReport/TrainingReport.tsx';
 
 function App() {
   // const [isStatusSpec, setIsStatusSpec] = useState(false)
@@ -42,6 +43,7 @@ function App() {
         <Route path="/resetPassword" element={<ResetPasswordModal />} />
         <Route path="/addClient" element={<AddClient />} />
         <Route path="/workoutPlans" element={<WorkoutPlans />} />
+        <Route path="/training-report" element={<TrainingReport />} />
         <Route
           path="/confirmationTooltip"
           element={

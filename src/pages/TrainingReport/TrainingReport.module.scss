@@ -1,3 +1,13 @@
 .trainingReport {
   height: 100vh;
+  padding: 0 16px;
+
+  &__mainTitle {
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+    text-align: right;
+    margin: 18px 0 32px;
+  }
 }

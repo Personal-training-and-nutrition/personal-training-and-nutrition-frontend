@@ -1,0 +1,31 @@
+.Description {
+  padding: 16px;
+  border-radius: 12px;
+  background: var(--buttons-gray-300, #f7f7f6);
+  z-index: 5;
+
+  &__title {
+    color: var(--text-blue-700, #0068a5);
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 130%; /* 20.8px */
+    margin-right: 6px;
+  }
+
+  &__text {
+    color: var(--text-black-700, #0d2f43);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 130%;
+  }
+
+  &__moreBtn {
+    all: unset;
+    color: var(--text-blue-600, #6b8ca4);
+
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 130%;
+    cursor: pointer;
+  }
+}

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from './Clients.module.scss';
 import addClientImg from '../../assets/images/clients/addClientImage.png';
 import plusIcon from '../../assets/images/icons/white-plus.svg';
@@ -37,8 +37,11 @@ function Clients() {
     client.name.toLowerCase().includes(searchText.toLowerCase().trim()),
   );
   const navigate = useNavigate();
-  const { x, y } = useWindowPosition();
-  console.log(x, y);
+  const { y } = useWindowPosition();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className={styles.clients__content}>
