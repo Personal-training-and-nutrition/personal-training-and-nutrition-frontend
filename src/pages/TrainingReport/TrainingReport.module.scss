@@ -1,6 +1,8 @@
 .trainingReport {
-  height: 100vh;
-  padding: 0 16px;
+  height: 100%;
+  padding: 0 16px 80px;
+  margin: 0 auto;
+  max-width: 375px;
 
   &__mainTitle {
     font-size: 22px;

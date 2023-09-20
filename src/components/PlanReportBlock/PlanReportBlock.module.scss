@@ -9,6 +9,8 @@
   border-radius: 14px;
   border: 1px solid #efefe8;
   background: var(--text-white-100, #fff);
+  overflow: hidden;
+  margin-bottom: 16px;
 
   &__header {
     text-align: right;
@@ -39,5 +41,20 @@
     font-weight: 400;
     line-height: 120%; /* 15.6px */
     margin: 0;
+  }
+
+  &__workoutPlanExercises {
+    margin: 0;
+    padding-left: 25px;
+    display: grid;
+    gap: 6px;
+  }
+
+  &__workoutPlanTitle {
+    margin: 0 0 8px;
+  }
+
+  &__workoutPlanSubTitle {
+    margin: 0 0 8px;
   }
 }

@@ -1,14 +1,17 @@
 import PlanReportBlock from '../../components/PlanReportBlock/PlanReportBlock';
 import TitleBlock from '../../components/TitleBlock/TitleBlock';
 import styles from './TrainingReport.module.scss';
+import { tempWorkoutPlan } from '../../utils/constants';
 
 function TrainingReport() {
   return (
     <div className={styles.trainingReport}>
-      <TitleBlock text="отчет о тренировках" isBack isEdit />
-      <h1 className={styles.trainingReport__mainTitle}>Входим в ритм!</h1>
+      <TitleBlock text="отчет о тренировках" isBack isEdit path="/editPlanTrain" />
+      <h1 className={styles.trainingReport__mainTitle}>{tempWorkoutPlan[0].name}</h1>
 
-      <PlanReportBlock />
+      {tempWorkoutPlan[0].training.map((plan, index) => {
+        return <PlanReportBlock isLoggedIn={true} key={index} plan={plan} />;
+      })}
     </div>
   );
 }
