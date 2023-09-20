@@ -1,5 +1,5 @@
 import React from 'react';
-import PlanForm, { PlanInputType } from '../../components/PlanForm/PlanForm';
+import PlanPageLayot, { PlanInputType } from '../../components/PlanPageLayot/PlanPageLayot';
 import { trainingData } from '../../utils/constants';
 import { useForm } from 'react-hook-form';
 
@@ -9,7 +9,7 @@ const EditPlanTraining: React.FC = () => {
     handleSubmit,
     formState: { isDirty, isValid },
   } = useForm<PlanInputType>({
-    mode: 'onChange',
+    mode: 'onBlur',
     // defaultValues: {
     //   namePlan: data.namePlan,
     //   recomendations: data.recomendations,
@@ -21,7 +21,7 @@ const EditPlanTraining: React.FC = () => {
   });
 
   return (
-    <PlanForm
+    <PlanPageLayot
       textTitle="РЕДАКТИРОВАНИЕ ПЛАНA ТРЕНИРОВОК"
       namePlan="тренировок"
       data={trainingData}

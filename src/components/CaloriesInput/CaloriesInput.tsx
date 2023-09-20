@@ -1,6 +1,6 @@
 import styles from './CaloriesInput.module.scss';
 import { UseFormRegister  } from 'react-hook-form';
-import {PlanInputType} from '../PlanForm/PlanForm';
+import {PlanInputType} from '../PlanPageLayot/PlanPageLayot';
 
 const CaloriesInput = ({ register }: {register:UseFormRegister<PlanInputType>}) => {
   return (

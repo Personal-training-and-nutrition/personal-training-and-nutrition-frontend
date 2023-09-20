@@ -2,27 +2,27 @@
   border: 1px solid #efefe8;
   border-radius: 14px;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
   &__title {
     margin: 0 4px 0 0;
     font-weight: 700;
     font-size: 18px;
     line-height: 21px;
   }
-  &__wrap {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: space-between;
-    cursor: pointer;
-  }
   &__image {
-    // position: absolute;
+    position: absolute;
+    top: 0;
+    left: 0;
   }
   &__day {
     display: flex;
     flex-direction: column;
     justify-content: end;
     padding: 16px;
+    cursor: pointer;
 
     p {
       margin: 0;
@@ -76,8 +76,9 @@
     &::placeholder {
       color: #869095;
     }
-    &:focus {
-      border-color: #0d2f43;
+    &:focus-visible {
+      outline: none;
+      border: 0.5px solid #0d2f43;
     }
     &:disabled {
       color: #d4d4cf;
