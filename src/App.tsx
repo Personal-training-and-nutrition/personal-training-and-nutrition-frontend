@@ -20,6 +20,8 @@ import AddClient from './pages/AddClient/AddClient.tsx';
 import Clients from './pages/Clients/Clients.tsx';
 import WorkoutPlans from './pages/WorkoutPlans/WorkoutPlans.tsx';
 import TrainingReport from './pages/TrainingReport/TrainingReport.tsx';
+import PlanUnathMeal from './pages/PlanPage/PlanUnathMeal';
+import PlanUnathTraining from './pages/PlanPage/PlanUnathTraining.tsx';
 
 function App() {
   // const [isStatusSpec, setIsStatusSpec] = useState(false)
@@ -57,8 +59,11 @@ function App() {
         />
         <Route path="/editPlanTrain" element={<EditPlanTraining />} />
         <Route path="/editPlanMeal" element={<EditPlanMeal />} />
+        <Route path='/unAuthPlanMeal' element={<PlanUnathMeal/>}/>
+        <Route path='/unAuthPlanTrain' element={<PlanUnathTraining/>}/>
       </Routes>
       <NavBar statusSpec={false} />
+
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import { useLocation } from 'react-router-dom';
-import styles from './PlanForm.module.scss';
+import styles from './PlanPageLayot.module.scss';
 import Button from '../Button/Button';
 import ButtonCancel from '../ButtonCancel/ButtonCancel';
 import TitleBlock from '../TitleBlock/TitleBlock';
@@ -8,6 +8,7 @@ import DayBlock from '../DayBlock/DayBlock';
 import { DayBlockType } from '../../utils/constants';
 import { UseFormRegister } from 'react-hook-form';
 import ButtonDelete from '../ButtonDelete/ButtonDelete';
+import InputRecommendation from '../Inputs/InputRecommendation/InputRecommendation';
 
 export type PlanInputType = {
   namePlan: string;
@@ -33,11 +34,11 @@ type PlanFormType = {
   isDirty?: boolean;
   isValid?: boolean;
 };
-const PlanForm = ({ textTitle, namePlan, data, register, onSubmit, isDirty, isValid }: PlanFormType) => {
+const PlanPageLayot = ({ textTitle, namePlan, data, register, onSubmit, isDirty, isValid }: PlanFormType) => {
   const location = useLocation();
 
   return (
-    <>
+    <div className="App__container">
       <div className={styles.plan__content}>
         <TitleBlock text={textTitle} isBack={true} />
         <h1 className={styles.plan__userData}>Никитина Александра Сергеевна, 35 лет</h1>
@@ -55,16 +56,7 @@ const PlanForm = ({ textTitle, namePlan, data, register, onSubmit, isDirty, isVa
             />
           </label>
           {location.pathname === '/planMeal' && <CaloriesInput register={register} />}
-          <label className={styles.plan__label}>
-            <h3 className={styles.plan__title}>Рекомендации</h3>
-            <textarea
-              className={`${styles.plan__input} ${styles.plan__input_textarea}`}
-              {...register('recomendations', {
-                required: 'Поле не должно быть пустым',
-              })}
-              placeholder="Напишите рекомендации"
-            />
-          </label>
+          <InputRecommendation register={register}/>
           <div className={styles.plan__label_gap}>
             {data.map((item, index) => (
               <DayBlock item={item} key={index} register={register} />
@@ -79,8 +71,8 @@ const PlanForm = ({ textTitle, namePlan, data, register, onSubmit, isDirty, isVa
           <ButtonCancel text="Отменить" isDirty={isDirty} isValid={isValid} />
         )}
       </div>
-    </>
+    </div>
   );
 };
 
-export default PlanForm;
+export default PlanPageLayot;

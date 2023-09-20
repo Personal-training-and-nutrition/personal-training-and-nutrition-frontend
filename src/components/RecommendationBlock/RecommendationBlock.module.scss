@@ -1,0 +1,20 @@
+.recommendation{
+  &__content {
+  margin: 0 16px;
+  background-color: #f7f7f6;
+  border-radius: 12px;
+  font-size: 16px;
+  line-height: 20.8px;
+  }
+  &__title {
+    padding: 16px;
+    margin: 0;
+    font-weight: 500;
+    color: #0068a5;
+  }
+  &__subtitle {
+    font-weight: 400;
+    color: #0d2f43;
+  }
+
+}

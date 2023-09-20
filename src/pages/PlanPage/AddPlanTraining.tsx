@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import PlanForm, { PlanInputType } from '../../components/PlanForm/PlanForm';
+import PlanPageLayot, { PlanInputType } from '../../components/PlanPageLayot/PlanPageLayot';
 import { trainingData } from '../../utils/constants';
 
 const AddPlanTraining: React.FC = () => {
@@ -9,14 +9,14 @@ const AddPlanTraining: React.FC = () => {
     handleSubmit,
     formState: { isDirty, isValid },
   } = useForm<PlanInputType>({
-    mode: 'onChange',
+    mode: 'onBlur',
   });
 
   const onSubmit = handleSubmit((data) => {
     console.log(data);
   });
   return (
-    <PlanForm
+    <PlanPageLayot
       textTitle="ПЛАН ТРЕНИРОВОК"
       namePlan="тренировок"
       data={trainingData}

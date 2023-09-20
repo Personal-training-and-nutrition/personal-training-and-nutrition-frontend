@@ -14,11 +14,11 @@ type PlanReportBlockProps = {
     user_comment: string;
   };
   isLoggedIn: boolean;
+  text: string;
 };
 
-function PlanReportBlock({ plan, isLoggedIn }: PlanReportBlockProps) {
+function PlanReportBlock({ plan, isLoggedIn, text }: PlanReportBlockProps) {
   const [showMore, setShowMore] = useState(false);
-
   return (
     <li className={styles.PlanReport}>
       <img className={styles.PlanReport__image} src={`/images/trainingday-${plan.weekday}.png`} alt="arrow icon" />
@@ -28,7 +28,7 @@ function PlanReportBlock({ plan, isLoggedIn }: PlanReportBlockProps) {
           {getWeekDay(plan.weekday)}{' '}
           <img src={showMore ? upArrow : downArrow} alt="arrow" style={{ marginLeft: '5px' }} />
         </h3>
-        <p className={styles.PlanReport__headerSubTitle}>Отчет клиента за этот день</p>
+        <p className={styles.PlanReport__headerSubTitle}>{text}</p>
       </div>
 
       {showMore && (

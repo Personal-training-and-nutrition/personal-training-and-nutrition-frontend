@@ -1,0 +1,83 @@
+.planAuth {
+  &__content {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto 20px;
+    max-width: 375px;
+  }
+  &__logo {
+    width: 159px;
+    margin: 3px auto;
+  }
+  &__wrap {
+    display: grid;
+    gap: 32px;
+    margin-bottom: 20px;
+  }
+  &__title {
+    margin: 32px 16px 0;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 26.4px;
+    color: #0068a5;
+  }
+  &__subtitle {
+    margin: 0 16px;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 26.4px;
+    color: #192024;
+  }
+  &__plan {
+    margin: 0 16px;
+  }
+  &__name {
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    h2 {
+      font-weight: 700;
+      font-size: 15px;
+      line-height: 18px;
+      color: #192024;
+      margin: 0;
+      text-transform: uppercase;
+    }
+    p {
+      margin: 0;
+      font-weight: 400;
+      font-size: 15px;
+      line-height: 18px;
+      color: #0068a5;
+    }
+  }
+  &__listDay {
+    margin-top: 32px;
+  }
+  &__info {
+    background-color: #f7f7f6;
+  }
+  &__about {
+    margin: 20px 16px 16px;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 24.2px;
+  }
+  &__link {
+    margin: 0 16px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20.8px;
+    color: #0068a5;
+    text-decoration: none;
+  }
+  &__btn {
+    margin: 0 16px;
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    bottom: 20px;
+    z-index: 10;
+    text-decoration: none;
+  }
+}

@@ -2,7 +2,6 @@
   &__content {
     display: flex;
     flex-direction: column;
-    align-items: center;
     margin: 0 auto;
     max-width: 375px;
   }
@@ -47,15 +46,15 @@
     &::placeholder {
       color: #869095;
     }
-    &:focus {
-      border-color: #0d2f43;
+
+    &:focus-visible {
+      outline: none;
+      border: 0.5px solid #0d2f43;
     }
     &:disabled {
       color: #d4d4cf;
     }
-    &_textarea {
-      min-height: 140px;
-    }
+
     &_invisible {
       display: none;
     }
