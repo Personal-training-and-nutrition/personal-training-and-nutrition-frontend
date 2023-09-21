@@ -1,27 +1,18 @@
 import React from 'react';
 import styles from './LandingPage.module.scss';
-import Toggle from '../../components/LandingPage/Toggle/Toggle.tsx';
-import logo from '../../assets/logo.svg';
-import oneImg from '../../assets/images/landingPage/users/one.png';
+import Header from '../../components/LandingPage/Header/Header.tsx';
+import PromoSection from '../../components/LandingPage/PromoSection/PromoSection.tsx';
+import MainSection from '../../components/LandingPage/MainSection/MainSection.tsx';
+import BtnStart from '../../components/LandingPage/BtnStart/BtnStart.tsx';
 
 const LandingPage: React.FC = () => {
   return (
     <div className={styles.landing}>
-      <header className={styles.landing__header}>
-        <img className={styles.landing__headerLogo} src={logo} alt="Логотип сайта" />
-        <Toggle />
-      </header>
+      <Header />
       <main>
-        <div className={styles.landing__itemsContainer}>
-          <h2 className={styles.landing__itemsContainerTitle}>
-            Удобный сервис для&nbsp;
-            <span className={styles.landing__itemsContainerTitleBlue}>тренеров, диетологов, нутрициологов</span>
-          </h2>
-          <p className={styles.landing__itemsContainerSubtitle}>
-            Составление планов тренировок и&nbsp;питания, онлайн-поддержка клиентов&nbsp;в одном сервисе
-          </p>
-          <img className={styles.landing__itemsContainerImage} src={oneImg} alt="Первое изображение" />
-        </div>
+        <PromoSection />
+        <MainSection />
+        <BtnStart />
       </main>
     </div>
   );
