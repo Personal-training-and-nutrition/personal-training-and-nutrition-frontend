@@ -9,7 +9,6 @@ import mealPlanImage from '../../assets/images/client-card/plan-image.png';
 import workoutPlanImage from '../../assets/images/client-card/workoutPlanImage.png';
 import unfold from '../../assets/images/client-card/unfold.svg';
 import fold from '../../assets/images/client-card/fold.svg';
-// import NavBar from '../../components/Navbar/NavBar';
 import { useState } from 'react';
 import PlanCard from '../../components/PlanCard/PlanCard';
 

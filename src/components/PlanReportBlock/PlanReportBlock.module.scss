@@ -1,0 +1,60 @@
+.PlanReport {
+  position: relative;
+  list-style: none;
+  display: flex;
+  padding: 16px;
+  flex-direction: column;
+  gap: 28px;
+
+  border-radius: 14px;
+  border: 1px solid #efefe8;
+  background: var(--text-white-100, #fff);
+  overflow: hidden;
+  margin-bottom: 16px;
+
+  &__header {
+    text-align: right;
+  }
+
+  &__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  &__headerTitle {
+    color: var(--text-black-800, #192024);
+
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 120%;
+    margin: 0 0 3px;
+    display: flex;
+    // align-items: baseline;
+    justify-content: end;
+  }
+
+  &__headerSubTitle {
+    color: var(--buttons-gray-400, #869095);
+
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 120%; /* 15.6px */
+    margin: 0;
+  }
+
+  &__workoutPlanExercises {
+    margin: 0;
+    padding-left: 25px;
+    display: grid;
+    gap: 6px;
+  }
+
+  &__workoutPlanTitle {
+    margin: 0 0 8px;
+  }
+
+  &__workoutPlanSubTitle {
+    margin: 0 0 8px;
+  }
+}

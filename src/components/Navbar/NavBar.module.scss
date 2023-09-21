@@ -8,13 +8,14 @@
   justify-content: center;
   max-width: 375px;
   background-color: $gray-300;
-  position: sticky;
+  position: fixed;
   bottom: 0;
   left: 0;
   margin: 0 auto;
 
   box-shadow: 0 -1px 5px 0 rgba(228, 228, 227, 0.73);
   border-top: 0.5px solid $gray-300;
+  z-index: 10000;
 
   @media (min-width: 768px) {
     display: none;
@@ -45,7 +46,8 @@
     height: 28px;
 
     &_active {
-      filter: brightness(0) saturate(100%) invert(22%) sepia(69%) saturate(2286%) hue-rotate(182deg) brightness(105%) contrast(102%);
+      filter: brightness(0) saturate(100%) invert(22%) sepia(69%) saturate(2286%) hue-rotate(182deg) brightness(105%)
+        contrast(102%);
     }
 
     svg {

@@ -1,0 +1,63 @@
+.clientsListCard {
+  position: relative;
+  overflow: hidden;
+  border-radius: 14px;
+  border: 1px solid var(--buttonns-orange-100, #f3f2ec);
+  background: var(--buttons-gray-300, #f7f7f6);
+  padding-right: 8px;
+  height: 72.7px;
+
+  list-style: none;
+  margin: 0;
+  margin-bottom: 16px;
+  display: grid;
+  grid-template-columns: 86px 1fr;
+  align-items: center;
+
+  &__info {
+    z-index: 100;
+  }
+
+  &__name {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 130%; /* 20.8px */
+    color: var(--text-black-800, #192024);
+    margin: 0;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 250px;
+  }
+
+  &__description {
+    color: var(--buttons-gray-400, #869095);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    font-family: Inter;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%; /* 15.6px */
+    margin: 0;
+    width: 230px;
+  }
+
+  &__letters {
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 22px; /* 61.111% */
+    letter-spacing: -0.41px;
+    color: #fff;
+
+    position: absolute;
+    top: 30px;
+    left: 3px;
+    z-index: 100;
+  }
+}

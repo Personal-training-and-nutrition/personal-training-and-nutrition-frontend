@@ -1,6 +1,6 @@
 import React from 'react';
-import PlanForm, { PlanInputType } from '../../components/PlanForm/PlanForm';
-import { trainingData } from '../../utils/constants';
+import PlanPageLayot, { PlanInputType } from '../../components/PlanPageLayot/PlanPageLayot';
+import { mealData } from '../../utils/constants';
 import { useForm } from 'react-hook-form';
 
 const EditPlanMeal: React.FC = () => {
@@ -9,7 +9,7 @@ const EditPlanMeal: React.FC = () => {
     handleSubmit,
     formState: { isDirty, isValid },
   } = useForm<PlanInputType>({
-    mode: 'onChange',
+    mode: 'onBlur',
     defaultValues: {
       namePlan: 'Входим в ритм!',
       // recomendations: data.recomendations,
@@ -21,10 +21,10 @@ const EditPlanMeal: React.FC = () => {
   });
 
   return (
-    <PlanForm
+    <PlanPageLayot
       textTitle="РЕДАКТИРОВАНИЕ ПЛАНA ПИТАНИЯ"
       namePlan="питания"
-      data={trainingData}
+      data={mealData}
       register={register}
       onSubmit={onSubmit}
       isDirty={isDirty}

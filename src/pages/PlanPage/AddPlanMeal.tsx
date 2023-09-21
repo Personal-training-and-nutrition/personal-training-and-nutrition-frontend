@@ -1,5 +1,5 @@
 import React from 'react';
-import PlanForm, { PlanInputType } from '../../components/PlanForm/PlanForm';
+import PlanPageLayot, { PlanInputType } from '../../components/PlanPageLayot/PlanPageLayot';
 import { mealData } from '../../utils/constants';
 import { useForm } from 'react-hook-form';
 
@@ -9,14 +9,14 @@ const AddPlanMeal: React.FC = () => {
     handleSubmit,
     formState: { isDirty, isValid },
   } = useForm<PlanInputType>({
-    mode: 'onChange',
+    mode: 'onBlur',
   });
 
   const onSubmit = handleSubmit((data) => {
     console.log(data);
   });
   return (
-    <PlanForm
+    <PlanPageLayot
       textTitle="ПЛАН ПИТАНИЯ"
       namePlan="питания"
       data={mealData}

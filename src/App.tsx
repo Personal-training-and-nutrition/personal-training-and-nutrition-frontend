@@ -17,6 +17,11 @@ import EditPlanTraining from './pages/PlanPage/EditPlanTraining.tsx';
 import EditPlanMeal from './pages/PlanPage/EditPlanMeal.tsx';
 import ClientCardPage from './pages/ClientCardPage/ClientCardPage.tsx';
 import AddClient from './pages/AddClient/AddClient.tsx';
+import Clients from './pages/Clients/Clients.tsx';
+import WorkoutPlans from './pages/WorkoutPlans/WorkoutPlans.tsx';
+import TrainingReport from './pages/TrainingReport/TrainingReport.tsx';
+import PlanUnathMeal from './pages/PlanPage/PlanUnathMeal';
+import PlanUnathTraining from './pages/PlanPage/PlanUnathTraining.tsx';
 
 function App() {
   // const [isStatusSpec, setIsStatusSpec] = useState(false)
@@ -30,6 +35,7 @@ function App() {
         <Route path="/spec" element={<Profile statusSpec={true} />} />
         <Route path="/client" element={<Profile statusSpec={false} />} />
         <Route path="/client-card" element={<ClientCardPage />} />
+        <Route path="/clients" element={<Clients />} />
         <Route path="/planMeal" element={<AddPlanMeal />} />
         <Route path="/planTraining" element={<AddPlanTraining />} />
         <Route path="/authModal" element={<AuthModal />} />
@@ -38,6 +44,8 @@ function App() {
         <Route path="/forgotPasswordTooltip" element={<ForgotPasswordTooltipModal />} />
         <Route path="/resetPassword" element={<ResetPasswordModal />} />
         <Route path="/addClient" element={<AddClient />} />
+        <Route path="/workoutPlans" element={<WorkoutPlans />} />
+        <Route path="/training-report" element={<TrainingReport />} />
         <Route
           path="/confirmationTooltip"
           element={
@@ -51,8 +59,11 @@ function App() {
         />
         <Route path="/editPlanTrain" element={<EditPlanTraining />} />
         <Route path="/editPlanMeal" element={<EditPlanMeal />} />
+        <Route path='/unAuthPlanMeal' element={<PlanUnathMeal/>}/>
+        <Route path='/unAuthPlanTrain' element={<PlanUnathTraining/>}/>
       </Routes>
       <NavBar statusSpec={false} />
+
     </div>
   );
 }

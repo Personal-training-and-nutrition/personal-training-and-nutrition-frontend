@@ -2,21 +2,17 @@
   &__content {
     display: flex;
     flex-direction: column;
-    align-items: center;
     margin: 0 auto;
     max-width: 375px;
+    padding-top: 13px;
   }
 
   &__avatar {
-    margin: 32px 0 10px;
+    margin: 32px auto 10px;
     height: 100px;
     width: 100px;
     border-radius: 40px;
     background-color: #cee6f4;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
     position: relative;
     overflow: hidden;
 
@@ -67,8 +63,10 @@
     &::placeholder {
       color: #869095;
     }
-    &:focus {
-      border-color: #0d2f43;
+
+    &:focus-visible {
+      outline: none;
+      border: 0.5px solid #0d2f43;
     }
     &:disabled {
       color: #d4d4cf;
@@ -141,9 +139,6 @@
   }
   &__pen {
     width: 12px;
-    // position: absolute;
-    // right: 9px;
-    // top: 37px;
     padding: 0;
     background-color: transparent;
     border: none;
