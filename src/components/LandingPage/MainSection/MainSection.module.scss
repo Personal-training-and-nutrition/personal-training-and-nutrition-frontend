@@ -2,14 +2,11 @@
 @import '../../../scss/colors/texts';
 
 .item {
-  margin-bottom: 72px;
+  position: relative;
+  margin-bottom: 100px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-
-  &:last-of-type {
-    margin-bottom: 32px;
-  }
 
   &-textContainer {
     display: flex;
