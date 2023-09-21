@@ -1,41 +1,12 @@
+@import '../../scss/colors/buttons';
+@import '../../scss/colors/texts';
+
 .landing {
+  margin: 0 auto 100px;
+  max-width: 375px;
+  background-color: $gray-300;
 
-  &__container {
-    max-width: 1440px;
-    display: flex;
-    flex-direction: row;
-
-    @media (max-width: 768px) {
-      max-width: 335px;
-      flex-direction: column;
-      margin: 0 auto;
-    }
-  }
-
-  &__logo {
-    width: 159px;
-    height: 38px;
-    margin: 20px auto 8px;
-  }
-
-  &__content {
-    background-color: #F2F2F2;
-    padding: 0 160px 60px 60px;
-
-    @media (max-width: 768px) {
-      background-color: #FFF;
-      padding: 40px 0 0;
-    }
-  }
-
-  &__list {
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-    margin: 0;
-    padding: 0;
+  @media (max-width: 767px) {
+    max-width: 768px;
   }
 }
-
-
-

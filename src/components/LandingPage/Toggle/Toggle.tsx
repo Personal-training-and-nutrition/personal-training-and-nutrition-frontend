@@ -1,19 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './Toggle.module.scss';
+import { useAppDispatch } from '../../../redux/store.ts';
+import { selectStatus, setStatus } from '../../../redux/slices/LandingPageSlice.ts';
+import { useSelector } from 'react-redux';
 
 const Toggle: React.FC = () => {
-  const [isBtnActive, setIsBtnActive] = useState({
-    btnSpec: true,
-    btnUser: false,
-  });
+  const dispatch = useAppDispatch();
+  const { isStatusSpecialist } = useSelector(selectStatus);
 
   const handleToggle = () => {
-    setIsBtnActive((prevState) => {
-      return {
-        btnSpec: !prevState.btnSpec,
-        btnUser: !prevState.btnUser,
-      };
-    });
+    dispatch(setStatus(!isStatusSpecialist));
   };
 
   return (
@@ -21,9 +17,9 @@ const Toggle: React.FC = () => {
       <button
         onClick={handleToggle}
         className={
-          isBtnActive.btnSpec ? `${styles.toogle__button} ${styles.toogle__button_active}` : styles.toogle__button
+          isStatusSpecialist ? `${styles.toogle__button} ${styles.toogle__button_active}` : styles.toogle__button
         }
-        disabled={isBtnActive.btnSpec}
+        disabled={isStatusSpecialist}
         type="button"
       >
         Специалистам
@@ -31,9 +27,9 @@ const Toggle: React.FC = () => {
       <button
         onClick={handleToggle}
         className={
-          isBtnActive.btnUser ? `${styles.toogle__button} ${styles.toogle__button_active}` : styles.toogle__button
+          !isStatusSpecialist ? `${styles.toogle__button} ${styles.toogle__button_active}` : styles.toogle__button
         }
-        disabled={isBtnActive.btnUser}
+        disabled={!isStatusSpecialist}
         type="button"
       >
         Клиентам

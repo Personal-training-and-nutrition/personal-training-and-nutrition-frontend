@@ -2,16 +2,17 @@
 @import '../../../scss/colors/texts';
 
 .toogle {
-  margin: 10px auto;
+  margin: 0 auto;
   display: flex;
-  justify-content: space-between;
   padding: 4px;
+  justify-content: space-between;
   align-items: center;
   border-radius: 32px;
   border: 1px solid $gray-350;
   background-color: $white-100;
   max-width: 288px;
-  gap: 0;
+  gap: 4px;
+
 
   &__button {
     width: 140px;

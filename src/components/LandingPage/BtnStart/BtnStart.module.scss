@@ -1,0 +1,25 @@
+@import '../../../scss/colors/buttons';
+@import '../../../scss/colors/texts';
+
+.btnStart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 342px;
+  height: 44px;
+  border-radius: 32px;
+  background-color: #057CC1;
+
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 130%;
+  text-decoration: none;
+  color: $white-100;
+
+  transition: all 0.3s ease-in-out;
+  margin: 0 auto;
+
+  &:hover {
+    background-color: #5CADDC;
+  }
+}
