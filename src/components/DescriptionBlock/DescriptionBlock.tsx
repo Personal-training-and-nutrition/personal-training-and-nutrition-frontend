@@ -13,11 +13,11 @@ function DescriptionBlock({ title, children }: DescriptionProps) {
     <div className={styles.Description}>
       <span className={styles.Description__title}>{title}:</span>
       <span className={styles.Description__text}>
-        {children.length < 75 || showMore ? (
+        {children.length < 103 || showMore ? (
           children
         ) : (
           <>
-            {children.slice(0, 75) + '...'}{' '}
+            {children.slice(0, 103) + '...'}{' '}
             <button onClick={() => setShowMore((prev) => !prev)} className={styles.Description__moreBtn}>
               еще
             </button>

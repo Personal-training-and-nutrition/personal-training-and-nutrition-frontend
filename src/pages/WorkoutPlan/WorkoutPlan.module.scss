@@ -1,0 +1,31 @@
+.WorkoutPlan {
+  height: 100%;
+  padding: 0 16px 80px;
+  margin: 0 auto;
+  max-width: 375px;
+  display: grid;
+
+  &__mainTitle {
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+    text-align: right;
+    margin: 18px 0 32px;
+  }
+
+  &__header {
+    margin-bottom: 32px;
+  }
+
+  &__deleteBtn {
+    color: var(--buttons-error-500, #9d1435);
+    margin: 16px auto 16px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 130%; /* 20.8px */
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+}

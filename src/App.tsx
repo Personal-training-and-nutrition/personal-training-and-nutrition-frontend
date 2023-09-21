@@ -22,6 +22,7 @@ import WorkoutPlans from './pages/WorkoutPlans/WorkoutPlans.tsx';
 import TrainingReport from './pages/TrainingReport/TrainingReport.tsx';
 import PlanUnathMeal from './pages/PlanPage/PlanUnathMeal';
 import PlanUnathTraining from './pages/PlanPage/PlanUnathTraining.tsx';
+import WorkoutPlan from './pages/WorkoutPlan/WorkoutPlan.tsx';
 
 function App() {
   // const [isStatusSpec, setIsStatusSpec] = useState(false)
@@ -44,7 +45,7 @@ function App() {
         <Route path="/forgotPasswordTooltip" element={<ForgotPasswordTooltipModal />} />
         <Route path="/resetPassword" element={<ResetPasswordModal />} />
         <Route path="/addClient" element={<AddClient />} />
-        <Route path="/workoutPlans" element={<WorkoutPlans />} />
+        <Route path="/workout-plans" element={<WorkoutPlans />} />
         <Route path="/training-report" element={<TrainingReport />} />
         <Route
           path="/confirmationTooltip"
@@ -59,11 +60,11 @@ function App() {
         />
         <Route path="/editPlanTrain" element={<EditPlanTraining />} />
         <Route path="/editPlanMeal" element={<EditPlanMeal />} />
-        <Route path='/unAuthPlanMeal' element={<PlanUnathMeal/>}/>
-        <Route path='/unAuthPlanTrain' element={<PlanUnathTraining/>}/>
+        <Route path="/unAuthPlanMeal" element={<PlanUnathMeal />} />
+        <Route path="/unAuthPlanTrain" element={<PlanUnathTraining />} />
+        <Route path="/workout-plan" element={<WorkoutPlan />} />
       </Routes>
       <NavBar statusSpec={false} />
-
     </div>
   );
 }
