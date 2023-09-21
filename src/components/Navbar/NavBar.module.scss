@@ -6,11 +6,11 @@
   padding: 8px 0;
   width: 100%;
   justify-content: center;
-  max-width: 375px;
   background-color: $gray-300;
   position: fixed;
   bottom: 0;
   left: 0;
+  right: 0;
   margin: 0 auto;
 
   box-shadow: 0 -1px 5px 0 rgba(228, 228, 227, 0.73);
@@ -18,7 +18,7 @@
   z-index: 10000;
 
   @media (min-width: 768px) {
-    display: none;
+    //display: none;
   }
 
   &__navlink {
@@ -46,8 +46,7 @@
     height: 28px;
 
     &_active {
-      filter: brightness(0) saturate(100%) invert(22%) sepia(69%) saturate(2286%) hue-rotate(182deg) brightness(105%)
-        contrast(102%);
+      filter: brightness(0) saturate(100%) invert(22%) sepia(69%) saturate(2286%) hue-rotate(182deg) brightness(105%) contrast(102%);
     }
 
     svg {

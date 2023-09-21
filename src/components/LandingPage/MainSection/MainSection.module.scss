@@ -3,10 +3,14 @@
 
 .item {
   position: relative;
-  margin-bottom: 100px;
+  margin-bottom: 72px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+
+  &:last-of-type {
+    margin-bottom: 32px;
+  }
 
   &-textContainer {
     display: flex;
@@ -39,7 +43,7 @@
     max-width: 360px;
     object-fit: cover;
 
-    &-position-left {
+    &-position-right {
       margin: 0 0 0 15px;
       align-self: flex-end;
     }

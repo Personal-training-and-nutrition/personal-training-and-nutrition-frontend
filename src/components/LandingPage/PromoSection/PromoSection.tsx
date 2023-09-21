@@ -1,8 +1,13 @@
 import styles from './PromoSection.module.scss';
-import twoPhonesImg from '../../../assets/images/landingPage/users/two-phones.png';
+import twoPhonesSpecImg from '../../../assets/images/landingPage/spec/two-phones.png';
+import twoPhonesUserImg from '../../../assets/images/landingPage/users/two-phones.png';
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { selectStatus } from '../../../redux/slices/LandingPageSlice.ts';
 
 const PromoSection: React.FC = () => {
+  const { isStatusSpecialist } = useSelector(selectStatus);
+
   return (
     <>
       <section className={styles.promo}>
@@ -14,7 +19,11 @@ const PromoSection: React.FC = () => {
           Составление планов тренировок и&nbsp;питания, онлайн-поддержка клиентов&nbsp;в одном сервисе
         </p>
         <div className={styles.promoImageContainer}>
-          <img className={styles.promo__image} src={twoPhonesImg} alt="Первое изображение" />
+          <img
+            className={styles.promo__image}
+            src={isStatusSpecialist ? twoPhonesSpecImg : twoPhonesUserImg}
+            alt="Первое изображение"
+          />
         </div>
       </section>
     </>

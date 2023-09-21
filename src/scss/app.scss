@@ -1,18 +1,17 @@
-
 @import './colors/buttons';
 @import './colors/texts';
 
 .App {
   box-sizing: border-box;
-  
+
   &__container {
     padding: 0 16px;
     height: 100vh;
     max-width: 375px;
+    margin: 0 auto;
 
     @media (max-width: 767px) {
       max-width: 375px; // временно, для того чтобы navbar не уезжал
-      margin: 0 auto;
       padding: 0 16px;
     }
   }
