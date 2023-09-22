@@ -35,8 +35,8 @@ function App() {
         <Route path="/client" element={<Profile statusSpec={false} />} />
         <Route path="/client-card" element={<ClientCardPage />} />
         <Route path="/clients" element={<Clients />} />
-        <Route path="/planMeal" element={<AddPlanMeal />} />
-        <Route path="/planTraining" element={<AddPlanTraining />} />
+        <Route path="/addPlanMeal" element={<AddPlanMeal />} />
+        <Route path="/addPlanTrain" element={<AddPlanTraining />} />
         <Route path="/authModal" element={<AuthModal />} />
         <Route path="/registerModal" element={<RegisterModal />} />
         <Route path="/forgotPassword" element={<ForgotPasswordModal />} />

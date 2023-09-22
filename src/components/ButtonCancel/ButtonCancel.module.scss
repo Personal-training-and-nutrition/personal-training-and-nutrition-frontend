@@ -1,3 +1,4 @@
+@import '../../scss/colors/colors.scss';
 .cancel {
     margin: 19px auto 32px;
     font-size: 16px;
@@ -5,13 +6,13 @@
     line-height: 20px;
     border: none;
     background-color: transparent;
-    color: #5caddc;
+    color: $blue-500;
     cursor: pointer;
     &:hover {
-      color:#057CC1
+      color: $btn-blue-600;
     }
     &:disabled {
-      color: #869095;
+      color: $gray-400;
       cursor: default;
   }
 

@@ -1,3 +1,5 @@
+@import '../../scss/colors/colors.scss';
+
 .noteBlock {
   &__title {
     margin: 0 0 12px 0;
@@ -14,7 +16,7 @@
     padding: 0;
     background-color: transparent;
     border: none;
-    color: #0068a5;
+    color: $blue-700;
     font-weight: 400;
     font-size: 15px;
     line-height: 18px;
@@ -22,25 +24,25 @@
   }
   &__input {
     height: 40px;
-    background-color: #f7f7f6;
+    background-color: $gray-300;
     border-radius: 8px;
     padding: 8px 12px;
     box-sizing: border-box;
-    border: #d4d4cf 0.5px solid;
+    border: $gray-350 0.5px solid;
     font-size: 16px;
     font-weight: 400;
     line-height: 20.8px;
-    color: #0d2f43;
+    color: $black-700;
     width: 100%;
 
     &::placeholder {
-      color: #869095;
+      color: $gray-400;
     }
     &:focus {
-      border-color: #0d2f43;
+      border-color: $black-700;
     }
     &:disabled {
-      color: #d4d4cf;
+      color: $gray-350;
     }
     &_textarea {
       min-height: 140px;

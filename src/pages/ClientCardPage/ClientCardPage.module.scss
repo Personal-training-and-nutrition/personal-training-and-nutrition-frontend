@@ -1,9 +1,10 @@
+@import '../../scss/colors/colors.scss';
+
 .clientCard {
   &__content {
     display: flex;
     flex-direction: column;
-    // padding-bottom: 80px;
-    padding: 0 16px;
+    padding: 0 16px 80px;
     margin: 0 auto;
     max-width: 375px;
   }
@@ -13,6 +14,10 @@
     grid-template-columns: 1fr 1fr;
     gap: 12px;
     margin: 32px 0;
+  }
+
+  &__link{
+    text-decoration: none;
   }
 
   &__button {
@@ -74,7 +79,7 @@
   }
 
   &__note {
-    color: #6b8ca4;
+    color: $blue-600;
 
     font-size: 15px;
     font-style: normal;
@@ -85,7 +90,7 @@
   &__textContainer {
     padding: 16px;
     margin: 0;
-    background: #f7f7f6;
+    background: $gray-300;
     border-radius: 12px;
   }
 
@@ -101,7 +106,7 @@
     font-style: normal;
     font-weight: 600;
     line-height: 130%;
-    color: #0068a5;
+    color: $blue-700;
   }
 
   &__details span {
@@ -109,7 +114,7 @@
     font-style: normal;
     font-weight: 400;
     line-height: 130%;
-    color: #0d2f43;
+    color: $black-700;
   }
 
   &__contact {
@@ -117,7 +122,7 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    color: #0d2f43;
+    color: $black-700;
   }
 
   &__contactsTitle {
@@ -138,7 +143,7 @@
     font-weight: 400;
     line-height: 120%; /* 18px */
     text-decoration-line: underline;
-    color: #0068a5;
+    color: $blue-700;
   }
 
   @media (max-width: 370px) {

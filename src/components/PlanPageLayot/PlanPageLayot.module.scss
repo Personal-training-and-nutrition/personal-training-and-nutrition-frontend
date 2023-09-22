@@ -1,9 +1,12 @@
+@import '../../scss/colors/colors.scss';
+
 .plan {
   &__content {
     display: flex;
     flex-direction: column;
     margin: 0 auto;
     max-width: 375px;
+    padding-bottom: 80px;
   }
   &__userData {
     font-size: 22px;
@@ -33,26 +36,26 @@
 
   &__input {
     height: 40px;
-    background-color: #f7f7f6;
+    background-color: $gray-300;
     border-radius: 8px;
     padding: 8px 12px;
     box-sizing: border-box;
-    border: #d4d4cf 0.5px solid;
+    border: $gray-350 0.5px solid;
     font-size: 16px;
     font-weight: 400;
     line-height: 20.8px;
-    color: #0d2f43;
+    color: $black-700;
     width: 100%;
     &::placeholder {
-      color: #869095;
+      color: $gray-400;
     }
 
     &:focus-visible {
       outline: none;
-      border: 0.5px solid #0d2f43;
+      border: 0.5px solid $black-700;
     }
     &:disabled {
-      color: #d4d4cf;
+      color: $gray-350;
     }
 
     &_invisible {

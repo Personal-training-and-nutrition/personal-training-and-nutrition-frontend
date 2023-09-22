@@ -1,3 +1,5 @@
+@import '../../scss/colors/colors.scss';
+
 .profile {
   &__content {
     display: flex;
@@ -5,6 +7,7 @@
     margin: 0 auto;
     max-width: 375px;
     padding-top: 13px;
+    padding-bottom: 60px;
   }
 
   &__avatar {
@@ -12,7 +15,7 @@
     height: 100px;
     width: 100px;
     border-radius: 40px;
-    background-color: #cee6f4;
+    background-color: $blue-200;
     position: relative;
     overflow: hidden;
 
@@ -22,7 +25,7 @@
       font-weight: 700;
       line-height: 22px;
       width: 60px;
-      color: #deeff8;
+      color: $blue-100;
       opacity: 0.7;
     }
   }
@@ -49,34 +52,34 @@
   }
   &__input {
     height: 40px;
-    background-color: #f7f7f6;
+    background-color: $gray-300;
     border-radius: 8px;
     padding: 8px 12px;
     box-sizing: border-box;
-    border: #d4d4cf 0.5px solid;
+    border: $gray-350 0.5px solid;
     font-size: 16px;
     font-weight: 400;
     line-height: 20.8px;
-    color: #0d2f43;
+    color: $black-700;
     width: 100%;
 
     &::placeholder {
-      color: #869095;
+      color: $gray-400;
     }
 
     &:focus-visible {
       outline: none;
-      border: 0.5px solid #0d2f43;
+      border: 0.5px solid $black-700;
     }
     &:disabled {
-      color: #d4d4cf;
+      color: $gray-350;
     }
     &:invalid {
       color: #9d1435;
     }
     &_style {
       background-color: transparent;
-      border: #f7f7f6 0.5px solid;
+      border: $gray-300 0.5px solid;
     }
     &_big {
       height: 120px;
@@ -103,7 +106,6 @@
     font-size: 15px;
     line-height: 18px;
     margin-bottom: 8px;
-    // color: #b1bbc0;
 
     &_big {
       font-weight: 700;
@@ -112,14 +114,14 @@
       margin-bottom: 16px;
     }
     &_style {
-      color: #869095;
+      color: $gray-400;
     }
   }
   &__subtitle {
     font-size: 16px;
     font-weight: 400;
     line-height: 20.8px;
-    color: #0d2f43;
+    color: $black-700;
     margin: 0;
   }
   &__wrap {

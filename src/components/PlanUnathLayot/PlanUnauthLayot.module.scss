@@ -1,9 +1,12 @@
+@import '../../scss/colors/colors.scss';
+
 .planAuth {
   &__content {
     display: flex;
     flex-direction: column;
     margin: 0 auto 20px;
     max-width: 375px;
+    padding-bottom: 80px;
   }
   &__logo {
     width: 159px;
@@ -19,14 +22,14 @@
     font-weight: 700;
     font-size: 22px;
     line-height: 26.4px;
-    color: #0068a5;
+    color: $blue-700;
   }
   &__subtitle {
     margin: 0 16px;
     font-weight: 700;
     font-size: 22px;
     line-height: 26.4px;
-    color: #192024;
+    color: $black-800;
   }
   &__plan {
     margin: 0 16px;
@@ -39,7 +42,7 @@
       font-weight: 700;
       font-size: 15px;
       line-height: 18px;
-      color: #192024;
+      color: $black-800;
       margin: 0;
       text-transform: uppercase;
     }
@@ -48,14 +51,14 @@
       font-weight: 400;
       font-size: 15px;
       line-height: 18px;
-      color: #0068a5;
+      color: $blue-700;
     }
   }
   &__listDay {
     margin-top: 32px;
   }
   &__info {
-    background-color: #f7f7f6;
+    background-color: $gray-300;
   }
   &__about {
     margin: 20px 16px 16px;
@@ -68,7 +71,7 @@
     font-weight: 600;
     font-size: 16px;
     line-height: 20.8px;
-    color: #0068a5;
+    color: $blue-700;
     text-decoration: none;
   }
   &__btn {
@@ -76,7 +79,7 @@
     display: flex;
     flex-direction: column;
     position: sticky;
-    bottom: 20px;
+    bottom: 100px;
     z-index: 10;
     text-decoration: none;
   }

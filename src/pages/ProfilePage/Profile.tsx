@@ -7,6 +7,8 @@ import TitleBlock from '../../components/TitleBlock/TitleBlock';
 import GenderInput from '../../components/GenderInput/GenderInput';
 import ButtonDelete from '../../components/ButtonDelete/ButtonDelete';
 import { useState } from 'react';
+import { formatDate } from '../../utils/formatDate';
+
 export type InputsType = {
   surname: string;
   name: string;
@@ -41,19 +43,18 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
 
   function onBlurInput(e: React.ChangeEvent<HTMLInputElement>) {
     e.target.type = 'text';
-
     console.log(e.target.type);
+    e.target.value = formatDate(e.target.value)
   }
 
   function onFocusInput(e: React.ChangeEvent<HTMLInputElement>) {
     e.target.type = 'date';
-
     console.log(e.target.type);
   }
 
   return (
     <div className="App__container">
-      <div className={styles.profile__content}>
+      <main className={styles.profile__content}>
         <TitleBlock text="ПРОФИЛЬ" />
         <div className={styles.profile__avatar}>
           <p className={styles.profile__name}>H</p>
@@ -155,12 +156,12 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
                   })}
                 />
               ) : (
-                <p className={styles.profile__subtitle}>+7 (123) 456-78-90</p>
-              )}
-              {!isEditPhone && (
-                <button className={styles.profile__pen} type="button" onClick={() => setEditPhone(true)}>
-                  <img src={penIcon} alt="Кнопка редактировать телефон" />
-                </button>
+                <>
+                  <p className={styles.profile__subtitle}>+7 (123) 456-78-90</p>
+                  <button className={styles.profile__pen} type="button" onClick={() => setEditPhone(true)}>
+                    <img src={penIcon} alt="Кнопка редактировать телефон" />
+                  </button>
+                </>
               )}
             </div>
             <span
@@ -181,12 +182,12 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
                   {...register('password', { required: 'Поле не должно быть пустым' })}
                 />
               ) : (
-                <p className={styles.profile__subtitle}>******</p>
-              )}
-              {!isEditPassw && (
-                <button className={styles.profile__pen} type="button" onClick={() => setEditPassw(true)}>
-                  <img src={penIcon} alt="Кнопка редактировать пароль" />
-                </button>
+                <>
+                  <p className={styles.profile__subtitle}>******</p>
+                  <button className={styles.profile__pen} type="button" onClick={() => setEditPassw(true)}>
+                    <img src={penIcon} alt="Кнопка редактировать пароль" />
+                  </button>
+                </>
               )}
             </div>
             <span
@@ -202,7 +203,7 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
           <Button textBtn="Сохранить" type="submit" isDirty={isDirty} isValid={isValid} />
         </form>
         <ButtonDelete text="Удалить профиль" />
-      </div>
+      </main>
     </div>
   );
 };

@@ -1,3 +1,4 @@
+@import '../../scss/colors/colors.scss';
 .caloriesSection {
   &__calories {
     margin: 0 16px;
@@ -10,14 +11,14 @@
       font-weight: 400;
       font-size: 15px;
       line-height: 18px;
-      color: #192024;
+      color: $black-800;
       margin: 0;
     }
     p {
       font-weight: 700;
       font-size: 18px;
       line-height: 21.6px;
-      color: #0068a5;
+      color: $blue-700;
       margin: 0;
       padding: 9px 0;
     }

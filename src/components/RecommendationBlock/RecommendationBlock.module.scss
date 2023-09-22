@@ -1,7 +1,9 @@
+@import '../../scss/colors/colors.scss';
+
 .recommendation {
   &__content {
     margin: 0 16px;
-    background-color: #f7f7f6;
+    background-color: $gray-300;
     border-radius: 12px;
     font-size: 16px;
     line-height: 20.8px;
@@ -10,10 +12,10 @@
     padding: 16px;
     margin: 0;
     font-weight: 500;
-    color: #0068a5;
+    color: $blue-700;
   }
   &__subtitle {
     font-weight: 400;
-    color: #0d2f43;
+    color: $black-700;
   }
 }

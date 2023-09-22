@@ -1,9 +1,11 @@
+@import '../../scss/colors/colors.scss';
+
 .clientsListCard {
   position: relative;
   overflow: hidden;
   border-radius: 14px;
   border: 1px solid var(--buttonns-orange-100, #f3f2ec);
-  background: var(--buttons-gray-300, #f7f7f6);
+  background: gray-300;
   padding-right: 8px;
   height: 72.7px;
 
@@ -23,7 +25,7 @@
     font-style: normal;
     font-weight: 500;
     line-height: 130%; /* 20.8px */
-    color: var(--text-black-800, #192024);
+    color: $black-800;
     margin: 0;
 
     white-space: nowrap;
@@ -33,7 +35,7 @@
   }
 
   &__description {
-    color: var(--buttons-gray-400, #869095);
+    color: $gray-400;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -53,7 +55,7 @@
     font-weight: 500;
     line-height: 22px; /* 61.111% */
     letter-spacing: -0.41px;
-    color: #fff;
+    color: $white-100;
 
     position: absolute;
     top: 30px;
