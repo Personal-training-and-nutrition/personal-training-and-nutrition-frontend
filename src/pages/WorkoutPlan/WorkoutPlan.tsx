@@ -6,11 +6,11 @@ import DescriptionBlock from '../../components/DescriptionBlock/DescriptionBlock
 
 function WorkoutPlan() {
   return (
-    <div className={styles.WorkoutPlan}>
+    <div className={styles.workoutPlan}>
       <TitleBlock text="план тренировок" isBack />
 
-      <div className={styles.WorkoutPlan__header}>
-        <h1 className={styles.WorkoutPlan__mainTitle}>{tempWorkoutPlan[0].name}</h1>
+      <div className={styles.workoutPlan__header}>
+        <h1 className={styles.workoutPlan__mainTitle}>{tempWorkoutPlan[0].name}</h1>
         <DescriptionBlock title="Рекомендации">
           Смело пиши мне в любое время, делись ощущениями, если что-то идет не так, не переживай, скорректируем)
         </DescriptionBlock>
@@ -27,7 +27,7 @@ function WorkoutPlan() {
         );
       })}
 
-      <button className={styles.WorkoutPlan__deleteBtn}>Удалить</button>
+      <button className={styles.workoutPlan__deleteBtn}>Удалить</button>
     </div>
   );
 }

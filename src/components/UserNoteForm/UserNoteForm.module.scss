@@ -1,0 +1,43 @@
+.userNoteForm {
+  max-width: 375px;
+
+  &__title {
+    color: var(--text-black-800, #192024);
+
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 130%; /* 20.8px */
+    margin-top: 0;
+  }
+
+  &__input {
+    border-radius: 8px;
+    border: 0.5px solid var(--buttons-gray-350, #d4d4cf);
+    background: var(--buttons-gray-300, #f7f7f6);
+    width: 100%;
+    max-width: 301px;
+    margin-bottom: 12px;
+    min-height: 140px;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+  &__input::placeholder {
+    color: var(--buttons-gray-400, #869095);
+
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 130%; /* 20.8px */
+  }
+
+  &__sendButton {
+    padding: 11px 40px 12px 40px;
+    border-radius: 32px;
+    background: var(--buttons-blue-500, #5caddc);
+    color: var(--text-white-100, #fff);
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 130%; /* 20.8px */
+    border: none;
+  }
+}

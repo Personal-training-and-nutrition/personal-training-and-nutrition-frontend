@@ -1,10 +1,12 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import styles from './PlanReportBlock.module.scss';
+import { useLocation } from 'react-router-dom';
 import upArrow from '../../assets/images/icons/up-arrow-gray.svg';
 import downArrow from '../../assets/images/icons/down-arrow-gray.svg';
 import DescriptionBlock from '../DescriptionBlock/DescriptionBlock';
 import { useState } from 'react';
 import { getWeekDay } from '../../utils/getWeekDay';
+import UserNoteForm from '../UserNoteForm/UserNoteForm';
 
 type PlanReportBlockProps = {
   plan: {
@@ -18,7 +20,11 @@ type PlanReportBlockProps = {
 };
 
 function PlanReportBlock({ plan, isLoggedIn, text }: PlanReportBlockProps) {
-  const [showMore, setShowMore] = useState(false);
+  const [showMore, setShowMore] = useState(true);
+  const location = useLocation();
+  const isWorkoutPlanPage = location.pathname === '/workout-plan';
+  const showNotes = isWorkoutPlanPage && !showMore;
+
   return (
     <li className={styles.PlanReport}>
       <img className={styles.PlanReport__image} src={`/images/trainingday-${plan.weekday}.png`} alt="arrow icon" />
@@ -32,18 +38,25 @@ function PlanReportBlock({ plan, isLoggedIn, text }: PlanReportBlockProps) {
       </div>
 
       {showMore && (
-        <div className={styles.PlanReport__workoutPlan}>
-          {plan.spec_comment.split(/\r?\n/).map((item, index) => {
-            return (
-              <p style={{ margin: '0 0 6px' }} key={index}>
-                {item}
-              </p>
-            );
-          })}
-        </div>
+        <>
+          <div className={styles.PlanReport__workoutPlan}>
+            {plan.spec_comment.split(/\r?\n/).map((item, index) => {
+              return (
+                <p style={{ margin: '0 0 6px' }} key={index}>
+                  {item}
+                </p>
+              );
+            })}
+          </div>
+
+          {isWorkoutPlanPage && <UserNoteForm title="Заметка о тренировке" content={plan.user_comment} />}
+        </>
       )}
 
-      {isLoggedIn && <DescriptionBlock title="Заметка за день">{plan.user_comment}</DescriptionBlock>}
+      {/* Необходим рефакторинг */}
+      {isWorkoutPlanPage
+        ? isLoggedIn && !showMore && <DescriptionBlock title="Заметка за день">{plan.user_comment}</DescriptionBlock>
+        : isLoggedIn && <DescriptionBlock title="Заметка за день">{plan.user_comment}</DescriptionBlock>}
     </li>
   );
 }
