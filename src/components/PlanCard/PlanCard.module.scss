@@ -1,5 +1,4 @@
-@import '../../scss/colors/texts';
-@import '../../scss/colors/buttons';
+@import '../../scss/colors/colors.scss';
 
 .planCard {
   display: grid;
@@ -15,7 +14,7 @@
 
   &__title {
     margin: 0 0 5px;
-    color: #192024;
+    color: $black-800;
 
     font-size: 16px;
     font-style: normal;

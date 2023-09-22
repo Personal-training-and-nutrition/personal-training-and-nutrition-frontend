@@ -11,6 +11,7 @@ import unfold from '../../assets/images/client-card/unfold.svg';
 import fold from '../../assets/images/client-card/fold.svg';
 import { useState } from 'react';
 import PlanCard from '../../components/PlanCard/PlanCard';
+import { Link } from 'react-router-dom';
 
 function ClientCardPage() {
   const [showMore, setShowMore] = useState(true);
@@ -21,12 +22,16 @@ function ClientCardPage() {
       <UserInfo />
 
       <div className={styles.clientCard__buttons}>
-        <button className={`${styles.clientCard__button} ${styles.clientCard__mealPlanBtn}`}>
-          План питания <img className={styles.clientCard__buttonPlusIcon} src={plusIcon} alt="plus-icon" />
-        </button>
-        <button className={`${styles.clientCard__button} ${styles.clientCard__workoutPlanBtn}`}>
-          План тренировок <img className={styles.clientCard__buttonPlusIcon} src={plusIcon} alt="plus-icon" />
-        </button>
+        <Link to="/addPlanMeal">
+          <button className={`${styles.clientCard__button} ${styles.clientCard__mealPlanBtn}`}>
+            План питания <img className={styles.clientCard__buttonPlusIcon} src={plusIcon} alt="plus-icon" />
+          </button>
+        </Link>
+        <Link to="/addPlanTrain">
+          <button className={`${styles.clientCard__button} ${styles.clientCard__workoutPlanBtn}`}>
+            План тренировок <img className={styles.clientCard__buttonPlusIcon} src={plusIcon} alt="plus-icon" />
+          </button>
+        </Link>
       </div>
 
       <section className={`${styles.clientCard__section} ${styles.clientCard__contacts}`}>
@@ -81,7 +86,7 @@ function ClientCardPage() {
       <section className={styles.clientCard__section}>
         <h2 className={styles.clientCard__title}>Планы тренировок</h2>
 
-        <PlanCard image={workoutPlanImage} title="Входим в ритм!" date="Создан 27 августа 2023" />
+        <Link to="/training-report" className={styles.clientCard__link}><PlanCard image={workoutPlanImage} title="Входим в ритм!" date="Создан 27 августа 2023" /></Link>
 
         <p className={styles.clientCard__moreBtn}>Смотреть все</p>
       </section>

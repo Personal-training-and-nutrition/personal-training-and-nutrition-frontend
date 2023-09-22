@@ -1,5 +1,4 @@
-@import '../../scss/colors/buttons';
-@import '../../scss/colors/texts';
+@import '../../scss/colors/colors.scss';
 
 .button {
 
@@ -14,7 +13,7 @@
   line-height: 20px;
 
    &:hover{
-    background-color: $blue-600;
+    background-color: $btn-blue-600;
    }
 
   &:disabled {

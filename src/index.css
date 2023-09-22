@@ -26,3 +26,7 @@ input[type='number']:focus {
   appearance: none;
   -moz-appearance: textfield;
 }
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}

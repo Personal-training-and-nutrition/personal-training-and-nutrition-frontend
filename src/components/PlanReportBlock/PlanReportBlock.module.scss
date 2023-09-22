@@ -1,3 +1,5 @@
+@import '../../scss/colors/colors.scss';
+
 .PlanReport {
   position: relative;
   list-style: none;
@@ -8,7 +10,7 @@
 
   border-radius: 14px;
   border: 1px solid #efefe8;
-  background: var(--text-white-100, #fff);
+  background: $white-100;
   overflow: hidden;
   margin-bottom: 16px;
 
@@ -23,7 +25,7 @@
   }
 
   &__headerTitle {
-    color: var(--text-black-800, #192024);
+    color: $black-800;
 
     font-size: 18px;
     font-weight: 700;
@@ -35,7 +37,7 @@
   }
 
   &__headerSubTitle {
-    color: var(--buttons-gray-400, #869095);
+    color: gray-400;
 
     font-size: 13px;
     font-weight: 400;

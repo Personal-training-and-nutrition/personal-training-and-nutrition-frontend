@@ -1,8 +1,10 @@
+@import '../../scss/colors/colors.scss';
+
 .userNoteForm {
   max-width: 375px;
 
   &__title {
-    color: var(--text-black-800, #192024);
+    color: $black-800;
 
     font-size: 16px;
     font-weight: 600;
@@ -12,18 +14,23 @@
 
   &__input {
     border-radius: 8px;
-    border: 0.5px solid var(--buttons-gray-350, #d4d4cf);
-    background: var(--buttons-gray-300, #f7f7f6);
+    border: 0.5px solid $gray-350;
+    background: $gray-300;
     width: 100%;
     max-width: 301px;
     margin-bottom: 12px;
     min-height: 140px;
     padding: 10px;
     box-sizing: border-box;
+
+    &:focus-visible {
+      outline: none;
+      border: 0.5px solid $black-700;
+    }
   }
 
   &__input::placeholder {
-    color: var(--buttons-gray-400, #869095);
+    color: $gray-400;
 
     font-size: 16px;
     font-weight: 400;
@@ -33,8 +40,8 @@
   &__sendButton {
     padding: 11px 40px 12px 40px;
     border-radius: 32px;
-    background: var(--buttons-blue-500, #5caddc);
-    color: var(--text-white-100, #fff);
+    background: $blue-500;
+    color: $white-100;
     font-size: 16px;
     font-weight: 600;
     line-height: 130%; /* 20.8px */

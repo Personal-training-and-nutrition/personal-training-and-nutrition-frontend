@@ -1,13 +1,15 @@
+@import '../../scss/colors/colors.scss';
+
 .clients {
   &__content {
     display: flex;
     flex-direction: column;
-    // padding-bottom: 80px;
     padding: 0 16px;
+    padding-bottom: 80px;
     margin: 0 auto;
     max-width: 375px;
     min-height: 100vh;
-    color: #192024;
+    color: $black-800;
   }
 
   &__pageTitle {
@@ -36,7 +38,7 @@
     height: 40px;
     width: calc(100% - 50px);
     border-radius: 8px;
-    border: 0.5px solid #d4d4cf;
+    border: 0.5px solid $gray-350;
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
@@ -51,7 +53,7 @@
     align-items: center;
     justify-content: space-between;
     border-radius: 14px;
-    background: var(--buttons-blue-500, #5caddc);
+    background: $blue-500;
     padding-right: 16px;
     color: #fff;
     cursor: pointer;
@@ -84,7 +86,7 @@
   }
 
   &__list {
-    padding: 0;
+    padding: 0 0 50px 0;
     margin: 0;
   }
 }

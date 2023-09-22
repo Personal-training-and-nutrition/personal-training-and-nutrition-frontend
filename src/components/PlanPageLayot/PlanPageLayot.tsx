@@ -38,7 +38,7 @@ const PlanPageLayot = ({ textTitle, namePlan, data, register, onSubmit, isDirty,
   const location = useLocation();
 
   return (
-    <div className="App__container">
+    <main className="App__container">
       <div className={styles.plan__content}>
         <TitleBlock text={textTitle} isBack={true} />
         <h1 className={styles.plan__userData}>Никитина Александра Сергеевна, 35 лет</h1>
@@ -63,7 +63,7 @@ const PlanPageLayot = ({ textTitle, namePlan, data, register, onSubmit, isDirty,
             ))}
           </div>
 
-          <Button textBtn="Сохранить" type="submit" isDirty={isDirty} isValid={isValid} />
+          <Button textBtn="Сохранить" type="submit" isDirty={isDirty} isValid={isValid}/>
         </form>
         {location.pathname === '/editPlanMeal' || location.pathname === '/editPlanTrain' ? (
           <ButtonDelete text="Удалить этот план" />
@@ -71,7 +71,7 @@ const PlanPageLayot = ({ textTitle, namePlan, data, register, onSubmit, isDirty,
           <ButtonCancel text="Отменить" isDirty={isDirty} isValid={isValid} />
         )}
       </div>
-    </div>
+    </main>
   );
 };
 

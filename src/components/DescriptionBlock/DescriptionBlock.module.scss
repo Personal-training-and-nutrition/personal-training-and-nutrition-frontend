@@ -1,11 +1,12 @@
+@import '../../scss/colors/colors.scss';
 .Description {
   padding: 16px;
   border-radius: 12px;
-  background: var(--buttons-gray-300, #f7f7f6);
+  background: btn-gray-300;
   z-index: 5;
 
   &__title {
-    color: var(--text-blue-700, #0068a5);
+    color: $blue-700;
     font-size: 16px;
     font-weight: 600;
     line-height: 130%; /* 20.8px */
@@ -13,7 +14,7 @@
   }
 
   &__text {
-    color: var(--text-black-700, #0d2f43);
+    color:  $black-700;
     font-size: 16px;
     font-weight: 400;
     line-height: 130%;
@@ -21,7 +22,7 @@
 
   &__moreBtn {
     all: unset;
-    color: var(--text-blue-600, #6b8ca4);
+    color: $blue-600;
 
     font-size: 16px;
     font-weight: 400;

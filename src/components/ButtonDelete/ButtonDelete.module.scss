@@ -1,4 +1,4 @@
-@import '../../scss/colors/texts';
+@import '../../scss/colors/colors.scss';
 
 .delete {
     margin: 19px auto 32px;
@@ -10,7 +10,7 @@
     color: $error-500;
     cursor: pointer;
    &:hover {
-    color: #9D1435;
+    opacity: 0.8;
    }
   }
 

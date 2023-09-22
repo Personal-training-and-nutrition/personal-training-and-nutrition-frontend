@@ -1,6 +1,4 @@
-// .userInfo div {
-//   border: 1px solid red;
-// }
+@import '../../scss/colors/colors.scss';
 
 .userInfo {
   display: grid;
@@ -25,7 +23,7 @@
     font-weight: 500;
     line-height: 22px; /* 61.111% */
     letter-spacing: -0.41px;
-    color: #fff;
+    color: $white-100;
   }
 
   &__name {
@@ -49,7 +47,7 @@
     font-style: normal;
     font-weight: 400;
     line-height: 120%; /* 18px */
-    color: #869095;
+    color: $gray-400;
     margin: 0;
   }
 

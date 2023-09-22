@@ -1,5 +1,4 @@
-@import '../../scss/colors/buttons';
-@import '../../scss/colors/texts';
+@import '../../scss/colors/colors.scss';
 
 .calories{
   &__wrap {
@@ -14,7 +13,7 @@
       font-weight: 400;
       font-size: 15px;
       line-height: 18px;
-      color: #6b8ca4;
+      color: $blue-600;
       padding-left: 5px;
     }
   }

@@ -14,7 +14,9 @@ const AddPlanTraining: React.FC = () => {
 
   const onSubmit = handleSubmit((data) => {
     console.log(data);
+
   });
+
   return (
     <PlanPageLayot
       textTitle="ПЛАН ТРЕНИРОВОК"

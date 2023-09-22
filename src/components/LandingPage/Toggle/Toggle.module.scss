@@ -1,5 +1,4 @@
-@import '../../../scss/colors/buttons';
-@import '../../../scss/colors/texts';
+@import '../../../scss/colors/colors.scss';
 
 .toogle {
   margin: 0 auto;
@@ -30,7 +29,7 @@
 
     &_active {
       color: $white-100;
-      background-color: #057CC1;
+      background-color: $btn-blue-600;
       transition: all .3s ease-in-out;
       cursor: auto;
     }
