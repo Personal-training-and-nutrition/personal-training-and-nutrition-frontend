@@ -31,8 +31,6 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/nutrition" element={<LandingPage />} />
-        <Route path="/trainer" element={<LandingPage />} />
         <Route path="/spec" element={<Profile statusSpec={true} />} />
         <Route path="/client" element={<Profile statusSpec={false} />} />
         <Route path="/client-card" element={<ClientCardPage />} />

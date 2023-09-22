@@ -1,56 +1,29 @@
-import React from 'react';
 import styles from './LandingPage.module.scss';
-import img from '../../assets/images/cardItem/bxs-camera-plus.svg';
-import CardItem from '../../components/LandingPage/CardItem/CardItem.tsx';
-import Toggle from '../../components/LandingPage/Toggle/Toggle.tsx';
-import logo from '../../assets/logo.svg';
-
-type ItemsType = {
-  title: string;
-  subtitle: string;
-  imageUrl: string;
-  imageAlt: string;
-  isReverse: boolean;
-};
-
-const items: ItemsType[] = [
-  {
-    title: 'Удобный сервис для тренеров, диетологов, нутрициологов',
-    subtitle: 'Составление планов тренировок и питания, онлайн-поддержка клиентов в одном сервисе',
-    imageUrl: img,
-    imageAlt: 'картинка',
-    isReverse: false,
-  },
-  {
-    title: 'Отслеживайте прогресс',
-    subtitle: 'Организовывайте и храните информацию о приёмах в одном месте',
-    imageUrl: img,
-    imageAlt: 'картинка',
-    isReverse: true,
-  },
-  {
-    title: 'Отправляйте рекомендации',
-    subtitle: 'Организовывайте и храните информацию о приёмах в одном месте',
-    imageUrl: img,
-    imageAlt: 'картинка',
-    isReverse: false,
-  },
-];
+import Header from '../../components/LandingPage/Header/Header.tsx';
+import PromoSection from '../../components/LandingPage/PromoSection/PromoSection.tsx';
+import MainSection from '../../components/LandingPage/MainSection/MainSection.tsx';
+import BtnStart from '../../components/LandingPage/BtnStart/BtnStart.tsx';
+import { landingPageSpeciatistParams, landingPageUsersParams } from '../../utils/LandingPageParams.ts';
+import { useSelector } from 'react-redux';
+import { selectStatus } from '../../redux/slices/LandingPageSlice.ts';
 
 const LandingPage: React.FC = () => {
+  const { isStatusSpecialist } = useSelector(selectStatus);
+  const listItems = isStatusSpecialist ? landingPageSpeciatistParams : landingPageUsersParams;
+
   return (
-    <main className={styles.landing__container}>
-      <img className={styles.landing__logo} src={logo} alt="Логотип сайта" />
-      <Toggle />
-      <section className={styles.landing__content}>
-        <div className={styles.button__small}></div>
-        <ul className={styles.landing__list}>
-          {items.map((item, index) => {
-            return <CardItem key={index} {...item} />;
-          })}
-        </ul>
-      </section>
-    </main>
+    <div className={styles.landing}>
+      <Header />
+      <main>
+        <PromoSection />
+
+        {listItems.map((item, index) => (
+          <MainSection key={index} {...item} />
+        ))}
+
+        <BtnStart />
+      </main>
+    </div>
   );
 };
 

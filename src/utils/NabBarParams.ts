@@ -32,7 +32,7 @@ export const navBarUserItemList: navBarItemListType[] = [
     textLink: 'Сообщения',
   },
   {
-    link: 'spec',
+    link: 'users',
     img: profileNotActiveIcon,
     alt: 'Иконка кнопки "Профиль"',
     textLink: 'Профиль',
@@ -59,7 +59,7 @@ export const navBarSpecialistItemList: navBarItemListType[] = [
     textLink: 'Сообщения',
   },
   {
-    link: 'spec',
+    link: 'users',
     img: profileNotActiveIcon,
     alt: 'Иконка кнопки "Профиль"',
     textLink: 'Профиль',
