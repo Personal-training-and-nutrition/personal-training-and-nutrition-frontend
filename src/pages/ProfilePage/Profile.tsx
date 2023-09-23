@@ -122,14 +122,14 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
             <label className={styles.profile__label}>
               <span className={styles.profile__title_big}>Ваши параметры</span>
               <div className={styles.profile__size}>
-                <span className={styles.profile__title}>Вес</span>
+                <span className={`${styles.profile__title}${styles.profile__title_type}`}>Вес</span>
                 <input
                   className={`${styles.profile__input} ${styles.profile__input_params}`}
                   type="number"
                   {...register('weight')}
                   placeholder="кг"
                 />
-                <span className={styles.profile__title}>Рост</span>
+                <span className={`${styles.profile__title}${styles.profile__title_type}`}>Рост</span>
                 <input
                   className={`${styles.profile__input} ${styles.profile__input_params}`}
                   type="number"
