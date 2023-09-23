@@ -4,7 +4,7 @@ type Props = {
   name: string;
   placeholder: string;
   isLabel?: boolean;
-  label: string;
+  label?: string;
 };
 
 const InputEmail = ({ name, placeholder, isLabel, label }: Props) => {
