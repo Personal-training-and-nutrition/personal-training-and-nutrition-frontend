@@ -27,6 +27,7 @@ input[type='number']:focus {
   -moz-appearance: textfield;
 }
 
+/* код, чтобы убрать вспышки в браузере: */
 * {
   -webkit-tap-highlight-color: transparent;
 }

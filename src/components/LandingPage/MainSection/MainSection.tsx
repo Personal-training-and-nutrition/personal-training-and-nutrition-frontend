@@ -9,15 +9,16 @@ type MainSectionProps = {
 };
 
 const MainSection: React.FC<MainSectionProps> = ({ title, subtitle, img, isRight }) => {
-  const ActiveClassName = isRight ? `${styles.itemImage} ${styles.itemImagePositionRight}` : styles.itemImage;
+  const ActiveClassNameSection = isRight ? `${styles.item} ${styles.itemPositionRight}` : styles.item;
+  const ActiveClassNameImage = isRight ? `${styles.itemImage} ${styles.itemImagePositionRight}` : styles.itemImage;
 
   return (
-    <section className={styles.item}>
+    <section className={ActiveClassNameSection}>
+      <img className={ActiveClassNameImage} src={img} alt="Скриншот приложения" />
       <div className={styles.itemTextContainer}>
         <h2 className={styles.itemTitle}>{title}</h2>
         <p className={styles.itemSubtitle}>{subtitle}</p>
       </div>
-      <img className={ActiveClassName} src={img} alt="Скриншот приложения" />
     </section>
   );
 };

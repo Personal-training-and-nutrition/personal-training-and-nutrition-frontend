@@ -22,7 +22,7 @@ const PromoSection: React.FC = () => {
           <img
             className={styles.promo__image}
             src={isStatusSpecialist ? twoPhonesSpecImg : twoPhonesUserImg}
-            alt="Первое изображение"
+            alt="Изображение двух телефонов"
           />
         </div>
       </section>

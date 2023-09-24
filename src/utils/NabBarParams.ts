@@ -14,25 +14,25 @@ export type navBarItemListType = {
 
 export const navBarUserItemList: navBarItemListType[] = [
   {
-    link: 'planMeal',
+    link: 'client',
     img: recordsNotActiveIcon,
     alt: 'Иконка кнопки "Записи"',
     textLink: 'Записи',
   },
   {
-    link: 'client',
+    link: 'clients',
     img: clientsNotActiveIcon,
     alt: 'Иконка кнопки "Клиенты"',
     textLink: 'Клиенты',
   },
   {
-    link: '',
+    link: 'workout-plans',
     img: messagesNotActiveIcon,
     alt: 'Иконка кнопки "Сообщения"',
     textLink: 'Сообщения',
   },
   {
-    link: 'users',
+    link: 'training-report',
     img: profileNotActiveIcon,
     alt: 'Иконка кнопки "Профиль"',
     textLink: 'Профиль',

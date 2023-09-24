@@ -1,11 +1,11 @@
 @import '../../scss/colors/colors.scss';
 
 .landing {
-  margin: 0 auto 100px;
-  max-width: 375px;
+  margin: 0 auto 72px;
+  min-width: 375px;
   background-color: $gray-300;
 
-  @media (max-width: 767px) {
-    max-width: 768px;
+  @media (min-width: 768px) {
+    max-width: 1280px;
   }
 }
