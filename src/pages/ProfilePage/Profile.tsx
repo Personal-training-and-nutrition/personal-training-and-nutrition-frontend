@@ -4,7 +4,7 @@ import Button from '../../components/Button/Button';
 import UserStatusBtn from '../../components/UserStatusBtn/UserStatusBtn';
 import penIcon from '../../assets/images/profile/pen-icon.svg';
 import TitleBlock from '../../components/TitleBlock/TitleBlock';
-import GenderInput from '../../components/GenderInput/GenderInput';
+import GenderInput from '../../components/Inputs/GenderInput/GenderInput';
 import ButtonDelete from '../../components/ButtonDelete/ButtonDelete';
 import { useState } from 'react';
 import { formatDate } from '../../utils/formatDate';

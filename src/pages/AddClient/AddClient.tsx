@@ -1,7 +1,7 @@
 import styles from './AddClient.module.scss';
 import TitleBlock from '../../components/TitleBlock/TitleBlock';
 import InputText from '../../components/Inputs/InputText/InputText';
-import GenderInput from '../../components/GenderInput/GenderInput';
+import GenderInput from '../../components/Inputs/GenderInput/GenderInput';
 import { useForm } from 'react-hook-form';
 import { InputsType } from '../ProfilePage/Profile';
 import DatePicker from '../../components/Inputs/DatePicker/DatePicker';
