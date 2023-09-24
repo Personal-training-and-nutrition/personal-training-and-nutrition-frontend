@@ -28,9 +28,9 @@ const AddClient = () => {
         <TitleBlock text="добавление клиента" isBack={true} />
         <form className={styles.addClient__form} action="">
           <div className={styles.addClient__nameWrap}>
-            <InputText name="clientLastName" label="Фамилия" placeholder="Фамилия" />
-            <InputText name="clientFirstName" label="Имя" placeholder="Имя" />
-            <InputText name="clientMiddleName" label="Отчество" placeholder="Отчество" />
+            <InputText name="clientLastName" label="Фамилия" placeholder="Фамилия" register={register} textError={'Поле не должно быть пустым'}/>
+            <InputText name="clientFirstName" label="Имя" placeholder="Имя" register={register} textError={'Поле не должно быть пустым'}/>
+            <InputText name="clientMiddleName" label="Отчество" placeholder="Отчество" register={register} />
           </div>
           <GenderInput register={register} />
           <div className={styles.addClient__characteristic}>

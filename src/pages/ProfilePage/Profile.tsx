@@ -9,11 +9,11 @@ import ButtonDelete from '../../components/ButtonDelete/ButtonDelete';
 import { useState } from 'react';
 // import { formatDate } from '../../utils/formatDate';
 import DatePicker from '../../components/Inputs/DatePicker/DatePicker';
+import InputText from '../../components/Inputs/InputText/InputText';
 
 export type InputsType = {
-  surname: string;
-  name: string;
-  middlename?: string;
+  lastName: string;
+  firstName: string;
   birthday?: number;
   gender?: '';
   weight?: string;
@@ -31,7 +31,7 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
     handleSubmit,
     formState: { errors, isDirty, isValid },
   } = useForm<InputsType>({
-    mode: 'onBlur',
+    mode: 'all',
     defaultValues: {
       gender: '',
       // weight: data?.weight + ' кг' || '',
@@ -41,7 +41,7 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
   const onSubmit = handleSubmit((data) => {
     console.log(data);
   });
-
+  console.log(errors?.lastName);
   return (
     <div className="App__container">
       <main className={styles.profile__content}>
@@ -53,37 +53,39 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
         <UserStatusBtn statusSpec={statusSpec} />
         <form className={styles.profile__form} onSubmit={onSubmit}>
           <label className={styles.profile__label}>
-            <span className={styles.profile__title}>Фамилия</span>
-            <input
-              className={`${styles.profile__input} ${styles.profile__input_bottom}`}
-              type="text"
-              {...register('surname', {
-                required: 'Поле не должно быть пустым',
-              })}
+            <InputText
+              name="lastName"
+              label="Фамилия"
+              placeholder="Фамилия"
+              register={register}
+              textError={'Поле не должно быть пустым'}
             />
             <span
               className={
-                errors?.surname
+                errors?.lastName
                   ? `${styles.profile__error} ${styles.profile__error_active}`
                   : `${styles.profile__error}`
               }
             >
-              {errors?.surname?.message || 'Ошибка!'}
+              {errors?.lastName?.message || 'Ошибка!'}
             </span>
-            <span className={styles.profile__title}>Имя</span>
-            <input
-              className={styles.profile__input}
-              type="text"
-              {...register('name', { required: 'Поле не должно быть пустым' })}
+            <InputText
+              name="firstName"
+              label="Имя"
+              placeholder="Имя"
+              register={register}
+              textError={'Поле не должно быть пустым'}
             />
             <span
               className={
-                errors?.name ? `${styles.profile__error} ${styles.profile__error_active}` : `${styles.profile__error}`
+                errors?.firstName
+                  ? `${styles.profile__error} ${styles.profile__error_active}`
+                  : `${styles.profile__error}`
               }
             >
-              {errors?.name?.message || 'Ошибка!'}
+              {errors?.firstName?.message || 'Ошибка!'}
             </span>
-            <DatePicker register={register}/>
+            <DatePicker register={register} />
             <span
               className={
                 errors?.birthday
