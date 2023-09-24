@@ -1,7 +1,6 @@
 @import '../../scss/colors/colors.scss';
 
 .button {
-
   border-radius: 32px;
   color: white;
   height: 44px;
@@ -12,9 +11,9 @@
   font-weight: 600;
   line-height: 20px;
 
-   &:hover{
+  &:hover {
     background-color: $btn-blue-600;
-   }
+  }
 
   &:disabled {
     background-color: $gray-400;

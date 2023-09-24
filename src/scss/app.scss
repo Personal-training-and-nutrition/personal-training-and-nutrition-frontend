@@ -6,12 +6,11 @@
 
   &__container {
     padding: 0 16px;
-    height: 100vh;
     max-width: 375px;
     margin: 0 auto;
 
-    @media (max-width: 767px) {
-      max-width: 375px; // временно, для того чтобы navbar не уезжал
+    @media (max-width: 768px) {
+      max-width: 768px;
       padding: 0 16px;
     }
   }

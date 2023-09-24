@@ -1,9 +1,20 @@
+@import '../../../scss/colors/colors.scss';
+
 .header {
   text-align: center;
+  background-color: $gray-300;
+  //position: sticky;
+  //top: 0;
+  //z-index: 1;
+
 
   &__logo {
     width: 159px;
     height: 38px;
     margin: 20px auto 8px;
+
+    @media (min-width: 768px) {
+      margin: 20px auto 16px;
+    }
   }
 }

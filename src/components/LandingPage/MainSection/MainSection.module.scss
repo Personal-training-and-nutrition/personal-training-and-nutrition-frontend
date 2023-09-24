@@ -4,8 +4,38 @@
   position: relative;
   margin-bottom: 72px;
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   align-items: flex-start;
+
+  @media (min-width: 575px) {
+    flex-direction: row;
+    max-width: 575px;
+    align-items: center;
+    justify-content: start;
+    margin: 0 auto;
+    gap: 12px;
+  }
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    max-width: 768px;
+    align-items: center;
+    justify-content: start;
+    margin: 0 auto;
+    gap: 72px;
+  }
+
+  &-position-right {
+
+    @media (min-width: 575px) {
+      flex-direction: row-reverse;
+      justify-content: end;
+    }
+
+    @media (min-width: 768px) {
+      flex-direction: row-reverse;
+    }
+  }
 
   &:last-of-type {
     margin-bottom: 32px;
@@ -17,6 +47,16 @@
     gap: 16px;
     justify-content: left;
     padding: 0 16px 32px;
+    max-width: 343px;
+
+    @media(min-width: 525px) {
+      max-width: 450px;
+      padding: 0;
+    }
+
+    @media (min-width: 768px) {
+      max-width: 288px;
+    }
   }
 
   &-title {
@@ -42,9 +82,11 @@
     max-width: 360px;
     object-fit: cover;
 
+
     &-position-right {
       margin: 0 0 0 15px;
       align-self: flex-end;
+      flex-direction: unset;
     }
   }
 }

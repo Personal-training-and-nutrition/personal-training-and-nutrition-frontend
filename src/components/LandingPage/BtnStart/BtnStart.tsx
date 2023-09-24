@@ -4,9 +4,11 @@ import styles from './BtnStart.module.scss';
 
 const BtnStart: React.FC = () => {
   return (
-    <Link className={styles.btnStart} to={'/authModal'}>
-      Начать
-    </Link>
+    <div className={styles.btnStartContainer}>
+      <Link className={styles.btnStart} to={'/authModal'}>
+        Начать
+      </Link>
+    </div>
   );
 };
 export default BtnStart;
