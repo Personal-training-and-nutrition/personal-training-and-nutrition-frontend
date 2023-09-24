@@ -19,13 +19,14 @@ export type InputsType = {
   weight?: string;
   height?: string;
   aboutMe?: string;
-  tel: number;
+  phone: number;
   password: string | number;
 };
 // const data = { surname: 'Vbv', weight: 22, height: 165 };
 const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
   const [isEditPassw, setEditPassw] = useState(false);
   const [isEditPhone, setEditPhone] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -41,7 +42,9 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
   const onSubmit = handleSubmit((data) => {
     console.log(data);
   });
-  console.log(errors?.lastName);
+
+  const errorVisible =  `${styles.profile__error} ${styles.profile__error_active}`;
+  const errorInvisible = `${styles.profile__error}`
   return (
     <div className="App__container">
       <main className={styles.profile__content}>
@@ -60,13 +63,7 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
               register={register}
               textError={'Поле не должно быть пустым'}
             />
-            <span
-              className={
-                errors?.lastName
-                  ? `${styles.profile__error} ${styles.profile__error_active}`
-                  : `${styles.profile__error}`
-              }
-            >
+            <span className={errors?.lastName ? errorVisible : errorInvisible}>
               {errors?.lastName?.message || 'Ошибка!'}
             </span>
             <InputText
@@ -76,23 +73,11 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
               register={register}
               textError={'Поле не должно быть пустым'}
             />
-            <span
-              className={
-                errors?.firstName
-                  ? `${styles.profile__error} ${styles.profile__error_active}`
-                  : `${styles.profile__error}`
-              }
-            >
+            <span className={errors?.firstName ? errorVisible : errorInvisible}>
               {errors?.firstName?.message || 'Ошибка!'}
             </span>
             <DatePicker register={register} />
-            <span
-              className={
-                errors?.birthday
-                  ? `${styles.profile__error} ${styles.profile__error_active}`
-                  : `${styles.profile__error}`
-              }
-            >
+            <span className={errors?.birthday ? errorVisible : errorInvisible}>
               {errors?.birthday?.message || 'Ошибка!'}
             </span>
           </label>
@@ -135,7 +120,7 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
                 <input
                   className={`${styles.profile__input} ${styles.profile__input_style}`}
                   type="number"
-                  {...register('tel', {
+                  {...register('phone', {
                     required: 'Поле не должно быть пустым',
                     valueAsNumber: true,
                   })}
@@ -149,12 +134,8 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
                 </>
               )}
             </div>
-            <span
-              className={
-                errors?.tel ? `${styles.profile__error} ${styles.profile__error_active}` : `${styles.profile__error}`
-              }
-            >
-              {errors?.tel?.message || 'Ошибка!'}
+            <span className={errors?.phone ? errorVisible : errorInvisible}>
+              {errors?.phone?.message || 'Ошибка!'}
             </span>
           </label>
           <label className={styles.profile__label}>
@@ -175,13 +156,7 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
                 </>
               )}
             </div>
-            <span
-              className={
-                errors?.password
-                  ? `${styles.profile__error} ${styles.profile__error_active}`
-                  : `${styles.profile__error}`
-              }
-            >
+            <span className={errors?.password ? errorVisible : errorInvisible}>
               {errors?.password?.message || 'Ошибка!'}
             </span>
           </label>
