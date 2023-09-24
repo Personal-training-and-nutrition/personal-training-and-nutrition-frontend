@@ -34,7 +34,7 @@ const AddClient = () => {
           </div>
           <GenderInput register={register} />
           <div className={styles.addClient__characteristic}>
-            <DatePicker />
+            <DatePicker register={register}/>
             <InputNumber name="clientWeight" label="Вес" placeholder="кг" />
             <InputNumber name="clientHeight" label="Рост" placeholder="см" />
           </div>

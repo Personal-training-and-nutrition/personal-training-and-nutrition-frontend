@@ -7,7 +7,8 @@ import TitleBlock from '../../components/TitleBlock/TitleBlock';
 import GenderInput from '../../components/Inputs/GenderInput/GenderInput';
 import ButtonDelete from '../../components/ButtonDelete/ButtonDelete';
 import { useState } from 'react';
-import { formatDate } from '../../utils/formatDate';
+// import { formatDate } from '../../utils/formatDate';
+import DatePicker from '../../components/Inputs/DatePicker/DatePicker';
 
 export type InputsType = {
   surname: string;
@@ -40,17 +41,6 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
   const onSubmit = handleSubmit((data) => {
     console.log(data);
   });
-
-  function onBlurInput(e: React.ChangeEvent<HTMLInputElement>) {
-    e.target.type = 'text';
-    console.log(e.target.type);
-    e.target.value = formatDate(e.target.value)
-  }
-
-  function onFocusInput(e: React.ChangeEvent<HTMLInputElement>) {
-    e.target.type = 'date';
-    console.log(e.target.type);
-  }
 
   return (
     <div className="App__container">
@@ -93,14 +83,7 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
             >
               {errors?.name?.message || 'Ошибка!'}
             </span>
-            <span className={styles.profile__title}>Дата рождения</span>
-            <input
-              className={styles.profile__input}
-              type="text"
-              {...register('birthday')}
-              onFocus={onFocusInput}
-              onBlur={onBlurInput}
-            />
+            <DatePicker register={register}/>
             <span
               className={
                 errors?.birthday
