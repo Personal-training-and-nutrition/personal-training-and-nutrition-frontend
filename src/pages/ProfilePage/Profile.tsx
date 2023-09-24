@@ -4,33 +4,35 @@ import Button from '../../components/Button/Button';
 import UserStatusBtn from '../../components/UserStatusBtn/UserStatusBtn';
 import penIcon from '../../assets/images/profile/pen-icon.svg';
 import TitleBlock from '../../components/TitleBlock/TitleBlock';
-import GenderInput from '../../components/GenderInput/GenderInput';
+import GenderInput from '../../components/Inputs/GenderInput/GenderInput';
 import ButtonDelete from '../../components/ButtonDelete/ButtonDelete';
 import { useState } from 'react';
-import { formatDate } from '../../utils/formatDate';
+// import { formatDate } from '../../utils/formatDate';
+import DatePicker from '../../components/Inputs/DatePicker/DatePicker';
+import InputText from '../../components/Inputs/InputText/InputText';
 
 export type InputsType = {
-  surname: string;
-  name: string;
-  middlename?: string;
+  lastName: string;
+  firstName: string;
   birthday?: number;
   gender?: '';
   weight?: string;
   height?: string;
   aboutMe?: string;
-  tel: number;
+  phone: number;
   password: string | number;
 };
 // const data = { surname: 'Vbv', weight: 22, height: 165 };
 const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
   const [isEditPassw, setEditPassw] = useState(false);
   const [isEditPhone, setEditPhone] = useState(false);
+
   const {
     register,
     handleSubmit,
     formState: { errors, isDirty, isValid },
   } = useForm<InputsType>({
-    mode: 'onBlur',
+    mode: 'all',
     defaultValues: {
       gender: '',
       // weight: data?.weight + ' кг' || '',
@@ -41,17 +43,8 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
     console.log(data);
   });
 
-  function onBlurInput(e: React.ChangeEvent<HTMLInputElement>) {
-    e.target.type = 'text';
-    console.log(e.target.type);
-    e.target.value = formatDate(e.target.value)
-  }
-
-  function onFocusInput(e: React.ChangeEvent<HTMLInputElement>) {
-    e.target.type = 'date';
-    console.log(e.target.type);
-  }
-
+  const errorVisible =  `${styles.profile__error} ${styles.profile__error_active}`;
+  const errorInvisible = `${styles.profile__error}`
   return (
     <div className="App__container">
       <main className={styles.profile__content}>
@@ -63,51 +56,28 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
         <UserStatusBtn statusSpec={statusSpec} />
         <form className={styles.profile__form} onSubmit={onSubmit}>
           <label className={styles.profile__label}>
-            <span className={styles.profile__title}>Фамилия</span>
-            <input
-              className={`${styles.profile__input} ${styles.profile__input_bottom}`}
-              type="text"
-              {...register('surname', {
-                required: 'Поле не должно быть пустым',
-              })}
+            <InputText
+              name="lastName"
+              label="Фамилия"
+              placeholder="Фамилия"
+              register={register}
+              textError={'Поле не должно быть пустым'}
             />
-            <span
-              className={
-                errors?.surname
-                  ? `${styles.profile__error} ${styles.profile__error_active}`
-                  : `${styles.profile__error}`
-              }
-            >
-              {errors?.surname?.message || 'Ошибка!'}
+            <span className={errors?.lastName ? errorVisible : errorInvisible}>
+              {errors?.lastName?.message || 'Ошибка!'}
             </span>
-            <span className={styles.profile__title}>Имя</span>
-            <input
-              className={styles.profile__input}
-              type="text"
-              {...register('name', { required: 'Поле не должно быть пустым' })}
+            <InputText
+              name="firstName"
+              label="Имя"
+              placeholder="Имя"
+              register={register}
+              textError={'Поле не должно быть пустым'}
             />
-            <span
-              className={
-                errors?.name ? `${styles.profile__error} ${styles.profile__error_active}` : `${styles.profile__error}`
-              }
-            >
-              {errors?.name?.message || 'Ошибка!'}
+            <span className={errors?.firstName ? errorVisible : errorInvisible}>
+              {errors?.firstName?.message || 'Ошибка!'}
             </span>
-            <span className={styles.profile__title}>Дата рождения</span>
-            <input
-              className={styles.profile__input}
-              type="text"
-              {...register('birthday')}
-              onFocus={onFocusInput}
-              onBlur={onBlurInput}
-            />
-            <span
-              className={
-                errors?.birthday
-                  ? `${styles.profile__error} ${styles.profile__error_active}`
-                  : `${styles.profile__error}`
-              }
-            >
+            <DatePicker register={register} />
+            <span className={errors?.birthday ? errorVisible : errorInvisible}>
               {errors?.birthday?.message || 'Ошибка!'}
             </span>
           </label>
@@ -122,14 +92,14 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
             <label className={styles.profile__label}>
               <span className={styles.profile__title_big}>Ваши параметры</span>
               <div className={styles.profile__size}>
-                <span className={styles.profile__title}>Вес</span>
+                <span className={`${styles.profile__title}${styles.profile__title_type}`}>Вес</span>
                 <input
                   className={`${styles.profile__input} ${styles.profile__input_params}`}
                   type="number"
                   {...register('weight')}
                   placeholder="кг"
                 />
-                <span className={styles.profile__title}>Рост</span>
+                <span className={`${styles.profile__title}${styles.profile__title_type}`}>Рост</span>
                 <input
                   className={`${styles.profile__input} ${styles.profile__input_params}`}
                   type="number"
@@ -150,7 +120,7 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
                 <input
                   className={`${styles.profile__input} ${styles.profile__input_style}`}
                   type="number"
-                  {...register('tel', {
+                  {...register('phone', {
                     required: 'Поле не должно быть пустым',
                     valueAsNumber: true,
                   })}
@@ -164,12 +134,8 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
                 </>
               )}
             </div>
-            <span
-              className={
-                errors?.tel ? `${styles.profile__error} ${styles.profile__error_active}` : `${styles.profile__error}`
-              }
-            >
-              {errors?.tel?.message || 'Ошибка!'}
+            <span className={errors?.phone ? errorVisible : errorInvisible}>
+              {errors?.phone?.message || 'Ошибка!'}
             </span>
           </label>
           <label className={styles.profile__label}>
@@ -190,13 +156,7 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
                 </>
               )}
             </div>
-            <span
-              className={
-                errors?.password
-                  ? `${styles.profile__error} ${styles.profile__error_active}`
-                  : `${styles.profile__error}`
-              }
-            >
+            <span className={errors?.password ? errorVisible : errorInvisible}>
               {errors?.password?.message || 'Ошибка!'}
             </span>
           </label>

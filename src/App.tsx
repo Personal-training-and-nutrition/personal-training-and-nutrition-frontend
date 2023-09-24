@@ -23,6 +23,7 @@ import TrainingReport from './pages/TrainingReport/TrainingReport.tsx';
 import PlanUnathMeal from './pages/PlanPage/PlanUnathMeal';
 import PlanUnathTraining from './pages/PlanPage/PlanUnathTraining.tsx';
 import WorkoutPlan from './pages/WorkoutPlan/WorkoutPlan.tsx';
+import NotFoundPage from './pages/NotFoundPage/NotFoundPage.tsx';
 
 function App() {
   // const [isStatusSpec, setIsStatusSpec] = useState(false)
@@ -61,6 +62,7 @@ function App() {
         <Route path="/unAuthPlanMeal" element={<PlanUnathMeal />} />
         <Route path="/unAuthPlanTrain" element={<PlanUnathTraining />} />
         <Route path="/workout-plan" element={<WorkoutPlan />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <NavBar statusSpec={false} />
     </div>

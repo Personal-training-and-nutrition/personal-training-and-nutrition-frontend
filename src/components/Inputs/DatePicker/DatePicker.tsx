@@ -1,17 +1,22 @@
+import { UseFormRegister } from 'react-hook-form';
+import { InputsType } from '../../../pages/ProfilePage/Profile';
+import { formatDate } from '../../../utils/formatDate';
 import styles from './DatePicker.module.scss';
 
 // type Props = {}
 
-const DatePicker = () => {
+const DatePicker = ({ register }: { register: UseFormRegister<InputsType> }) => {
+
   function onBlurInput(e: React.ChangeEvent<HTMLInputElement>) {
     e.target.type = 'text';
-
+    if(e.target.value){
+      e.target.value = formatDate(e.target.value)
+    }
     console.log(e.target.type);
   }
 
   function onFocusInput(e: React.ChangeEvent<HTMLInputElement>) {
     e.target.type = 'date';
-
     console.log(e.target.type);
   }
 
@@ -22,12 +27,11 @@ const DatePicker = () => {
       </label>
       <input
         type="text"
-        name=""
-        id=""
+        // id=""
         className={styles.datePicker__input}
         onFocus={onFocusInput}
-        onBlur={onBlurInput}
         placeholder='Дата рождения'
+        {...register('birthday', {onBlur: onBlurInput})}
       />
     </div>
   );

@@ -1,4 +1,4 @@
-@import '../../scss/colors/colors.scss';
+@import '../../../scss/colors/colors.scss';
 .gender {
   &__label {
     display: flex;
@@ -40,7 +40,7 @@
         height: 22px;
         position: absolute;
         left: 0;
-        background: url(../../assets/images/profile/radio-button.svg) 0 0 no-repeat;
+        background: url(../../../assets/images/profile/radio-button.svg) 0 0 no-repeat;
       }
     }
 
@@ -50,7 +50,7 @@
 
     input:checked + p:before {
       background-size: 22px;
-      background: url(../../assets/images/profile/radio-button-checked.svg) 0 0 no-repeat;
+      background: url(../../../assets/images/profile/radio-button-checked.svg) 0 0 no-repeat;
       background-position: center;
     }
     p:hover:before {

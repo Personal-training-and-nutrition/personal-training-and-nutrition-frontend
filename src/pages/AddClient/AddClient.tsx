@@ -1,7 +1,7 @@
 import styles from './AddClient.module.scss';
 import TitleBlock from '../../components/TitleBlock/TitleBlock';
 import InputText from '../../components/Inputs/InputText/InputText';
-import GenderInput from '../../components/GenderInput/GenderInput';
+import GenderInput from '../../components/Inputs/GenderInput/GenderInput';
 import { useForm } from 'react-hook-form';
 import { InputsType } from '../ProfilePage/Profile';
 import DatePicker from '../../components/Inputs/DatePicker/DatePicker';
@@ -28,13 +28,13 @@ const AddClient = () => {
         <TitleBlock text="добавление клиента" isBack={true} />
         <form className={styles.addClient__form} action="">
           <div className={styles.addClient__nameWrap}>
-            <InputText name="clientLastName" label="Фамилия" placeholder="Фамилия" />
-            <InputText name="clientFirstName" label="Имя" placeholder="Имя" />
-            <InputText name="clientMiddleName" label="Отчество" placeholder="Отчество" />
+            <InputText name="clientLastName" label="Фамилия" placeholder="Фамилия" register={register} textError={'Поле не должно быть пустым'}/>
+            <InputText name="clientFirstName" label="Имя" placeholder="Имя" register={register} textError={'Поле не должно быть пустым'}/>
+            <InputText name="clientMiddleName" label="Отчество" placeholder="Отчество" register={register} />
           </div>
           <GenderInput register={register} />
           <div className={styles.addClient__characteristic}>
-            <DatePicker />
+            <DatePicker register={register}/>
             <InputNumber name="clientWeight" label="Вес" placeholder="кг" />
             <InputNumber name="clientHeight" label="Рост" placeholder="см" />
           </div>

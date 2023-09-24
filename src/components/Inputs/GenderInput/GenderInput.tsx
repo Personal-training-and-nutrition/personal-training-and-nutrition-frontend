@@ -1,6 +1,6 @@
 import styles from './GenderInput.module.scss';
 import { UseFormRegister } from 'react-hook-form';
-import { InputsType } from '../../pages/ProfilePage/Profile';
+import { InputsType } from '../../../pages/ProfilePage/Profile';
 
 const GenderInput = ({ register }: { register: UseFormRegister<InputsType> }) => {
   console.log();
