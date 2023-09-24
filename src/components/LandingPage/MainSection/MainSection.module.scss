@@ -82,11 +82,19 @@
     max-width: 360px;
     object-fit: cover;
 
+    @media(min-width: 525px) {
+      margin: 0;
+    }
+
 
     &-position-right {
-      margin: 0 0 0 15px;
+      margin-left: 15px;
       align-self: flex-end;
       flex-direction: unset;
+
+      @media(min-width: 525px) {
+        margin: 0;
+      }
     }
   }
 }
