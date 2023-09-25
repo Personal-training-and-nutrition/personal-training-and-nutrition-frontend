@@ -40,6 +40,7 @@ const LandingPage: React.FC = () => {
               ),
             )}
           </div>
+          {size.width < 768 && <BtnStart />}
           {size.width >= 768 && size.width < 1440 && scrollPosition.y > 355 && <BtnStart />}
           {size.width >= 1440 && <Toggle />}
         </main>
