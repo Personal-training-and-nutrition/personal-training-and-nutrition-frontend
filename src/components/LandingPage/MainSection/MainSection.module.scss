@@ -107,6 +107,10 @@
       margin: 0;
     }
 
+    @media(min-width: 525px) {
+      height: 472px;
+    }
+
 
     &-position-right {
       margin-left: 15px;
