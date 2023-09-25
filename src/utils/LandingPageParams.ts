@@ -1,9 +1,16 @@
-import imageZeroUser from '../assets/images/landingPage/spec/image-0.png';
-import imageOneUser from '../assets/images/landingPage/spec/image-1.png';
-import imageTwoUser from '../assets/images/landingPage/spec/image-2.png';
-import imageZeroSpec from '../assets/images/landingPage/users/image-0.png';
-import imageOneSpec from '../assets/images/landingPage/users/image-1.png';
-import imageTwoSpec from '../assets/images/landingPage/users/image-2.png';
+import imageZeroUser from '../assets/images/landingPage/mobile/spec/image-0.png';
+import imageOneUser from '../assets/images/landingPage/mobile/spec/image-1.png';
+import imageTwoUser from '../assets/images/landingPage/mobile/spec/image-2.png';
+import imageZeroSpec from '../assets/images/landingPage/mobile/users/image-0.png';
+import imageOneSpec from '../assets/images/landingPage/mobile/users/image-1.png';
+import imageTwoSpec from '../assets/images/landingPage/mobile/users/image-2.png';
+
+import imageZeroUserDesktop from '../assets/images/landingPage/desktop/users/image-0.png';
+import imageOneUserDesktop from '../assets/images/landingPage/desktop/users/image-1.png';
+import imageTwoUserDesktop from '../assets/images/landingPage/desktop/users/image-2.png';
+import imageZeroSpecDesktop from '../assets/images/landingPage/desktop/spec/image-0.png';
+import imageOneSpecDesktop from '../assets/images/landingPage/desktop/spec/image-1.png';
+import imageTwoSpecDesktop from '../assets/images/landingPage/desktop/spec/image-2.png';
 
 export const landingPageSpeciatistParams = [
   {
@@ -46,3 +53,6 @@ export const landingPageUsersParams = [
     isRight: false,
   },
 ];
+
+export const landingPageUsersImagesFromDesktop = [imageZeroUserDesktop, imageOneUserDesktop, imageTwoUserDesktop];
+export const landingPageSpecImagesFromDesktop = [imageZeroSpecDesktop, imageOneSpecDesktop, imageTwoSpecDesktop];

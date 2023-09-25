@@ -7,6 +7,14 @@
   //top: 0;
   //z-index: 1;
 
+  @media (min-width: 1440px) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+  }
+
 
   &__logo {
     width: 159px;
@@ -15,6 +23,12 @@
 
     @media (min-width: 768px) {
       margin: 20px auto 16px;
+    }
+
+    @media (min-width: 1440px) {
+      margin: 0;
+      width: 317px;
+      height: 77px;
     }
   }
 }

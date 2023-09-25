@@ -16,15 +16,18 @@
   text-decoration: none;
   color: $white-100;
 
-  transition: all 0.3s ease-in-out;
+  transition: all 0.2s ease-in-out;
   margin: 0 auto;
-
 
   &-container {
     padding-bottom: 20px;
     position: sticky;
     bottom: 0;
     z-index: 10;
+
+    @media (min-width: 1440px) {
+      padding-bottom: 0;
+    }
   }
 
   &:hover {

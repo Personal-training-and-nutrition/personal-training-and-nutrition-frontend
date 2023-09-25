@@ -12,6 +12,14 @@
   max-width: 288px;
   gap: 4px;
 
+  @media (min-width: 1440px) {
+    position: fixed;
+    bottom: 39px;
+    left: 0;
+    right: 0;
+    max-width: 354px;
+  }
+
 
   &__button {
     width: 140px;
@@ -26,6 +34,15 @@
     color: $gray-400;
     background-color: $white-100;
     cursor: pointer;
+
+    @media (min-width: 1440px) {
+      width: 171px;
+      height: 45px;
+
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 120%;
+    }
 
     &_active {
       color: $white-100;
