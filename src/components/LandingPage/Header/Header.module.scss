@@ -3,9 +3,10 @@
 .header {
   text-align: center;
   background-color: $gray-300;
-  //position: sticky;
-  //top: 0;
-  //z-index: 1;
+  position: sticky;
+  width: 100%;
+  top: 0;
+  z-index: 5;
 
   @media (min-width: 1440px) {
     display: flex;
