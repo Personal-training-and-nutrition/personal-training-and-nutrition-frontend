@@ -23,11 +23,14 @@ function PlanReportBlock({ plan, isLoggedIn, text }: PlanReportBlockProps) {
   const [showMore, setShowMore] = useState(true);
   const location = useLocation();
   const isWorkoutPlanPage = location.pathname === '/workout-plan';
-  const showNotes = isWorkoutPlanPage && !showMore;
 
   return (
     <li className={styles.PlanReport}>
-      <img className={styles.PlanReport__image} src={`/images/trainingday-${plan.weekday}.png`} alt="arrow icon" />
+      <img
+        className={styles.PlanReport__image}
+        src={`/images/trainingdays/trainingday-${plan.weekday}.png`}
+        alt="plan image"
+      />
 
       <div className={styles.PlanReport__header} onClick={() => setShowMore((prev) => !prev)}>
         <h3 className={styles.PlanReport__headerTitle}>
