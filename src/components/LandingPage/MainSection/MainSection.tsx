@@ -13,9 +13,9 @@ const MainSection: React.FC<MainSectionProps> = ({ title, subtitle, img, isRight
   const size = useResize();
 
   const ActiveClassNameSection =
-    isRight && size.width <= 1440 ? `${styles.item} ${styles.itemPositionRight}` : styles.item;
+    isRight && size.width < 1440 ? `${styles.item} ${styles.itemPositionRight}` : styles.item;
   const ActiveClassNameImage =
-    isRight && size.width <= 1440 ? `${styles.itemImage} ${styles.itemImagePositionRight}` : styles.itemImage;
+    isRight && size.width < 1440 ? `${styles.itemImage} ${styles.itemImagePositionRight}` : styles.itemImage;
 
   return (
     <section className={ActiveClassNameSection}>
