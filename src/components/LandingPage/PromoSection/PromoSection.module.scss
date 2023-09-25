@@ -1,7 +1,7 @@
 @import '../../../scss/colors/colors.scss';
 
 .promo {
-  background: url('src/assets/images/landingPage/background.png') center/contain no-repeat;
+  background: url('/images/background.png') center/contain no-repeat;
   text-align: center;
   padding: 28px 0 0;
   display: flex;
@@ -9,8 +9,7 @@
   align-items: center;
   margin-bottom: 100px;
 
-
-  @media(min-width: 768px) {
+  @media (min-width: 768px) {
     background-size: 768px;
     padding: 44px 0 0;
   }
@@ -24,7 +23,7 @@
     padding: 0 16px;
     white-space: break-spaces;
 
-    @media(min-width: 575px) {
+    @media (min-width: 575px) {
       max-width: 420px;
     }
 
@@ -41,7 +40,7 @@
     margin: 0 0 24px;
     padding: 0 16px;
 
-    @media(min-width: 575px) {
+    @media (min-width: 575px) {
       max-width: 420px;
     }
   }
@@ -52,9 +51,5 @@
 
   &__image {
     height: 500px;
-
   }
 }
-
-
-
