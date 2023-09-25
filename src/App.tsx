@@ -1,8 +1,6 @@
 import './scss/app.scss';
 import { Route, Routes } from 'react-router-dom';
 
-import NavBar from './components/Navbar/NavBar.tsx';
-
 import LandingPage from './pages/LandingPage/LandingPage.tsx';
 import Profile from './pages/ProfilePage/Profile.tsx';
 import AddPlanMeal from './pages/PlanPage/AddPlanMeal.tsx';
@@ -26,8 +24,6 @@ import WorkoutPlan from './pages/WorkoutPlan/WorkoutPlan.tsx';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage.tsx';
 
 function App() {
-  // const [isStatusSpec, setIsStatusSpec] = useState(false)
-
   return (
     <div className="App">
       <Routes>
@@ -64,7 +60,7 @@ function App() {
         <Route path="/workout-plan" element={<WorkoutPlan />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
-      <NavBar statusSpec={false} />
+      {/*<NavBar statusSpec={false} />*/}
     </div>
   );
 }

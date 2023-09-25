@@ -15,6 +15,11 @@
     padding: 44px 0 0;
   }
 
+  @media(min-width: 1440px) {
+    align-items: flex-start;
+    background: none;
+  }
+
   &__title {
     font-size: 24px;
     font-style: normal;
@@ -26,6 +31,16 @@
 
     @media(min-width: 575px) {
       max-width: 420px;
+    }
+
+    @media(min-width: 1440px) {
+      max-width: 760px;
+      font-size: 40px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 110%;
+      text-align: left;
+      padding: 0;
     }
 
     &_blue {
@@ -44,10 +59,18 @@
     @media(min-width: 575px) {
       max-width: 420px;
     }
+
+    @media(min-width: 1440px) {
+      display: none;
+    }
   }
 
   &-image-Container {
     padding: 13px 0 12px;
+
+    @media(min-width: 1440px) {
+      display: none;
+    }
   }
 
   &__image {

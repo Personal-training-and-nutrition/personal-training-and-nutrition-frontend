@@ -6,6 +6,19 @@
   background-color: $gray-300;
 
   @media (min-width: 768px) {
-    max-width: 1280px;
+  }
+
+  @media (min-width: 1440px) {
+    margin: 0 auto;
+    height: 100vh;
+  }
+
+  &-sectionContainer {
+    @media (min-width: 1440px) {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 136px;
+    }
   }
 }

@@ -1,12 +1,20 @@
 import styles from './PromoSection.module.scss';
-import twoPhonesSpecImg from '../../../assets/images/landingPage/spec/two-phones.png';
-import twoPhonesUserImg from '../../../assets/images/landingPage/users/two-phones.png';
+import twoPhonesSpecImg from '../../../assets/images/landingPage/mobile/spec/two-phones.png';
+import twoPhonesUserImg from '../../../assets/images/landingPage/mobile/users/two-phones.png';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { selectStatus } from '../../../redux/slices/LandingPageSlice.ts';
+import useResize from '../../../hooks/useResize.ts';
+import BtnStart from '../BtnStart/BtnStart.tsx';
 
 const PromoSection: React.FC = () => {
   const { isStatusSpecialist } = useSelector(selectStatus);
+
+  const size = useResize();
+
+  const subtitleText = isStatusSpecialist
+    ? 'Составление планов тренировок и питания, онлайн-поддержка клиентов в одном сервисе'
+    : 'Составление планов тренировок и питания, онлайн-поддержка от специалистов';
 
   return (
     <>
@@ -15,9 +23,9 @@ const PromoSection: React.FC = () => {
           Удобный сервис для&nbsp;
           <span className={styles.promo__title_blue}>тренеров, диетологов, нутрициологов</span>
         </h2>
-        <p className={styles.promo__subtitle}>
-          Составление планов тренировок и&nbsp;питания, онлайн-поддержка клиентов&nbsp;в одном сервисе
-        </p>
+        <p className={styles.promo__subtitle}>{subtitleText}</p>
+        {size.width >= 768 && size.width < 1440 && <BtnStart />}
+
         <div className={styles.promoImageContainer}>
           <img
             className={styles.promo__image}

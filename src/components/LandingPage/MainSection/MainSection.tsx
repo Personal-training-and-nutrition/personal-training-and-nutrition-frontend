@@ -1,5 +1,6 @@
 import styles from './MainSection.module.scss';
 import React from 'react';
+import useResize from '../../../hooks/useResize.ts';
 
 type MainSectionProps = {
   title: string;
@@ -9,8 +10,12 @@ type MainSectionProps = {
 };
 
 const MainSection: React.FC<MainSectionProps> = ({ title, subtitle, img, isRight }) => {
-  const ActiveClassNameSection = isRight ? `${styles.item} ${styles.itemPositionRight}` : styles.item;
-  const ActiveClassNameImage = isRight ? `${styles.itemImage} ${styles.itemImagePositionRight}` : styles.itemImage;
+  const size = useResize();
+
+  const ActiveClassNameSection =
+    isRight && size.width <= 1440 ? `${styles.item} ${styles.itemPositionRight}` : styles.item;
+  const ActiveClassNameImage =
+    isRight && size.width <= 1440 ? `${styles.itemImage} ${styles.itemImagePositionRight}` : styles.itemImage;
 
   return (
     <section className={ActiveClassNameSection}>
