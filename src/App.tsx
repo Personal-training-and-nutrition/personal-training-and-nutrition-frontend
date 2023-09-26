@@ -1,5 +1,5 @@
 import './scss/app.scss';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 
 import LandingPage from './pages/LandingPage/LandingPage.tsx';
 import Profile from './pages/ProfilePage/Profile.tsx';
@@ -22,8 +22,11 @@ import PlanUnathMeal from './pages/PlanPage/PlanUnathMeal';
 import PlanUnathTraining from './pages/PlanPage/PlanUnathTraining.tsx';
 import WorkoutPlan from './pages/WorkoutPlan/WorkoutPlan.tsx';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage.tsx';
+import NavBar from './components/Navbar/NavBar.tsx';
 
 function App() {
+  const location = useLocation();
+
   return (
     <div className="App">
       <Routes>
@@ -60,7 +63,7 @@ function App() {
         <Route path="/workout-plan" element={<WorkoutPlan />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
-      {/*<NavBar statusSpec={false} />*/}
+      {location.pathname !== '/' && <NavBar statusSpec={false} />}
     </div>
   );
 }
