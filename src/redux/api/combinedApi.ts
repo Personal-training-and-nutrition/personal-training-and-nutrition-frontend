@@ -31,7 +31,7 @@ const baseQueryWithRefresh: BaseQueryFn<string | FetchArgs, unknown, FetchBaseQu
   extraOptions,
 ) => {
   let result = await baseQuery(args, api, extraOptions);
-  if (result.error && (result.error as TError).data.code === 'token_not_valid') {
+  if (result.error && (result.error as TError)?.data?.code === 'token_not_valid') {
     console.log('token is not valid');
     const { data } = await baseQuery(
       { url: 'auth/jwt/refresh', method: 'POST', body: { refresh: window.localStorage.getItem('refreshToken') } },
