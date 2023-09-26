@@ -7,6 +7,11 @@ export const userApi = combinedApi.injectEndpoints({
         return { url: 'users/' };
       },
     }),
+    getMe: builder.query<TResponse, void>({
+      query() {
+        return { url: 'users/me/' };
+      },
+    }),
   }),
 });
 

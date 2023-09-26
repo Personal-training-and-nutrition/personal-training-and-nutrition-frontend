@@ -11,7 +11,7 @@ import { useEffect } from 'react';
 
 const AuthModal = () => {
   const [login] = useLoginMutation();
-  const { data } = useGetAllUsersQuery(); //testing purposes
+  const { data, isLoading } = useGetAllUsersQuery(); //testing purposes
   async function handleSubmit(evt: React.FormEvent) {
     evt.preventDefault();
     try {
@@ -25,7 +25,7 @@ const AuthModal = () => {
     }
   }
 
-  useEffect(() => console.log(data), []);
+  useEffect(() => console.log(data), [isLoading]);
 
   return (
     <Modal>
