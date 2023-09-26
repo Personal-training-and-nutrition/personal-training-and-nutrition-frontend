@@ -31,20 +31,26 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/spec" element={<Profile statusSpec={true} />} />
-        <Route path="/client" element={<Profile statusSpec={false} />} />
-        <Route path="/client-card" element={<ClientCardPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+        <Route path="/meal-plan/unauth" element={<PlanUnathMeal />} />
+        <Route path="/workout-plan/unauth" element={<PlanUnathTraining />} />
+        <Route path="/login" element={<AuthModal />} />
+        <Route path="/register" element={<RegisterModal />} />
+        <Route path="/password-recovery" element={<ForgotPasswordModal />} />
+        <Route path="/password-recovery/form" element={<ResetPasswordModal />} />
+        <Route path="/password-recovery/success" element={<ForgotPasswordTooltipModal />} />
+        <Route path="/user-profile/specialist" element={<Profile statusSpec={true} />} />
+        <Route path="/user-profile/client" element={<Profile statusSpec={false} />} />
         <Route path="/clients" element={<Clients />} />
-        <Route path="/addPlanMeal" element={<AddPlanMeal />} />
-        <Route path="/addPlanTrain" element={<AddPlanTraining />} />
-        <Route path="/authModal" element={<AuthModal />} />
-        <Route path="/registerModal" element={<RegisterModal />} />
-        <Route path="/forgotPassword" element={<ForgotPasswordModal />} />
-        <Route path="/forgotPasswordTooltip" element={<ForgotPasswordTooltipModal />} />
-        <Route path="/resetPassword" element={<ResetPasswordModal />} />
-        <Route path="/addClient" element={<AddClient />} />
+        <Route path="/client/card" element={<ClientCardPage />} />
+        <Route path="/client/new" element={<AddClient />} />
+        <Route path="/meal-plan/create" element={<AddPlanMeal />} />
+        <Route path="/meal-plan/edit" element={<EditPlanMeal />} />
         <Route path="/workout-plans" element={<WorkoutPlans />} />
-        <Route path="/training-report" element={<TrainingReport />} />
+        <Route path="/workout-plan" element={<WorkoutPlan />} />
+        <Route path="/workout-plan/create" element={<AddPlanTraining />} />
+        <Route path="/workout-plan/edit" element={<EditPlanTraining />} />
+        <Route path="/workout-report" element={<TrainingReport />} />
         <Route
           path="/confirmationTooltip"
           element={
@@ -56,12 +62,6 @@ function App() {
             />
           }
         />
-        <Route path="/editPlanTrain" element={<EditPlanTraining />} />
-        <Route path="/editPlanMeal" element={<EditPlanMeal />} />
-        <Route path="/unAuthPlanMeal" element={<PlanUnathMeal />} />
-        <Route path="/unAuthPlanTrain" element={<PlanUnathTraining />} />
-        <Route path="/workout-plan" element={<WorkoutPlan />} />
-        <Route path="*" element={<NotFoundPage />} />
       </Routes>
       {location.pathname !== '/' && <NavBar statusSpec={false} />}
     </div>
