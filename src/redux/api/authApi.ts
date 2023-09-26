@@ -20,6 +20,15 @@ export const authApi = combinedApi.injectEndpoints({
         };
       },
     }),
+    refresh: builder.mutation<TRefreshResponse, IRefreshToken>({
+      query(data) {
+        return {
+          url: 'auth/jwt/refresh',
+          method: 'POST',
+          body: data,
+        };
+      },
+    }),
   }),
 });
 

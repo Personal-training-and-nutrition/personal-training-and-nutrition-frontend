@@ -6,26 +6,26 @@ import SocialIcons from '../../SocialIcons/SocialIcons';
 import InputEmail from '../../Inputs/InputEmail/InputEmail';
 import InputPassword from '../../Inputs/InputPassword/InputPassword';
 import { useLoginMutation } from '../../../redux/api/authApi';
-import { useAppDispatch } from '../../../redux/store';
-import { setAccessToken, setRefreshToken } from '../../../redux/slices/userSlice';
+import { useGetAllUsersQuery } from '../../../redux/api/userApi';
+import { useEffect } from 'react';
 
 const AuthModal = () => {
   const [login] = useLoginMutation();
-  const dispatch = useAppDispatch();
+  const { data } = useGetAllUsersQuery(); //testing purposes
   async function handleSubmit(evt: React.FormEvent) {
     evt.preventDefault();
     try {
       const target = evt.target as any;
-      const tokens = await login({
+      await login({
         email: target.email.value,
         password: target.password.value,
-      }).unwrap();
-      dispatch(setAccessToken(tokens.access));
-      dispatch(setRefreshToken(tokens.refresh));
+      });
     } catch (err) {
       console.error(err);
     }
   }
+
+  useEffect(() => console.log(data), []);
 
   return (
     <Modal>

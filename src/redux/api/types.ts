@@ -15,6 +15,10 @@ interface ILoginUser {
   password: string;
 }
 
+interface IRefreshToken {
+  token: string;
+}
+
 type TResponse = {
   status: string;
   message: string;
@@ -23,4 +27,8 @@ type TResponse = {
 type TTokensResponse = TResponse & {
   access: string;
   refresh: string;
+};
+
+type TRefreshResponse = TResponse & {
+  access: string;
 };
