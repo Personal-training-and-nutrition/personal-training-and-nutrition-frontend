@@ -24,6 +24,17 @@ export type DayBlockType = {
   description: string;
 }[];
 
+export const navBarHideCases = [
+  '/',
+  '/login',
+  '/register',
+  '/password-recovery',
+  '/password-recovery/form',
+  '/password-recovery/success',
+  '/meal-plan/unauth',
+  '/workout-plan/unauth',
+];
+
 export const trainingData: DayBlockType = [
   {
     day: 'Понедельник',

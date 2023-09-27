@@ -1,11 +1,13 @@
 import { Link } from 'react-router-dom';
 import styles from './InputCheckbox.module.scss';
+import { UseFormRegister } from 'react-hook-form';
+import { InputsType } from '../../../pages/ProfilePage/Profile';
 
-const InputCheckbox = () => {
+const InputCheckbox = ({register}: {register: UseFormRegister<InputsType>}) => {
   return (
     <div className={styles.inputCheckbox__wrapper}>
       <label htmlFor="accept" className={styles.inputCheckbox__label}>
-      <input type="checkbox" name="accept" id="accept" className={styles.inputCheckbox__input} />
+      <input type="checkbox" id="accept" className={styles.inputCheckbox__input} {...register('accept', {required: true})}/>
       <span></span>
       </label>
       <p className={styles.inputCheckbox__text}>

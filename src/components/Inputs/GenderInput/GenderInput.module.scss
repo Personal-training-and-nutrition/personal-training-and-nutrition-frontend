@@ -6,17 +6,17 @@
     position: relative;
   }
   &__title {
-    font-weight: 400;
-    font-size: 15px;
-    line-height: 18px;
-    margin-bottom: 8px;
-    color: #b1bbc0;
-    &_big {
-      font-weight: 700;
-      font-size: 17px;
-      line-height: 22px;
-      margin-bottom: 16px;
-    }
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 21px;
+    // margin-bottom: 8px;
+    // color: #b1bbc0;
+    // &_big {
+    //   font-weight: 700;
+    //   font-size: 17px;
+    //   line-height: 22px;
+      margin: 0 0 16px 0;
+    // }
   }
 
   &__wrap {

@@ -40,20 +40,33 @@ const AuthModal = () => {
   useEffect(() => console.log(data), [isLoadings]); */
   // ======================
 
+=======
+import { useForm } from 'react-hook-form';
+import { InputsType } from '../../../pages/ProfilePage/Profile';
+
+const AuthModal = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { isDirty, isValid },
+  } = useForm<InputsType>({mode: 'all'});
+  const onSubmit = handleSubmit((data) => {
+    console.log(data);
+  });
   return (
     <Modal>
       <h2 className={styles.authModal__title}>Добро пожаловать!</h2>
       <p className={styles.authModal__text}>Первый раз с нами?</p>
-      <Link to="/registerModal" className={styles.authModal__link}>
+      <Link to="/register" className={styles.authModal__link}>
         Зарегистрироваться
       </Link>
       <form className={styles.authModal__form} onSubmit={handleSubmit}>
-        <InputEmail name="email" placeholder="Электронная почта" />
-        <InputPassword name="password" placeholder="Пароль" minLength={8} maxLenght={30} />
-        <Link to="/resetPassword" className={styles.authModal__link}>
+        <InputEmail name="email" placeholder="Электронная почта" register={register}/>
+        <InputPassword name="password" placeholder="Пароль" minLength={8} maxLenght={30} register={register}/>
+        <Link to="/password-recovery" className={styles.authModal__link}>
           Я не помню пароль
         </Link>
-        <Button textBtn="Войти" type="submit" isValid={true} isDirty={true}></Button>
+        <Button textBtn="Войти" type="submit" isDirty={isDirty} isValid={isValid}></Button>
       </form>
       <p className={`${styles.authModal__text} ${styles.authModal__text_center} `}>или использовать</p>
       <SocialIcons />
