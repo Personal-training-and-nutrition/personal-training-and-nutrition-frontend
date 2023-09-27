@@ -27,7 +27,7 @@ const LandingPage: React.FC = () => {
 
   return (
     <div className={styles.landing}>
-      <div className="App__container">
+      <div className={styles.landingContainer}>
         <Header />
         <main>
           <PromoSection />
