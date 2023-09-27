@@ -26,7 +26,7 @@ const RegisterModal = () => {
     registerUser({
       email: data.email,
       password: data.password,
-      re_password: data.rePassword,
+      re_password: data.retrypassword,
     });
   });
 

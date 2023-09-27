@@ -22,7 +22,7 @@ export type InputsType = {
   aboutMe?: string;
   phone: number;
   password: string;
-  rePassword: string;
+  retrypassword: string;
   clientDiseases: string;
   accept: string;
   email: string;
