@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useForm } from 'react-hook-form';
 import styles from './Profile.module.scss';
 import Button from '../../components/Button/Button';
@@ -7,9 +8,9 @@ import TitleBlock from '../../components/TitleBlock/TitleBlock';
 import GenderInput from '../../components/Inputs/GenderInput/GenderInput';
 import ButtonDelete from '../../components/ButtonDelete/ButtonDelete';
 import { useState } from 'react';
-// import { formatDate } from '../../utils/formatDate';
 import DatePicker from '../../components/Inputs/DatePicker/DatePicker';
 import InputText from '../../components/Inputs/InputText/InputText';
+import InputPhone from '../../components/Inputs/InputPhone/InputPhone';
 
 export type InputsType = {
   lastName: string;
@@ -21,8 +22,9 @@ export type InputsType = {
   aboutMe?: string;
   phone: number;
   password: string | number;
+  clientDiseases: string;
+  accept: string;
 };
-// const data = { surname: 'Vbv', weight: 22, height: 165 };
 const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
   const [isEditPassw, setEditPassw] = useState(false);
   const [isEditPhone, setEditPhone] = useState(false);
@@ -35,16 +37,15 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
     mode: 'all',
     defaultValues: {
       gender: '',
-      // weight: data?.weight + ' кг' || '',
-      // height: data?.height + ' см' || '',
     },
   });
   const onSubmit = handleSubmit((data) => {
     console.log(data);
   });
 
-  const errorVisible =  `${styles.profile__error} ${styles.profile__error_active}`;
-  const errorInvisible = `${styles.profile__error}`
+  const errorVisible = `${styles.profile__error} ${styles.profile__error_active}`;
+  const errorInvisible = `${styles.profile__error}`;
+
   return (
     <div className="App__container">
       <main className={styles.profile__content}>
@@ -77,29 +78,25 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
               {errors?.firstName?.message || 'Ошибка!'}
             </span>
             <DatePicker register={register} />
-            <span className={errors?.birthday ? errorVisible : errorInvisible}>
-              {errors?.birthday?.message || 'Ошибка!'}
-            </span>
           </label>
           <GenderInput register={register} />
-          {/* в зависимости от статуса - будем показывать один из двух нижеидущих лейблов */}
           {statusSpec ? (
             <label className={styles.profile__label}>
-              <span className={styles.profile__title_big}>Обо мне</span>
+              <h3 className={styles.profile__title_big}>Обо мне</h3>
               <textarea className={`${styles.profile__input} ${styles.profile__input_big}`} {...register('aboutMe')} />
             </label>
           ) : (
             <label className={styles.profile__label}>
-              <span className={styles.profile__title_big}>Ваши параметры</span>
+              <h3 className={styles.profile__title_big}>Ваши параметры</h3>
               <div className={styles.profile__size}>
-                <span className={`${styles.profile__title}${styles.profile__title_type}`}>Вес</span>
+                <h4 className={`${styles.profile__title} ${styles.profile__title_type}`}>Вес</h4>
                 <input
                   className={`${styles.profile__input} ${styles.profile__input_params}`}
                   type="number"
                   {...register('weight')}
                   placeholder="кг"
                 />
-                <span className={`${styles.profile__title}${styles.profile__title_type}`}>Рост</span>
+                <h4 className={`${styles.profile__title} ${styles.profile__title_type}`}>Рост</h4>
                 <input
                   className={`${styles.profile__input} ${styles.profile__input_params}`}
                   type="number"
@@ -114,30 +111,24 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
             <p className={styles.profile__subtitle}>nutrisav@mail.ru</p>
           </div>
           <label className={styles.profile__label}>
-            <span className={`${styles.profile__title} ${styles.profile__title_style}`}>Телефон</span>
             <div className={styles.profile__wrap}>
               {isEditPhone ? (
-                <input
-                  className={`${styles.profile__input} ${styles.profile__input_style}`}
-                  type="number"
-                  {...register('phone', {
-                    required: 'Поле не должно быть пустым',
-                    valueAsNumber: true,
-                  })}
-                />
+                <InputPhone name="phone" register={register} />
               ) : (
                 <>
-                  <p className={styles.profile__subtitle}>+7 (123) 456-78-90</p>
-                  <button className={styles.profile__pen} type="button" onClick={() => setEditPhone(true)}>
-                    <img src={penIcon} alt="Кнопка редактировать телефон" />
-                  </button>
+                  <span className={`${styles.profile__title} ${styles.profile__title_style}`}>Телефон</span>
+                  <div className={styles.profile__container}>
+                    <p className={styles.profile__subtitle}>+7 (123) 456-78-90</p>
+                    <button className={styles.profile__pen} type="button" onClick={() => setEditPhone(true)}>
+                      <img src={penIcon} alt="Кнопка редактировать телефон" />
+                    </button>
+                  </div>
                 </>
               )}
             </div>
-            <span className={errors?.phone ? errorVisible : errorInvisible}>
-              {errors?.phone?.message || 'Ошибка!'}
-            </span>
+            <span className={errors?.phone ? errorVisible : errorInvisible}>{errors?.phone?.message || 'Ошибка!'}</span>
           </label>
+
           <label className={styles.profile__label}>
             <span className={`${styles.profile__title} ${styles.profile__title_style}`}>Пароль</span>
             <div className={styles.profile__wrap}>
@@ -148,12 +139,12 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
                   {...register('password', { required: 'Поле не должно быть пустым' })}
                 />
               ) : (
-                <>
+                <div className={styles.profile__container}>
                   <p className={styles.profile__subtitle}>******</p>
                   <button className={styles.profile__pen} type="button" onClick={() => setEditPassw(true)}>
                     <img src={penIcon} alt="Кнопка редактировать пароль" />
                   </button>
-                </>
+                </div>
               )}
             </div>
             <span className={errors?.password ? errorVisible : errorInvisible}>

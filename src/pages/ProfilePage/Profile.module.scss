@@ -76,6 +76,7 @@
     }
     &:invalid {
       color: #9d1435;
+      border: .5px solid $error-500;
     }
     &_style {
       background-color: transparent;
@@ -105,19 +106,19 @@
     font-weight: 400;
     font-size: 15px;
     line-height: 18px;
-    margin-bottom: 8px;
-
+    margin-bottom: 13px;
     &_big {
       font-weight: 700;
       font-size: 18px;
       line-height: 21.6px;
-      margin-bottom: 16px;
+      margin: 0 0 16px 0;
     }
     &_style {
       color: $gray-400;
     }
     &_type{
-      margin-bottom: 0;
+      margin: 0;
+      color: $gray-400
     }
   }
   &__subtitle {
@@ -129,7 +130,13 @@
   }
   &__wrap {
     display: flex;
+    flex-direction: column;
     column-gap: 20px;
+  }
+  &__container{
+    display: flex;
+    column-gap: 20px;
+
   }
   &__item {
     font-weight: 400;

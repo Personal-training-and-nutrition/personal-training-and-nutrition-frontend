@@ -17,6 +17,9 @@
     border-radius: 30px;
     position: relative;
     width: calc(100vw - 72px);
+    max-width: 375px;
+    box-sizing: border-box;
+
   }
   &__closeBtn {
     position: absolute;

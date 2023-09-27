@@ -1,3 +1,5 @@
+import { UseFormRegister } from 'react-hook-form';
+import { InputsType } from '../../../pages/ProfilePage/Profile';
 import styles from './InputEmail.module.scss';
 
 type Props = {
@@ -5,9 +7,10 @@ type Props = {
   placeholder: string;
   isLabel?: boolean;
   label?: string;
+  register: UseFormRegister<InputsType>
 };
 
-const InputEmail = ({ name, placeholder, isLabel, label }: Props) => {
+const InputEmail = ({ name, placeholder, isLabel, label, register }: Props) => {
   return (
     <>
       {isLabel ? (
@@ -18,14 +21,12 @@ const InputEmail = ({ name, placeholder, isLabel, label }: Props) => {
           <input
             className={styles.inputs__input}
             type="email"
-            name={name}
-            minLength={2}
-            maxLength={3}
             placeholder={placeholder}
+            {...register(`${name}` as never, {required: true})}
           />
         </div>
       ) : (
-        <input type="email" name={name} id="" placeholder={placeholder} className={styles.inputs__email} />
+        <input type="email" id="" placeholder={placeholder} className={styles.inputs__email} {...register(`${name}` as never, {required: true})}/>
       )}
     </>
   );

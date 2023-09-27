@@ -22,12 +22,12 @@ function ClientCardPage() {
       <UserInfo />
 
       <div className={styles.clientCard__buttons}>
-        <Link to="/addPlanMeal">
+        <Link to="/meal-plan/create">
           <button className={`${styles.clientCard__button} ${styles.clientCard__mealPlanBtn}`}>
             План питания <img className={styles.clientCard__buttonPlusIcon} src={plusIcon} alt="plus-icon" />
           </button>
         </Link>
-        <Link to="/addPlanTrain">
+        <Link to="/workout-plan/create">
           <button className={`${styles.clientCard__button} ${styles.clientCard__workoutPlanBtn}`}>
             План тренировок <img className={styles.clientCard__buttonPlusIcon} src={plusIcon} alt="plus-icon" />
           </button>
@@ -86,7 +86,7 @@ function ClientCardPage() {
       <section className={styles.clientCard__section}>
         <h2 className={styles.clientCard__title}>Планы тренировок</h2>
 
-        <Link to="/training-report" className={styles.clientCard__link}><PlanCard image={workoutPlanImage} title="Входим в ритм!" date="Создан 27 августа 2023" /></Link>
+        <Link to="/workout-report" className={styles.clientCard__link}><PlanCard image={workoutPlanImage} title="Входим в ритм!" date="Создан 27 августа 2023" /></Link>
 
         <p className={styles.clientCard__moreBtn}>Смотреть все</p>
       </section>
