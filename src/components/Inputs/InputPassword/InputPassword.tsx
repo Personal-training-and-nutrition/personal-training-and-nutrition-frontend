@@ -18,7 +18,7 @@ const InputPassword = ({ name, placeholder, minLength, maxLenght, register }: Pr
   }
   return (
     <div className={styles.inputs__wrapper}>
-      <input type={!isShowPassword ? 'password' : 'text'} placeholder={placeholder} className={styles.inputs__password} {...register(`${name}` as never, {required: true, minLength: minLength,maxLength:maxLenght})}/>
+      <input type={!isShowPassword ? 'password' : 'text'} placeholder={placeholder} className={styles.inputs__password} {...register(`${name}` as never, {required: true, minLength: minLength, maxLength:maxLenght})}/>
       <button type='button' className={isShowPassword ? `${styles.inputs__showBtn}` : `${styles.inputs__hideBtn}`} onClick={onShowBtnClick}></button>
     </div>
   )

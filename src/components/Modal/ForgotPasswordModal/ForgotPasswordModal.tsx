@@ -9,7 +9,7 @@ const ForgotPasswordModal = () => {
   const {
     register,
     handleSubmit,
-    // formState: { errors, isDirty, isValid },
+    formState: { isDirty, isValid },
   } = useForm<InputsType>({mode: 'all'});
   const onSubmit = handleSubmit((data) => {
     console.log(data);
@@ -23,7 +23,7 @@ const ForgotPasswordModal = () => {
       </p>
       <form action="" className={styles.forgotPassword__form} onSubmit={onSubmit}>
         <InputEmail name="email" placeholder="Электронная почта" register={register}/>
-        <Button textBtn="Воссттановить" type="submit" isValid={true} isDirty={true}></Button>
+        <Button textBtn="Восстановить" type="submit" isValid={isValid} isDirty={isDirty}></Button>
       </form>
     </Modal>
   );
