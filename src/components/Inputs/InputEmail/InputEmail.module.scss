@@ -24,6 +24,7 @@
       border: .5px solid $error-500;
       color: $error-500;
     }
+
   }
   &__wrapper {
     display: flex;
@@ -35,6 +36,10 @@
     font-weight: 400;
     line-height: 120%;
     color: $black-800;
+    &:invalid {
+      border: .5px solid $error-500;
+      color: $error-500;
+    }
   }
   &__input {
     padding: 8px 12px;

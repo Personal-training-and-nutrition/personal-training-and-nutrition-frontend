@@ -14,65 +14,71 @@ import ButtonCancel from '../../components/ButtonCancel/ButtonCancel';
 import Button from '../../components/Button/Button';
 
 const AddClient = () => {
-  const { register } = useForm<InputsType>({
-    mode: 'onChange',
-    // defaultValues: {
-    //   surname: data.surname,
-    //   weight: data?.weight + ' кг' || '',
-    //   height: data?.height + ' см' || '',
-    // },
+  const { register, handleSubmit, formState: { isDirty, isValid }, reset } = useForm<InputsType>({
+    mode: 'all',
+
   });
+  const onSubmit = handleSubmit((data) => {
+    console.log(data);
+  });
+
   return (
     <div className="App__container">
       <main className={styles.addClient__content}>
         <TitleBlock text="добавление клиента" isBack={true} />
-        <form className={styles.addClient__form} action="">
+        <form className={styles.addClient__form} action="" onSubmit={onSubmit}>
           <div className={styles.addClient__nameWrap}>
-            <InputText name="clientLastName" label="Фамилия" placeholder="Фамилия" register={register} textError={'Поле не должно быть пустым'}/>
-            <InputText name="clientFirstName" label="Имя" placeholder="Имя" register={register} textError={'Поле не должно быть пустым'}/>
+            <InputText name="clientLastName" label="Фамилия" placeholder="Фамилия" register={register} />
+            <InputText name="clientFirstName" label="Имя" placeholder="Имя" register={register}/>
             <InputText name="clientMiddleName" label="Отчество" placeholder="Отчество" register={register} />
           </div>
           <GenderInput register={register} />
           <div className={styles.addClient__characteristic}>
             <DatePicker register={register}/>
-            <InputNumber name="clientWeight" label="Вес" placeholder="кг" />
-            <InputNumber name="clientHeight" label="Рост" placeholder="см" />
+            <InputNumber name="clientWeight" label="Вес" placeholder="кг" register={register}/>
+            <InputNumber name="clientHeight" label="Рост" placeholder="см" register={register}/>
           </div>
           <div className={styles.addClient__nameWrap}>
-            <InputPhone name="clientPhone" />
-            <InputEmail name="clientEmail" label="Email" placeholder="Email" isLabel={true} />
+            <InputPhone name="clientPhone" register={register}/>
+            <InputEmail name="clientEmail" label="Email" placeholder="Email" isLabel={true} register={register} />
           </div>
           <ul className={styles.addClient__about}>
             <AboutClientCard
               title="Заболевания"
               textareaName="clientDiseases"
               textaeraPlaceholder="Добавьте важную информацию"
+              register={register}
             />
             <AboutClientCard
               title="Опыт диет"
               textareaName="clientDietExperience"
               textaeraPlaceholder="Добавьте важную информацию"
+              register={register}
             />
             <AboutClientCard
               title="Опыт тренировок"
               textareaName="clientTrainingExperience"
               textaeraPlaceholder="Добавьте важную информацию"
+              register={register}
             />
             <AboutClientCard
               title="Вредные привычки"
               textareaName="clientBadHabits"
               textaeraPlaceholder="Добавьте важную информацию"
+              register={register}
             />
             <AboutClientCard
               title="Предпочтения в еде"
               textareaName="clientFoodPreferences"
               textaeraPlaceholder="Добавьте важную информацию"
+              register={register}
             />
           </ul>
-          <SpecNote textareaName="SpecNote" textareaPlaceholder="Добавьте важную информацию" />
+          <SpecNote textareaName="SpecNote" textareaPlaceholder="Добавьте важную информацию" register={register}/>
           <div className={styles.addClient__nameWrap}>
-            <Button textBtn="Сохранить" type="submit" isDirty={true} isValid={true} />
-            <ButtonCancel text="Отменить" isDirty={true} isValid={true} />
+            <Button textBtn="Сохранить" type="submit" isDirty={isDirty} isValid={isValid} />
+            <ButtonCancel text="Отменить" isDirty={true} isValid={true} onClick={() => reset()}
+/>
           </div>
         </form>
       </main>

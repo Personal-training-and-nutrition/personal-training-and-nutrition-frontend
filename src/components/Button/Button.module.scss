@@ -17,6 +17,7 @@
 
   &:disabled {
     background-color: $gray-400;
+    opacity: 0.3;
     cursor: default;
   }
 }

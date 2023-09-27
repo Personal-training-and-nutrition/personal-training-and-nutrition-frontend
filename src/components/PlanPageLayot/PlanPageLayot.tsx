@@ -52,10 +52,9 @@ const PlanPageLayot = ({ textTitle, namePlan, data, register, onSubmit, isDirty,
                 required: 'Поле не должно быть пустым',
               })}
               placeholder="Напишите название плана"
-              // required
             />
           </label>
-          {location.pathname === '/planMeal' && <CaloriesInput register={register} />}
+          {location.pathname === '/meal-plan' && <CaloriesInput register={register} />}
           <InputRecommendation register={register}/>
           <div className={styles.plan__label_gap}>
             {data.map((item, index) => (

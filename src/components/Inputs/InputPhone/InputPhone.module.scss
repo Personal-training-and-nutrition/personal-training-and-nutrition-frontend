@@ -11,6 +11,13 @@
     font-weight: 400;
     line-height: 120%;
     color: $black-800;
+    &_style {
+      font-weight: 400;
+      font-size: 15px;
+      line-height: 18px;
+      color: $gray-400;
+      margin-bottom: 13px;
+    }
   }
   &__input {
     padding: 8px 12px;
