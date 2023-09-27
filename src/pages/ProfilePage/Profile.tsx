@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useForm } from 'react-hook-form';
+import {useForm} from 'react-hook-form';
 import styles from './Profile.module.scss';
 import Button from '../../components/Button/Button';
 import UserStatusBtn from '../../components/UserStatusBtn/UserStatusBtn';
@@ -7,7 +7,7 @@ import penIcon from '../../assets/images/profile/pen-icon.svg';
 import TitleBlock from '../../components/TitleBlock/TitleBlock';
 import GenderInput from '../../components/Inputs/GenderInput/GenderInput';
 import ButtonDelete from '../../components/ButtonDelete/ButtonDelete';
-import { useState } from 'react';
+import {useState} from 'react';
 import DatePicker from '../../components/Inputs/DatePicker/DatePicker';
 import InputText from '../../components/Inputs/InputText/InputText';
 import InputPhone from '../../components/Inputs/InputPhone/InputPhone';
@@ -21,9 +21,11 @@ export type InputsType = {
   height?: string;
   aboutMe?: string;
   phone: number;
-  password: string | number;
+  password: string;
+  rePassword: string;
   clientDiseases: string;
   accept: string;
+  email: string;
 };
 const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
   const [isEditPassw, setEditPassw] = useState(false);

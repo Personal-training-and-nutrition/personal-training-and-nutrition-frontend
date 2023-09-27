@@ -8,24 +8,14 @@ import InputPassword from '../../Inputs/InputPassword/InputPassword';
 import { useLoginMutation } from '../../../redux/api/authApi';
 // import { useGetAllUsersQuery } from '../../../redux/api/userApi';
 import { useEffect } from 'react';
+import { useForm } from 'react-hook-form';
+import { InputsType } from '../../../pages/ProfilePage/Profile';
 
 const AuthModal = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const from = location.state?.from.pathname || '/';
   const [login, { isSuccess, isLoading }] = useLoginMutation();
-  async function handleSubmit(evt: React.FormEvent) {
-    evt.preventDefault();
-    try {
-      const target = evt.target as any;
-      await login({
-        email: target.email.value,
-        password: target.password.value,
-      });
-    } catch (err) {
-      console.error('login failed', err);
-    }
-  }
 
   useEffect(() => {
     console.log('logging in...');
@@ -40,18 +30,20 @@ const AuthModal = () => {
   useEffect(() => console.log(data), [isLoadings]); */
   // ======================
 
-=======
-import { useForm } from 'react-hook-form';
-import { InputsType } from '../../../pages/ProfilePage/Profile';
-
-const AuthModal = () => {
   const {
     register,
     handleSubmit,
     formState: { isDirty, isValid },
-  } = useForm<InputsType>({mode: 'all'});
-  const onSubmit = handleSubmit((data) => {
-    console.log(data);
+  } = useForm<InputsType>({ mode: 'all' });
+  const onSubmit = handleSubmit(async (data) => {
+    try {
+      await login({
+        email: data.email,
+        password: data.password,
+      });
+    } catch (err) {
+      console.error('login failed', err);
+    }
   });
   return (
     <Modal>
@@ -60,9 +52,9 @@ const AuthModal = () => {
       <Link to="/register" className={styles.authModal__link}>
         Зарегистрироваться
       </Link>
-      <form className={styles.authModal__form} onSubmit={handleSubmit}>
-        <InputEmail name="email" placeholder="Электронная почта" register={register}/>
-        <InputPassword name="password" placeholder="Пароль" minLength={8} maxLenght={30} register={register}/>
+      <form className={styles.authModal__form} onSubmit={onSubmit}>
+        <InputEmail name="email" placeholder="Электронная почта" register={register} />
+        <InputPassword name="password" placeholder="Пароль" minLength={8} maxLenght={30} register={register} />
         <Link to="/password-recovery" className={styles.authModal__link}>
           Я не помню пароль
         </Link>
