@@ -33,14 +33,21 @@ const baseQueryWithRefresh: BaseQueryFn<string | FetchArgs, unknown, FetchBaseQu
   let result = await baseQuery(args, api, extraOptions);
   if (result.error && (result.error as TError)?.data?.code === 'token_not_valid') {
     console.log('token is not valid');
+    const refreshToken = window.localStorage.getItem('refreshToken');
     const { data } = await baseQuery(
-      { url: 'auth/jwt/refresh', method: 'POST', body: { refresh: window.localStorage.getItem('refreshToken') } },
+      { url: 'auth/jwt/refresh', method: 'POST', body: { refresh: refreshToken } },
       api,
       extraOptions,
     );
-    console.log('new', data);
-    window.localStorage.setItem('accessToken', (data as TRefreshResponse).access);
-    result = await baseQuery(args, api, extraOptions);
+    if (data) {
+      console.log('new', data);
+      window.localStorage.setItem('accessToken', (data as TRefreshResponse).access);
+      result = await baseQuery(args, api, extraOptions);
+    } else {
+      window.localStorage.removeItem('refreshToken');
+      window.localStorage.removeItem('accessToken');
+      window.location.href = '/login';
+    }
   }
   return result;
 };
