@@ -23,6 +23,7 @@ import PlanUnathTraining from './pages/PlanPage/PlanUnathTraining.tsx';
 import WorkoutPlan from './pages/WorkoutPlan/WorkoutPlan.tsx';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage.tsx';
 import NavBar from './components/Navbar/NavBar.tsx';
+import RequireUser from './components/RequireUser/RequireUser.tsx';
 import { navBarHideCases } from './utils/constants.tsx';
 
 function App() {
@@ -42,7 +43,9 @@ function App() {
         <Route path="/password-recovery/success" element={<ForgotPasswordTooltipModal />} />
         <Route path="/user-profile/specialist" element={<Profile statusSpec={true} />} />
         <Route path="/user-profile/client" element={<Profile statusSpec={false} />} />
-        <Route path="/clients" element={<Clients />} />
+        <Route element={<RequireUser />}>
+          <Route path="/clients" element={<Clients />} />
+        </Route>
         <Route path="/client/card" element={<ClientCardPage />} />
         <Route path="/client/new" element={<AddClient />} />
         <Route path="/meal-plan/create" element={<AddPlanMeal />} />
