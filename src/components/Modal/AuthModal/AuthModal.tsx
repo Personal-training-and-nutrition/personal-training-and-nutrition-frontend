@@ -26,7 +26,7 @@ const AuthModal = () => {
       </Link>
       <form className={styles.authModal__form} onSubmit={onSubmit}>
         <InputEmail name="email" placeholder="Электронная почта" register={register}/>
-        <InputPassword id="password" name="password" placeholder="Пароль" minLength={8} maxLenght={30} register={register}/>
+        <InputPassword name="password" placeholder="Пароль" minLength={8} maxLenght={30} register={register}/>
         <Link to="/password-recovery" className={styles.authModal__link}>
           Я не помню пароль
         </Link>
