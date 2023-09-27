@@ -23,6 +23,7 @@ import PlanUnathTraining from './pages/PlanPage/PlanUnathTraining.tsx';
 import WorkoutPlan from './pages/WorkoutPlan/WorkoutPlan.tsx';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage.tsx';
 import NavBar from './components/Navbar/NavBar.tsx';
+import { navBarHideCases } from './utils/constants.tsx';
 
 function App() {
   const location = useLocation();
@@ -63,7 +64,7 @@ function App() {
           }
         />
       </Routes>
-      {location.pathname !== '/' && <NavBar statusSpec={false} />}
+      {!navBarHideCases.includes(location.pathname) && <NavBar statusSpec={true} />}
     </div>
   );
 }

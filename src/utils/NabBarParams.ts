@@ -32,7 +32,7 @@ export const navBarUserItemList: navBarItemListType[] = [
     textLink: 'Сообщения',
   },
   {
-    link: 'training-report',
+    link: 'user-profile/specialist',
     img: profileNotActiveIcon,
     alt: 'Иконка кнопки "Профиль"',
     textLink: 'Профиль',
@@ -47,7 +47,7 @@ export const navBarSpecialistItemList: navBarItemListType[] = [
     textLink: 'Питание',
   },
   {
-    link: 'planTraining',
+    link: 'workout-plans',
     img: trainingNotActiveIcon,
     alt: 'Иконка кнопки "Тренировки"',
     textLink: 'Тренировки',
@@ -59,7 +59,7 @@ export const navBarSpecialistItemList: navBarItemListType[] = [
     textLink: 'Сообщения',
   },
   {
-    link: 'users',
+    link: 'user-profile/client',
     img: profileNotActiveIcon,
     alt: 'Иконка кнопки "Профиль"',
     textLink: 'Профиль',
