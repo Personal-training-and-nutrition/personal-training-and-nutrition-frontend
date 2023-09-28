@@ -24,6 +24,9 @@ import WorkoutPlan from './pages/WorkoutPlan/WorkoutPlan.tsx';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage.tsx';
 import NavBar from './components/Navbar/NavBar.tsx';
 import { navBarHideCases } from './utils/constants.tsx';
+import MealPlans from './pages/MealPlans/MealPlans.tsx';
+import MealPlan from './pages/MealPlan/MealPlan.tsx';
+import NutritionReport from './pages/NutritionReport/NutritionReport.tsx';
 
 function App() {
   const location = useLocation();
@@ -45,8 +48,11 @@ function App() {
         <Route path="/clients" element={<Clients />} />
         <Route path="/client/card" element={<ClientCardPage />} />
         <Route path="/client/new" element={<AddClient />} />
+        <Route path="/meal-plans" element={<MealPlans />} />
+        <Route path="/meal-plan" element={<MealPlan />} />
         <Route path="/meal-plan/create" element={<AddPlanMeal />} />
         <Route path="/meal-plan/edit" element={<EditPlanMeal />} />
+        <Route path="/nutrition-report" element={<NutritionReport />} />
         <Route path="/workout-plans" element={<WorkoutPlans />} />
         <Route path="/workout-plan" element={<WorkoutPlan />} />
         <Route path="/workout-plan/create" element={<AddPlanTraining />} />
@@ -64,7 +70,7 @@ function App() {
           }
         />
       </Routes>
-      {!navBarHideCases.includes(location.pathname) && <NavBar statusSpec={true} />}
+      {!navBarHideCases.includes(location.pathname) && <NavBar statusSpec={false} />}
     </div>
   );
 }
