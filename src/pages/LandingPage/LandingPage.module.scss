@@ -1,22 +1,25 @@
 @import '../../scss/colors/colors.scss';
 
 .landing {
-  margin: 0 auto 72px;
+  margin: 0 auto;
   min-width: 375px;
   background-color: $gray-300;
 
   @media (min-width: 768px) {
+    margin: 0 auto;
   }
 
   @media (min-width: 1440px) {
     margin: 0 auto;
-    height: 100vh;
+    height: 100%;
+    padding-bottom: 10px;
   }
 
   &-container {
     padding: 0;
     max-width: 375px;
     margin: 0 auto;
+    padding-bottom: 20px;
 
     @media (min-width: 575px) {
       max-width: 575px;
