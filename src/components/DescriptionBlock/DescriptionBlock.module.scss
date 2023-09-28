@@ -2,7 +2,7 @@
 .Description {
   padding: 16px;
   border-radius: 12px;
-  background: btn-gray-300;
+  background: $gray-300;
   z-index: 5;
 
   &__title {
@@ -14,7 +14,7 @@
   }
 
   &__text {
-    color:  $black-700;
+    color: $black-700;
     font-size: 16px;
     font-weight: 400;
     line-height: 130%;

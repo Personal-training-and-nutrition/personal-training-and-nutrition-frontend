@@ -1,10 +1,11 @@
 @import '../../scss/colors/colors.scss';
 .caloriesSection {
   &__calories {
-    margin: 0 16px;
+    margin: 32px 0px;
     display: grid;
     grid-template-columns: repeat(4, auto);
     grid-column-gap: 9px;
+    text-align: center;
   }
   &__item {
     h4 {

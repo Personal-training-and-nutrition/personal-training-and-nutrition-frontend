@@ -41,7 +41,7 @@ export const navBarUserItemList: navBarItemListType[] = [
 
 export const navBarSpecialistItemList: navBarItemListType[] = [
   {
-    link: 'planMeal',
+    link: 'meal-plans',
     img: dietsNotActiveIcon,
     alt: 'Иконка кнопки "Питание"',
     textLink: 'Питание',
