@@ -33,7 +33,7 @@ const AuthModal = () => {
   const {
     register,
     handleSubmit,
-    formState: { isDirty, isValid },
+    formState: { isDirty, isValid, errors },
   } = useForm<InputsType>({ mode: 'all' });
   const onSubmit = handleSubmit(async (data) => {
     try {
@@ -45,6 +45,10 @@ const AuthModal = () => {
       console.error('login failed', err);
     }
   });
+
+  const errorVisible = `${styles.authModal__error} ${styles.authModal__error_active}`;
+  const errorInvisible = `${styles.authModal__error}`;
+
   return (
     <Modal>
       <h2 className={styles.authModal__title}>Добро пожаловать!</h2>
@@ -53,8 +57,10 @@ const AuthModal = () => {
         Зарегистрироваться
       </Link>
       <form className={styles.authModal__form} onSubmit={onSubmit}>
-        <InputEmail name="email" placeholder="Электронная почта" register={register} />
-        <InputPassword name="password" placeholder="Пароль" minLength={8} maxLenght={30} register={register} />
+        <InputEmail name="email" placeholder="Электронная почта" register={register} isInvalid = {Boolean(errors.email)}/>
+        <span className={errors?.email ? errorVisible : errorInvisible}>{errors?.email?.message || ''}</span>
+        <InputPassword name="password" placeholder="Пароль" minLength={8} maxLenght={25} register={register}  isInvalid = {Boolean(errors.password)}/>
+        <span className={errors?.password ? errorVisible : errorInvisible}>{errors?.password?.message || ''}</span>
         <Link to="/password-recovery" className={styles.authModal__link}>
           Я не помню пароль
         </Link>

@@ -20,16 +20,22 @@ const RegisterModal = () => {
   const {
     register,
     handleSubmit,
-    formState: { isDirty, isValid },
+    setError,
+    formState: { isDirty, isValid, errors },
   } = useForm<InputsType>({ mode: 'all' });
+
   const onSubmit = handleSubmit((data) => {
+    if (data.password !== data.retrypassword) {
+      return setError('retrypassword', {type: 'string', message: 'Убедитесь, что пароли совпадают'})
+    }
     registerUser({
       email: data.email,
       password: data.password,
       re_password: data.retrypassword,
     });
   });
-
+  const errorVisible = `${styles.registerModal__error} ${styles.registerModal__error_active}`;
+  const errorInvisible = `${styles.registerModal__error}`;
   return (
     <Modal>
       <h2 className={styles.registerModal__title}>Регистрация</h2>
@@ -38,21 +44,28 @@ const RegisterModal = () => {
         Войти
       </Link>
       <form className={styles.registerModal__form} onSubmit={onSubmit}>
-        <InputEmail name="email" placeholder="Электронная почта" register={register} />
+        <InputEmail name="email" placeholder="Электронная почта" register={register} isInvalid = {Boolean(errors.email)}/>
+        <span className={errors?.email ? errorVisible : errorInvisible}>{errors?.email?.message || ''}</span>
         <InputPassword
           name="password"
           placeholder="Придумайте пароль"
           minLength={8}
-          maxLenght={30}
+          maxLenght={25}
           register={register}
+          isInvalid = {Boolean(errors.password)}
+          textError='Поле не должно быть пустым'
         />
+        <span className={errors?.password ? errorVisible : errorInvisible}>{errors?.password?.message || ''}</span>
         <InputPassword
           name="retrypassword"
           placeholder="Повторите пароль"
           minLength={8}
-          maxLenght={30}
+          maxLenght={25}
           register={register}
+          isInvalid = {Boolean(errors.retrypassword)}
+          textError=''
         />
+        <span className={errors?.retrypassword ? errorVisible : errorInvisible}>{errors?.retrypassword?.message || 'Ошибка!'}</span>
         <InputCheckbox register={register} />
         <Button textBtn="Зарегистрироваться" type="submit" isDirty={isDirty} isValid={isValid} />
       </form>

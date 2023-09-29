@@ -9,7 +9,7 @@ const ForgotPasswordModal = () => {
   const {
     register,
     handleSubmit,
-    formState: { isDirty, isValid },
+    formState: { isDirty, isValid, errors },
   } = useForm<InputsType>({mode: 'all'});
   const onSubmit = handleSubmit((data) => {
     console.log(data);
@@ -22,7 +22,8 @@ const ForgotPasswordModal = () => {
         восстановлению
       </p>
       <form action="" className={styles.forgotPassword__form} onSubmit={onSubmit}>
-        <InputEmail name="email" placeholder="Электронная почта" register={register}/>
+        <InputEmail name="email" placeholder="Электронная почта" register={register} isInvalid = {Boolean(errors.email)}/>
+        <span className={errors?.email ? `${styles.forgotPassword__error} ${styles.forgotPassword__error_active}` : `${styles.forgotPassword__error}`}>{errors?.email?.message || ''}</span>
         <Button textBtn="Восстановить" type="submit" isValid={isValid} isDirty={isDirty}></Button>
       </form>
     </Modal>
