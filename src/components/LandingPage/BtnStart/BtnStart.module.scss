@@ -27,9 +27,9 @@
     z-index: 1;
 
     @media (min-width: 1440px) {
+      transform: none;
       padding-bottom: 0;
       position: sticky;
-      bottom: 0;
     }
   }
 

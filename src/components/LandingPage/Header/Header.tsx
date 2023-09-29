@@ -13,7 +13,7 @@ const Header: React.FC = () => {
   return (
     <header
       className={`${styles.header} ${
-        size.width <= 768 && direction === 'down' ? styles.header_hide : styles.header_show
+        size.width < 1440 && direction === 'down' ? styles.header_hide : styles.header_show
       }`}
     >
       <img className={styles.header__logo} src={logo} alt="Логотип сайта" />
