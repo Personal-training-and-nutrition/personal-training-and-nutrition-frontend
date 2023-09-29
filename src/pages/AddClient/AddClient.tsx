@@ -14,7 +14,7 @@ import ButtonCancel from '../../components/ButtonCancel/ButtonCancel';
 import Button from '../../components/Button/Button';
 
 const AddClient = () => {
-  const { register, handleSubmit, formState: { isDirty, isValid }, reset } = useForm<InputsType>({
+  const { register, handleSubmit, formState: { isDirty, isValid, errors }, reset } = useForm<InputsType>({
     mode: 'all',
 
   });
@@ -22,15 +22,22 @@ const AddClient = () => {
     console.log(data);
   });
 
+  const errorVisible = `${styles.addClient__error} ${styles.addClient__error_active}`;
+  const errorInvisible = `${styles.addClient__error}`;
   return (
     <div className="App__container">
       <main className={styles.addClient__content}>
         <TitleBlock text="добавление клиента" isBack={true} />
         <form className={styles.addClient__form} action="" onSubmit={onSubmit}>
           <div className={styles.addClient__nameWrap}>
-            <InputText name="clientLastName" label="Фамилия" placeholder="Фамилия" register={register} />
-            <InputText name="clientFirstName" label="Имя" placeholder="Имя" register={register}/>
-            <InputText name="clientMiddleName" label="Отчество" placeholder="Отчество" register={register} />
+            <InputText name="lastName" label="Фамилия" placeholder="Фамилия" register={register} /> <span className={errors?.lastName ? errorVisible : errorInvisible}>
+              {errors?.lastName?.message || ''}
+            </span>
+            <InputText name="firstName" label="Имя" placeholder="Имя" register={register} textError='Введите имя' isInvalid = {Boolean(errors.firstName)}/>
+            <span className={errors?.firstName ? errorVisible : errorInvisible}>
+              {errors?.firstName?.message || ''}
+            </span>
+            <InputText name="middleName" label="Отчество" placeholder="Отчество" register={register} />
           </div>
           <GenderInput register={register} />
           <div className={styles.addClient__characteristic}>
@@ -39,8 +46,14 @@ const AddClient = () => {
             <InputNumber name="clientHeight" label="Рост" placeholder="см" register={register}/>
           </div>
           <div className={styles.addClient__nameWrap}>
-            <InputPhone name="clientPhone" register={register}/>
-            <InputEmail name="clientEmail" label="Email" placeholder="Email" isLabel={true} register={register} />
+            <InputPhone name="phone" register={register} isInvalid = {Boolean(errors.phone)}/>
+            <span className={errors?.phone ? errorVisible : errorInvisible}>
+              {errors?.phone?.message || ''}
+            </span>
+            <InputEmail name="email" label="Email" placeholder="Email" isLabel={true} register={register} isInvalid = {Boolean(errors.email)}/>
+            <span className={errors?.email ? errorVisible : errorInvisible}>
+              {errors?.email?.message || ''}
+            </span>
           </div>
           <ul className={styles.addClient__about}>
             <AboutClientCard

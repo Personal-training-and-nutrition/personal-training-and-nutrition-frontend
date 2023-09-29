@@ -10,13 +10,14 @@ type Props = {
   placeholder?: string;
   register: UseFormRegister<InputsType>;
   textError?: string;
+  isInvalid?: boolean;
 };
+const InputText = ({ name, label, minLength ,maxLength, placeholder, register, textError, isInvalid }: Props) => {
 
-const InputText = ({ name, label, minLength ,maxLength, placeholder, register, textError }: Props) => {
   return (
     <div className={styles.inputText__wrapper}>
       <label className={styles.inputText__label} htmlFor={name}>{label}</label>
-      <input className={styles.inputText__input} type="text" placeholder={placeholder} {...register(`${name}` as never, {required: textError, maxLength: maxLength, minLength: minLength})}/>
+      <input className={isInvalid ? `${styles.inputText__input} ${styles.inputText__input_invalid}` : styles.inputText__input} type="text" placeholder={placeholder} {...register(`${name}` as never, {required: textError, maxLength: maxLength, minLength: minLength})}/>
     </div>
   );
 };
