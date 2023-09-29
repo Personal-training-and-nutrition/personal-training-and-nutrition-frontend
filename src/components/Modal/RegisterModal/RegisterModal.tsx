@@ -26,7 +26,7 @@ const RegisterModal = () => {
 
   const onSubmit = handleSubmit((data) => {
     if (data.password !== data.retrypassword) {
-      return setError('retrypassword', {type: 'string', message: 'Пароли не совпадают'})
+      return setError('retrypassword', {type: 'string', message: 'Убедитесь, что пароли совпадают'})
     }
     registerUser({
       email: data.email,
