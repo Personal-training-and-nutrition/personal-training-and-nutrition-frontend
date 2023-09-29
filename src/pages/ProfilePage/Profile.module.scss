@@ -99,7 +99,7 @@
     line-height: 18px;
     &_active {
       opacity: 1;
-      color: #9d1435;
+      color: $error-500;
     }
   }
   &__title {
