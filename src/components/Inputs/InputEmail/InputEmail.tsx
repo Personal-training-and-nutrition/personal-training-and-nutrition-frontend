@@ -25,7 +25,7 @@ const InputEmail = ({ name, placeholder, isLabel, label, register, isInvalid }: 
             type="text"
             placeholder={placeholder}
             {...register(`${name}` as never, {required: true, pattern: {
-              value: /[\w\.\-]+@[\w\.\-]+\.[\w\.\-]{2,}/gi,
+              value: /[\w\.\-]+@[[\w\.\-]+]{2,}\.[\w\.\-]{2,}/gi,
               message: 'Введите корректный Email'}})}
           />
         </div>
