@@ -65,6 +65,7 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
               placeholder="Фамилия"
               register={register}
               textError={'Поле не должно быть пустым'}
+              isInvalid = {Boolean(errors.lastName)}
             />
             <span className={errors?.lastName ? errorVisible : errorInvisible}>
               {errors?.lastName?.message || 'Ошибка!'}
@@ -75,6 +76,7 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
               placeholder="Имя"
               register={register}
               textError={'Поле не должно быть пустым'}
+              isInvalid = {Boolean(errors.firstName)}
             />
             <span className={errors?.firstName ? errorVisible : errorInvisible}>
               {errors?.firstName?.message || 'Ошибка!'}
