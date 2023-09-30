@@ -14,14 +14,14 @@ import { InputsType } from '../../../pages/ProfilePage/Profile';
 const AuthModal = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const from = location.state?.from.pathname || '/';
+  const redirectTo = location.state?.from.pathname || '/';
   const [login, { isSuccess, isLoading }] = useLoginMutation();
 
   useEffect(() => {
     console.log('logging in...');
     if (isSuccess) {
       console.log('login successfull');
-      navigate(from);
+      navigate(redirectTo);
     }
   }, [isLoading]);
 

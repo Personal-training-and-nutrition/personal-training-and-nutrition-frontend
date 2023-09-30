@@ -5,7 +5,7 @@ import styles from './BtnStart.module.scss';
 const BtnStart: React.FC = () => {
   return (
     <div className={styles.btnStartContainer}>
-      <Link className={styles.btnStart} to={'/register'}>
+      <Link className={styles.btnStart} to={'/login'}>
         Начать
       </Link>
     </div>
