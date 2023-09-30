@@ -1,6 +1,6 @@
 import styles from './RegisterModal.module.scss';
 import Modal from '../Modal';
-import { Link } from 'react-router-dom';
+import {Link, useLocation, useNavigate} from 'react-router-dom';
 import Button from '../../Button/Button';
 import InputEmail from '../../Inputs/InputEmail/InputEmail';
 import InputPassword from '../../Inputs/InputPassword/InputPassword';
@@ -11,10 +11,18 @@ import { useForm } from 'react-hook-form';
 import { InputsType } from '../../../pages/ProfilePage/Profile.tsx';
 
 const RegisterModal = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const redirectTo = location.state?.from.pathname || '/login';
+
   const [registerUser, { isLoading, isSuccess }] = useRegisterUserMutation();
 
   useEffect(() => {
-    if (isSuccess) console.log('successful');
+    console.log('logging in...');
+    if (isSuccess) {
+      console.log('login successfull');
+      navigate(redirectTo);
+    }
   }, [isLoading]);
 
   const {
@@ -24,15 +32,19 @@ const RegisterModal = () => {
     formState: { isDirty, isValid, errors },
   } = useForm<InputsType>({ mode: 'all' });
 
-  const onSubmit = handleSubmit((data) => {
+  const onSubmit = handleSubmit(async (data) => {
     if (data.password !== data.retrypassword) {
       return setError('retrypassword', {type: 'string', message: 'Убедитесь, что пароли совпадают'})
     }
-    registerUser({
-      email: data.email,
-      password: data.password,
-      re_password: data.retrypassword,
-    });
+    try {
+      await registerUser({
+        email: data.email,
+        password: data.password,
+        re_password: data.retrypassword,
+      });
+    } catch (err) {
+      console.error('register failed', err);
+    }
   });
   const errorVisible = `${styles.registerModal__error} ${styles.registerModal__error_active}`;
   const errorInvisible = `${styles.registerModal__error}`;

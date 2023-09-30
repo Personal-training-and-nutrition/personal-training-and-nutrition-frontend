@@ -15,8 +15,12 @@
   text-decoration: none;
   color: $white-100;
 
-  transition: all 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out;
   margin: 0 auto;
+
+  &:hover {
+    background-color: $blue-500;
+  }
 
   &-container {
     padding-bottom: 20px;
@@ -31,9 +35,5 @@
       padding-bottom: 0;
       position: sticky;
     }
-  }
-
-  &:hover {
-    background-color: $blue-500;
   }
 }

@@ -7,7 +7,7 @@ type Props = {
 };
 
 export default function Modal({ children }: Props) {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
     <div className={styles.modal}>
       <div className={styles.modal__container}>
