@@ -14,7 +14,6 @@ import { selectStatus } from '../../redux/slices/LandingPageSlice.ts';
 import useResize from '../../hooks/useResize.ts';
 import { useWindowPosition } from '../../hooks/useWindowPosition.tsx';
 import Toggle from '../../components/LandingPage/Toggle/Toggle.tsx';
-import { useEffect } from 'react';
 
 const LandingPage: React.FC = () => {
   const size = useResize();
@@ -25,11 +24,6 @@ const LandingPage: React.FC = () => {
   const listItems = isStatusSpecialist ? landingPageSpeciatistParams : landingPageUsersParams;
   const listImages =
     size.width >= 1440 && isStatusSpecialist ? landingPageSpecImagesFromDesktop : landingPageUsersImagesFromDesktop;
-
-  // ==== testing zone ====
-  /* const { data, isLoading: isLoadings } = useGetDietProgramsQuery(); //testing purposes
-  useEffect(() => console.log(data), [isLoadings]); */
-  // ======================
 
   return (
     <div className={styles.landing}>
