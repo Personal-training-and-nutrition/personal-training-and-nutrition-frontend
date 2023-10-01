@@ -1,12 +1,12 @@
 import styles from './RegisterModal.module.scss';
 import Modal from '../Modal';
-import {Link, useLocation, useNavigate} from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Button from '../../Button/Button';
 import InputEmail from '../../Inputs/InputEmail/InputEmail';
 import InputPassword from '../../Inputs/InputPassword/InputPassword';
 import InputCheckbox from '../../Inputs/InputCheckbox/InputCheckbox';
 import { useEffect } from 'react';
-import { useRegisterUserMutation } from '../../../redux/api/authApi';
+import { useRegisterUserMutation } from '../../../redux/services/authApi';
 import { useForm } from 'react-hook-form';
 import { InputsType } from '../../../pages/ProfilePage/Profile.tsx';
 
@@ -34,7 +34,7 @@ const RegisterModal = () => {
 
   const onSubmit = handleSubmit(async (data) => {
     if (data.password !== data.retrypassword) {
-      return setError('retrypassword', {type: 'string', message: 'Убедитесь, что пароли совпадают'})
+      return setError('retrypassword', { type: 'string', message: 'Убедитесь, что пароли совпадают' });
     }
     try {
       await registerUser({
@@ -56,7 +56,12 @@ const RegisterModal = () => {
         Войти
       </Link>
       <form className={styles.registerModal__form} onSubmit={onSubmit}>
-        <InputEmail name="email" placeholder="Электронная почта" register={register} isInvalid = {Boolean(errors.email)}/>
+        <InputEmail
+          name="email"
+          placeholder="Электронная почта"
+          register={register}
+          isInvalid={Boolean(errors.email)}
+        />
         <span className={errors?.email ? errorVisible : errorInvisible}>{errors?.email?.message || ''}</span>
         <InputPassword
           name="password"
@@ -64,8 +69,8 @@ const RegisterModal = () => {
           minLength={8}
           maxLenght={25}
           register={register}
-          isInvalid = {Boolean(errors.password)}
-          textError='Поле не должно быть пустым'
+          isInvalid={Boolean(errors.password)}
+          textError="Поле не должно быть пустым"
         />
         <span className={errors?.password ? errorVisible : errorInvisible}>{errors?.password?.message || ''}</span>
         <InputPassword
@@ -74,10 +79,12 @@ const RegisterModal = () => {
           minLength={8}
           maxLenght={25}
           register={register}
-          isInvalid = {Boolean(errors.retrypassword)}
-          textError=''
+          isInvalid={Boolean(errors.retrypassword)}
+          textError=""
         />
-        <span className={errors?.retrypassword ? errorVisible : errorInvisible}>{errors?.retrypassword?.message || 'Ошибка!'}</span>
+        <span className={errors?.retrypassword ? errorVisible : errorInvisible}>
+          {errors?.retrypassword?.message || 'Ошибка!'}
+        </span>
         <InputCheckbox register={register} />
         <Button textBtn="Зарегистрироваться" type="submit" isDirty={isDirty} isValid={isValid} />
       </form>

@@ -16,7 +16,6 @@ import { useWindowPosition } from '../../hooks/useWindowPosition.tsx';
 import Toggle from '../../components/LandingPage/Toggle/Toggle.tsx';
 
 const LandingPage: React.FC = () => {
-
   const size = useResize();
   const scrollPosition = useWindowPosition();
 

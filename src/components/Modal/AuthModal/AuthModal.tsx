@@ -5,7 +5,7 @@ import Button from '../../Button/Button';
 import SocialIcons from '../../SocialIcons/SocialIcons';
 import InputEmail from '../../Inputs/InputEmail/InputEmail';
 import InputPassword from '../../Inputs/InputPassword/InputPassword';
-import { useLoginMutation } from '../../../redux/api/authApi';
+import { useLoginMutation } from '../../../redux/services/authApi';
 // import { useGetAllUsersQuery } from '../../../redux/api/userApi';
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
@@ -15,13 +15,15 @@ const AuthModal = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const redirectTo = location.state?.from.pathname || '/';
-  const [login, { isSuccess, isLoading }] = useLoginMutation();
+  const [login, { isSuccess, isLoading, isError, error }] = useLoginMutation();
 
   useEffect(() => {
     console.log('logging in...');
     if (isSuccess) {
       console.log('login successfull');
       navigate(redirectTo);
+    } else if (isError) {
+      console.error('login failed', error);
     }
   }, [isLoading]);
 
@@ -57,9 +59,21 @@ const AuthModal = () => {
         Зарегистрироваться
       </Link>
       <form className={styles.authModal__form} onSubmit={onSubmit}>
-        <InputEmail name="email" placeholder="Электронная почта" register={register} isInvalid = {Boolean(errors.email)}/>
+        <InputEmail
+          name="email"
+          placeholder="Электронная почта"
+          register={register}
+          isInvalid={Boolean(errors.email)}
+        />
         <span className={errors?.email ? errorVisible : errorInvisible}>{errors?.email?.message || ''}</span>
-        <InputPassword name="password" placeholder="Пароль" minLength={8} maxLenght={25} register={register}  isInvalid = {Boolean(errors.password)}/>
+        <InputPassword
+          name="password"
+          placeholder="Пароль"
+          minLength={8}
+          maxLenght={25}
+          register={register}
+          isInvalid={Boolean(errors.password)}
+        />
         <span className={errors?.password ? errorVisible : errorInvisible}>{errors?.password?.message || ''}</span>
         <Link to="/password-recovery" className={styles.authModal__link}>
           Я не помню пароль

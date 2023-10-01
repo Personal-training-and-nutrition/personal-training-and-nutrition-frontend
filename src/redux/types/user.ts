@@ -19,31 +19,36 @@ interface IUser {
   user_permissions?: number[];
 }
 
-interface IRegisterUser {
-  email: string;
-  password: string;
-  re_password: string; // wat?
-}
-
-interface ILoginUser {
-  email: string;
+interface IUserPassword {
   password: string;
 }
 
-interface IRefreshToken {
+interface IUserEmail {
+  email: string;
+}
+
+interface IUserResetEmail {
+  new_email: string;
+}
+
+interface IUserActivationCreate {
+  uid: string;
   token: string;
 }
 
-type TResponse = {
-  status: string;
-  message: string;
-};
+interface IUserResetPasswordConfirm {
+  uid: string;
+  token: string;
+  new_password: string;
+}
 
-type TTokensResponse = TResponse & {
-  access: string;
-  refresh: string;
-};
+interface IUserSetEmail {
+  current_password: string;
+  new_email: string;
+}
 
-type TRefreshResponse = TResponse & {
-  access: string;
-};
+interface IUserSetPassword {
+  new_password: string;
+  re_new_password: string;
+  current_password: string;
+}

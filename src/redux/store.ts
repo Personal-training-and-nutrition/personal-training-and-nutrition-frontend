@@ -2,27 +2,9 @@ import { configureStore } from '@reduxjs/toolkit';
 import landing from './slices/LandingPageSlice.ts';
 import userReducer from './slices/userSlice.ts';
 import { useDispatch } from 'react-redux';
-import { combinedApi } from './api/combinedApi.ts';
-import { createListenerMiddleware } from '@reduxjs/toolkit';
-import { authApi } from './api/authApi.ts';
-import { userApi } from './api/userApi.ts';
-
-const loginMiddleware = createListenerMiddleware();
-const refreshMiddleware = createListenerMiddleware();
-loginMiddleware.startListening({
-  matcher: authApi.endpoints.login.matchFulfilled,
-  effect: ({ payload }) => {
-    window.localStorage.setItem('refreshToken', payload.refresh);
-    window.localStorage.setItem('accessToken', payload.access);
-  },
-});
-refreshMiddleware.startListening({
-  matcher: authApi.endpoints.refresh.matchFulfilled,
-  effect: ({ payload }) => {
-    console.log('renew attempt', payload.access);
-    window.localStorage.setItem('accessToken', payload.access);
-  },
-});
+import { loginMiddleware, refreshMiddleware } from './middleware/tokensStorage.ts';
+import { userApi } from './services/userApi.ts';
+import { combinedApi } from './services/combinedApi.ts';
 
 export const store = configureStore({
   reducer: {
