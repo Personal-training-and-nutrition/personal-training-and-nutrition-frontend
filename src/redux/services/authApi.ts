@@ -29,7 +29,27 @@ export const authApi = combinedApi.injectEndpoints({
         };
       },
     }),
+    oRetrieve: builder.mutation<TResponse, { provider: string; data: IAuthO }>({
+      query(arg) {
+        const { provider, data } = arg;
+        return {
+          url: `auth/o/${provider}/`,
+          method: 'GET',
+          body: data,
+        };
+      },
+    }),
+    oCreate: builder.mutation<TResponse, { provider: string; data: IAuthO }>({
+      query(arg) {
+        const { provider, data } = arg;
+        return {
+          url: `auth/o/${provider}/`,
+          method: 'POST',
+          body: data,
+        };
+      },
+    }),
   }),
 });
 
-export const { useRegisterUserMutation, useLoginMutation } = authApi;
+export const { useRegisterUserMutation, useLoginMutation, useORetrieveMutation, useOCreateMutation } = authApi;
