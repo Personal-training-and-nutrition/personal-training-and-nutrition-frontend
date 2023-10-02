@@ -12,14 +12,14 @@ export const formatToPhone = (event:  React.ChangeEvent<HTMLInputElement>) => {
  const code = `${countryCode === '8' ? countryCode = '7' : countryCode}`;
 
   if(input.length > 9) {
-    event.target.value = `+ ${code} (${areaCode}) ${middle}-${preLast}-${last}`
+    event.target.value = `+${code} (${areaCode}) ${middle}-${preLast}-${last}`
   } else if(input.length > 7){
-    event.target.value = `+ ${code} (${areaCode}) ${middle}-${preLast}`
+    event.target.value = `+${code} (${areaCode}) ${middle}-${preLast}`
   } else if(input.length > 4) {
-    event.target.value = `+ ${code} (${areaCode}) ${middle}`
+    event.target.value = `+${code} (${areaCode}) ${middle}`
   } else if(input.length > 3) {
-    event.target.value = `+ ${code} (${areaCode})`
+    event.target.value = `+${code} (${areaCode})`
   } else if(input.length <= 1 ) {
-    event.target.value = `+ ${code}`
+    event.target.value = `+${code}`
   }
 };
