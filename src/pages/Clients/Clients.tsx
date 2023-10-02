@@ -61,7 +61,7 @@ function Clients() {
 
       <button
         className={`${styles.clients__addClientBtn} ${y > 230 ? styles.clients__stickyBtn : ''}`}
-        onClick={() => navigate('/addClient')}
+        onClick={() => navigate('/client/new')}
       >
         <img className={styles.clients__addClientBtnImage} src={addClientImg} alt="картинка кнопки" />
         <span className={styles.clients__addClientBtnText}>
@@ -70,8 +70,8 @@ function Clients() {
       </button>
 
       <ul className={styles.clients__list}>
-        {filteredClients.map((user) => {
-          return <ClientsListCard name={user.name} age={user.age} description={user.description} />;
+        {filteredClients.map((user, i) => {
+          return <ClientsListCard name={user.name} age={user.age} description={user.description} key={i}/>;
         })}
       </ul>
     </div>
