@@ -1,12 +1,11 @@
 @import '../../scss/colors/colors.scss';
 
-.planAuth {
+.planUnauth {
   &__content {
     display: flex;
     flex-direction: column;
     margin: 0 auto 20px;
     max-width: 375px;
-    padding-bottom: 80px;
   }
   &__logo {
     width: 159px;
@@ -52,6 +51,11 @@
       font-size: 15px;
       line-height: 18px;
       color: $blue-700;
+      transition: opacity 0.2s ease-in-out;
+
+      &:hover {
+        opacity: 0.8;
+      }
     }
   }
   &__listDay {
@@ -73,13 +77,18 @@
     line-height: 20.8px;
     color: $blue-700;
     text-decoration: none;
+    transition: opacity 0.2s ease-in-out;
+
+    &:hover {
+      opacity: .8;
+    }
   }
   &__btn {
     margin: 0 16px;
     display: flex;
     flex-direction: column;
     position: sticky;
-    bottom: 100px;
+    bottom: 20px;
     z-index: 10;
     text-decoration: none;
   }

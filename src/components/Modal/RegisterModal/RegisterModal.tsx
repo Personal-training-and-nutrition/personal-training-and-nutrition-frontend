@@ -66,24 +66,18 @@ const RegisterModal = () => {
         <InputPassword
           name="password"
           placeholder="Придумайте пароль"
-          minLength={8}
-          maxLenght={25}
           register={register}
           isInvalid={Boolean(errors.password)}
-          textError="Поле не должно быть пустым"
         />
         <span className={errors?.password ? errorVisible : errorInvisible}>{errors?.password?.message || ''}</span>
         <InputPassword
           name="retrypassword"
           placeholder="Повторите пароль"
-          minLength={8}
-          maxLenght={25}
           register={register}
           isInvalid={Boolean(errors.retrypassword)}
-          textError=""
         />
         <span className={errors?.retrypassword ? errorVisible : errorInvisible}>
-          {errors?.retrypassword?.message || 'Ошибка!'}
+          {errors?.retrypassword?.message || ''}
         </span>
         <InputCheckbox register={register} />
         <Button textBtn="Зарегистрироваться" type="submit" isDirty={isDirty} isValid={isValid} />

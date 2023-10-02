@@ -69,8 +69,6 @@ const AuthModal = () => {
         <InputPassword
           name="password"
           placeholder="Пароль"
-          minLength={8}
-          maxLenght={25}
           register={register}
           isInvalid={Boolean(errors.password)}
         />

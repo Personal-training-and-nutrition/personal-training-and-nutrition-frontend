@@ -60,6 +60,11 @@
     overflow: hidden;
     margin-bottom: 14px;
     transition: all 200ms linear;
+    transition: background-color 0.2s ease-in-out;
+
+    &:hover {
+      background-color: $btn-blue-600
+    }
   }
 
   &__stickyBtn {

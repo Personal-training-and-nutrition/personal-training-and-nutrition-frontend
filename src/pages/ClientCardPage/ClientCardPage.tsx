@@ -78,9 +78,9 @@ function ClientCardPage() {
       <section className={styles.clientCard__section}>
         <h2 className={styles.clientCard__title}>Планы питания</h2>
 
-        <PlanCard image={mealPlanImage} title="Минус 2кг (1 неделя)" date="Создан 27 августа 2023" />
+        <Link to="/meal-plan" className={styles.clientCard__link}><PlanCard image={mealPlanImage} title="Минус 2кг (1 неделя)" date="Создан 27 августа 2023" /></Link>
 
-        <p className={styles.clientCard__moreBtn}>Смотреть все</p>
+        <Link to='/meal-plans' className={styles.clientCard__moreBtn}>Смотреть все</Link>
       </section>
 
       <section className={styles.clientCard__section}>
@@ -88,7 +88,7 @@ function ClientCardPage() {
 
         <Link to="/workout-report" className={styles.clientCard__link}><PlanCard image={workoutPlanImage} title="Входим в ритм!" date="Создан 27 августа 2023" /></Link>
 
-        <p className={styles.clientCard__moreBtn}>Смотреть все</p>
+        <Link to='/workout-plans' className={styles.clientCard__moreBtn}>Смотреть все</Link>
       </section>
 
       <div>

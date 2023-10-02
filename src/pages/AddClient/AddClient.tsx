@@ -14,9 +14,13 @@ import ButtonCancel from '../../components/ButtonCancel/ButtonCancel';
 import Button from '../../components/Button/Button';
 
 const AddClient = () => {
-  const { register, handleSubmit, formState: { isDirty, isValid, errors }, reset } = useForm<InputsType>({
+  const {
+    register,
+    handleSubmit,
+    formState: { isDirty, isValid, errors },
+    reset,
+  } = useForm<InputsType>({
     mode: 'all',
-
   });
   const onSubmit = handleSubmit((data) => {
     console.log(data);
@@ -30,10 +34,16 @@ const AddClient = () => {
         <TitleBlock text="добавление клиента" isBack={true} />
         <form className={styles.addClient__form} action="" onSubmit={onSubmit}>
           <div className={styles.addClient__nameWrap}>
-            <InputText name="lastName" label="Фамилия" placeholder="Фамилия" register={register} /> <span className={errors?.lastName ? errorVisible : errorInvisible}>
-              {errors?.lastName?.message || ''}
-            </span>
-            <InputText name="firstName" label="Имя" placeholder="Имя" register={register} textError='Введите имя' isInvalid = {Boolean(errors.firstName)}/>
+            <InputText name="lastName" label="Фамилия" placeholder="Фамилия" register={register} />{' '}
+            <span className={errors?.lastName ? errorVisible : errorInvisible}>{errors?.lastName?.message || ''}</span>
+            <InputText
+              name="firstName"
+              label="Имя"
+              placeholder="Имя"
+              register={register}
+              textError="Введите имя"
+              isInvalid={Boolean(errors.firstName)}
+            />
             <span className={errors?.firstName ? errorVisible : errorInvisible}>
               {errors?.firstName?.message || ''}
             </span>
@@ -41,19 +51,28 @@ const AddClient = () => {
           </div>
           <GenderInput register={register} />
           <div className={styles.addClient__characteristic}>
-            <DatePicker register={register}/>
-            <InputNumber name="clientWeight" label="Вес" placeholder="кг" register={register}/>
-            <InputNumber name="clientHeight" label="Рост" placeholder="см" register={register}/>
+            <div className={styles.addClient__dataWrap}>
+              <DatePicker register={register} isInvalid={Boolean(errors.birthday)} />
+              <span className={errors?.birthday ? errorVisible : errorInvisible}>
+                {errors?.birthday?.message || '!!!'}
+              </span>
+            </div>
+
+            <InputNumber name="clientWeight" label="Вес" placeholder="кг" register={register} />
+            <InputNumber name="clientHeight" label="Рост" placeholder="см" register={register} />
           </div>
           <div className={styles.addClient__nameWrap}>
-            <InputPhone name="phone" register={register} isInvalid = {Boolean(errors.phone)}/>
-            <span className={errors?.phone ? errorVisible : errorInvisible}>
-              {errors?.phone?.message || ''}
-            </span>
-            <InputEmail name="email" label="Email" placeholder="Email" isLabel={true} register={register} isInvalid = {Boolean(errors.email)}/>
-            <span className={errors?.email ? errorVisible : errorInvisible}>
-              {errors?.email?.message || ''}
-            </span>
+            <InputPhone name="phone" register={register} isInvalid={Boolean(errors.phone)} />
+            <span className={errors?.phone ? errorVisible : errorInvisible}>{errors?.phone?.message || ''}</span>
+            <InputEmail
+              name="email"
+              label="Email"
+              placeholder="Email"
+              isLabel={true}
+              register={register}
+              isInvalid={Boolean(errors.email)}
+            />
+            <span className={errors?.email ? errorVisible : errorInvisible}>{errors?.email?.message || ''}</span>
           </div>
           <ul className={styles.addClient__about}>
             <AboutClientCard
@@ -87,11 +106,10 @@ const AddClient = () => {
               register={register}
             />
           </ul>
-          <SpecNote textareaName="SpecNote" textareaPlaceholder="Добавьте важную информацию" register={register}/>
+          <SpecNote textareaName="SpecNote" textareaPlaceholder="Добавьте важную информацию" register={register} />
           <div className={styles.addClient__nameWrap}>
             <Button textBtn="Сохранить" type="submit" isDirty={isDirty} isValid={isValid} />
-            <ButtonCancel text="Отменить" isDirty={true} isValid={true} onClick={() => reset()}
-/>
+            <ButtonCancel text="Отменить" isDirty={true} isValid={true} onClick={() => reset()} />
           </div>
         </form>
       </main>

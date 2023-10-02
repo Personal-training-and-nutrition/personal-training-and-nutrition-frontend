@@ -5,7 +5,7 @@ import styles from './DatePicker.module.scss';
 
 // type Props = {}
 
-const DatePicker = ({ register }: { register: UseFormRegister<InputsType> }) => {
+const DatePicker = ({ isInvalid, register }: { isInvalid: boolean; register: UseFormRegister<InputsType> }) => {
 
   function onBlurInput(e: React.ChangeEvent<HTMLInputElement>) {
     e.target.type = 'text';
@@ -28,11 +28,12 @@ const DatePicker = ({ register }: { register: UseFormRegister<InputsType> }) => 
       <input
         type="text"
         // id=""
-        className={styles.datePicker__input}
+        className={isInvalid ? `${styles.datePicker__input_invalid} ${styles.datePicker__input}` : styles.datePicker__input}
         onFocus={onFocusInput}
         placeholder='Дата рождения'
         {...register('birthday', {onBlur: onBlurInput})}
       />
+
     </div>
   );
 };

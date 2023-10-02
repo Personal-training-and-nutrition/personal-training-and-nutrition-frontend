@@ -19,8 +19,15 @@
     border: none;
     color: $black-600;
     cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    &:hover{
+      background-color: $blue-400;
+    }
     &_client {
       background-color: $green-300;
+      &:hover{
+        background-color: $green-500;
+      }
     }
 
   }

@@ -1,6 +1,9 @@
 @import '../../scss/colors/colors.scss';
 
 .sn {
+  &__wrapper {
+    margin-bottom: 32px;
+  }
   &__titleWrap {
     display: flex;
     column-gap: 8px;
