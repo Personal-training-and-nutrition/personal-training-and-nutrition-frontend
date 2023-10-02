@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Toggle.module.scss';
 import { useAppDispatch } from '../../../redux/store.ts';
-import { selectStatus, setStatus } from '../../../redux/slices/LandingPageSlice.ts';
+import { selectStatus, setStatus } from '../../../redux/slices/landingPageSlice.ts';
 import { useSelector } from 'react-redux';
 
 const Toggle: React.FC = () => {

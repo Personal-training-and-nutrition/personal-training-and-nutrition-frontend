@@ -7,7 +7,7 @@ const initialState: LandingPagePropsType = {
   isStatusSpecialist: true,
 };
 
-const LandingPageSlice = createSlice({
+const landingPageSlice = createSlice({
   name: 'landing',
   initialState,
   reducers: {
@@ -19,6 +19,6 @@ const LandingPageSlice = createSlice({
 
 export const selectStatus = (state: RootState) => state.landing;
 
-export const { setStatus } = LandingPageSlice.actions;
+export const { setStatus } = landingPageSlice.actions;
 
-export default LandingPageSlice.reducer;
+export default landingPageSlice.reducer;

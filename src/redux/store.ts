@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import landing from './slices/LandingPageSlice.ts';
+import landing from './slices/landingPageSlice.ts';
 import userReducer from './slices/userSlice.ts';
 import { useDispatch } from 'react-redux';
 import { loginMiddleware, refreshMiddleware } from './middleware/tokensStorage.ts';
