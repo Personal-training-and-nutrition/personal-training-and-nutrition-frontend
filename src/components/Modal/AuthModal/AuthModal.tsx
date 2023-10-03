@@ -19,7 +19,7 @@ const AuthModal = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [errMessage, setErrMessage] = useState<string | null>(null);
-  const redirectTo = location.state?.from.pathname || '/user-profile/client';
+  const redirectTo = location.state?.from.pathname || '/';
   const [login, { isSuccess, isLoading, error }] = useLoginMutation();
   // const [getMe] = useLazyGetMeQuery();
   // const dispatch = useAppDispatch();
