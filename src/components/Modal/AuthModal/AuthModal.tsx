@@ -11,9 +11,9 @@ import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { InputsType } from '../../../pages/ProfilePage/Profile';
 import { isApiError } from '../../../utils/isApiError';
-import { useLazyGetMeQuery } from '../../../redux/services/userApi';
+/* import { useLazyGetMeQuery } from '../../../redux/services/userApi';
 import { useAppDispatch } from '../../../redux/store';
-import { setUserId } from '../../../redux/slices/userSlice';
+import { setUserId } from '../../../redux/slices/userSlice'; */
 
 const AuthModal = () => {
   const location = useLocation();
@@ -21,8 +21,8 @@ const AuthModal = () => {
   const [errMessage, setErrMessage] = useState<string | null>(null);
   const redirectTo = location.state?.from.pathname || '/user-profile/client';
   const [login, { isSuccess, isLoading, error }] = useLoginMutation();
-  const [getMe] = useLazyGetMeQuery();
-  const dispatch = useAppDispatch();
+  // const [getMe] = useLazyGetMeQuery();
+  // const dispatch = useAppDispatch();
   const {
     register,
     handleSubmit,
@@ -34,10 +34,11 @@ const AuthModal = () => {
     setErrMessage(null);
     if (isSuccess) {
       console.log('login successfull');
-      getMe()
+      navigate(redirectTo);
+      /* getOMe()
         .unwrap()
         .then((res) => dispatch(setUserId(res.id)))
-        .then(() => navigate(redirectTo));
+        .then(() => navigate(redirectTo)); */
     } else if (isApiError(error)) {
       setErrMessage(error.data.detail || 'Вход не удался, повторите попытку позднее.');
     }
