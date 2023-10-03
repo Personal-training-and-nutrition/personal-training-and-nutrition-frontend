@@ -33,7 +33,7 @@ function App() {
   const location = useLocation();
 
   return (
-    <div className="App">
+    <div className={`App ${!navBarHideCases.includes(location.pathname) ? 'App__desktop' : ''}`}>
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="*" element={<NotFoundPage />} />

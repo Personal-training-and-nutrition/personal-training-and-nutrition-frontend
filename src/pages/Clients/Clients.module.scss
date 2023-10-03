@@ -4,9 +4,7 @@
   &__content {
     display: flex;
     flex-direction: column;
-    padding: 0 16px;
     padding-bottom: 80px;
-    margin: 0 auto;
     max-width: 375px;
     min-height: 100vh;
     color: $black-800;
@@ -63,7 +61,7 @@
     transition: background-color 0.2s ease-in-out;
 
     &:hover {
-      background-color: $btn-blue-600
+      background-color: $btn-blue-600;
     }
   }
 

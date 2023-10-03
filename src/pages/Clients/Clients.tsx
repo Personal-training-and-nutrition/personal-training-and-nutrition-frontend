@@ -5,7 +5,6 @@ import plusIcon from '../../assets/images/icons/white-plus.svg';
 import searchIcon from '../../assets/images/icons/search-icon.svg';
 import ClientsListCard from '../../components/ClientsListCard/ClientsListCard';
 import { useNavigate } from 'react-router-dom';
-import { useWindowPosition } from '../../hooks/useWindowPosition';
 
 type ClientTypes = {
   name: string;
@@ -37,14 +36,13 @@ function Clients() {
     client.name.toLowerCase().includes(searchText.toLowerCase().trim()),
   );
   const navigate = useNavigate();
-  const { y } = useWindowPosition();
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   return (
-    <div className={styles.clients__content}>
+    <div className={`App__container ${styles.clients__content}`}>
       <h1 className={styles.clients__pageTitle}>Клиенты</h1>
 
       <div className={styles.clients__searchInputContainer}>
@@ -59,10 +57,7 @@ function Clients() {
         />
       </div>
 
-      <button
-        className={`${styles.clients__addClientBtn} ${y > 230 ? styles.clients__stickyBtn : ''}`}
-        onClick={() => navigate('/client/new')}
-      >
+      <button className={styles.clients__addClientBtn} onClick={() => navigate('/client/new')}>
         <img className={styles.clients__addClientBtnImage} src={addClientImg} alt="картинка кнопки" />
         <span className={styles.clients__addClientBtnText}>
           Добавить клиента <img src={plusIcon} alt="Белый плюсик" />
@@ -71,7 +66,7 @@ function Clients() {
 
       <ul className={styles.clients__list}>
         {filteredClients.map((user, i) => {
-          return <ClientsListCard name={user.name} age={user.age} description={user.description} key={i}/>;
+          return <ClientsListCard name={user.name} age={user.age} description={user.description} key={i} />;
         })}
       </ul>
     </div>

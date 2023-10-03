@@ -1,8 +1,15 @@
 @import './colors/colors.scss';
 
-
 .App {
   box-sizing: border-box;
+
+  &__desktop {
+    @media (min-width: 768px) {
+      display: grid;
+      grid-template-columns: 1.1fr 2fr;
+      gap: 40px;
+    }
+  }
 
   &__container {
     padding: 0 16px;
@@ -14,17 +21,20 @@
     }
 
     @media (min-width: 768px) {
-      max-width: 768px;
+      box-sizing: border-box;
+      max-width: 645px;
+      margin: 0;
+      padding: 40px;
     }
 
-    @media (min-width: 1280px) {
-      padding: 0;
-      max-width: 768px;
-    }
+    // @media (min-width: 1280px) {
+    //   padding: 0;
+    //   max-width: 768px;
+    // }
 
-    @media (min-width: 1440px) {
-      padding: 0;
-      max-width: 1400px;
-    }
+    // @media (min-width: 1440px) {
+    //   padding: 0;
+    //   max-width: 1400px;
+    // }
   }
 }
