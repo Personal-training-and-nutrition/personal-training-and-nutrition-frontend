@@ -7,23 +7,39 @@ import InputEmail from '../../Inputs/InputEmail/InputEmail';
 import InputPassword from '../../Inputs/InputPassword/InputPassword';
 import { useLoginMutation } from '../../../redux/services/authApi';
 // import { useGetAllUsersQuery } from '../../../redux/api/userApi';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { InputsType } from '../../../pages/ProfilePage/Profile';
+import { isApiError } from '../../../utils/isApiError';
+import { useLazyGetMeQuery } from '../../../redux/services/userApi';
+import { useAppDispatch } from '../../../redux/store';
+import { setUserId } from '../../../redux/slices/userSlice';
 
 const AuthModal = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const redirectTo = location.state?.from.pathname || '/';
-  const [login, { isSuccess, isLoading, isError, error }] = useLoginMutation();
+  const [errMessage, setErrMessage] = useState<string | null>(null);
+  const redirectTo = location.state?.from.pathname || '/user-profile/client';
+  const [login, { isSuccess, isLoading, error }] = useLoginMutation();
+  const [getMe] = useLazyGetMeQuery();
+  const dispatch = useAppDispatch();
+  const {
+    register,
+    handleSubmit,
+    formState: { isDirty, isValid, errors },
+  } = useForm<InputsType>({ mode: 'all' });
 
   useEffect(() => {
     console.log('logging in...');
+    setErrMessage(null);
     if (isSuccess) {
       console.log('login successfull');
-      navigate(redirectTo);
-    } else if (isError) {
-      console.error('login failed', error);
+      getMe()
+        .unwrap()
+        .then((res) => dispatch(setUserId(res.id)))
+        .then(() => navigate(redirectTo));
+    } else if (isApiError(error)) {
+      setErrMessage(error.data.detail || 'Вход не удался, повторите попытку позднее.');
     }
   }, [isLoading]);
 
@@ -32,24 +48,16 @@ const AuthModal = () => {
   useEffect(() => console.log(data), [isLoadings]); */
   // ======================
 
-  const {
-    register,
-    handleSubmit,
-    formState: { isDirty, isValid, errors },
-  } = useForm<InputsType>({ mode: 'all' });
   const onSubmit = handleSubmit(async (data) => {
-    try {
-      await login({
-        email: data.email,
-        password: data.password,
-      });
-    } catch (err) {
-      console.error('login failed', err);
-    }
+    await login({
+      email: data.email,
+      password: data.password,
+    });
   });
 
   const errorVisible = `${styles.authModal__error} ${styles.authModal__error_active}`;
   const errorInvisible = `${styles.authModal__error}`;
+  const errorRemoved = `${styles.authModal__error_removed}`;
 
   return (
     <Modal>
@@ -66,13 +74,9 @@ const AuthModal = () => {
           isInvalid={Boolean(errors.email)}
         />
         <span className={errors?.email ? errorVisible : errorInvisible}>{errors?.email?.message || ''}</span>
-        <InputPassword
-          name="password"
-          placeholder="Пароль"
-          register={register}
-          isInvalid={Boolean(errors.password)}
-        />
+        <InputPassword name="password" placeholder="Пароль" register={register} isInvalid={Boolean(errors.password)} />
         <span className={errors?.password ? errorVisible : errorInvisible}>{errors?.password?.message || ''}</span>
+        <span className={errMessage ? errorVisible : errorRemoved}>{errMessage}</span>
         <Link to="/password-recovery" className={styles.authModal__link}>
           Я не помню пароль
         </Link>

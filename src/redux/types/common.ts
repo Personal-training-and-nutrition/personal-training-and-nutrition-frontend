@@ -3,11 +3,11 @@ type TResponse = {
   message: string;
 };
 
-type TTokensResponse = TResponse & {
+type TTokensResponse = {
   access: string;
   refresh: string;
 };
 
-type TRefreshResponse = TResponse & {
+type TRefreshResponse = {
   access: string;
 };

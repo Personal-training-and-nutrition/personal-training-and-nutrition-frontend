@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import {useForm} from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import styles from './Profile.module.scss';
 import Button from '../../components/Button/Button';
 import UserStatusBtn from '../../components/UserStatusBtn/UserStatusBtn';
@@ -7,16 +7,18 @@ import penIcon from '../../assets/images/profile/pen-icon.svg';
 import TitleBlock from '../../components/TitleBlock/TitleBlock';
 import GenderInput from '../../components/Inputs/GenderInput/GenderInput';
 import ButtonDelete from '../../components/ButtonDelete/ButtonDelete';
-import {useState} from 'react';
+import { useEffect, useState } from 'react';
 import DatePicker from '../../components/Inputs/DatePicker/DatePicker';
 import InputText from '../../components/Inputs/InputText/InputText';
 import InputPhone from '../../components/Inputs/InputPhone/InputPhone';
+import { usePartialUpdateUserMutation, useRetrieveUserQuery } from '../../redux/services/userApi';
+import { useAppSelector } from '../../redux/store';
 
 export type InputsType = {
-  lastName: string;
-  firstName: string;
+  last_name: string | null;
+  first_name: string | null;
   birthday?: number;
-  gender?: '';
+  gender?: '' | number | null;
   weight?: string;
   height?: string;
   aboutMe?: string;
@@ -30,23 +32,36 @@ export type InputsType = {
 const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
   const [isEditPassw, setEditPassw] = useState(false);
   const [isEditPhone, setEditPhone] = useState(false);
+  const id = useAppSelector((store) => store.user.id);
+  // REMOVE: параметр скип здесь не нужен (пользователь без id будет остановлен гардом), но оставлен для примера
+  const { data: initData, isSuccess } = useRetrieveUserQuery(id!, { skip: !id });
+  const [update] = usePartialUpdateUserMutation();
 
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors, isDirty, isValid },
   } = useForm<InputsType>({
     mode: 'all',
     defaultValues: {
+      last_name: initData?.last_name || '',
+      first_name: initData?.first_name || '',
       gender: '',
     },
   });
+
   const onSubmit = handleSubmit((data) => {
+    update({ id: id!, data: { ...data, gender: null, password: undefined } });
     console.log(data);
   });
 
   const errorVisible = `${styles.profile__error} ${styles.profile__error_active}`;
   const errorInvisible = `${styles.profile__error}`;
+
+  useEffect(() => {
+    if (isSuccess) reset(initData);
+  }, [isSuccess]);
 
   return (
     <div className="App__container">
@@ -60,26 +75,26 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
         <form className={styles.profile__form} onSubmit={onSubmit}>
           <label className={styles.profile__label}>
             <InputText
-              name="lastName"
+              name="last_name"
               label="Фамилия"
               placeholder="Фамилия"
               register={register}
               textError={'Поле не должно быть пустым'}
-              isInvalid = {Boolean(errors.lastName)}
+              isInvalid={Boolean(errors.last_name)}
             />
-            <span className={errors?.lastName ? errorVisible : errorInvisible}>
-              {errors?.lastName?.message || 'Ошибка!'}
+            <span className={errors?.last_name ? errorVisible : errorInvisible}>
+              {errors?.last_name?.message || 'Ошибка!'}
             </span>
             <InputText
-              name="firstName"
+              name="first_name"
               label="Имя"
               placeholder="Имя"
               register={register}
               textError={'Поле не должно быть пустым'}
-              isInvalid = {Boolean(errors.firstName)}
+              isInvalid={Boolean(errors.first_name)}
             />
-            <span className={errors?.firstName ? errorVisible : errorInvisible}>
-              {errors?.firstName?.message || 'Ошибка!'}
+            <span className={errors?.first_name ? errorVisible : errorInvisible}>
+              {errors?.first_name?.message || 'Ошибка!'}
             </span>
             <DatePicker register={register} />
           </label>
@@ -112,7 +127,7 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
           )}
           <div>
             <div className={`${styles.profile__title} ${styles.profile__title_style}`}>Email</div>
-            <p className={styles.profile__subtitle}>nutrisav@mail.ru</p>
+            <p className={styles.profile__subtitle}>{initData?.email}</p>
           </div>
           <label className={styles.profile__label}>
             <div className={styles.profile__wrap}>

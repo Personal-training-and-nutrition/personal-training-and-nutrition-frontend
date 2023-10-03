@@ -1,29 +1,24 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface IUserState {
-  user: IUser | null;
+  id: number | null;
   accessToken: string | null;
-  refreshToken: string | null;
 }
 
 const initialState: IUserState = {
-  user: null,
+  id: null,
   accessToken: null,
-  refreshToken: null,
 };
 
 const userSlice = createSlice({
   initialState,
   name: 'userSlice',
   reducers: {
-    setRefreshToken: (state, action: PayloadAction<string>) => {
-      state.refreshToken = action.payload;
-    },
     setAccessToken: (state, action: PayloadAction<string>) => {
       state.accessToken = action.payload;
     },
-    setUser: (state, action: PayloadAction<IUser>) => {
-      state.user = action.payload;
+    setUserId: (state, action: PayloadAction<number>) => {
+      state.id = action.payload;
     },
     logout: () => initialState,
   },
@@ -31,4 +26,4 @@ const userSlice = createSlice({
 
 export default userSlice.reducer;
 
-export const { setAccessToken, setRefreshToken, setUser, logout } = userSlice.actions;
+export const { setAccessToken, setUserId, logout } = userSlice.actions;
