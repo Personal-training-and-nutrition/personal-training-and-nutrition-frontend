@@ -7,7 +7,7 @@ export const userApi = combinedApi.injectEndpoints({
         return { url: 'users/' };
       },
     }),
-    retrieveUser: builder.query<TResponse, number>({
+    retrieveUser: builder.query<IUser, number>({
       query(id) {
         return { url: `users/${id}/` };
       },
@@ -22,13 +22,12 @@ export const userApi = combinedApi.injectEndpoints({
         };
       },
     }),
-    // TODO: пока не работает из-за ошибки КОРС
     partialUpdateUser: builder.mutation<TResponse, { id: number; data: Partial<IUser> }>({
       query(arg) {
         const { id, data } = arg;
         return {
           url: `users/${id}/`,
-          method: 'PATH',
+          method: 'PATCH',
           body: data,
         };
       },
@@ -39,7 +38,7 @@ export const userApi = combinedApi.injectEndpoints({
         return { url: `users/${id}/`, method: 'DELETE' };
       },
     }),
-    getMe: builder.query<TResponse, void>({
+    getMe: builder.query<TMeUser, void>({
       query() {
         return { url: 'users/me/' };
       },
@@ -164,6 +163,7 @@ export const userApi = combinedApi.injectEndpoints({
 export const {
   useGetAllUsersQuery,
   useGetMeQuery,
+  useLazyGetMeQuery,
   useUpdateMeMutation,
   usePartialUpdateMeMutation,
   useDestroyMeMutation,

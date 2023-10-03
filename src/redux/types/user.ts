@@ -1,4 +1,5 @@
 interface IUser {
+  id: number;
   last_login?: string | null;
   email: string;
   first_name?: string | null;
@@ -52,3 +53,9 @@ interface IUserSetPassword {
   re_new_password: string;
   current_password: string;
 }
+
+type TMeUser = {
+  password: string;
+  id: number;
+  email: string;
+};
