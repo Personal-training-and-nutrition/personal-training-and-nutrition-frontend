@@ -5,40 +5,26 @@ import plusIcon from '../../assets/images/icons/white-plus.svg';
 import searchIcon from '../../assets/images/icons/search-icon.svg';
 import ClientsListCard from '../../components/ClientsListCard/ClientsListCard';
 import { useNavigate } from 'react-router-dom';
-import { useWindowPosition } from '../../hooks/useWindowPosition';
 
-type ClientTypes = {
-  name: string;
-  age: number;
-  description: string;
-}[];
+import { useGetAllUsersQuery } from '../../redux/services/userApi';
+import { IUser } from '../../redux/types/user';
 
-const clients: ClientTypes = [
-  { name: 'Никитина Александра', age: 35, description: 'Обратилась с запросом похудеть назначила то-то то-то' },
-  { name: 'Агутин Леонид', age: 55, description: 'Просто красавчик' },
-  { name: 'Пушкин Александр', age: 36, description: 'Хочет набрать форму перед дуэлью' },
-  { name: 'Никитина Александра', age: 35, description: 'Обратилась с запросом похудеть назначила то-то то-то' },
-  { name: 'Агутин Леонид', age: 55, description: 'Просто красавчик' },
-  { name: 'Пушкин Александр', age: 36, description: 'Хочет набрать форму перед дуэлью' },
-  { name: 'Никитина Александра', age: 35, description: 'Обратилась с запросом похудеть назначила то-то то-то' },
-  { name: 'Агутин Леонид', age: 55, description: 'Просто красавчик' },
-  { name: 'Пушкин Александр', age: 36, description: 'Хочет набрать форму перед дуэлью' },
-  { name: 'Никитина Александра', age: 35, description: 'Обратилась с запросом похудеть назначила то-то то-то' },
-  { name: 'Агутин Леонид', age: 55, description: 'Просто красавчик' },
-  { name: 'Пушкин Александр', age: 36, description: 'Хочет набрать форму перед дуэлью' },
-  { name: 'Никитина Александра', age: 35, description: 'Обратилась с запросом похудеть назначила то-то то-то' },
-  { name: 'Агутин Леонид', age: 55, description: 'Просто красавчик' },
-  { name: 'Пушкин Александр', age: 36, description: 'Хочет набрать форму перед дуэлью' },
-];
+type Client = {
+  first_name: string;
+  last_name: string;
+  dob: string;
+};
 
 function Clients() {
   const [searchText, setSearchText] = useState('');
-  const filteredClients = clients.filter((client) =>
-    client.name.toLowerCase().includes(searchText.toLowerCase().trim()),
-  );
-  const navigate = useNavigate();
-  const { y } = useWindowPosition();
+  const { data = [], isLoading, isFetching, isError } = useGetAllUsersQuery();
 
+  const filteredClients =
+    Array.isArray(data) &&
+    data.filter((client: Client) => client.last_name.toLowerCase().includes(searchText.toLowerCase().trim()));
+  const navigate = useNavigate();
+
+  console.log(data);
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -56,13 +42,11 @@ function Clients() {
           name="search"
           value={searchText}
           onChange={(e) => setSearchText(e.target.value)}
+          autoComplete="off"
         />
       </div>
 
-      <button
-        className={`${styles.clients__addClientBtn} ${y > 230 ? styles.clients__stickyBtn : ''}`}
-        onClick={() => navigate('/client/new')}
-      >
+      <button className={styles.clients__addClientBtn} onClick={() => navigate('/client/new')}>
         <img className={styles.clients__addClientBtnImage} src={addClientImg} alt="картинка кнопки" />
         <span className={styles.clients__addClientBtnText}>
           Добавить клиента <img src={plusIcon} alt="Белый плюсик" />
@@ -70,9 +54,10 @@ function Clients() {
       </button>
 
       <ul className={styles.clients__list}>
-        {filteredClients.map((user, i) => {
-          return <ClientsListCard name={user.name} age={user.age} description={user.description} key={i}/>;
-        })}
+        {Array.isArray(filteredClients) &&
+          filteredClients.map((user: IUser, i: number) => {
+            return <ClientsListCard user={user} key={i} />;
+          })}
       </ul>
     </div>
   );
