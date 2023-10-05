@@ -21,11 +21,11 @@ export type InputsType = {
   first_name: string | null;
   middle_name: string | null;
   dob?: string | null;
-  gender?: '' | number | null;
+  gender?: number | null;
   weight?: string;
   height?: string;
   aboutMe?: string;
-  phone_number?: string | null;
+  phone_number: string | null;
   password: string;
   retrypassword: string;
   clientDiseases: string;
@@ -38,7 +38,7 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
   const id = useAppSelector((store) => store.user.id);
   // REMOVE: параметр скип здесь не нужен (пользователь без id будет остановлен гардом), но оставлен для примера
   const { data: initData, isSuccess } = useRetrieveUserQuery(id!, { skip: !id });
-  const [update] = usePartialUpdateUserMutation();
+  const [update, { data: updateData, isSuccess: isUpdateSuccess}] = usePartialUpdateUserMutation();
   const phoneRef = useRef<HTMLDivElement>(null);
 
   const {
@@ -54,6 +54,8 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
       middle_name: initData?.middle_name || '',
       dob: initData?.dob || '',
       phone_number: initData?.phone_number || '',
+      // height: initData?.height || '',
+      // weight: initData?.weight || '',
       // gender: initData?.gender || '',
     },
   });
@@ -63,7 +65,7 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
       data.dob = formatDateToSent(data.dob); // отправляем на сервер в требуемм формате
     }
     const phone_numberFormat = String(data.phone_number).replace(/[+\s]+/g, '');
-    update({ id: id!, data: { ...data, phone_number: phone_numberFormat, gender: null, password: undefined } });
+    update({ id: id!, data: { ...data, phone_number: phone_numberFormat, password: undefined } });
     setEditPhone(false);
     console.log(data);
   });
@@ -71,22 +73,29 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
   useEffect(() => {
     if (isSuccess)
       reset({ ...initData, dob: formatDate(initData?.dob), phone_number: formatToPhoneValue(initData?.phone_number) });
+      // console.log(initData);
   }, [isSuccess, initData]);
+
+  useEffect(() => {
+    if (isUpdateSuccess) reset({...updateData, dob: formatDate(updateData?.dob)});
+    // console.log(updateData);
+  }, [isUpdateSuccess]);
+
+  const data = !isUpdateSuccess ? initData : updateData;
+    const firstName = data?.first_name?.slice(0, 1)
+    const lastName = data?.last_name?.slice(0, 1)
+    const phone = formatToPhoneValue(data?.phone_number)
 
   const errorVisible = `${styles.profile__error} ${styles.profile__error_active}`;
   const errorInvisible = `${styles.profile__error}`;
-  const getLetterName = (string: IUser['last_name']): string => {
-    if (string) return string.substring(0, 1);
-    return '';
-  };
 
   return (
     <div className="App__container">
       <main className={styles.profile__content}>
         <TitleBlock text="ПРОФИЛЬ" />
         <div className={styles.profile__avatar}>
-          <p className={styles.profile__name}>{getLetterName(initData?.last_name) || ''}</p>
-          <p className={styles.profile__surname}>{getLetterName(initData?.first_name) || ''}</p>
+          <p className={styles.profile__name}>{lastName}</p>
+          <p className={styles.profile__surname}>{firstName}</p>
         </div>
         <UserStatusBtn statusSpec={statusSpec} />
         <form className={styles.profile__form} onSubmit={onSubmit}>
@@ -159,7 +168,7 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
                 <>
                   <span className={`${styles.profile__title} ${styles.profile__title_style}`}>Телефон</span>
                   <div className={styles.profile__container}>
-                    <p className={styles.profile__subtitle}>{formatToPhoneValue(initData?.phone_number || '')}</p>
+                    <p className={styles.profile__subtitle}>{phone}</p>
                     <button className={styles.profile__pen} type="button" onClick={() => setEditPhone(true)}>
                       <img src={penIcon} alt="Кнопка редактировать телефон" />
                     </button>

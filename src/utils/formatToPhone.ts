@@ -23,7 +23,7 @@ export const formatToPhone = (event:  React.ChangeEvent<HTMLInputElement>) => {
     event.target.value = `+${code}`
   }
 };
-export const formatToPhoneValue = (value: IUser['phone_number']): string => {
+export const formatToPhoneValue = (value: IUser['phone_number']): string | null | undefined => {
 if (value){
   value=value.replace(/\D/g,'');
 
