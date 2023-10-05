@@ -5,8 +5,9 @@ interface IUser {
   first_name?: string | null;
   last_name?: string | null;
   middle_name?: string | null;
+  dob?: string | null;
   password: string;
-  phone_number?: string | null;
+  phone_number: string | null;
   capture?: string | null;
   is_staff?: boolean;
   is_superuser?: boolean;

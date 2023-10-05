@@ -8,16 +8,16 @@ import { useLocation } from 'react-router-dom';
 type Props = {
   name: string;
   isInvalid?: boolean;
-  register: UseFormRegister<InputsType>
+  register: UseFormRegister<InputsType>;
 }
 
 const InputPhone = ({ name, register, isInvalid }: Props) => {
 const { pathname } = useLocation()
 
   return (
-    <div className={styles.inputTel__wrapper}>
+    <div className={styles.inputTel__wrapper} >
       <label className={pathname === '/client/new' ? `${styles.inputTel__label}` : `${styles.inputTel__label_style}`} htmlFor='phone'>Телефон</label>
-      <input className={isInvalid ? `${styles.inputTel__input} ${styles.inputTel__input_invalid}` : styles.inputTel__input} type="tel" {...register(`${name}` as never, {required: true, pattern: {value: /\+[7]\s\(\d{3}\)\s\d{3}\-\d{2}\-\d{2}/, message: 'Введите корректный номер телефона'}})}  placeholder='+7' onChange={formatToPhone} />
+      <input className={isInvalid ? `${styles.inputTel__input} ${styles.inputTel__input_invalid}` : styles.inputTel__input} type="tel" {...register(`${name}` as never, {required: true, pattern: {value: /\+[7]\s\(\d{3}\)\s\d{3}\-\d{2}\-\d{2}/, message: 'Введите корректный номер телефона'}})}  placeholder='+7' onChange={formatToPhone}/>
     </div>
   );
 };
