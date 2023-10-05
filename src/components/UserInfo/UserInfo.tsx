@@ -7,6 +7,7 @@ import { getAgeEnding } from '../../utils/getAgeEnding';
 function UserInfo() {
   const client = useSelector((state: RootState) => state.currentClient.client);
   const fullname = client.first_name + ' ' + client.last_name!;
+
   let age = 0;
   if (client.dob) {
     age = new Date().getFullYear() - new Date(client.dob).getFullYear();

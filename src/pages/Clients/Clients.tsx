@@ -19,9 +19,9 @@ function Clients() {
   const [searchText, setSearchText] = useState('');
   const { data = [], isLoading, isFetching, isError } = useGetAllUsersQuery();
 
-  const filteredClients =
-    Array.isArray(data) &&
-    data.filter((client: Client) => client.last_name.toLowerCase().includes(searchText.toLowerCase().trim()));
+  const filteredClients = data.filter((client: Client) =>
+    client.last_name.toLowerCase().includes(searchText.toLowerCase().trim()),
+  );
   const navigate = useNavigate();
 
   console.log(data);
@@ -54,10 +54,9 @@ function Clients() {
       </button>
 
       <ul className={styles.clients__list}>
-        {Array.isArray(filteredClients) &&
-          filteredClients.map((user: IUser, i: number) => {
-            return <ClientsListCard user={user} key={i} />;
-          })}
+        {filteredClients.map((user: IUser, i: number) => {
+          return <ClientsListCard user={user} key={i} />;
+        })}
       </ul>
     </div>
   );
