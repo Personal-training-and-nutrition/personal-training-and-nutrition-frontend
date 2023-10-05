@@ -17,14 +17,14 @@ type Client = {
 
 function Clients() {
   const [searchText, setSearchText] = useState('');
-  const { data = [], isLoading, isFetching, isError } = useGetAllUsersQuery();
+  const { data: allUsers = [], isLoading, isFetching, isError } = useGetAllUsersQuery();
 
-  const filteredClients = data.filter((client: Client) =>
+  const filteredClients = allUsers.filter((client: Client) =>
     client.last_name.toLowerCase().includes(searchText.toLowerCase().trim()),
   );
   const navigate = useNavigate();
 
-  console.log(data);
+  console.log(allUsers);
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);

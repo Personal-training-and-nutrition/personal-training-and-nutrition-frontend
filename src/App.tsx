@@ -73,7 +73,7 @@ function App() {
           }
         />
       </Routes>
-      {!navBarHideCases.includes(location.pathname) && <NavBar statusSpec={false} />}
+      {!navBarHideCases.includes(location.pathname) && <NavBar statusSpec={true} />}
     </div>
   );
 }
