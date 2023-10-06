@@ -1,6 +1,12 @@
 const month = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря']
 
-const getNumberMonth = (date: string) => month.findIndex((item, index) => (item === date) && index) + 1;
+const getNumberMonth = (date: string) => {
+  const monthNumber = (month.findIndex((item, index) => (item === date) && index) + 1)
+  if(monthNumber <= 9){
+    return `0${String(monthNumber)}`
+  }
+  return monthNumber
+}
 const getNameMonth = (date: string ) => month.find((item, index) => (index + 1) === Number(date) ? item : '')
 
 

@@ -62,7 +62,7 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
 
   const onSubmit = handleSubmit((data) => {
     if (formatDateToSent(data.dob) === initData?.dob) {
-      data.dob = formatDateToSent(data.dob); // отправляем на сервер в требуемм формате
+      data.dob = formatDateToSent(data.dob);
     }
     const phone_numberFormat = String(data.phone_number).replace(/[+\s]+/g, '');
     update({ id: id!, data: { ...data, phone_number: phone_numberFormat, password: undefined } });
@@ -73,12 +73,10 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
   useEffect(() => {
     if (isSuccess)
       reset({ ...initData, dob: formatDate(initData?.dob), phone_number: formatToPhoneValue(initData?.phone_number) });
-      // console.log(initData);
   }, [isSuccess, initData]);
 
   useEffect(() => {
     if (isUpdateSuccess) reset({...updateData, dob: formatDate(updateData?.dob)});
-    // console.log(updateData);
   }, [isUpdateSuccess]);
 
   const data = !isUpdateSuccess ? initData : updateData;
