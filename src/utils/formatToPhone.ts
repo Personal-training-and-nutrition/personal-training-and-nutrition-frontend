@@ -37,15 +37,15 @@ if (value){
  const code = `${countryCode === '8' ? countryCode = '7' : countryCode}`;
 
   if(input.length > 9) {
-    value = `+ ${code} (${areaCode}) ${middle}-${preLast}-${last}`
+    value = `+${code} (${areaCode}) ${middle}-${preLast}-${last}`
   } else if(input.length > 7){
-    value = `+ ${code} (${areaCode}) ${middle}-${preLast}`
+    value = `+${code} (${areaCode}) ${middle}-${preLast}`
   } else if(input.length > 4) {
-    value = `+ ${code} (${areaCode}) ${middle}`
+    value = `+${code} (${areaCode}) ${middle}`
   } else if(input.length > 3) {
-    value = `+ ${code} (${areaCode})`
+    value = `+${code} (${areaCode})`
   } else if(input.length <= 1 ) {
-    value = `+ ${code}`
+    value = `+${code}`
   }
   return value;
 

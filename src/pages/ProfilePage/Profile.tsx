@@ -7,7 +7,7 @@ import penIcon from '../../assets/images/profile/pen-icon.svg';
 import TitleBlock from '../../components/TitleBlock/TitleBlock';
 import GenderInput from '../../components/Inputs/GenderInput/GenderInput';
 import ButtonDelete from '../../components/ButtonDelete/ButtonDelete';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import DatePicker from '../../components/Inputs/DatePicker/DatePicker';
 import InputText from '../../components/Inputs/InputText/InputText';
 import InputPhone from '../../components/Inputs/InputPhone/InputPhone';
@@ -39,7 +39,6 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
   // REMOVE: параметр скип здесь не нужен (пользователь без id будет остановлен гардом), но оставлен для примера
   const { data: initData, isSuccess } = useRetrieveUserQuery(id!, { skip: !id });
   const [update, { data: updateData, isSuccess: isUpdateSuccess}] = usePartialUpdateUserMutation();
-  const phoneRef = useRef<HTMLDivElement>(null);
 
   const {
     register,
@@ -47,18 +46,16 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
     reset,
     formState: { errors, isDirty, isValid },
   } = useForm<InputsType>({
-    mode: 'onChange',
+    mode: 'all',
     defaultValues: {
       last_name: initData?.last_name || '',
       first_name: initData?.first_name || '',
       middle_name: initData?.middle_name || '',
       dob: initData?.dob || '',
       phone_number: initData?.phone_number || '',
-      // height: initData?.height || '',
-      // weight: initData?.weight || '',
-      // gender: initData?.gender || '',
     },
   });
+
 
   const onSubmit = handleSubmit((data) => {
     if (formatDateToSent(data.dob) === initData?.dob) {
@@ -73,20 +70,30 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
   useEffect(() => {
     if (isSuccess)
       reset({ ...initData, dob: formatDate(initData?.dob), phone_number: formatToPhoneValue(initData?.phone_number) });
+    console.log(initData)
   }, [isSuccess, initData]);
 
   useEffect(() => {
-    if (isUpdateSuccess) reset({...updateData, dob: formatDate(updateData?.dob)});
+    if (isUpdateSuccess) reset({...updateData, dob: formatDate(updateData?.dob), phone_number: formatToPhoneValue(updateData?.phone_number)});
+    console.log(updateData)
   }, [isUpdateSuccess]);
 
+
   const data = !isUpdateSuccess ? initData : updateData;
-    const firstName = data?.first_name?.slice(0, 1)
-    const lastName = data?.last_name?.slice(0, 1)
-    const phone = formatToPhoneValue(data?.phone_number)
+  const firstName = data?.first_name?.slice(0, 1)
+  const lastName = data?.last_name?.slice(0, 1)
+  const phone = formatToPhoneValue(data?.phone_number)
 
   const errorVisible = `${styles.profile__error} ${styles.profile__error_active}`;
   const errorInvisible = `${styles.profile__error}`;
 
+  const onBlurInputPhone = () => {
+    // console.log(' я в онблюр')
+    // if(!errors.phone_number){ // true - нет ошибки
+    //   console.log('ошибки нет можно менять переменную', !errors.phone_number)
+    //   setEditPhone(false);
+    // }
+ }
   return (
     <div className="App__container">
       <main className={styles.profile__content}>
@@ -159,9 +166,9 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
           </div>
 
           <label className={styles.profile__label}>
-            <div className={styles.profile__wrap} ref={phoneRef}>
+            <div className={styles.profile__wrap}>
               {isEditPhone ? (
-                <InputPhone name="phone_number" register={register} isInvalid={Boolean(errors.phone_number)}/>
+                <InputPhone name="phone_number" register={register} isInvalid={Boolean(errors.phone_number)} onBlur={() => onBlurInputPhone()}/>
               ) : (
                 <>
                   <span className={`${styles.profile__title} ${styles.profile__title_style}`}>Телефон</span>
@@ -175,7 +182,7 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
               )}
             </div>
             <span className={errors?.phone_number ? errorVisible : errorInvisible}>
-              {errors?.phone_number?.message || ''}
+              {errors?.phone_number?.message || '!'}
             </span>
           </label>
 
