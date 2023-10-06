@@ -2,16 +2,8 @@ import { UseFormRegister } from 'react-hook-form';
 import { InputsType } from '../../../pages/ProfilePage/Profile';
 import { formatDate } from '../../../utils/formatDate';
 import styles from './DatePicker.module.scss';
-import { useState } from 'react';
 
-const DatePicker = ({ register }: { isInvalid?: boolean; register: UseFormRegister<InputsType> }) => {
-  const [error, setError] = useState(false);
-
-  function checkValidData (value: string) {
-    const today = new Date();
-    const bDay = new Date(value)
-    today.getTime() < bDay.getTime() ? setError(true) : setError(false);
-  }
+const DatePicker = ({ register, isInvalid }: { isInvalid?: boolean; register: UseFormRegister<InputsType> }) => {
 
   function onBlurInput(e: React.ChangeEvent<HTMLInputElement>) {
     e.target.type = 'text';
@@ -24,11 +16,7 @@ const DatePicker = ({ register }: { isInvalid?: boolean; register: UseFormRegist
   function onFocusInput(e: React.ChangeEvent<HTMLInputElement>) {
     e.target.type = 'date';
     console.log(e.target.type);
-    checkValidData(e.target.value)
   }
-
-  const errorVisible = `${styles.datePicker__error} ${styles.datePicker__error_active}`;
-  const errorInvisible = `${styles.datePicker__error}`;
 
   return (
     <div className={styles.datePicker__wrapper}>
@@ -38,13 +26,12 @@ const DatePicker = ({ register }: { isInvalid?: boolean; register: UseFormRegist
       <input
         type="text"
         className={
-          error ? `${styles.datePicker__input_invalid} ${styles.datePicker__input}` : styles.datePicker__input
+          isInvalid ? `${styles.datePicker__input_invalid} ${styles.datePicker__input}` : styles.datePicker__input
         }
         onFocus={onFocusInput}
         placeholder="Дата рождения"
-        {...register('dob', { required: true, onBlur: onBlurInput })}
+        {...register('dob', { required: true, onBlur: onBlurInput, validate: (value) => (new Date(value)) < new Date() || 'Дата не должна быть больше текущей'  })}
       />
-      <span className={error ? errorVisible : errorInvisible}>Дата не должна быть больше текущей</span>
     </div>
   );
 };

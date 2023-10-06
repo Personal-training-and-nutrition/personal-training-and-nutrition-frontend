@@ -56,7 +56,6 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
     },
   });
 
-
   const onSubmit = handleSubmit((data) => {
     if (formatDateToSent(data.dob) === initData?.dob) {
       data.dob = formatDateToSent(data.dob);
@@ -132,9 +131,9 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
               {errors?.middle_name?.message || 'Ошибка!'}
             </span>
             <DatePicker register={register} isInvalid={Boolean(errors.dob)}/>
-            {/* <span className={errors?.dob ? errorVisible : errorInvisible}>
-              {errors?.dob?.message || 'Ошибка!'}
-            </span> */}
+            <span className={errors?.dob ? errorVisible : errorInvisible}>
+              {errors?.dob?.message || ''}
+            </span>
           </label>
           <GenderInput register={register} />
           {statusSpec ? (
