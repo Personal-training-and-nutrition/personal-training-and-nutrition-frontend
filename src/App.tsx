@@ -49,7 +49,7 @@ function App() {
           <Route path="/user-profile/client" element={<Profile statusSpec={false} />} />
           <Route path="/clients" element={<Clients />} />
         </Route>
-        <Route path="/client/card" element={<ClientCardPage />} />
+        <Route path="/client/card/:id" element={<ClientCardPage />} />
         <Route path="/client/new" element={<AddClient />} />
         <Route path="/meal-plans" element={<MealPlans />} />
         <Route path="/meal-plan" element={<MealPlan />} />

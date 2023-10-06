@@ -54,8 +54,8 @@ function Clients() {
       </button>
 
       <ul className={styles.clients__list}>
-        {filteredClients.map((user: IUser, i: number) => {
-          return <ClientsListCard user={user} key={i} />;
+        {filteredClients.map((user: IUser) => {
+          return <ClientsListCard user={user} key={user.id} />;
         })}
       </ul>
     </div>

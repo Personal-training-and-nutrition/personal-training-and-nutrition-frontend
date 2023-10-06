@@ -1,11 +1,13 @@
 import styles from './UserInfo.module.scss';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../redux/store';
+import { Link, useParams } from 'react-router-dom';
 import { getFirstLetters } from '../../utils/getFirstLetters';
 import { getAgeEnding } from '../../utils/getAgeEnding';
+import { useRetrieveUserQuery } from '../../redux/services/userApi';
 
 function UserInfo() {
-  const client = useSelector((state: RootState) => state.currentClient.client);
+  // const client = useSelector((state: RootState) => state.currentClient.client);
+  const { id = '' } = useParams();
+  const { data: client = [], isLoading, isFetching, isError } = useRetrieveUserQuery(id);
   const fullname = client.first_name + ' ' + client.last_name!;
 
   let age = 0;

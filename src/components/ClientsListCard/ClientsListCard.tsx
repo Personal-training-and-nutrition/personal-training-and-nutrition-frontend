@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import styles from './ClientsListCard.module.scss';
 import btnImage from '../../assets/images/clients/clientListBtnPlaceholder.svg';
 import { getFirstLetters } from '../../utils/getFirstLetters';
@@ -23,12 +24,16 @@ function ClientsListCard({ user }: ClientListCardProps) {
     age = new Date().getFullYear() - new Date(user.dob).getFullYear();
   }
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <li
       className={styles.clientsListCard}
       onClick={() => {
         dispatch(setCurrentClient(user));
-        navigate('/client/card');
+        navigate(`/client/card/${user.id}`);
       }}
     >
       <span className={styles.clientsListCard__letters}>{getFirstLetters(fullname)}</span>
