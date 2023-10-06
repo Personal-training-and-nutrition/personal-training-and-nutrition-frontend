@@ -34,5 +34,19 @@
       border: .5px solid $error-500;
       color: $error-500;
     }
+    &:invalid {
+      border: .5px solid $error-500;
+      color: $error-500;
+    }
+  }
+  &__error {
+    display: block;
+    opacity: 0;
+    font-size: 15px;
+    line-height: 18px;
+    &_active {
+      opacity: 1;
+      color: $error-500;
+    }
   }
 }

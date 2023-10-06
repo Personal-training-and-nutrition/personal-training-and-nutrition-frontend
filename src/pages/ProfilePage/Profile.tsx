@@ -131,7 +131,10 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
             <span className={errors?.middle_name ? errorVisible : errorInvisible}>
               {errors?.middle_name?.message || 'Ошибка!'}
             </span>
-            <DatePicker register={register} />
+            <DatePicker register={register} isInvalid={Boolean(errors.dob)}/>
+            {/* <span className={errors?.dob ? errorVisible : errorInvisible}>
+              {errors?.dob?.message || 'Ошибка!'}
+            </span> */}
           </label>
           <GenderInput register={register} />
           {statusSpec ? (
