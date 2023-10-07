@@ -44,12 +44,12 @@ function App() {
         <Route path="/password-recovery" element={<ForgotPasswordModal />} />
         <Route path="/password-recovery/form" element={<ResetPasswordModal />} />
         <Route path="/password-recovery/success" element={<ForgotPasswordTooltipModal />} />
-        <Route path="/user-profile/specialist" element={<Profile statusSpec={true} />} />
-        <Route path="/user-profile/client" element={<Profile statusSpec={false} />} />
         <Route element={<RequireUser />}>
+          <Route path="/user-profile/specialist" element={<Profile statusSpec={true} />} />
+          <Route path="/user-profile/client" element={<Profile statusSpec={false} />} />
           <Route path="/clients" element={<Clients />} />
         </Route>
-        <Route path="/client/card" element={<ClientCardPage />} />
+        <Route path="/client/card/:id" element={<ClientCardPage />} />
         <Route path="/client/new" element={<AddClient />} />
         <Route path="/meal-plans" element={<MealPlans />} />
         <Route path="/meal-plan" element={<MealPlan />} />
@@ -73,7 +73,7 @@ function App() {
           }
         />
       </Routes>
-      {!navBarHideCases.includes(location.pathname) && <NavBar statusSpec={false} />}
+      {!navBarHideCases.includes(location.pathname) && <NavBar statusSpec={true} />}
     </div>
   );
 }

@@ -1,13 +1,15 @@
 type TResponse = {
   status: string;
   message: string;
+  filter: () => object[];
+  map: () => object[];
 };
 
-type TTokensResponse = TResponse & {
+type TTokensResponse = {
   access: string;
   refresh: string;
 };
 
-type TRefreshResponse = TResponse & {
+type TRefreshResponse = {
   access: string;
 };

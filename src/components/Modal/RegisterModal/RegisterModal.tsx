@@ -9,19 +9,27 @@ import { useEffect } from 'react';
 import { useRegisterUserMutation } from '../../../redux/services/authApi';
 import { useForm } from 'react-hook-form';
 import { InputsType } from '../../../pages/ProfilePage/Profile.tsx';
+import { isApiError } from '../../../utils/isApiError.tsx';
 
 const RegisterModal = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const redirectTo = location.state?.from.pathname || '/login';
 
-  const [registerUser, { isLoading, isSuccess }] = useRegisterUserMutation();
+  const [registerUser, { isLoading, isSuccess, error }] = useRegisterUserMutation();
 
   useEffect(() => {
-    console.log('logging in...');
+    console.log('registering user...');
     if (isSuccess) {
-      console.log('login successfull');
+      console.log('registration successfull');
       navigate(redirectTo);
+    } else if (isApiError(error)) {
+      if (error.data.email) {
+        setError('email', { message: error.data.email });
+      }
+      if (error.data.password) {
+        setError('password', { message: error.data.password });
+      }
     }
   }, [isLoading]);
 
