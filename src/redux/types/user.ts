@@ -5,6 +5,7 @@ interface IUser {
   first_name?: string | null;
   last_name?: string | null;
   middle_name?: string | null;
+  dob?: string | null;
   password: string;
   phone_number?: string | null;
   capture?: string | null;
