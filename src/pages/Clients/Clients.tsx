@@ -42,34 +42,36 @@ function Clients() {
   }, []);
 
   return (
-    <div className={`App__container ${styles.clients__content}`}>
-      <h1 className={styles.clients__pageTitle}>Клиенты</h1>
+    <main className="App__container">
+      <div className={`${styles.clients__content}`}>
+        <h1 className={styles.clients__pageTitle}>Клиенты</h1>
 
-      <div className={styles.clients__searchInputContainer}>
-        <img className={styles.clients__searchInputIcon} src={searchIcon} alt="Search Icon" />
-        <input
-          className={styles.clients__searchInputField}
-          type="text"
-          placeholder="Поиск"
-          name="search"
-          value={searchText}
-          onChange={(e) => setSearchText(e.target.value)}
-        />
+        <div className={styles.clients__searchInputContainer}>
+          <img className={styles.clients__searchInputIcon} src={searchIcon} alt="Search Icon" />
+          <input
+            className={styles.clients__searchInputField}
+            type="text"
+            placeholder="Поиск"
+            name="search"
+            value={searchText}
+            onChange={(e) => setSearchText(e.target.value)}
+          />
+        </div>
+
+        <button className={styles.clients__addClientBtn} onClick={() => navigate('/client/new')}>
+          <img className={styles.clients__addClientBtnImage} src={addClientImg} alt="картинка кнопки" />
+          <span className={styles.clients__addClientBtnText}>
+            Добавить клиента <img src={plusIcon} alt="Белый плюсик" />
+          </span>
+        </button>
+
+        <ul className={styles.clients__list}>
+          {filteredClients.map((user, i) => {
+            return <ClientsListCard name={user.name} age={user.age} description={user.description} key={i} />;
+          })}
+        </ul>
       </div>
-
-      <button className={styles.clients__addClientBtn} onClick={() => navigate('/client/new')}>
-        <img className={styles.clients__addClientBtnImage} src={addClientImg} alt="картинка кнопки" />
-        <span className={styles.clients__addClientBtnText}>
-          Добавить клиента <img src={plusIcon} alt="Белый плюсик" />
-        </span>
-      </button>
-
-      <ul className={styles.clients__list}>
-        {filteredClients.map((user, i) => {
-          return <ClientsListCard name={user.name} age={user.age} description={user.description} key={i} />;
-        })}
-      </ul>
-    </div>
+    </main>
   );
 }
 

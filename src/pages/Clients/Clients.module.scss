@@ -5,9 +5,14 @@
     display: flex;
     flex-direction: column;
     padding-bottom: 80px;
-    max-width: 375px;
+    // max-width: 375px;
     min-height: 100vh;
     color: $black-800;
+
+    @media (min-width: 768px) {
+      margin: 0;
+      padding: 0 40px 0 0;
+    }
   }
 
   &__pageTitle {
@@ -18,6 +23,11 @@
     text-transform: uppercase;
     text-align: center;
     margin: 13px 0 25px;
+
+    @media (min-width: 768px) {
+      text-align: right;
+      margin-bottom: 52px;
+    }
   }
 
   &__searchInputContainer {
