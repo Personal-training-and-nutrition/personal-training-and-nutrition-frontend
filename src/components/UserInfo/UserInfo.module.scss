@@ -28,9 +28,17 @@
     line-height: 22px; /* 61.111% */
     letter-spacing: -0.41px;
     color: $white-100;
+
+    // это кружочек вокруг аватарки
+    // background:
+    //   linear-gradient(#f3f2ec, #f3f2ec) padding-box,
+    //   linear-gradient(to right, dodgerblue, hotpink) border-box;
+    // border-radius: 50em;
+    // border: 3px solid transparent;
   }
 
   &__name {
+    display: block;
     grid-area: userName;
     font-size: 18px;
     font-style: normal;
