@@ -2,6 +2,8 @@ import styles from './NavBar.module.scss';
 import { NavLink } from 'react-router-dom';
 import React from 'react';
 import { navBarSpecialistItemList, navBarUserItemList } from '../../utils/NabBarParams.ts';
+import logo from '../../assets/logo.svg';
+import exitIcon from '../../assets/images/icons/exit-icon.svg';
 
 type NavBarParams = { statusSpec: boolean };
 
@@ -17,6 +19,8 @@ const NavBar: React.FC<NavBarParams> = ({ statusSpec }) => {
 
   return (
     <nav className={styles.navbar}>
+      <img className={styles.navbar__logo} src={logo} alt="logo" />
+
       {listIcons.map((item, index) => (
         <NavLink className={activeClassName} key={index} to={`/${item.link}`}>
           {({ isActive }) => (
@@ -31,6 +35,10 @@ const NavBar: React.FC<NavBarParams> = ({ statusSpec }) => {
           )}
         </NavLink>
       ))}
+
+      <button className={styles.navbar__exitBtn}>
+        <span>Выйти</span> <img src={exitIcon} alt="exit icon" />
+      </button>
     </nav>
   );
 };

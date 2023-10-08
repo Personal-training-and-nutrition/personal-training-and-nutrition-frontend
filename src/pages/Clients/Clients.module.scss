@@ -4,12 +4,15 @@
   &__content {
     display: flex;
     flex-direction: column;
-    padding: 0 16px;
     padding-bottom: 80px;
-    margin: 0 auto;
-    max-width: 375px;
+    // max-width: 375px;
     min-height: 100vh;
     color: $black-800;
+
+    @media (min-width: 768px) {
+      margin: 0;
+      padding: 0 40px 0 0;
+    }
   }
 
   &__pageTitle {
@@ -20,6 +23,11 @@
     text-transform: uppercase;
     text-align: center;
     margin: 13px 0 25px;
+
+    @media (min-width: 768px) {
+      text-align: right;
+      margin-bottom: 52px;
+    }
   }
 
   &__searchInputContainer {
@@ -63,7 +71,7 @@
     transition: background-color 0.2s ease-in-out;
 
     &:hover {
-      background-color: $btn-blue-600
+      background-color: $btn-blue-600;
     }
   }
 

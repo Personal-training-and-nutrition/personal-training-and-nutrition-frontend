@@ -33,7 +33,7 @@ function App() {
   const location = useLocation();
 
   return (
-    <div className="App">
+    <div className={`App ${!navBarHideCases.includes(location.pathname) ? 'App__desktop' : ''}`}>
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="*" element={<NotFoundPage />} />
@@ -49,7 +49,7 @@ function App() {
           <Route path="/user-profile/client" element={<Profile statusSpec={false} />} />
           <Route path="/clients" element={<Clients />} />
         </Route>
-        <Route path="/client/card" element={<ClientCardPage />} />
+        <Route path="/client/card/:id" element={<ClientCardPage />} />
         <Route path="/client/new" element={<AddClient />} />
         <Route path="/meal-plans" element={<MealPlans />} />
         <Route path="/meal-plan" element={<MealPlan />} />
@@ -73,7 +73,7 @@ function App() {
           }
         />
       </Routes>
-      {!navBarHideCases.includes(location.pathname) && <NavBar statusSpec={false} />}
+      {!navBarHideCases.includes(location.pathname) && <NavBar statusSpec={true} />}
     </div>
   );
 }
