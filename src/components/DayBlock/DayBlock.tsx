@@ -9,6 +9,7 @@ import { PlanInputType } from '../PlanPageLayot/PlanPageLayot';
 // type Day = 'monday' | 'tuesday' | 'wednesday' | 'thursday' |  'friday' |  'saturday' | 'sunday';
 type ItemType = {
   day: string;
+  weekday?: number | string;
   nameInput: string;
   placeholder: string;
   image: string;
@@ -16,9 +17,9 @@ type ItemType = {
   tip: string;
   description: string;
 };
-type DayBlockType = { item: ItemType; register: UseFormRegister<PlanInputType> };
+type DayBlockType = { item: ItemType; index:number; register: UseFormRegister<PlanInputType> };
 
-const DayBlock = ({ item, register }: DayBlockType) => {
+const DayBlock = ({ item, register, index}: DayBlockType) => {
   const [isVisible, setVisible] = useState(false);
   const isOpenNote = () => {
     setVisible(!isVisible);
@@ -40,10 +41,15 @@ const DayBlock = ({ item, register }: DayBlockType) => {
       {isVisible &&
     (  <label className={styles.dayBlock__label}>
         <h2>{item.description}</h2>
+      <textarea
+        style={{display: "none"}}
+        value={item.weekday}
+        {...register(`${index}.weekday` as never)}
+      />
         <textarea
           className={styles.dayBlock__input}
           placeholder={item.placeholder}
-          {...register(`${item.nameInput}` as never)}
+          {...register(`${index}.spec_comment` as never)}
         />
       </label>)}
     </div>
