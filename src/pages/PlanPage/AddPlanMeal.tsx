@@ -21,6 +21,7 @@ const AddPlanMeal: React.FC = () => {
 
   const {
     register,
+    setValue,
     handleSubmit,
     formState: { isDirty, isValid },
   } = useForm<PlanInputType>({
@@ -44,6 +45,7 @@ const AddPlanMeal: React.FC = () => {
       // describe: rawData.recomendations,
       ...rawData
     };
+    console.log(rawData)
     create(data);
   });
   return (
@@ -55,6 +57,7 @@ const AddPlanMeal: React.FC = () => {
       onSubmit={onSubmit}
       isDirty={isDirty}
       isValid={isValid}
+      setValue={setValue}
     />
   );
 };

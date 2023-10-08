@@ -33,8 +33,9 @@ type PlanFormType = {
   onSubmit: React.FormEventHandler<HTMLFormElement>;
   isDirty?: boolean;
   isValid?: boolean;
+  setValue: (index: string, spec_comment: string)=> void;
 };
-const PlanPageLayot = ({textTitle, namePlan, data, register, onSubmit, isDirty, isValid}: PlanFormType) => {
+const PlanPageLayot = ({textTitle, namePlan, data, register, onSubmit, isDirty, isValid, setValue}: PlanFormType) => {
   const location = useLocation();
 
   return (
@@ -58,7 +59,7 @@ const PlanPageLayot = ({textTitle, namePlan, data, register, onSubmit, isDirty, 
           <InputRecommendation register={register}/>
           <div className={styles.plan__label_gap}>
             {data.map((item, index) => (
-              <DayBlock index={index} item={item} key={index} register={register}/>
+              <DayBlock index={index} item={item} key={index} register={register} setValue={setValue}/>
             ))}
           </div>
 
