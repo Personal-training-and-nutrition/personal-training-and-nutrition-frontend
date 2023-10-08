@@ -2,12 +2,12 @@ export interface IUser {
   id?: number;
   last_login?: string | null;
   email?: string;
-  dob?: string | null;
   first_name?: string | null;
   last_name?: string | null;
   middle_name?: string | null;
-  password?: string;
-  phone_number?: string;
+  dob?: string | null;
+  password: string;
+  phone_number?: string | null;
   capture?: string | null;
   is_staff?: boolean;
   is_superuser?: boolean;

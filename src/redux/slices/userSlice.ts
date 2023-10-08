@@ -5,7 +5,7 @@ interface IUserState {
   accessToken: string | null;
 }
 
-const initialState: IUserState = {
+export const initialState: IUserState = {
   id: null,
   accessToken: null,
 };
