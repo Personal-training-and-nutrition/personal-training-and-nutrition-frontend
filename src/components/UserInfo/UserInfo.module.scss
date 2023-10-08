@@ -9,6 +9,10 @@
     'avatar userName'
     'avatar data';
 
+  @media (min-width: 768px) {
+    margin-top: 40px;
+  }
+
   &__avatar {
     grid-area: avatar;
     height: 92px;
@@ -34,6 +38,10 @@
     line-height: 120%; /* 21.6px */
     padding-bottom: 8px;
     padding-top: 8px;
+
+    @media (min-width: 768px) {
+      padding-top: 12px;
+    }
   }
 
   &__data {

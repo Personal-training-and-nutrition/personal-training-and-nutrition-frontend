@@ -53,12 +53,6 @@ function Clients() {
             Добавить клиента <img src={plusIcon} alt="Белый плюсик" />
           </span>
         </button>
-        <button className={styles.clients__addClientBtn} onClick={() => navigate('/client/new')}>
-          <img className={styles.clients__addClientBtnImage} src={addClientImg} alt="картинка кнопки" />
-          <span className={styles.clients__addClientBtnText}>
-            Добавить клиента <img src={plusIcon} alt="Белый плюсик" />
-          </span>
-        </button>
 
         <ul className={styles.clients__list}>
           {filteredClients.map((user: IUser) => {
