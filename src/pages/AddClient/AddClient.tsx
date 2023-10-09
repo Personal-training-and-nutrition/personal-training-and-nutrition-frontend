@@ -61,18 +61,22 @@ const AddClient = () => {
             <InputNumber name="clientWeight" label="Вес" placeholder="кг" register={register} />
             <InputNumber name="clientHeight" label="Рост" placeholder="см" register={register} />
           </div>
-          <div className={styles.addClient__nameWrap}>
-            <InputPhone name="phone" register={register} isInvalid={Boolean(errors.phone)} />
-            <span className={errors?.phone ? errorVisible : errorInvisible}>{errors?.phone?.message || ''}</span>
-            <InputEmail
-              name="email"
-              label="Email"
-              placeholder="Email"
-              isLabel={true}
-              register={register}
-              isInvalid={Boolean(errors.email)}
-            />
-            <span className={errors?.email ? errorVisible : errorInvisible}>{errors?.email?.message || ''}</span>
+          <div className={styles.addClient__contactsWrap}>
+            <div>
+              <InputPhone name="phone" register={register} isInvalid={Boolean(errors.phone)} />
+              <span className={errors?.phone ? errorVisible : errorInvisible}>{errors?.phone?.message || ''}</span>
+            </div>
+            <div>
+              <InputEmail
+                name="email"
+                label="Email"
+                placeholder="Email"
+                isLabel={true}
+                register={register}
+                isInvalid={Boolean(errors.email)}
+              />
+              <span className={errors?.email ? errorVisible : errorInvisible}>{errors?.email?.message || ''}</span>
+            </div>
           </div>
           <ul className={styles.addClient__about}>
             <AboutClientCard
@@ -107,7 +111,7 @@ const AddClient = () => {
             />
           </ul>
           <SpecNote textareaName="SpecNote" textareaPlaceholder="Добавьте важную информацию" register={register} />
-          <div className={styles.addClient__nameWrap}>
+          <div className={styles.addClient__buttonsWrap}>
             <Button textBtn="Сохранить" type="submit" isDirty={isDirty} isValid={isValid} />
             <ButtonCancel text="Отменить" isDirty={true} isValid={true} onClick={() => reset()} />
           </div>

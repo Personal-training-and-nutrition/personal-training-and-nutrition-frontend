@@ -6,7 +6,7 @@ export interface IUser {
   last_name?: string | null;
   middle_name?: string | null;
   dob?: string | null;
-  password: string;
+  password?: string;
   phone_number?: string | null;
   capture?: string | null;
   is_staff?: boolean;
