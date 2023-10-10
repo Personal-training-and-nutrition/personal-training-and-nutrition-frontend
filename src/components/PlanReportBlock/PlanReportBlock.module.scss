@@ -4,7 +4,7 @@
   position: relative;
   list-style: none;
   display: flex;
-  padding: 16px;
+  padding: 16px 16px 0 16px;
   flex-direction: column;
   gap: 28px;
   border-radius: 14px;
@@ -18,11 +18,9 @@
   }
 
   &__workoutPlan{
-
     @media (min-width: 768px){
       margin: 0 0 0 16px;
     }
-
   }
 
   &__header {
