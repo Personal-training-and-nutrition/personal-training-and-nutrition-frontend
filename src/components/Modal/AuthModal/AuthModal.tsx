@@ -11,6 +11,8 @@ import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { InputsType } from '../../../pages/ProfilePage/Profile';
 import { isApiError } from '../../../utils/isApiError';
+import { useAppDispatch, useAppSelector } from '../../../redux/store';
+import { closeModal, openModal } from '../../../redux/slices/modalsSlice';
 /* import { useLazyGetMeQuery } from '../../../redux/services/userApi';
 import { useAppDispatch } from '../../../redux/store';
 import { setUserId } from '../../../redux/slices/userSlice'; */
@@ -21,8 +23,13 @@ const AuthModal = () => {
   const [errMessage, setErrMessage] = useState<string | null>(null);
   const redirectTo = location.state?.from.pathname || '/';
   const [login, { isSuccess, isLoading, error }] = useLoginMutation();
+  const { isOpen, modalId } = useAppSelector(state => state.modal)
   // const [getMe] = useLazyGetMeQuery();
-  // const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch();
+
+  const isAuth = modalId === 'modalAuth' ? 'modalAuth' : ''
+
+
   const {
     register,
     handleSubmit,
@@ -56,15 +63,25 @@ const AuthModal = () => {
     });
   });
 
+  const handleFoggotPassordClick = () => {
+    dispatch(closeModal())
+    dispatch(openModal('foggotModal'))
+  }
+
+  const handleRegistrationClick = () => {
+    dispatch(closeModal())
+    dispatch(openModal('registerModal'))
+  }
+
   const errorVisible = `${styles.authModal__error} ${styles.authModal__error_active}`;
   const errorInvisible = `${styles.authModal__error}`;
   const errorRemoved = `${styles.authModal__error_removed}`;
 
   return (
-    <Modal>
+    <Modal isOpen={isOpen} modalId={isAuth}>
       <h2 className={styles.authModal__title}>Добро пожаловать!</h2>
       <p className={styles.authModal__text}>Первый раз с нами?</p>
-      <Link to="/register" className={styles.authModal__link}>
+      <Link to="" className={styles.authModal__link} onClick={handleRegistrationClick} >
         Зарегистрироваться
       </Link>
       <form className={styles.authModal__form} onSubmit={onSubmit}>
@@ -78,7 +95,7 @@ const AuthModal = () => {
         <InputPassword name="password" placeholder="Пароль" register={register} isInvalid={Boolean(errors.password)} />
         <span className={errors?.password ? errorVisible : errorInvisible}>{errors?.password?.message || ''}</span>
         <span className={errMessage ? errorVisible : errorRemoved}>{errMessage}</span>
-        <Link to="/password-recovery" className={styles.authModal__link}>
+        <Link to="" className={styles.authModal__link} onClick={handleFoggotPassordClick}>
           Я не помню пароль
         </Link>
         <Button textBtn="Войти" type="submit" isDirty={isDirty} isValid={isValid}></Button>

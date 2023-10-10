@@ -39,10 +39,10 @@ function App() {
         <Route path="*" element={<NotFoundPage />} />
         <Route path="/meal-plan/unauth" element={<PlanUnathMeal />} />
         <Route path="/workout-plan/unauth" element={<PlanUnathTraining />} />
-        <Route path="/login" element={<AuthModal />} />
-        <Route path="/register" element={<RegisterModal />} />
-        <Route path="/password-recovery" element={<ForgotPasswordModal />} />
-        <Route path="/password-recovery/form" element={<ResetPasswordModal />} />
+        {/* <Route path="/login" element={<AuthModal />} /> */}
+        {/* <Route path="/register" element={<RegisterModal />} /> */}
+        {/* <Route path="/password-recovery" element={<ForgotPasswordModal />} /> */}
+        {/* <Route path="/password-recovery/form" element={<ResetPasswordModal />} /> */}
         <Route path="/password-recovery/success" element={<ForgotPasswordTooltipModal />} />
         <Route element={<RequireUser />}>
           <Route path="/user-profile/specialist" element={<Profile statusSpec={true} />} />
@@ -74,6 +74,10 @@ function App() {
         />
       </Routes>
       {!navBarHideCases.includes(location.pathname) && <NavBar statusSpec={true} />}
+      <AuthModal/>
+      <ForgotPasswordModal />
+      <RegisterModal />
+      <ResetPasswordModal />
     </div>
   );
 }

@@ -7,8 +7,8 @@ import { InputsType } from '../../../pages/ProfilePage/Profile';
 type Props = {
   name: string;
   placeholder: string;
-  // minLength: number;
-  // maxLenght: number;
+  minLength?: number;
+  maxLenght?: number;
   register: UseFormRegister<InputsType>;
   isInvalid: boolean;
 };
