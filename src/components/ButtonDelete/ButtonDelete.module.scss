@@ -12,5 +12,9 @@
    &:hover {
     opacity: 0.8;
    }
+
+   @media (min-width: 768px) {
+    margin: 0;
+  }
   }
 

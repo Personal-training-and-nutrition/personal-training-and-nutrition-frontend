@@ -8,6 +8,11 @@
     max-width: 375px;
     padding-top: 13px;
     padding-bottom: 60px;
+
+    @media (min-width: 768px) {
+      max-width: 645px;
+      padding: 14px 40px 80px 0;
+    }
   }
 
   &__avatar {
@@ -18,6 +23,9 @@
     background-color: $blue-200;
     position: relative;
     overflow: hidden;
+    @media (min-width: 768px) {
+      margin-top: 50px;
+    }
 
     p {
       margin: 0;
@@ -28,6 +36,7 @@
       color: $blue-100;
       opacity: 0.7;
     }
+
   }
   &__name {
     position: absolute;
@@ -44,11 +53,22 @@
     display: grid;
     row-gap: 32px;
     width: 100%;
+
+    @media (min-width: 768px) {
+      gap: 36px;
+    }
   }
   &__label {
     display: flex;
     flex-direction: column;
     position: relative;
+  }
+  &__box {
+    @media (min-width: 768px) {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
   }
   &__input {
     height: 40px;
@@ -76,7 +96,7 @@
     }
     &:invalid {
       color: #9d1435;
-      border: .5px solid $error-500;
+      border: 0.5px solid $error-500;
     }
     &_style {
       background-color: transparent;
@@ -116,9 +136,9 @@
     &_style {
       color: $gray-400;
     }
-    &_type{
+    &_type {
       margin: 0;
-      color: $gray-400
+      color: $gray-400;
     }
   }
   &__subtitle {
@@ -133,10 +153,9 @@
     flex-direction: column;
     column-gap: 20px;
   }
-  &__container{
+  &__container {
     display: flex;
     column-gap: 20px;
-
   }
   &__item {
     font-weight: 400;
@@ -155,5 +174,16 @@
     background-color: transparent;
     border: none;
     cursor: pointer;
+  }
+  &__buttons {
+    display: flex;
+    flex-direction: column;
+
+    @media (min-width: 768px) {
+      display: grid;
+      grid-template-columns: 220px 220px;
+      justify-content: center;
+      align-items: baseline;
+    }
   }
 }

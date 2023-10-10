@@ -38,7 +38,7 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
   const id = useAppSelector((store) => store.user.id);
   // REMOVE: параметр скип здесь не нужен (пользователь без id будет остановлен гардом), но оставлен для примера
   const { data: initData, isSuccess } = useRetrieveUserQuery(id!, { skip: !id });
-  const [update, { data: updateData, isSuccess: isUpdateSuccess}] = usePartialUpdateUserMutation();
+  const [update, { data: updateData, isSuccess: isUpdateSuccess }] = usePartialUpdateUserMutation();
 
   const {
     register,
@@ -69,30 +69,30 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
   useEffect(() => {
     if (isSuccess)
       reset({ ...initData, dob: formatDate(initData?.dob), phone_number: formatToPhoneValue(initData?.phone_number) });
-    console.log(initData)
+    console.log(initData);
   }, [isSuccess, initData]);
 
   useEffect(() => {
-    if (isUpdateSuccess) reset({...updateData, dob: formatDate(updateData?.dob), phone_number: formatToPhoneValue(updateData?.phone_number)});
-    console.log(updateData)
+    if (isUpdateSuccess)
+      reset({
+        ...updateData,
+        dob: formatDate(updateData?.dob),
+        phone_number: formatToPhoneValue(updateData?.phone_number),
+      });
+    console.log(updateData);
   }, [isUpdateSuccess]);
 
-
   const data = !isUpdateSuccess ? initData : updateData;
-  const firstName = data?.first_name?.slice(0, 1)
-  const lastName = data?.last_name?.slice(0, 1)
-  const phone = formatToPhoneValue(data?.phone_number)
+  const firstName = data?.first_name?.slice(0, 1);
+  const lastName = data?.last_name?.slice(0, 1);
+  const phone = formatToPhoneValue(data?.phone_number);
 
   const errorVisible = `${styles.profile__error} ${styles.profile__error_active}`;
   const errorInvisible = `${styles.profile__error}`;
 
   const onBlurInputPhone = () => {
-    // console.log(' я в онблюр')
-    // if(!errors.phone_number){ // true - нет ошибки
-    //   console.log('ошибки нет можно менять переменную', !errors.phone_number)
-    //   setEditPhone(false);
-    // }
- }
+
+  };
   return (
     <div className="App__container">
       <main className={styles.profile__content}>
@@ -103,38 +103,40 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
         </div>
         <UserStatusBtn statusSpec={statusSpec} />
         <form className={styles.profile__form} onSubmit={onSubmit}>
-          <label className={styles.profile__label}>
-            <InputText
-              name="last_name"
-              label="Фамилия"
-              placeholder="Фамилия"
-              register={register}
-              textError={'Поле не должно быть пустым'}
-              isInvalid={Boolean(errors.last_name)}
-            />
-            <span className={errors?.last_name ? errorVisible : errorInvisible}>
-              {errors?.last_name?.message || 'Ошибка!'}
-            </span>
-            <InputText
-              name="first_name"
-              label="Имя"
-              placeholder="Имя"
-              register={register}
-              textError={'Поле не должно быть пустым'}
-              isInvalid={Boolean(errors.first_name)}
-            />
-            <span className={errors?.first_name ? errorVisible : errorInvisible}>
-              {errors?.first_name?.message || 'Ошибка!'}
-            </span>
-            <InputText name="middle_name" label="Отчество" placeholder="Отчество" register={register} />
-            <span className={errors?.middle_name ? errorVisible : errorInvisible}>
-              {errors?.middle_name?.message || 'Ошибка!'}
-            </span>
-            <DatePicker register={register} isInvalid={Boolean(errors.dob)}/>
-            <span className={errors?.dob ? errorVisible : errorInvisible}>
-              {errors?.dob?.message || ''}
-            </span>
-          </label>
+          <div className={styles.profile__label}>
+            <div className={styles.profile__box}>
+              <div>
+              <InputText
+                name="last_name"
+                label="Фамилия"
+                placeholder="Фамилия"
+                register={register}
+                textError={'Поле не должно быть пустым'}
+                isInvalid={Boolean(errors.last_name)}
+              />
+              <span className={errors?.last_name ? errorVisible : errorInvisible}>
+                {errors?.last_name?.message || 'Ошибка!'}
+              </span>
+              </div>
+             <div>
+             <InputText
+                name="first_name"
+                label="Имя"
+                placeholder="Имя"
+                register={register}
+                textError={'Поле не должно быть пустым'}
+                isInvalid={Boolean(errors.first_name)}
+              />
+              <span className={errors?.first_name ? errorVisible : errorInvisible}>
+                {errors?.first_name?.message || 'Ошибка!'}
+              </span>
+             </div>
+              <div>
+              <DatePicker register={register} isInvalid={Boolean(errors.dob)} />
+              <span className={errors?.dob ? errorVisible : errorInvisible}>{errors?.dob?.message || ''}</span>
+              </div>
+            </div>
+          </div>
           <GenderInput register={register} />
           {statusSpec ? (
             <label className={styles.profile__label}>
@@ -170,7 +172,12 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
           <label className={styles.profile__label}>
             <div className={styles.profile__wrap}>
               {isEditPhone ? (
-                <InputPhone name="phone_number" register={register} isInvalid={Boolean(errors.phone_number)} onBlur={() => onBlurInputPhone()}/>
+                <InputPhone
+                  name="phone_number"
+                  register={register}
+                  isInvalid={Boolean(errors.phone_number)}
+                  onBlur={() => onBlurInputPhone()}
+                />
               ) : (
                 <>
                   <span className={`${styles.profile__title} ${styles.profile__title_style}`}>Телефон</span>
@@ -210,9 +217,12 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
               {errors?.password?.message || 'Ошибка!'}
             </span>
           </label>
+          <div className={styles.profile__buttons}>
           <Button textBtn="Сохранить" type="submit" isDirty={isDirty} isValid={isValid} />
+          <ButtonDelete text="Удалить профиль" />
+          </div>
         </form>
-        <ButtonDelete text="Удалить профиль" />
+
       </main>
     </div>
   );
