@@ -11,7 +11,7 @@ function DescriptionBlock({ title, children }: DescriptionProps) {
 
   return (
     <div className={styles.Description}>
-      <span className={styles.Description__title}>{title}:</span>
+      <span className={styles.Description__title}>{`${title}: `}</span>
       <span className={styles.Description__text}>
         {children.length < 103 || showMore ? (
           children

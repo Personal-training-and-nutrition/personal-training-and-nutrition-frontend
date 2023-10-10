@@ -7,12 +7,23 @@
   padding: 16px;
   flex-direction: column;
   gap: 28px;
-
   border-radius: 14px;
   border: 1px solid #efefe8;
   background: $white-100;
   overflow: hidden;
   margin-bottom: 16px;
+
+  @media (min-width: 768px){
+    margin: 0 16px;
+  }
+
+  &__workoutPlan{
+
+    @media (min-width: 768px){
+      margin: 0 0 0 16px;
+    }
+
+  }
 
   &__header {
     text-align: right;
