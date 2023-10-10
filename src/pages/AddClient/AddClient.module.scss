@@ -43,6 +43,11 @@
   }
   &__dataWrap {
     margin-bottom: 7px;
+
+    @media (min-width: 768px) {
+      margin-right: 14px;
+      width: 166px;
+    }
   }
   &__characteristic {
     display: grid;

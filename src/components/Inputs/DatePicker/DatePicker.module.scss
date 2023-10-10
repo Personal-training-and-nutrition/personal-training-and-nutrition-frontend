@@ -6,10 +6,10 @@
     flex-direction: column;
     row-gap: 8px;
 
-    @media (min-width: 768px) {
-      margin-right: 12px;
-      width: 166px;
-    }
+    // @media (min-width: 768px) {
+    //   margin-right: 12px;
+    //   width: 166px;
+    // }
   }
   &__label {
     font-size: 15px;
