@@ -10,13 +10,26 @@ import { useRegisterUserMutation } from '../../../redux/services/authApi';
 import { useForm } from 'react-hook-form';
 import { InputsType } from '../../../pages/ProfilePage/Profile.tsx';
 import { isApiError } from '../../../utils/isApiError.tsx';
+import { useAppDispatch, useAppSelector } from '../../../redux/store.ts';
+import { closeModal, openModal } from '../../../redux/slices/modalsSlice.ts';
 
 const RegisterModal = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const redirectTo = location.state?.from.pathname || '/login';
+  const dispatch = useAppDispatch();
+
 
   const [registerUser, { isLoading, isSuccess, error }] = useRegisterUserMutation();
+
+  const { isOpen, modalId } = useAppSelector(state => state.modal)
+
+  const isRegister = modalId === 'registerModal' ? 'registerModal' : ''
+
+  const handleAuthClick = () => {
+    dispatch(closeModal())
+    dispatch(openModal('modalAuth'))
+  }
 
   useEffect(() => {
     console.log('registering user...');
@@ -57,10 +70,10 @@ const RegisterModal = () => {
   const errorVisible = `${styles.registerModal__error} ${styles.registerModal__error_active}`;
   const errorInvisible = `${styles.registerModal__error}`;
   return (
-    <Modal>
+    <Modal isOpen={isOpen} modalId={isRegister}>
       <h2 className={styles.registerModal__title}>Регистрация</h2>
       <p className={styles.registerModal__text}>Уже есть аккаунт?</p>
-      <Link to="/login" className={styles.registerModal__link}>
+      <Link to="" className={styles.registerModal__link} onClick={handleAuthClick}>
         Войти
       </Link>
       <form className={styles.registerModal__form} onSubmit={onSubmit}>
