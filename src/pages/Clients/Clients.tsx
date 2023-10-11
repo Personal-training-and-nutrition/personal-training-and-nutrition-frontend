@@ -17,7 +17,7 @@ type Client = {
 
 function Clients() {
   const [searchText, setSearchText] = useState('');
-  const { data: allUsers = [], isLoading, isFetching, isError } = useGetAllUsersQuery();
+  const { data: allUsers = [], isSuccess, isLoading, isFetching, isError } = useGetAllUsersQuery();
 
   const filteredClients = allUsers.filter((client: Client) =>
     client.last_name.toLowerCase().includes(searchText.toLowerCase().trim()),
