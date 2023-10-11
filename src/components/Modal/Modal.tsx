@@ -35,7 +35,7 @@ const handleClose = () => {
 }
 
   return (
-    <div className={modalId && isOpen ? `${styles.modal} ${styles.modal_show}` : `${styles.modal}`} onClick={handleOverlayClose}>
+    <div className={modalId && isOpen ? `${styles.modal} ${styles.modal_show}` : `${styles.modal}`} onMouseDown={handleOverlayClose}>
       <div className={styles.modal__container}>
         <button className={styles.modal__closeBtn} type="button" onClick={handleClose}></button>
         {children}

@@ -1,6 +1,6 @@
 import styles from './RegisterModal.module.scss';
 import Modal from '../Modal';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Button from '../../Button/Button';
 import InputEmail from '../../Inputs/InputEmail/InputEmail';
 import InputPassword from '../../Inputs/InputPassword/InputPassword';
@@ -14,9 +14,9 @@ import { useAppDispatch, useAppSelector } from '../../../redux/store.ts';
 import { closeModal, openModal } from '../../../redux/slices/modalsSlice.ts';
 
 const RegisterModal = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
-  const redirectTo = location.state?.from.pathname || '/login';
+  // const location = useLocation();
+  // const navigate = useNavigate();
+  // const redirectTo = location.state?.from.pathname || '/login';
   const dispatch = useAppDispatch();
 
 
@@ -35,7 +35,6 @@ const RegisterModal = () => {
     console.log('registering user...');
     if (isSuccess) {
       console.log('registration successfull');
-      navigate(redirectTo);
     } else if (isApiError(error)) {
       if (error.data.email) {
         setError('email', { message: error.data.email });
@@ -63,6 +62,11 @@ const RegisterModal = () => {
         password: data.password,
         re_password: data.retrypassword,
       });
+      setTimeout(() => {
+        console.log(isSuccess)
+        dispatch(closeModal())
+        dispatch(openModal('modalAuth'))
+    }, 1000)
     } catch (err) {
       console.error('register failed', err);
     }
