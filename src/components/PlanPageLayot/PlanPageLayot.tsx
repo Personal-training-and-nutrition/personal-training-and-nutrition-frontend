@@ -55,20 +55,21 @@ const PlanPageLayot = ({ textTitle, namePlan, data, register, onSubmit, isDirty,
             />
           </label>
           {location.pathname === '/meal-plan' && <CaloriesInput register={register} />}
-          <InputRecommendation register={register}/>
+          <InputRecommendation register={register} />
           <div className={styles.plan__label_gap}>
             {data.map((item, index) => (
               <DayBlock item={item} key={index} register={register} />
             ))}
           </div>
-
-          <Button textBtn="Сохранить" type="submit" isDirty={isDirty} isValid={isValid}/>
+          <div className={styles.plan__buttons}>
+            <Button textBtn="Сохранить" type="submit" isDirty={isDirty} isValid={isValid} />
+            {location.pathname === '/editPlanMeal' || location.pathname === '/editPlanTrain' ? (
+              <ButtonDelete text="Удалить этот план" />
+            ) : (
+              <ButtonCancel text="Отменить" isDirty={isDirty} isValid={isValid} />
+            )}
+          </div>
         </form>
-        {location.pathname === '/editPlanMeal' || location.pathname === '/editPlanTrain' ? (
-          <ButtonDelete text="Удалить этот план" />
-        ) : (
-          <ButtonCancel text="Отменить" isDirty={isDirty} isValid={isValid} />
-        )}
       </div>
     </main>
   );
