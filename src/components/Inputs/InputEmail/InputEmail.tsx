@@ -9,7 +9,7 @@ type Props = {
   isLabel?: boolean;
   label?: string;
   register: UseFormRegister<InputsType>;
-  isInvalid: boolean
+  isInvalid: boolean;
 };
 
 const InputEmail = ({ name, placeholder, isLabel, label, register, isInvalid }: Props) => {
@@ -24,15 +24,28 @@ const InputEmail = ({ name, placeholder, isLabel, label, register, isInvalid }: 
             className={isInvalid ? `${styles.inputs__input} ${styles.inputs__input_invalid}` : styles.inputs__input}
             type="text"
             placeholder={placeholder}
-            {...register(`${name}` as never, {required: true, pattern: {
-              value: /[\w\.\-]+@[\w\.\-]+\.[\w\.\-]{2,}/gi,
-              message: 'Введите корректный Email'}})}
+            {...register(`${name}` as never, {
+              required: true,
+              pattern: {
+                value: /[\w\.\-]+@[\w\.\-]+\.[\w\.\-]{2,}/gi,
+                message: 'Введите корректный Email',
+              },
+            })}
           />
         </div>
       ) : (
-        <input type="text" id="" placeholder={placeholder} className={isInvalid ? `${styles.inputs__email} ${styles.inputs__email_invalid}` : styles.inputs__email} {...register(`${name}` as never, {required: true, pattern: {
-          value: /[\w\.\-]+@[\w\.\-]+\.[\w\.\-]{2,}/gi,
-          message: 'Введите корректный Email'}})}/>
+        <input
+          type="text"
+          placeholder={placeholder}
+          className={isInvalid ? `${styles.inputs__email} ${styles.inputs__email_invalid}` : styles.inputs__email}
+          {...register(`${name}` as never, {
+            required: true,
+            pattern: {
+              value: /[\w\.\-]+@[\w\.\-]+\.[\w\.\-]{2,}/gi,
+              message: 'Введите корректный Email',
+            },
+          })}
+        />
       )}
     </>
   );

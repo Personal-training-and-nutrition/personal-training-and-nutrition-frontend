@@ -6,6 +6,12 @@
     grid-template-columns: repeat(4, auto);
     grid-column-gap: 9px;
     text-align: center;
+
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(4, max-content);
+      justify-content: center;
+      grid-column-gap: 40px;
+    }
   }
   &__item {
     h4 {

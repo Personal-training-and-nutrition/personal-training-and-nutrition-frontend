@@ -7,32 +7,34 @@ import CaloriesSection from '../../components/CaloriesSection/CaloriesSection';
 
 function MealPlan() {
   return (
-    <div className={styles.mealPlan}>
-      <TitleBlock text="план питания" isBack />
+    <main className="App__container">
+      <div className={styles.mealPlan}>
+        <TitleBlock text="план питания" isBack />
 
-      <div className={styles.mealPlan__header}>
-        <h1 className={styles.mealPlan__mainTitle}>{tempMealPlan[0].name}</h1>
+        <div className={styles.mealPlan__header}>
+          <h1 className={styles.mealPlan__mainTitle}>{tempMealPlan[0].name}</h1>
 
-        <CaloriesSection />
+          <CaloriesSection />
 
-        <DescriptionBlock title="Рекомендации">
-          Смело пиши мне в любое время, делись ощущениями, если что-то идет не так, не переживай, скорректируем)
-        </DescriptionBlock>
+          <DescriptionBlock title="Рекомендации">
+            Смело пиши мне в любое время, делись ощущениями, если что-то идет не так, не переживай, скорректируем)
+          </DescriptionBlock>
+        </div>
+
+        {tempMealPlan[0].training.map((plan, index) => {
+          return (
+            <PlanReportBlock
+              isLoggedIn={true}
+              key={index}
+              plan={plan}
+              text="Твой план тренировки на этот день. Поделись ощущениями в конце."
+            />
+          );
+        })}
+
+        <button className={styles.mealPlan__deleteBtn}>Удалить этот план</button>
       </div>
-
-      {tempMealPlan[0].training.map((plan, index) => {
-        return (
-          <PlanReportBlock
-            isLoggedIn={true}
-            key={index}
-            plan={plan}
-            text="Твой план тренировки на этот день. Поделись ощущениями в конце."
-          />
-        );
-      })}
-
-      <button className={styles.mealPlan__deleteBtn}>Удалить</button>
-    </div>
+    </main>
   );
 }
 
