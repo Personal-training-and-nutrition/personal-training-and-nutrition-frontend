@@ -11,10 +11,11 @@ import { useEffect, useState } from 'react';
 import DatePicker from '../../components/Inputs/DatePicker/DatePicker';
 import InputText from '../../components/Inputs/InputText/InputText';
 import InputPhone from '../../components/Inputs/InputPhone/InputPhone';
-import { usePartialUpdateUserMutation, useRetrieveUserQuery } from '../../redux/services/userApi';
+import { usePartialUpdateUserMutation, useRetrieveUserQuery, useDestroyMeMutation, } from '../../redux/services/userApi';
 import { useAppSelector } from '../../redux/store';
 import { formatToPhoneValue } from '../../utils/formatToPhone';
 import { formatDate, formatDateToSent } from '../../utils/formatDate';
+import { useNavigate } from 'react-router-dom';
 
 export type InputsType = {
   last_name?: string | null;
@@ -39,7 +40,8 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
   // REMOVE: параметр скип здесь не нужен (пользователь без id будет остановлен гардом), но оставлен для примера
   const { data: initData, isSuccess } = useRetrieveUserQuery(id!, { skip: !id });
   const [update, { data: updateData, isSuccess: isUpdateSuccess }] = usePartialUpdateUserMutation();
-
+  const [destroyMe, {isSuccess: isSuccessDelete}] = useDestroyMeMutation();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -93,6 +95,17 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
   const onBlurInputPhone = () => {
 
   };
+
+  const handleClickDelete = async () => {
+    try {
+      await destroyMe({email: initData?.email})
+      if(isSuccessDelete) navigate('/')
+    }
+    catch (err) {
+      console.log(err)
+    }
+  };
+
   return (
     <div className="App__container">
       <main className={styles.profile__content}>
@@ -219,7 +232,7 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
           </label>
           <div className={styles.profile__buttons}>
           <Button textBtn="Сохранить" type="submit" isDirty={isDirty} isValid={isValid} />
-          <ButtonDelete text="Удалить профиль" />
+          <ButtonDelete text="Удалить профиль" onClick={handleClickDelete}/>
           </div>
         </form>
 
