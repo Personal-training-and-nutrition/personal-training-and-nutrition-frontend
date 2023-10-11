@@ -2,11 +2,15 @@
 
 .mealPlan {
   height: 100%;
-  padding: 0 16px 80px;
+  padding-bottom: 80px;
   margin: 0 auto;
-  max-width: 375px;
-  display: grid;
-  align-content: start;
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: 768px) {
+    margin: 0;
+    padding: 0 40px 40px 0;
+  }
 
   &__mainTitle {
     font-size: 22px;
@@ -15,10 +19,18 @@
     line-height: 120%;
     text-align: right;
     margin: 18px 0 32px;
+
+    @media (min-width: 768px) {
+      text-align: left;
+    }
   }
 
   &__header {
     margin-bottom: 32px;
+
+    @media (min-width: 768px) {
+      margin-top: 22px;
+    }
   }
 
   &__deleteBtn {
