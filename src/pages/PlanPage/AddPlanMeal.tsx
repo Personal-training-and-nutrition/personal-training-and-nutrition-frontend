@@ -4,7 +4,7 @@ import { mealData } from '../../utils/constants';
 import { useForm } from 'react-hook-form';
 import { useAppSelector } from '../../redux/store';
 import { useCreateDietPlanMutation } from '../../redux/services/dietApi';
-import { useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 // const daysOfWeek: Record<string, string> = {
 //   monday: '1',
@@ -17,9 +17,11 @@ import { useParams } from 'react-router-dom';
 // };
 
 const AddPlanMeal: React.FC = () => {
-  const { client } = useParams();
   const { id } = useAppSelector((store) => store.user);
   const [create] = useCreateDietPlanMutation();
+  const location = useLocation();
+  const query = new URLSearchParams(location.search);
+  const client = query.get('client');
 
   const {
     register,
