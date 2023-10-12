@@ -1,6 +1,8 @@
 type TResponse = {
   status: string;
   message: string;
+  filter: () => object[];
+  map: () => object[];
 };
 
 type TTokensResponse = {

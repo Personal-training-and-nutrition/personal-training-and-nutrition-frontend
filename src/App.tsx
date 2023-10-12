@@ -33,27 +33,23 @@ function App() {
   const location = useLocation();
 
   return (
-    <div className="App">
+    <div className={`App ${!navBarHideCases.includes(location.pathname) ? 'App__desktop' : ''}`}>
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="*" element={<NotFoundPage />} />
         <Route path="/meal-plan/unauth" element={<PlanUnathMeal />} />
         <Route path="/workout-plan/unauth" element={<PlanUnathTraining />} />
-        <Route path="/login" element={<AuthModal />} />
-        <Route path="/register" element={<RegisterModal />} />
-        <Route path="/password-recovery" element={<ForgotPasswordModal />} />
-        <Route path="/password-recovery/form" element={<ResetPasswordModal />} />
+        {/* <Route path="/login" element={<AuthModal />} /> */}
+        {/* <Route path="/register" element={<RegisterModal />} /> */}
+        {/* <Route path="/password-recovery" element={<ForgotPasswordModal />} /> */}
+        {/* <Route path="/password-recovery/form" element={<ResetPasswordModal />} /> */}
         <Route path="/password-recovery/success" element={<ForgotPasswordTooltipModal />} />
-        <Route element={<RequireUser />}>
-          <Route path="/user-profile/specialist" element={<Profile statusSpec={true} />} />
-          <Route path="/user-profile/client" element={<Profile statusSpec={false} />} />
-          <Route path="/clients" element={<Clients />} />
-          <Route path="/meal-plans" element={<MealPlans />} />
-          <Route path="/meal-plan" element={<MealPlan />} />
-          <Route path="/meal-plan/create" element={<AddPlanMeal />} />
-          <Route path="/meal-plan/edit" element={<EditPlanMeal />} />
-        </Route>
-        <Route path="/client/card" element={<ClientCardPage />} />
+        {/* <Route element={<RequireUser />}> */}
+        <Route path="/user-profile/specialist" element={<Profile statusSpec={true} />} />
+        <Route path="/user-profile/client" element={<Profile statusSpec={false} />} />
+        <Route path="/clients" element={<Clients />} />
+        {/* </Route> */}
+        <Route path="/client/card/:id" element={<ClientCardPage />} />
         <Route path="/client/new" element={<AddClient />} />
         <Route path="/nutrition-report" element={<NutritionReport />} />
         <Route path="/workout-plans" element={<WorkoutPlans />} />
@@ -73,7 +69,11 @@ function App() {
           }
         />
       </Routes>
-      {!navBarHideCases.includes(location.pathname) && <NavBar statusSpec={false} />}
+      {!navBarHideCases.includes(location.pathname) && <NavBar statusSpec={true} />}
+      <AuthModal />
+      <ForgotPasswordModal />
+      <RegisterModal />
+      <ResetPasswordModal />
     </div>
   );
 }

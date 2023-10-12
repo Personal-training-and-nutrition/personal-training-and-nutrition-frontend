@@ -1,4 +1,5 @@
 import { combinedApi } from './combinedApi';
+import { IUser } from '../types/user';
 
 export const userApi = combinedApi.injectEndpoints({
   endpoints: (builder) => ({
@@ -7,7 +8,7 @@ export const userApi = combinedApi.injectEndpoints({
         return { url: 'users/' };
       },
     }),
-    retrieveUser: builder.query<IUser, number>({
+    retrieveUser: builder.query<IUser, string>({
       query(id) {
         return { url: `users/${id}/` };
       },
@@ -22,7 +23,7 @@ export const userApi = combinedApi.injectEndpoints({
         };
       },
     }),
-    partialUpdateUser: builder.mutation<TResponse, { id: number; data: Partial<IUser> }>({
+    partialUpdateUser: builder.mutation<IUser, { id: number; data: Partial<IUser> }>({
       query(arg) {
         const { id, data } = arg;
         return {

@@ -5,7 +5,14 @@
   padding: 0 16px 80px;
   margin: 0 auto;
   max-width: 375px;
-  display: grid;
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: 768px) {
+    max-width: 645px;
+    padding: 40px 0 80px 40px;
+    margin: 0;
+  }
 
   &__mainTitle {
     font-size: 22px;
@@ -14,10 +21,19 @@
     line-height: 120%;
     text-align: right;
     margin: 18px 0 32px;
+
+    @media (min-width: 768px) {
+      text-align: left;
+      margin: 36px 0;
+    }
   }
 
   &__header {
     margin-bottom: 32px;
+
+    @media (min-width: 768px) {
+      margin-bottom: 36px;
+    }
   }
 
   &__deleteBtn {

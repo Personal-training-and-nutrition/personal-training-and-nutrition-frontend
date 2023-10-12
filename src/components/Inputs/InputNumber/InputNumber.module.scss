@@ -1,11 +1,14 @@
 @import '../../../scss/colors/colors.scss';
 
-
 .inputNum {
   &__wrapper {
     display: flex;
     flex-direction: column;
     row-gap: 6px;
+
+    @media (min-width: 768px) {
+      width: 72px;
+    }
   }
   &__label {
     font-size: 15px;
@@ -16,7 +19,7 @@
   &__input {
     padding: 8px 12px;
     border-radius: 8px;
-    border: .5px solid $gray-350 ;
+    border: 0.5px solid $gray-350;
     background-color: $gray-300;
     color: $black-700;
     font-size: 16px;
@@ -32,7 +35,7 @@
       border: 0.5px solid $black-700;
     }
     &:invalid {
-      border: .5px solid $error-500;
+      border: 0.5px solid $error-500;
       color: $error-500;
     }
   }

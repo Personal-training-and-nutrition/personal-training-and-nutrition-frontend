@@ -9,6 +9,10 @@
     'avatar userName'
     'avatar data';
 
+  @media (min-width: 768px) {
+    margin-top: 40px;
+  }
+
   &__avatar {
     grid-area: avatar;
     height: 92px;
@@ -24,9 +28,17 @@
     line-height: 22px; /* 61.111% */
     letter-spacing: -0.41px;
     color: $white-100;
+
+    // это кружочек вокруг аватарки
+    // background:
+    //   linear-gradient(#f3f2ec, #f3f2ec) padding-box,
+    //   linear-gradient(to right, dodgerblue, hotpink) border-box;
+    // border-radius: 50em;
+    // border: 3px solid transparent;
   }
 
   &__name {
+    display: block;
     grid-area: userName;
     font-size: 18px;
     font-style: normal;
@@ -34,6 +46,10 @@
     line-height: 120%; /* 21.6px */
     padding-bottom: 8px;
     padding-top: 8px;
+
+    @media (min-width: 768px) {
+      padding-top: 12px;
+    }
   }
 
   &__data {

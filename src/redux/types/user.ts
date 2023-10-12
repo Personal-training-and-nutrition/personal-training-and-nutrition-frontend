@@ -1,11 +1,12 @@
-interface IUser {
-  id: number;
+export interface IUser {
+  id?: number;
   last_login?: string | null;
-  email: string;
+  email?: string;
   first_name?: string | null;
   last_name?: string | null;
   middle_name?: string | null;
-  password: string;
+  dob?: string | null;
+  password?: string;
   phone_number?: string | null;
   capture?: string | null;
   is_staff?: boolean;
@@ -20,41 +21,41 @@ interface IUser {
   user_permissions?: number[];
 }
 
-interface IUserPassword {
+export interface IUserPassword {
   password: string;
 }
 
-interface IUserEmail {
+export interface IUserEmail {
   email: string;
 }
 
-interface IUserResetEmail {
+export interface IUserResetEmail {
   new_email: string;
 }
 
-interface IUserActivationCreate {
+export interface IUserActivationCreate {
   uid: string;
   token: string;
 }
 
-interface IUserResetPasswordConfirm {
+export interface IUserResetPasswordConfirm {
   uid: string;
   token: string;
   new_password: string;
 }
 
-interface IUserSetEmail {
+export interface IUserSetEmail {
   current_password: string;
   new_email: string;
 }
 
-interface IUserSetPassword {
+export interface IUserSetPassword {
   new_password: string;
   re_new_password: string;
   current_password: string;
 }
 
-type TMeUser = {
+export type TMeUser = {
   password: string;
   id: number;
   email: string;

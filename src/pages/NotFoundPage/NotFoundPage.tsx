@@ -8,13 +8,14 @@ function NotFoundPage() {
     <div className={styles.notFoundPage}>
       <img className={styles.notFoundPage__logo} src={logo} alt="Logo" />
       <img className={styles.notFoundPage__randomImage} src={mainImage} alt="something to show" />
-      <h1 className={styles.notFoundPage__title}>Ошибка 404</h1>
+      <h1 className={styles.notFoundPage__title}>Эта страница не существует</h1>
       <p className={styles.notFoundPage__desc}>
-        Этой страницы не существует, <br /> но остальные страницы на месте :)
+        Но остальные страницы на месте :)
       </p>
       <Link className={styles.notFoundPage__button} to="/">
         На главную
       </Link>
+
     </div>
   );
 }

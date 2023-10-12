@@ -8,6 +8,10 @@
   justify-content: center;
   margin-bottom: 32px;
 
+  @media (min-width: 768px){
+    margin-bottom: 36px;
+  }
+
   &__btn {
     font-weight: 400;
     font-size: 16px;

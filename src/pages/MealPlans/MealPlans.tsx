@@ -13,6 +13,10 @@ function MealPlans() {
           <Link to="/meal-plan" className={styles.mealPlans__link}>
             <PlanCard title="Минус 2кг (1 неделя)" date="Создан 28 сентября 2023" image={planImage} />
           </Link>
+
+          <Link to="/meal-plan" className={styles.mealPlans__link}>
+            <PlanCard title="Минус 2кг (1 неделя)" date="Создан 28 сентября 2023" image={planImage} />
+          </Link>
         </div>
       </div>
     </main>

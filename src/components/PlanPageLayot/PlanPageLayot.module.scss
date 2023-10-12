@@ -7,6 +7,13 @@
     margin: 0 auto;
     max-width: 375px;
     padding-bottom: 80px;
+
+    @media (min-width: 768px) {
+      max-width: 645px;
+      padding-right: 40px;
+      margin: 0;
+      box-sizing: border-box;
+    }
   }
   &__userData {
     font-size: 22px;
@@ -15,11 +22,19 @@
     line-height: 26px;
     text-align: start;
     padding-right: 18px;
+
+    @media (min-width: 768px) {
+      margin: 36px 0;
+    }
   }
   &__form {
     display: grid;
     row-gap: 32px;
     width: 100%;
+
+    @media (min-width: 768px) {
+      gap: 36px;
+    }
   }
   &__title {
     margin: 0 0 12px 0;
@@ -70,6 +85,17 @@
     &_active {
       opacity: 1;
       color: #9d1435;
+    }
+  }
+  &__buttons {
+    display: flex;
+    flex-direction: column;
+
+    @media (min-width: 768px) {
+      display: grid;
+      grid-template-columns: 220px 220px;
+      justify-content: center;
+      align-items: baseline;
     }
   }
 }
