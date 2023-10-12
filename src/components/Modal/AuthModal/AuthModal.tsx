@@ -1,6 +1,6 @@
 import styles from './AuthModal.module.scss';
 import Modal from '../Modal';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Button from '../../Button/Button';
 import SocialIcons from '../../SocialIcons/SocialIcons';
 import InputEmail from '../../Inputs/InputEmail/InputEmail';
@@ -18,17 +18,18 @@ import { useAppDispatch } from '../../../redux/store';
 import { setUserId } from '../../../redux/slices/userSlice'; */
 
 const AuthModal = () => {
-  const location = useLocation();
+  // const location = useLocation();
   const navigate = useNavigate();
   const [errMessage, setErrMessage] = useState<string | null>(null);
-  const redirectTo = location.state?.from.pathname || '/';
+  // const redirectTo = location.state?.from.pathname || '/';
   const [login, { isSuccess, isLoading, error }] = useLoginMutation();
-  const { isOpen, modalId } = useAppSelector(state => state.modal)
+  const { isOpen, modalId } = useAppSelector((state) => state.modal);
+  const { id } = useAppSelector((state) => state.user)
+  console.log(id)
   // const [getMe] = useLazyGetMeQuery();
   const dispatch = useAppDispatch();
 
-  const isAuth = modalId === 'modalAuth' ? 'modalAuth' : ''
-
+  const isAuth = modalId === 'modalAuth' ? 'modalAuth' : '';
 
   const {
     register,
@@ -41,7 +42,7 @@ const AuthModal = () => {
     setErrMessage(null);
     if (isSuccess) {
       console.log('login successfull');
-      navigate(redirectTo);
+      // navigate(redirectTo);
       /* getOMe()
         .unwrap()
         .then((res) => dispatch(setUserId(res.id)))
@@ -61,17 +62,22 @@ const AuthModal = () => {
       email: data.email,
       password: data.password,
     });
+    console.log(isSuccess)
+    if (isSuccess) {
+      navigate('/clients');
+      dispatch(closeModal());
+    }
   });
 
   const handleFoggotPassordClick = () => {
-    dispatch(closeModal())
-    dispatch(openModal('foggotModal'))
-  }
+    dispatch(closeModal());
+    dispatch(openModal('foggotModal'));
+  };
 
   const handleRegistrationClick = () => {
-    dispatch(closeModal())
-    dispatch(openModal('registerModal'))
-  }
+    dispatch(closeModal());
+    dispatch(openModal('registerModal'));
+  };
 
   const errorVisible = `${styles.authModal__error} ${styles.authModal__error_active}`;
   const errorInvisible = `${styles.authModal__error}`;
@@ -81,7 +87,7 @@ const AuthModal = () => {
     <Modal isOpen={isOpen} modalId={isAuth}>
       <h2 className={styles.authModal__title}>Добро пожаловать!</h2>
       <p className={styles.authModal__text}>Первый раз с нами?</p>
-      <Link to="" className={styles.authModal__link} onClick={handleRegistrationClick} >
+      <Link to="" className={styles.authModal__link} onClick={handleRegistrationClick}>
         Зарегистрироваться
       </Link>
       <form className={styles.authModal__form} onSubmit={onSubmit}>
