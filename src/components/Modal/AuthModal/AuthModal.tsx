@@ -42,7 +42,8 @@ const AuthModal = () => {
     setErrMessage(null);
     if (isSuccess) {
       console.log('login successfull');
-      // navigate(redirectTo);
+      navigate('/clients');
+      dispatch(closeModal());
       /* getOMe()
         .unwrap()
         .then((res) => dispatch(setUserId(res.id)))
