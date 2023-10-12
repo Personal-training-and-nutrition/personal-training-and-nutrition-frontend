@@ -1,5 +1,5 @@
 import styles from './NavBar.module.scss';
-import { NavLink } from 'react-router-dom';
+import {Link, NavLink} from 'react-router-dom';
 import React from 'react';
 import { navBarSpecialistItemList, navBarUserItemList } from '../../utils/NabBarParams.ts';
 import logo from '../../assets/logo.svg';
@@ -19,7 +19,7 @@ const NavBar: React.FC<NavBarParams> = ({ statusSpec }) => {
 
   return (
     <nav className={styles.navbar}>
-      <img className={styles.navbar__logo} src={logo} alt="logo" />
+      <Link to='/'><img className={styles.navbar__logo} src={logo} alt="logo" /> </Link>
 
       {listIcons.map((item, index) => (
         <NavLink className={activeClassName} key={index} to={`/${item.link}`}>
