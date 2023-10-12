@@ -1,5 +1,4 @@
 import { combinedApi } from './combinedApi';
-import { IUser } from '../types/user';
 
 export const userApi = combinedApi.injectEndpoints({
   endpoints: (builder) => ({

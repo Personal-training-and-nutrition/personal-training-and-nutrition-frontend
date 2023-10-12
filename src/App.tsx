@@ -49,6 +49,10 @@ function App() {
         <Route path="/user-profile/client" element={<Profile statusSpec={false} />} />
         <Route path="/clients" element={<Clients />} />
         {/* </Route> */}
+        <Route path="/meal-plans" element={<MealPlans />} />
+        <Route path="/meal-plan" element={<MealPlan />} />
+        <Route path="/meal-plan/create" element={<AddPlanMeal />} />
+        <Route path="/meal-plan/edit" element={<EditPlanMeal />} />
         <Route path="/client/card/:id" element={<ClientCardPage />} />
         <Route path="/client/new" element={<AddClient />} />
         <Route path="/nutrition-report" element={<NutritionReport />} />
