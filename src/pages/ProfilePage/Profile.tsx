@@ -53,6 +53,7 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
       last_name: initData?.last_name || '',
       first_name: initData?.first_name || '',
       middle_name: initData?.middle_name || '',
+      gender:initData?.gender || 0,
       dob: initData?.dob || '',
       phone_number: initData?.phone_number || '',
     },
