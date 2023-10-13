@@ -4,7 +4,12 @@ import CaloriesSection from '../../components/CaloriesSection/CaloriesSection';
 
 const PlanUnathMeal = () => {
   return (
-    <PlanUnathLayot namePlan="Минус 2кг (1 неделя)" subtitle="Меню на неделю" src={screen} text={'Твои рекомендации на этот день.'}>
+    <PlanUnathLayot
+      namePlan="Минус 2кг (1 неделя)"
+      subtitle="Меню на неделю"
+      src={screen}
+      text={'Твои рекомендации на этот день.'}
+    >
       <CaloriesSection />
     </PlanUnathLayot>
   );
