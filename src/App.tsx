@@ -48,15 +48,15 @@ function App() {
         {/* <Route path="/password-recovery" element={<ForgotPasswordModal />} /> */}
         {/* <Route path="/password-recovery/form" element={<ResetPasswordModal />} /> */}
         <Route path="/password-recovery/success" element={<ForgotPasswordTooltipModal />} />
-        <Route element={<RequireUser />}>
-          <Route path="/user-profile/specialist" element={<Profile statusSpec={true} />} />
-          <Route path="/user-profile/client" element={<Profile statusSpec={false} />} />
-          <Route path="/clients" element={<Clients />} />
-          <Route path="/meal-plans" element={<MealPlans />} />
-          <Route path="/meal-plan" element={<MealPlan />} />
-          <Route path="/meal-plan/create" element={<AddPlanMeal />} />
-          <Route path="/meal-plan/edit" element={<EditPlanMeal />} />
-        </Route>
+        {/* <Route element={<RequireUser />}> */}
+        <Route path="/user-profile/specialist" element={<Profile statusSpec={true} />} />
+        <Route path="/user-profile/client" element={<Profile statusSpec={false} />} />
+        <Route path="/clients" element={<Clients />} />
+        <Route path="/meal-plans" element={<MealPlans />} />
+        <Route path="/meal-plan" element={<MealPlan />} />
+        <Route path="/meal-plan/create" element={<AddPlanMeal />} />
+        <Route path="/meal-plan/edit" element={<EditPlanMeal />} />
+        {/* </Route> */}
         <Route path="/client/card/:id" element={<ClientCardPage />} />
         <Route path="/client/new" element={<AddClient />} />
         <Route path="/nutrition-report" element={<NutritionReport />} />
