@@ -16,6 +16,7 @@ import meal7 from '../assets/images/dayweekMeal/meal-7-img.png';
 
 export type DayBlockType = {
   day: string;
+  weekday?: number | string,
   nameInput: string;
   placeholder: string;
   image: string;
@@ -105,6 +106,7 @@ export const mealData: DayBlockType = [
   {
     day: 'Понедельник',
     nameInput: 'monday',
+    weekday: 1,
     placeholder: 'Напишите меню',
     image: meal1,
     alt: 'Картинка',
@@ -114,6 +116,7 @@ export const mealData: DayBlockType = [
   {
     day: 'Вторник',
     nameInput: 'tuesday',
+    weekday: 2,
     placeholder: 'Напишите меню',
     image: meal2,
     alt: 'Картинка',
@@ -123,6 +126,7 @@ export const mealData: DayBlockType = [
   {
     day: 'Среда',
     nameInput: 'wednesday',
+    weekday: 3,
     placeholder: 'Напишите меню',
     image: meal3,
     alt: 'Картинка',
@@ -132,6 +136,7 @@ export const mealData: DayBlockType = [
   {
     day: 'Четверг',
     nameInput: 'thursday',
+    weekday: 4,
     placeholder: 'Напишите меню',
     image: meal4,
     alt: 'Картинка',
@@ -141,6 +146,7 @@ export const mealData: DayBlockType = [
   {
     day: 'Пятница',
     nameInput: 'friday',
+    weekday: 5,
     placeholder: 'Напишите меню',
     image: meal5,
     alt: 'Картинка',
@@ -150,6 +156,7 @@ export const mealData: DayBlockType = [
   {
     day: 'Суббота',
     nameInput: 'saturday',
+    weekday: 6,
     placeholder: 'Напишите меню',
     image: meal6,
     alt: 'Картинка',
@@ -159,6 +166,7 @@ export const mealData: DayBlockType = [
   {
     day: 'Воскресенье',
     nameInput: 'sunday',
+    weekday: 7,
     placeholder: 'Напишите меню',
     image: meal7,
     alt: 'Картинка',

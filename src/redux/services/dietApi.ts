@@ -13,6 +13,7 @@ export const dietApi = combinedApi.injectEndpoints({
       query(data) {
         return {
           url: 'diet-plans/',
+          method: 'POST',
           body: data,
         };
       },
