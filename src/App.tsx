@@ -27,6 +27,7 @@ import { navBarHideCases } from './utils/constants.tsx';
 import MealPlans from './pages/MealPlans/MealPlans.tsx';
 import MealPlan from './pages/MealPlan/MealPlan.tsx';
 import NutritionReport from './pages/NutritionReport/NutritionReport.tsx';
+import RequireUser from './components/RequireUser/RequireUser.tsx';
 
 function App() {
   const location = useLocation();
