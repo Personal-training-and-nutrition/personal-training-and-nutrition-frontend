@@ -6,15 +6,15 @@ import { useAppSelector } from '../../redux/store';
 import { useCreateDietPlanMutation } from '../../redux/services/dietApi';
 import { useLocation } from 'react-router-dom';
 
-// const daysOfWeek: Record<string, string> = {
-//   monday: '1',
-//   tuesday: '2',
-//   wednesday: '3',
-//   thursday: '4',
-//   friday: '5',
-//   saturday: '6',
-//   sunday: '7',
-// };
+const daysOfWeek: Record<string, string> = {
+  monday: '1',
+  tuesday: '2',
+  wednesday: '3',
+  thursday: '4',
+  friday: '5',
+  saturday: '6',
+  sunday: '7',
+};
 
 const AddPlanMeal: React.FC = () => {
   const { id } = useAppSelector((store) => store.user);
@@ -33,25 +33,23 @@ const AddPlanMeal: React.FC = () => {
   });
 
   const onSubmit = handleSubmit((rawData) => {
-    // const diet = [];
-    // for (const key of Object.keys(rawData)) {
-    //   if (key in daysOfWeek && rawData[key]) {
-    //     diet.push({
-    //       weekday: daysOfWeek[key],
-    //       spec_comment: rawData[key],
-    //     });
-    //   }
-    // }
+    const diet = [];
+    for (let i = 1; i <= 7; i++) {
+      if (rawData[i]) {
+        diet.push(rawData[i]);
+      }
+    }
     const data = {
       specialist: id!,
       user: parseInt(client || '9'),
-      // name: rawData.namePlan,
-      // describe: rawData.recomendations,
-      ...rawData,
+      name: rawData.namePlan,
+      describe: rawData.recomendations,
+      diet,
     };
     console.log(rawData);
     create(data);
   });
+
   return (
     <PlanPageLayot
       textTitle="ПЛАН ПИТАНИЯ"

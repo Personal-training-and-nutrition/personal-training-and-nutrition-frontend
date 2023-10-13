@@ -1,4 +1,4 @@
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import styles from './PlanPageLayot.module.scss';
 import Button from '../Button/Button';
 import ButtonCancel from '../ButtonCancel/ButtonCancel';
@@ -27,6 +27,13 @@ export type PlanInputType = {
   saturday?: string;
   sunday?: string;
 } & Record<string, string>;
+/* & Record<
+  string,
+  {
+    spec_comment: string;
+    weekday: string;
+  }
+>; */
 type PlanFormType = {
   textTitle: string;
   namePlan: string;
