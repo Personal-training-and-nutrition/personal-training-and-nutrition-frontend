@@ -2,7 +2,7 @@ import { combinedApi } from './combinedApi';
 
 export const dietApi = combinedApi.injectEndpoints({
   endpoints: (builder) => ({
-    getDietPlansList: builder.query<TResponse, void>({
+    getDietPlansList: builder.query<IDietPlan[], void>({
       query() {
         return {
           url: 'diet-plans/',

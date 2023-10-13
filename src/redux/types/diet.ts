@@ -1,4 +1,5 @@
 interface IDietPlan {
+  id?: number;
   specialist: number;
   user: number;
   name?: string;
