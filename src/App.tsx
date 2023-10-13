@@ -23,7 +23,6 @@ import PlanUnathTraining from './pages/PlanPage/PlanUnathTraining.tsx';
 import WorkoutPlan from './pages/WorkoutPlan/WorkoutPlan.tsx';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage.tsx';
 import NavBar from './components/Navbar/NavBar.tsx';
-import RequireUser from './components/RequireUser/RequireUser.tsx';
 import { navBarHideCases } from './utils/constants.tsx';
 import MealPlans from './pages/MealPlans/MealPlans.tsx';
 import MealPlan from './pages/MealPlan/MealPlan.tsx';
