@@ -31,9 +31,13 @@ import NutritionReport from './pages/NutritionReport/NutritionReport.tsx';
 
 function App() {
   const location = useLocation();
+  const unauthDesktopClass = location.pathname.endsWith('unauth') ? 'App__desktopUnauth' : '';
+  const appDesktopClass = !navBarHideCases.includes(location.pathname) ? 'App__desktop' : '';
+
+  console.log(location.pathname.endsWith('unauth'));
 
   return (
-    <div className={`App ${!navBarHideCases.includes(location.pathname) ? 'App__desktop' : ''}`}>
+    <div className={`App ${appDesktopClass} ${unauthDesktopClass}`}>
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="*" element={<NotFoundPage />} />
