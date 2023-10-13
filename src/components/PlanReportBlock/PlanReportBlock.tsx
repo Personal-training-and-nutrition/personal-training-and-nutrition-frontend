@@ -10,10 +10,10 @@ import UserNoteForm from '../UserNoteForm/UserNoteForm';
 
 type PlanReportBlockProps = {
   plan: {
-    id: string;
+    id?: string;
     weekday: string;
-    spec_comment: string;
-    user_comment: string;
+    spec_comment?: string | null;
+    user_comment?: string | null;
   };
   isLoggedIn: boolean;
   text: string;
@@ -41,7 +41,7 @@ function PlanReportBlock({ plan, isLoggedIn, text }: PlanReportBlockProps) {
       {showMore && (
         <>
           <div className={styles.PlanReport__workoutPlan}>
-            {plan.spec_comment.split(/\r?\n/).map((item, index) => {
+            {(plan.spec_comment || '').split(/\r?\n/).map((item, index) => {
               return (
                 <p style={{ margin: '0 0 6px' }} key={index}>
                   {item}
@@ -51,7 +51,7 @@ function PlanReportBlock({ plan, isLoggedIn, text }: PlanReportBlockProps) {
           </div>
 
           {(isWorkoutPlanPage || isMealPlanPage) && (
-            <UserNoteForm title="Заметка за день" content={plan.user_comment} />
+            <UserNoteForm title="Заметка за день" content={plan.user_comment || ''} />
           )}
         </>
       )}
@@ -60,13 +60,9 @@ function PlanReportBlock({ plan, isLoggedIn, text }: PlanReportBlockProps) {
       {isWorkoutPlanPage || isMealPlanPage
         ? isLoggedIn &&
           !showMore &&
-          plan.user_comment.length > 0 && (
-            <DescriptionBlock title="Заметка за день">{plan.user_comment}</DescriptionBlock>
-          )
+          plan.user_comment && <DescriptionBlock title="Заметка за день">{plan.user_comment}</DescriptionBlock>
         : isLoggedIn &&
-          plan.user_comment.length > 0 && (
-            <DescriptionBlock title="Заметка за день">{plan.user_comment}</DescriptionBlock>
-          )}
+          plan.user_comment && <DescriptionBlock title="Заметка за день">{plan.user_comment}</DescriptionBlock>}
     </li>
   );
 }
