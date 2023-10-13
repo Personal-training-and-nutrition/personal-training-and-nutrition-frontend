@@ -4,17 +4,12 @@ import styles from './MealPlans.module.scss';
 import planImage from '../../assets/mealPlanImage.png';
 import { Link } from 'react-router-dom';
 import { useGetDietPlansListQuery } from '../../redux/services/dietApi';
-import { useEffect } from 'react';
 
 function MealPlans() {
   const { data, isSuccess } = useGetDietPlansListQuery();
 
-  useEffect(() => {
-    if (isSuccess) console.log(data);
-  }, [isSuccess]);
-
   const cards = data?.map((plan) => (
-    <Link to={`/meal-plan?id=${plan.id}`} className={styles.mealPlans__link}>
+    <Link to={`/meal-plan?id=${plan.id}`} className={styles.mealPlans__link} key={plan.id}>
       <PlanCard title={plan.name || 'Без названия'} date="Hell knows when" image={planImage} />
     </Link>
   ));

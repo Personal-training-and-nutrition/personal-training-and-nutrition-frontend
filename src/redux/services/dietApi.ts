@@ -18,7 +18,7 @@ export const dietApi = combinedApi.injectEndpoints({
         };
       },
     }),
-    retrieveDietPlan: builder.query<TResponse, number>({
+    retrieveDietPlan: builder.query<IDietPlan, string>({
       query(id) {
         return {
           url: `diet-plans/${id}/`,
