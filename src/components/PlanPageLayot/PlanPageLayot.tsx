@@ -68,7 +68,7 @@ const PlanPageLayot = ({ textTitle, namePlan, data, register, onSubmit, isDirty,
             <input
               className={styles.plan__input}
               type="text"
-              {...register('name', {
+              {...register('namePlan', {
                 required: 'Поле не должно быть пустым',
               })}
               placeholder="Напишите название плана"

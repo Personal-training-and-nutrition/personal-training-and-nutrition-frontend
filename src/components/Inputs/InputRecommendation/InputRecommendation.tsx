@@ -8,7 +8,7 @@ const Recommendation = ({ register }: { register: UseFormRegister<PlanInputType>
       <h3 className={styles.recommendation__title}>Рекомендации</h3>
       <textarea
         className={styles.recommendation__input}
-        {...register('describe')}
+        {...register('recomendations')}
         placeholder="Напишите рекомендации"
       />
     </label>
