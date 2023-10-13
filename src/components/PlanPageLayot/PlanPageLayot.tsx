@@ -27,13 +27,6 @@ export type PlanInputType = {
   saturday?: string;
   sunday?: string;
 } & Record<string, string>;
-/* & Record<
-  string,
-  {
-    spec_comment: string;
-    weekday: string;
-  }
->; */
 type PlanFormType = {
   textTitle: string;
   namePlan: string;
@@ -81,7 +74,7 @@ const PlanPageLayot = ({ textTitle, namePlan, data, register, onSubmit, isDirty,
               placeholder="Напишите название плана"
             />
           </label>
-          {location.pathname === '/meal-plan' && <CaloriesInput register={register} />}
+          {location.pathname.startsWith('/meal-plan') && <CaloriesInput register={register} />}
           <InputRecommendation register={register} />
           <div className={styles.plan__label_gap}>
             {data.map((item, index) => (

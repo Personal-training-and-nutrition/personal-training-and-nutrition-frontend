@@ -6,7 +6,7 @@ import { useAppSelector } from '../../redux/store';
 import { useCreateDietPlanMutation } from '../../redux/services/dietApi';
 import { useLocation } from 'react-router-dom';
 
-const daysOfWeek: Record<string, string> = {
+/* const daysOfWeek: Record<string, string> = {
   monday: '1',
   tuesday: '2',
   wednesday: '3',
@@ -14,7 +14,7 @@ const daysOfWeek: Record<string, string> = {
   friday: '5',
   saturday: '6',
   sunday: '7',
-};
+}; */
 
 const AddPlanMeal: React.FC = () => {
   const { id } = useAppSelector((store) => store.user);
@@ -36,7 +36,7 @@ const AddPlanMeal: React.FC = () => {
     const diet = [];
     for (let i = 1; i <= 7; i++) {
       if (rawData[i]) {
-        diet.push(rawData[i]);
+        diet.push(rawData[i] as any);
       }
     }
     const data = {
@@ -46,7 +46,7 @@ const AddPlanMeal: React.FC = () => {
       describe: rawData.recomendations,
       diet,
     };
-    console.log(rawData);
+    console.log(data);
     create(data);
   });
 
