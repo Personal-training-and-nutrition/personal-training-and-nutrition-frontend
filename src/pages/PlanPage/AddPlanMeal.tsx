@@ -43,11 +43,15 @@ const AddPlanMeal: React.FC = () => {
       specialist: id!,
       user: parseInt(client || '9'),
       name: rawData.namePlan,
+      kkal: rawData.calories,
+      protein: rawData.protein,
+      carbo: rawData.carbohydrates,
+      fat: rawData.fats,
       describe: rawData.recomendations,
       diet,
     };
     console.log(data);
-    create(data);
+    // create(data);
   });
 
   return (
