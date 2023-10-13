@@ -51,7 +51,7 @@ const AddPlanMeal: React.FC = () => {
       diet,
     };
     console.log(data);
-    // create(data);
+    create(data);
   });
 
   return (
