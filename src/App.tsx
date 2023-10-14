@@ -34,7 +34,7 @@ function App() {
   const unauthDesktopClass = location.pathname.endsWith('unauth') ? 'App__desktopUnauth' : '';
   const appDesktopClass = !navBarHideCases.includes(location.pathname) ? 'App__desktop' : '';
 
-  console.log(location.pathname.endsWith('unauth'));
+  // console.log(location.pathname.endsWith('unauth'));
 
   return (
     <div className={`App ${appDesktopClass} ${unauthDesktopClass}`}>
@@ -48,7 +48,7 @@ function App() {
         {/* <Route path="/password-recovery" element={<ForgotPasswordModal />} /> */}
         {/* <Route path="/password-recovery/form" element={<ResetPasswordModal />} /> */}
         <Route path="/password-recovery/success" element={<ForgotPasswordTooltipModal />} />
-        {/* <Route element={<RequireUser />}> */}
+        <Route element={<RequireUser />}>
         <Route path="/user-profile/specialist" element={<Profile statusSpec={true} />} />
         <Route path="/user-profile/client" element={<Profile statusSpec={false} />} />
         <Route path="/clients" element={<Clients />} />
@@ -56,7 +56,7 @@ function App() {
         <Route path="/meal-plan" element={<MealPlan />} />
         <Route path="/meal-plan/create" element={<AddPlanMeal />} />
         <Route path="/meal-plan/edit" element={<EditPlanMeal />} />
-        {/* </Route> */}
+        </Route>
         <Route path="/client/card/:id" element={<ClientCardPage />} />
         <Route path="/client/new" element={<AddClient />} />
         <Route path="/nutrition-report" element={<NutritionReport />} />

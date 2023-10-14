@@ -30,7 +30,8 @@ const DatePicker = ({ register, isInvalid }: { isInvalid?: boolean; register: Us
         }
         onFocus={onFocusInput}
         placeholder="Дата рождения"
-        {...register('dob', { required: true, onBlur: onBlurInput, validate: (value) => (new Date(value)) < new Date() || 'Дата не должна быть больше текущей'  })}
+        {...register('dob', { required: false, onBlur: onBlurInput })}
+        // {...register('dob', { required: true, onBlur: onBlurInput, validate: (value) => (new Date(value)) < new Date() || 'Дата не должна быть больше текущей'  })}
       />
     </div>
   );

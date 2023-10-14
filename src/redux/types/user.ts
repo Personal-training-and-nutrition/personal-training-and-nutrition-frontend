@@ -11,14 +11,20 @@ interface IUser {
   capture?: string | null;
   is_staff?: boolean;
   is_superuser?: boolean;
-  is_specialist?: boolean;
+  is_specialist: boolean;
   is_active?: boolean;
-  role?: number | null;
-  gender?: number | null;
-  params?: number | null;
+  role?: string | null;
+  gender?: string | null;
+  params?: {
+    weight?: number | null,
+    height?: number | null
+  };
   specialist_id?: number | null;
   groups?: number[];
   user_permissions?: number[];
+  specialist?: {
+    about?: string;
+  }
 }
 
 interface IUserPassword {
@@ -26,7 +32,7 @@ interface IUserPassword {
 }
 
 interface IUserEmail {
-  email: string;
+  email?: string;
 }
 
 interface IUserResetEmail {
