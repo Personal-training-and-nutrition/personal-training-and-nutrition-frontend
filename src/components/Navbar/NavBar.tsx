@@ -1,14 +1,24 @@
 import styles from './NavBar.module.scss';
-import {Link, NavLink} from 'react-router-dom';
+import {Link, NavLink, useNavigate} from 'react-router-dom';
 import React from 'react';
 import { navBarSpecialistItemList, navBarUserItemList } from '../../utils/NabBarParams.ts';
 import logo from '../../assets/logo.svg';
 import exitIcon from '../../assets/images/icons/exit-icon.svg';
+import { useAppDispatch } from '../../redux/store.ts';
+import { logout } from '../../redux/slices/userSlice.ts';
 
 type NavBarParams = { statusSpec: boolean };
 
 const NavBar: React.FC<NavBarParams> = ({ statusSpec }) => {
   const listIcons = statusSpec ? navBarUserItemList : navBarSpecialistItemList;
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
+  const handleLogout =  () => {
+    localStorage.removeItem('accessToken')
+    dispatch(logout())
+    navigate('/')
+  }
 
   const activeClassName = ({ isActive }: { isActive: boolean }) => {
     if (isActive) {
@@ -36,7 +46,7 @@ const NavBar: React.FC<NavBarParams> = ({ statusSpec }) => {
         </NavLink>
       ))}
 
-      <button className={styles.navbar__exitBtn}>
+      <button onClick={() => handleLogout()} className={styles.navbar__exitBtn}>
         <span>Выйти</span> <img src={exitIcon} alt="exit icon" />
       </button>
     </nav>
