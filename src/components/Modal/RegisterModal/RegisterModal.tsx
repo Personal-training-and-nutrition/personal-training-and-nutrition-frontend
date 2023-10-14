@@ -14,22 +14,18 @@ import { useAppDispatch, useAppSelector } from '../../../redux/store.ts';
 import { closeModal, openModal } from '../../../redux/slices/modalsSlice.ts';
 
 const RegisterModal = () => {
-  // const location = useLocation();
-  // const navigate = useNavigate();
-  // const redirectTo = location.state?.from.pathname || '/login';
   const dispatch = useAppDispatch();
-
 
   const [registerUser, { isLoading, isSuccess, error }] = useRegisterUserMutation();
 
-  const { isOpen, modalId } = useAppSelector(state => state.modal)
+  const { isOpen, modalId } = useAppSelector((state) => state.modal);
 
-  const isRegister = modalId === 'registerModal' ? 'registerModal' : ''
+  const isRegister = modalId === 'registerModal' ? 'registerModal' : '';
 
   const handleAuthClick = () => {
-    dispatch(closeModal())
-    dispatch(openModal('modalAuth'))
-  }
+    dispatch(closeModal());
+    dispatch(openModal('modalAuth'));
+  };
 
   useEffect(() => {
     console.log('registering user...');
@@ -63,10 +59,9 @@ const RegisterModal = () => {
         re_password: data.retrypassword,
       });
       setTimeout(() => {
-        console.log(isSuccess)
-        dispatch(closeModal())
-        dispatch(openModal('modalAuth'))
-    }, 1000)
+        dispatch(closeModal());
+        dispatch(openModal('modalAuth'));
+      }, 1000);
     } catch (err) {
       console.error('register failed', err);
     }

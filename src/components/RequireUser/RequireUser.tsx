@@ -17,12 +17,14 @@ export default function RequireUser() {
     if (!id && refreshToken) {
       getMe()
         .unwrap()
-        .then((res) => dispatch(setUserId(res.id)));
+        .then((res) => {
+          dispatch(setUserId(res.id));
+        });
     }
   }, []);
 
   if (isSuccess || id) return <Outlet />;
-  if (isError || !refreshToken) return <Navigate to="/login/" state={{ from: location }} replace />;
+  if (isError || !refreshToken) return <Navigate to="/" state={{ from: location, isUnAuth: true }} replace />;
 
   return <div>loading...</div>;
 }

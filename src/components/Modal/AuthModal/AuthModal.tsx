@@ -6,30 +6,26 @@ import SocialIcons from '../../SocialIcons/SocialIcons';
 import InputEmail from '../../Inputs/InputEmail/InputEmail';
 import InputPassword from '../../Inputs/InputPassword/InputPassword';
 import { useLoginMutation } from '../../../redux/services/authApi';
-// import { useGetAllUsersQuery } from '../../../redux/api/userApi';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { InputsType } from '../../../pages/ProfilePage/Profile';
 import { isApiError } from '../../../utils/isApiError';
 import { useAppDispatch, useAppSelector } from '../../../redux/store';
 import { closeModal, openModal } from '../../../redux/slices/modalsSlice';
-/* import { useLazyGetMeQuery } from '../../../redux/services/userApi';
-import { useAppDispatch } from '../../../redux/store';
-import { setUserId } from '../../../redux/slices/userSlice'; */
+import { setIsLoggedIn, setUserId } from '../../../redux/slices/userSlice';
+import { useLazyGetMeQuery } from '../../../redux/services/userApi';
 
 const AuthModal = () => {
-  // const location = useLocation();
   const navigate = useNavigate();
   const [errMessage, setErrMessage] = useState<string | null>(null);
   // const redirectTo = location.state?.from.pathname || '/';
   const [login, { isSuccess, isLoading, error }] = useLoginMutation();
   const { isOpen, modalId } = useAppSelector((state) => state.modal);
-  const { id } = useAppSelector((state) => state.user)
-  console.log(id)
-  // const [getMe] = useLazyGetMeQuery();
+  const [getMe] = useLazyGetMeQuery();
   const dispatch = useAppDispatch();
 
   const isAuth = modalId === 'modalAuth' ? 'modalAuth' : '';
+
 
   const {
     register,
@@ -44,10 +40,12 @@ const AuthModal = () => {
       console.log('login successfull');
       navigate('/clients');
       dispatch(closeModal());
-      /* getOMe()
-        .unwrap()
-        .then((res) => dispatch(setUserId(res.id)))
-        .then(() => navigate(redirectTo)); */
+      getMe()
+      .unwrap()
+      .then((res) => {
+        dispatch(setUserId(res.id))
+        dispatch(setIsLoggedIn(true))
+      })
     } else if (isApiError(error)) {
       setErrMessage(error.data.detail || 'Вход не удался, повторите попытку позднее.');
     }
@@ -63,7 +61,6 @@ const AuthModal = () => {
       email: data.email,
       password: data.password,
     });
-    console.log(isSuccess)
     if (isSuccess) {
       navigate('/clients');
       dispatch(closeModal());
