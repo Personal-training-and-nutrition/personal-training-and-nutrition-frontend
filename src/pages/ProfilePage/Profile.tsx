@@ -22,10 +22,10 @@ export type InputsType = {
   first_name: string | null;
   middle_name: string | null;
   dob?: string | null;
-  gender?: number | null;
-  weight?: string;
-  height?: string;
-  aboutMe?: string;
+  gender?: string | null;
+  weight?: number | null,
+  height?: number | null
+  about?: string;
   phone_number: string | null;
   password: string;
   retrypassword: string;
@@ -42,6 +42,22 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
   const [update, { data: updateData, isSuccess: isUpdateSuccess }] = usePartialUpdateUserMutation();
   const [destroyMe, {isSuccess: isSuccessDelete}] = useDestroyMeMutation();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isSuccess)
+      reset({ ...initData, dob: formatDate(initData?.dob), phone_number: formatToPhoneValue(initData?.phone_number) });
+  }, [isSuccess, initData]);
+
+  useEffect(() => {
+    if (isUpdateSuccess)
+      reset({
+        ...updateData,
+        dob: formatDate(updateData?.dob),
+        phone_number: formatToPhoneValue(updateData?.phone_number),
+      });
+  }, [isUpdateSuccess]);
+
+
   const {
     register,
     handleSubmit,
@@ -53,9 +69,12 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
       last_name: initData?.last_name || '',
       first_name: initData?.first_name || '',
       middle_name: initData?.middle_name || '',
-      gender:initData?.gender || 0,
+      gender: initData?.gender || '0',
       dob: initData?.dob || '',
       phone_number: initData?.phone_number || '',
+      weight: initData?.params?.weight,
+      height: initData?.params?.height,
+      about: initData?.specialist?.about || '',
     },
   });
 
@@ -64,26 +83,17 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
       data.dob = formatDateToSent(data.dob);
     }
     const phone_numberFormat = String(data.phone_number).replace(/[+\s]+/g, '');
-    update({ id: id!, data: { ...data, phone_number: phone_numberFormat, password: undefined } });
+    const params = {weight: data.weight, heigth: data.height};
+    const specialist = {about: data.about}
+    const role = null;
+    const gender = data.gender === null ? '0' : data.gender;
+    const dataUser = { ...data, phone_number: phone_numberFormat, password: undefined, params, specialist, role, gender }
+
+    update({ id: id!, data: dataUser  });
     setEditPhone(false);
-    console.log(data);
   });
 
-  useEffect(() => {
-    if (isSuccess)
-      reset({ ...initData, dob: formatDate(initData?.dob), phone_number: formatToPhoneValue(initData?.phone_number) });
-    console.log(initData);
-  }, [isSuccess, initData]);
 
-  useEffect(() => {
-    if (isUpdateSuccess)
-      reset({
-        ...updateData,
-        dob: formatDate(updateData?.dob),
-        phone_number: formatToPhoneValue(updateData?.phone_number),
-      });
-    console.log(updateData);
-  }, [isUpdateSuccess]);
 
   const data = !isUpdateSuccess ? initData : updateData;
   const firstName = data?.first_name?.slice(0, 1);
@@ -155,7 +165,7 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
           {statusSpec ? (
             <label className={styles.profile__label}>
               <h3 className={styles.profile__title_big}>Обо мне</h3>
-              <textarea className={`${styles.profile__input} ${styles.profile__input_big}`} {...register('aboutMe')} />
+              <textarea className={`${styles.profile__input} ${styles.profile__input_big}`} {...register('about')} />
             </label>
           ) : (
             <label className={styles.profile__label}>

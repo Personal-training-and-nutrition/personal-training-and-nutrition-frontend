@@ -39,6 +39,7 @@ function App() {
   const appDesktopClass = !navBarHideCases.includes(location.pathname) ? 'App__desktop' : '';
   const { isLoggedIn, checkIsAuth } = useIsAuth();
 
+  // console.log(location.pathname.endsWith('unauth'));
   useEffect(() => {
     checkIsAuth()
     if(isLoggedIn) {
@@ -55,22 +56,22 @@ function App() {
         <Route path="/workout-plan/unauth" element={<PlanUnathTraining />} />
         <Route path="/password-recovery/success" element={<ForgotPasswordTooltipModal />} />
         <Route element={<RequireUser />}>
-          <Route path="/user-profile/specialist" element={<Profile statusSpec={true} />} />
-          <Route path="/user-profile/client" element={<Profile statusSpec={false} />} />
-          <Route path="/clients" element={<Clients />} />
-          <Route path="/meal-plans" element={<MealPlans />} />
-          <Route path="/meal-plan" element={<MealPlan />} />
-          <Route path="/meal-plan/create" element={<AddPlanMeal />} />
-          <Route path="/meal-plan/edit" element={<EditPlanMeal />} />
-          <Route path="/client/card/:id" element={<ClientCardPage />} />
-          <Route path="/client/new" element={<AddClient />} />
-          <Route path="/nutrition-report" element={<NutritionReport />} />
-          <Route path="/workout-plans" element={<WorkoutPlans />} />
-          <Route path="/workout-plan" element={<WorkoutPlan />} />
-          <Route path="/workout-plan/create" element={<AddPlanTraining />} />
-          <Route path="/workout-plan/edit" element={<EditPlanTraining />} />
-          <Route path="/workout-report" element={<TrainingReport />} />
+        <Route path="/user-profile/specialist" element={<Profile statusSpec={true} />} />
+        <Route path="/user-profile/client" element={<Profile statusSpec={false} />} />
+        <Route path="/clients" element={<Clients />} />
+        <Route path="/meal-plans" element={<MealPlans />} />
+        <Route path="/meal-plan" element={<MealPlan />} />
+        <Route path="/meal-plan/create" element={<AddPlanMeal />} />
+        <Route path="/meal-plan/edit" element={<EditPlanMeal />} />
         </Route>
+        <Route path="/client/card/:id" element={<ClientCardPage />} />
+        <Route path="/client/new" element={<AddClient />} />
+        <Route path="/nutrition-report" element={<NutritionReport />} />
+        <Route path="/workout-plans" element={<WorkoutPlans />} />
+        <Route path="/workout-plan" element={<WorkoutPlan />} />
+        <Route path="/workout-plan/create" element={<AddPlanTraining />} />
+        <Route path="/workout-plan/edit" element={<EditPlanTraining />} />
+        <Route path="/workout-report" element={<TrainingReport />} />
         <Route
           path="/confirmationTooltip"
           element={
