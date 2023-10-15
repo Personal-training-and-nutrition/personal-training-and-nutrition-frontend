@@ -17,9 +17,10 @@ type PlanReportBlockProps = {
   };
   isLoggedIn: boolean;
   text: string;
+  handleComment: (message: string) => void;
 };
 
-function PlanReportBlock({ plan, isLoggedIn, text }: PlanReportBlockProps) {
+function PlanReportBlock({ plan, isLoggedIn, text, handleComment }: PlanReportBlockProps) {
   const [showMore, setShowMore] = useState(false);
   const location = useLocation();
   const isWorkoutPlanPage = location.pathname === '/workout-plan';
@@ -51,7 +52,7 @@ function PlanReportBlock({ plan, isLoggedIn, text }: PlanReportBlockProps) {
           </div>
 
           {(isWorkoutPlanPage || isMealPlanPage) && (
-            <UserNoteForm title="Заметка за день" content={plan.user_comment || ''} />
+            <UserNoteForm title="Заметка за день" content={plan.user_comment || ''} handleComment={handleComment} />
           )}
         </>
       )}

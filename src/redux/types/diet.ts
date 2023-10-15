@@ -8,9 +8,9 @@ interface IDietPlan {
   carbo?: number;
   fat?: number;
   describe?: string | null;
-  diet?: {
+  diet?: Array<{
     weekday: string;
     spec_comment?: string | null;
     user_comment?: string | null;
-  }[];
+  }>;
 }
