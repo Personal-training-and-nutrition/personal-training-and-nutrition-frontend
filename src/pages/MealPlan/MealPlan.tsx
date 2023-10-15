@@ -4,18 +4,23 @@ import PlanReportBlock from '../../components/PlanReportBlock/PlanReportBlock';
 import DescriptionBlock from '../../components/DescriptionBlock/DescriptionBlock';
 import CaloriesSection from '../../components/CaloriesSection/CaloriesSection';
 import { useLocation } from 'react-router-dom';
-import { useRetrieveDietPlanQuery } from '../../redux/services/dietApi';
-import { useEffect } from 'react';
+import { useRetrieveDietPlanQuery, useUpdateDietPlanMutation } from '../../redux/services/dietApi';
 
 function MealPlan() {
   const location = useLocation();
   const query = new URLSearchParams(location.search);
   const plan = query.get('id');
   const { data, isSuccess } = useRetrieveDietPlanQuery(plan!, { skip: !plan });
+  const [commentTrigger] = useUpdateDietPlanMutation();
 
-  useEffect(() => {
-    if (isSuccess) console.log(data);
-  }, [isSuccess]);
+  function generateCommentHandler(day: string) {
+    return function (message: string) {
+      if (!data?.diet || !data.id) return;
+      const diet = data.diet.map((plan) => (plan.weekday === day ? { ...plan, user_comment: message || null } : plan));
+      const body = { ...data, diet };
+      commentTrigger({ id: data.id, data: body });
+    };
+  }
 
   if (!isSuccess) return <p>Loading...</p>;
 
@@ -38,6 +43,7 @@ function MealPlan() {
               isLoggedIn={true}
               key={index}
               plan={plan}
+              handleComment={generateCommentHandler(plan.weekday)}
               text="Твой план питания на этот день. Поделись ощущениями в конце."
             />
           );
