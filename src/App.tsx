@@ -45,7 +45,7 @@ function App() {
     if(isLoggedIn) {
       navigate('/clients')
     }
-  }, [isLoggedIn])
+  }, [])
 
   return (
     <div className={`App ${appDesktopClass} ${unauthDesktopClass}`}>
