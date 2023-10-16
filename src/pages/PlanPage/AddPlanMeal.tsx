@@ -33,6 +33,7 @@ const AddPlanMeal: React.FC = () => {
   });
 
   const onSubmit = handleSubmit((rawData) => {
+    if (!client) return;
     const diet = [];
     for (let i = 0; i <= 7; i++) {
       if (rawData[i]) {
@@ -41,7 +42,7 @@ const AddPlanMeal: React.FC = () => {
     }
     const data = {
       specialist: id!,
-      user: parseInt(client || '9'),
+      user: parseInt(client),
       name: rawData.namePlan,
       kkal: rawData.calories,
       protein: rawData.protein,
@@ -50,7 +51,6 @@ const AddPlanMeal: React.FC = () => {
       describe: rawData.recomendations,
       diet,
     };
-    console.log(data);
     create(data);
   });
 

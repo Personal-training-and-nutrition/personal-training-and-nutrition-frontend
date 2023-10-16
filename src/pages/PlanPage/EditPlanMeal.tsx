@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PlanPageLayot, { PlanInputType } from '../../components/PlanPageLayot/PlanPageLayot';
 import { mealData } from '../../utils/constants';
 import { useForm } from 'react-hook-form';
@@ -7,6 +7,8 @@ const EditPlanMeal: React.FC = () => {
   const {
     register,
     handleSubmit,
+    setValue,
+    reset,
     formState: { isDirty, isValid },
   } = useForm<PlanInputType>({
     mode: 'onBlur',
@@ -19,6 +21,8 @@ const EditPlanMeal: React.FC = () => {
     console.log(data);
   });
 
+  useEffect(() => {}, []);
+
   return (
     <PlanPageLayot
       textTitle="РЕДАКТИРОВАНИЕ ПЛАНA ПИТАНИЯ"
@@ -28,6 +32,7 @@ const EditPlanMeal: React.FC = () => {
       onSubmit={onSubmit}
       isDirty={isDirty}
       isValid={isValid}
+      setValue={setValue}
     />
   );
 };
