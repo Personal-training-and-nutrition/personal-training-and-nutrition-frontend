@@ -16,7 +16,6 @@ const EditPlanMeal: React.FC = () => {
     },
   });
   const onSubmit = handleSubmit((data) => {
-    return data;
     console.log(data);
   });
 

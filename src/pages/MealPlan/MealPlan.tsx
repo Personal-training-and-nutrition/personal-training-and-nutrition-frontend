@@ -3,15 +3,21 @@ import styles from './MealPlan.module.scss';
 import PlanReportBlock from '../../components/PlanReportBlock/PlanReportBlock';
 import DescriptionBlock from '../../components/DescriptionBlock/DescriptionBlock';
 import CaloriesSection from '../../components/CaloriesSection/CaloriesSection';
-import { useLocation } from 'react-router-dom';
-import { useRetrieveDietPlanQuery, useUpdateDietPlanMutation } from '../../redux/services/dietApi';
+import { useLocation, useNavigate } from 'react-router-dom';
+import {
+  useDestroyDietPlanMutation,
+  useRetrieveDietPlanQuery,
+  useUpdateDietPlanMutation,
+} from '../../redux/services/dietApi';
 
 function MealPlan() {
+  const navigate = useNavigate();
   const location = useLocation();
   const query = new URLSearchParams(location.search);
   const plan = query.get('id');
   const { data, isSuccess } = useRetrieveDietPlanQuery(plan!, { skip: !plan });
   const [commentTrigger] = useUpdateDietPlanMutation();
+  const [deleteTrigger] = useDestroyDietPlanMutation();
 
   function generateCommentHandler(day: string) {
     return function (message: string) {
@@ -20,6 +26,9 @@ function MealPlan() {
       const body = { ...data, diet };
       commentTrigger({ id: data.id, data: body });
     };
+  }
+  function handleDelete() {
+    if (plan) deleteTrigger(plan).then(() => navigate('/meal-plans'));
   }
 
   if (!isSuccess) return <p>Loading...</p>;
@@ -49,7 +58,9 @@ function MealPlan() {
           );
         })}
 
-        <button className={styles.mealPlan__deleteBtn}>Удалить этот план</button>
+        <button className={styles.mealPlan__deleteBtn} onClick={handleDelete}>
+          Удалить этот план
+        </button>
       </div>
     </main>
   );

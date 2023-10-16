@@ -8,6 +8,7 @@ export const dietApi = combinedApi.injectEndpoints({
           url: 'diet-plans/',
         };
       },
+      providesTags: ['dietPlanList'],
     }),
     createDietPlan: builder.mutation<TResponse, IDietPlan>({
       query(data) {
@@ -37,13 +38,14 @@ export const dietApi = combinedApi.injectEndpoints({
       },
       invalidatesTags: ['dietPlan'],
     }),
-    destroyDietPlan: builder.mutation<TResponse, number>({
+    destroyDietPlan: builder.mutation<TResponse, string>({
       query(id) {
         return {
           url: `diet-plans/${id}/`,
           method: 'DELETE',
         };
       },
+      invalidatesTags: ['dietPlanList'],
     }),
   }),
 });
