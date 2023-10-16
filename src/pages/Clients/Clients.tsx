@@ -1,13 +1,12 @@
-import { useState, useEffect } from 'react';
+import {useState, useEffect} from 'react';
 import styles from './Clients.module.scss';
 import addClientImg from '../../assets/images/clients/addClientImage.png';
 import plusIcon from '../../assets/images/icons/white-plus.svg';
 import searchIcon from '../../assets/images/icons/search-icon.svg';
 import ClientsListCard from '../../components/ClientsListCard/ClientsListCard';
-import { useNavigate } from 'react-router-dom';
-
-import { useGetAllUsersQuery } from '../../redux/services/userApi';
-import { IUser } from '../../redux/types/user';
+import {useNavigate} from 'react-router-dom';
+import {IUser} from '../../redux/types/user';
+import {useGetClientsListQuery} from "../../redux/services/clientsApi.ts";
 
 type Client = {
   first_name: string;
@@ -17,7 +16,7 @@ type Client = {
 
 function Clients() {
   const [searchText, setSearchText] = useState('');
-  const { data: allUsers = [], isSuccess, isLoading, isFetching, isError } = useGetAllUsersQuery();
+  const {data: allUsers = []} = useGetClientsListQuery();
 
   const filteredClients = allUsers.filter((client: Client) => {
     if (client.last_name) {
@@ -29,7 +28,6 @@ function Clients() {
 
   const navigate = useNavigate();
 
-  console.log(allUsers);
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -40,7 +38,7 @@ function Clients() {
         <h1 className={styles.clients__pageTitle}>Клиенты</h1>
 
         <div className={styles.clients__searchInputContainer}>
-          <img className={styles.clients__searchInputIcon} src={searchIcon} alt="Search Icon" />
+          <img className={styles.clients__searchInputIcon} src={searchIcon} alt="Search Icon"/>
           <input
             className={styles.clients__searchInputField}
             type="text"
@@ -53,15 +51,15 @@ function Clients() {
         </div>
 
         <button className={styles.clients__addClientBtn} onClick={() => navigate('/client/new')}>
-          <img className={styles.clients__addClientBtnImage} src={addClientImg} alt="картинка кнопки" />
+          <img className={styles.clients__addClientBtnImage} src={addClientImg} alt="картинка кнопки"/>
           <span className={styles.clients__addClientBtnText}>
-            Добавить клиента <img src={plusIcon} alt="Белый плюсик" />
+            Добавить клиента <img src={plusIcon} alt="Белый плюсик"/>
           </span>
         </button>
 
         <ul className={styles.clients__list}>
           {filteredClients.map((user: IUser) => {
-            return <ClientsListCard user={user} key={user.id} />;
+            return <ClientsListCard user={user} key={user.id}/>;
           })}
         </ul>
       </div>

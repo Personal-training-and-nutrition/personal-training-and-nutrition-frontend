@@ -1,4 +1,6 @@
-interface IUser {
+export interface IUser {
+  notes?: string;
+  age?: number;
   id?: number;
   last_login?: string | null;
   email?: string;
@@ -11,7 +13,7 @@ interface IUser {
   capture?: string | null;
   is_staff?: boolean;
   is_superuser?: boolean;
-  is_specialist: boolean;
+  is_specialist?: boolean;
   is_active?: boolean;
   role?: string | null;
   gender?: string | null;

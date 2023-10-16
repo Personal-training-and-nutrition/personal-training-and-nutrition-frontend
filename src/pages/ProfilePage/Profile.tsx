@@ -33,6 +33,12 @@ export type InputsType = {
   clientDiseases: string;
   accept: string;
   email: string;
+  notes?:string;
+  food_preferences?: string;
+  bad_habits?: string;
+  exp_trainings?: string;
+  exp_diets?: string;
+  diseases?: string;
 };
 const Profile: React.FC = () => {
   const [isEditPassw, setEditPassw] = useState(false);
