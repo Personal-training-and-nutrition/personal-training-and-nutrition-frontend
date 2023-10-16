@@ -41,10 +41,10 @@ function ClientsListCard({ user }: ClientListCardProps) {
 
       <div className={styles.clientsListCard__info}>
         <p className={styles.clientsListCard__name}>
-          {user.first_name} {user.last_name}, {getAgeEnding(age)}
+          {user.first_name} {user.last_name}, {getAgeEnding(user.age)}
         </p>
         {/* <p className={styles.clientsListCard__description}>{description}</p> */}
-        <p className={styles.clientsListCard__description}>Описание, которое хз откуда берется</p>
+        <p className={styles.clientsListCard__description}>{user.notes}</p>
       </div>
     </li>
   );
