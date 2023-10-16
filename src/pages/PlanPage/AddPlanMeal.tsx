@@ -51,7 +51,8 @@ const AddPlanMeal: React.FC = () => {
       describe: rawData.recomendations,
       diet,
     };
-    create(data);
+    console.log(data);
+    // create(data);
   });
 
   return (

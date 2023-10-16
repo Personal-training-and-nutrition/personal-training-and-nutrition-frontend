@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import PlanPageLayot, { PlanInputType } from '../../components/PlanPageLayot/PlanPageLayot';
 import { mealData } from '../../utils/constants';
 import { useForm } from 'react-hook-form';
+import { tmpPlan } from '../../utils/tmp';
 
 const EditPlanMeal: React.FC = () => {
   const {
@@ -21,7 +22,10 @@ const EditPlanMeal: React.FC = () => {
     console.log(data);
   });
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    console.log(tmpPlan);
+    reset(tmpPlan as any);
+  }, []);
 
   return (
     <PlanPageLayot
