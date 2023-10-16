@@ -4,13 +4,12 @@ import React from 'react';
 import { navBarSpecialistItemList, navBarUserItemList } from '../../utils/NabBarParams.ts';
 import logo from '../../assets/logo.svg';
 import exitIcon from '../../assets/images/icons/exit-icon.svg';
-import { useAppDispatch } from '../../redux/store.ts';
+import { useAppDispatch, useAppSelector } from '../../redux/store.ts';
 import { logout } from '../../redux/slices/userSlice.ts';
 
-type NavBarParams = { statusSpec: boolean };
-
-const NavBar: React.FC<NavBarParams> = ({ statusSpec }) => {
-  const listIcons = statusSpec ? navBarUserItemList : navBarSpecialistItemList;
+const NavBar: React.FC = () => {
+  const isSpecialist = useAppSelector((store) => store.user.isSpecialist);
+  const listIcons = isSpecialist ? navBarUserItemList : navBarSpecialistItemList;
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 

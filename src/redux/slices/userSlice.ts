@@ -4,12 +4,14 @@ interface IUserState {
   id: number | null;
   accessToken: string | null;
   isLoggedIn: boolean;
+  isSpecialist: boolean;
 }
 
 export const initialState: IUserState = {
   id: null,
   accessToken: null,
   isLoggedIn: false,
+  isSpecialist: true,
 };
 
 const userSlice = createSlice({
@@ -26,9 +28,12 @@ const userSlice = createSlice({
     setIsLoggedIn: (state, action: PayloadAction<boolean>) => {
       state.isLoggedIn = action.payload;
     },
+    setIsSpecialist: (state, action: PayloadAction<boolean>) => {
+      state.isSpecialist = action.payload;
+    },
   },
 });
 
 export default userSlice.reducer;
 
-export const { setAccessToken, setUserId, logout, setIsLoggedIn } = userSlice.actions;
+export const { setAccessToken, setUserId, logout, setIsLoggedIn, setIsSpecialist } = userSlice.actions;

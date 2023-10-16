@@ -12,8 +12,8 @@ import { InputsType } from '../../../pages/ProfilePage/Profile';
 import { isApiError } from '../../../utils/isApiError';
 import { useAppDispatch, useAppSelector } from '../../../redux/store';
 import { closeModal, openModal } from '../../../redux/slices/modalsSlice';
-import { setIsLoggedIn, setUserId } from '../../../redux/slices/userSlice';
-import { useLazyGetMeQuery } from '../../../redux/services/userApi';
+import { setIsLoggedIn, setIsSpecialist, setUserId } from '../../../redux/slices/userSlice';
+import { useLazyGetMeQuery, useLazyRetrieveUserQuery } from '../../../redux/services/userApi';
 
 const AuthModal = () => {
   const navigate = useNavigate();
@@ -22,6 +22,7 @@ const AuthModal = () => {
   const [login, { isSuccess, isLoading, error }] = useLoginMutation();
   const { isOpen, modalId } = useAppSelector((state) => state.modal);
   const [getMe] = useLazyGetMeQuery();
+  const [retriveUser] = useLazyRetrieveUserQuery()
   const dispatch = useAppDispatch();
 
   const isAuth = modalId === 'modalAuth' ? 'modalAuth' : '';
@@ -45,6 +46,10 @@ const AuthModal = () => {
       .then((res) => {
         dispatch(setUserId(res.id))
         dispatch(setIsLoggedIn(true))
+        retriveUser(res.id)
+        .unwrap()
+        .then((userData) => {
+          dispatch(setIsSpecialist(userData.is_specialist))})
       })
     } else if (isApiError(error)) {
       setErrMessage(error.data.detail || 'Вход не удался, повторите попытку позднее.');
