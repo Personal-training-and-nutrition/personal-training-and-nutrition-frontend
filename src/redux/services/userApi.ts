@@ -7,7 +7,7 @@ export const userApi = combinedApi.injectEndpoints({
         return { url: 'users/' };
       },
     }),
-    retrieveUser: builder.query<IUser, string>({
+    retrieveUser: builder.query<IUser, number>({
       query(id) {
         return { url: `users/${id}/` };
       },
@@ -168,6 +168,7 @@ export const {
   usePartialUpdateMeMutation,
   useDestroyMeMutation,
   useRetrieveUserQuery,
+  useLazyRetrieveUserQuery,
   useDestroyUserMutation,
   useUpdateUserMutation,
   usePartialUpdateUserMutation,

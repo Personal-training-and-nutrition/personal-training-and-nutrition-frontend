@@ -56,8 +56,8 @@ function App() {
         <Route path="/workout-plan/unauth" element={<PlanUnathTraining />} />
         <Route path="/password-recovery/success" element={<ForgotPasswordTooltipModal />} />
         <Route element={<RequireUser />}>
-        <Route path="/user-profile/specialist" element={<Profile statusSpec={true} />} />
-        <Route path="/user-profile/client" element={<Profile statusSpec={false} />} />
+        <Route path="/user-profile/specialist" element={<Profile />} />
+        <Route path="/user-profile/client" element={<Profile />} />
         <Route path="/clients" element={<Clients />} />
         <Route path="/meal-plans" element={<MealPlans />} />
         <Route path="/meal-plan" element={<MealPlan />} />
@@ -84,7 +84,7 @@ function App() {
           }
         />
       </Routes>
-      {!navBarHideCases.includes(location.pathname) && <NavBar statusSpec={true} />}
+      {!navBarHideCases.includes(location.pathname) && <NavBar />}
       <AuthModal />
       <ForgotPasswordModal />
       <RegisterModal />

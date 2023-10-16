@@ -11,11 +11,12 @@ import { useEffect, useState } from 'react';
 import DatePicker from '../../components/Inputs/DatePicker/DatePicker';
 import InputText from '../../components/Inputs/InputText/InputText';
 import InputPhone from '../../components/Inputs/InputPhone/InputPhone';
-import { usePartialUpdateUserMutation, useRetrieveUserQuery, useDestroyMeMutation, } from '../../redux/services/userApi';
-import { useAppSelector } from '../../redux/store';
+import { usePartialUpdateUserMutation, useRetrieveUserQuery, useDestroyMeMutation } from '../../redux/services/userApi';
+import { useAppDispatch, useAppSelector } from '../../redux/store';
 import { formatToPhoneValue } from '../../utils/formatToPhone';
 import { formatDate, formatDateToSent } from '../../utils/formatDate';
 import { useNavigate } from 'react-router-dom';
+import { setIsLoggedIn } from '../../redux/slices/userSlice';
 
 export type InputsType = {
   last_name?: string | null;
@@ -23,8 +24,8 @@ export type InputsType = {
   middle_name: string | null;
   dob?: string | null;
   gender?: string | null;
-  weight?: number | null,
-  height?: number | null
+  weight?: number | null;
+  height?: number | null;
   about?: string;
   phone_number: string | null;
   password: string;
@@ -33,31 +34,16 @@ export type InputsType = {
   accept: string;
   email: string;
 };
-const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
+const Profile: React.FC = () => {
   const [isEditPassw, setEditPassw] = useState(false);
   const [isEditPhone, setEditPhone] = useState(false);
   const id = useAppSelector((store) => store.user.id);
-  // REMOVE: параметр скип здесь не нужен (пользователь без id будет остановлен гардом), но оставлен для примера
-  const { data: initData, isSuccess } = useRetrieveUserQuery(id!, { skip: !id });
+  const isSpecialist = useAppSelector((store) => store.user.isSpecialist);
+  const { data: initData, isSuccess } = useRetrieveUserQuery(id!);
   const [update, { data: updateData, isSuccess: isUpdateSuccess }] = usePartialUpdateUserMutation();
-  const [destroyMe, {isSuccess: isSuccessDelete}] = useDestroyMeMutation();
+  const [destroyMe] = useDestroyMeMutation();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
-
-  useEffect(() => {
-    if (isSuccess)
-      reset({ ...initData, dob: formatDate(initData?.dob), phone_number: formatToPhoneValue(initData?.phone_number) });
-  }, [isSuccess, initData]);
-
-  useEffect(() => {
-    if (isUpdateSuccess)
-      reset({
-        ...updateData,
-        dob: formatDate(updateData?.dob),
-        phone_number: formatToPhoneValue(updateData?.phone_number),
-      });
-  }, [isUpdateSuccess]);
-
-
   const {
     register,
     handleSubmit,
@@ -78,22 +64,41 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
     },
   });
 
+  useEffect(() => {
+    if (isSuccess)
+      reset({ ...initData, dob: formatDate(initData?.dob), phone_number: formatToPhoneValue(initData?.phone_number) });
+  }, [isSuccess, initData]);
+
+  useEffect(() => {
+    if (isUpdateSuccess)
+      reset({
+        ...updateData,
+        dob: formatDate(updateData?.dob),
+        phone_number: formatToPhoneValue(updateData?.phone_number),
+      });
+  }, [isUpdateSuccess]);
+
   const onSubmit = handleSubmit((data) => {
     if (formatDateToSent(data.dob) === initData?.dob) {
       data.dob = formatDateToSent(data.dob);
     }
     const phone_numberFormat = String(data.phone_number).replace(/[+\s]+/g, '');
-    const params = {weight: data.weight, heigth: data.height};
-    const specialist = {about: data.about}
+    const params = { weight: data.weight, heigth: data.height };
+    const specialist = { about: data.about };
     const role = null;
     const gender = data.gender === null ? '0' : data.gender;
-    const dataUser = { ...data, phone_number: phone_numberFormat, password: undefined, params, specialist, role, gender }
-
-    update({ id: id!, data: dataUser  });
+    const dataUser = {
+      ...data,
+      phone_number: phone_numberFormat,
+      password: undefined,
+      params,
+      specialist,
+      role,
+      gender,
+    };
+    update({ id: id!, data: dataUser });
     setEditPhone(false);
   });
-
-
 
   const data = !isUpdateSuccess ? initData : updateData;
   const firstName = data?.first_name?.slice(0, 1);
@@ -103,17 +108,18 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
   const errorVisible = `${styles.profile__error} ${styles.profile__error_active}`;
   const errorInvisible = `${styles.profile__error}`;
 
-  const onBlurInputPhone = () => {
+  const onBlurInputPhone = () => {};
 
-  };
-
-  const handleClickDelete = async () => {
+  const handleClickDelete = () => {
     try {
-      await destroyMe({email: initData?.email})
-      if(isSuccessDelete) navigate('/')
-    }
-    catch (err) {
-      console.log(err)
+      destroyMe({ email: initData?.email }).then(() => {
+          localStorage.removeItem('accessToken');
+          localStorage.removeItem('refreshToken');
+          dispatch(setIsLoggedIn(true));
+          navigate('/');
+      });
+    } catch (err) {
+      console.log(err);
     }
   };
 
@@ -125,44 +131,44 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
           <p className={styles.profile__name}>{lastName}</p>
           <p className={styles.profile__surname}>{firstName}</p>
         </div>
-        <UserStatusBtn statusSpec={statusSpec} />
+        <UserStatusBtn statusSpec={isSpecialist} />
         <form className={styles.profile__form} onSubmit={onSubmit}>
           <div className={styles.profile__label}>
             <div className={styles.profile__box}>
               <div>
-              <InputText
-                name="last_name"
-                label="Фамилия"
-                placeholder="Фамилия"
-                register={register}
-                textError={'Поле не должно быть пустым'}
-                isInvalid={Boolean(errors.last_name)}
-              />
-              <span className={errors?.last_name ? errorVisible : errorInvisible}>
-                {errors?.last_name?.message || 'Ошибка!'}
-              </span>
+                <InputText
+                  name="last_name"
+                  label="Фамилия"
+                  placeholder="Фамилия"
+                  register={register}
+                  textError={'Поле не должно быть пустым'}
+                  isInvalid={Boolean(errors.last_name)}
+                />
+                <span className={errors?.last_name ? errorVisible : errorInvisible}>
+                  {errors?.last_name?.message || 'Ошибка!'}
+                </span>
               </div>
-             <div>
-             <InputText
-                name="first_name"
-                label="Имя"
-                placeholder="Имя"
-                register={register}
-                textError={'Поле не должно быть пустым'}
-                isInvalid={Boolean(errors.first_name)}
-              />
-              <span className={errors?.first_name ? errorVisible : errorInvisible}>
-                {errors?.first_name?.message || 'Ошибка!'}
-              </span>
-             </div>
               <div>
-              <DatePicker register={register} isInvalid={Boolean(errors.dob)} />
-              <span className={errors?.dob ? errorVisible : errorInvisible}>{errors?.dob?.message || ''}</span>
+                <InputText
+                  name="first_name"
+                  label="Имя"
+                  placeholder="Имя"
+                  register={register}
+                  textError={'Поле не должно быть пустым'}
+                  isInvalid={Boolean(errors.first_name)}
+                />
+                <span className={errors?.first_name ? errorVisible : errorInvisible}>
+                  {errors?.first_name?.message || 'Ошибка!'}
+                </span>
+              </div>
+              <div>
+                <DatePicker register={register} isInvalid={Boolean(errors.dob)} />
+                <span className={errors?.dob ? errorVisible : errorInvisible}>{errors?.dob?.message || ''}</span>
               </div>
             </div>
           </div>
           <GenderInput register={register} />
-          {statusSpec ? (
+          {isSpecialist ? (
             <label className={styles.profile__label}>
               <h3 className={styles.profile__title_big}>Обо мне</h3>
               <textarea className={`${styles.profile__input} ${styles.profile__input_big}`} {...register('about')} />
@@ -242,11 +248,10 @@ const Profile = ({ statusSpec }: { statusSpec: boolean }) => {
             </span>
           </label>
           <div className={styles.profile__buttons}>
-          <Button textBtn="Сохранить" type="submit" isDirty={isDirty} isValid={isValid} />
-          <ButtonDelete text="Удалить профиль" onClick={handleClickDelete}/>
+            <Button textBtn="Сохранить" type="submit" isDirty={isDirty} isValid={isValid} />
+            <ButtonDelete text="Удалить профиль" onClick={handleClickDelete} />
           </div>
         </form>
-
       </main>
     </div>
   );
