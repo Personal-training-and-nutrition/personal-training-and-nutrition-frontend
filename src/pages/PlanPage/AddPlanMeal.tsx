@@ -4,11 +4,12 @@ import { mealData } from '../../utils/constants';
 import { useForm } from 'react-hook-form';
 import { useAppSelector } from '../../redux/store';
 import { useCreateDietPlanMutation } from '../../redux/services/dietApi';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { preparePlan } from '../../utils/processPlans';
 
 const AddPlanMeal: React.FC = () => {
   const { id } = useAppSelector((store) => store.user);
+  const navigate = useNavigate();
   const [create] = useCreateDietPlanMutation();
   const location = useLocation();
   const query = new URLSearchParams(location.search);
@@ -25,7 +26,7 @@ const AddPlanMeal: React.FC = () => {
 
   const onSubmit = handleSubmit((rawData) => {
     if (!client || !id) return;
-    create({ ...preparePlan(rawData), specialist: id, user: parseInt(client) });
+    create({ ...preparePlan(rawData), specialist: id, user: parseInt(client) }).then(() => navigate('/meal-plans'));
   });
 
   return (

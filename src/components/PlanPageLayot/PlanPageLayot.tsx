@@ -10,7 +10,6 @@ import { UseFormRegister, UseFormSetValue } from 'react-hook-form';
 import ButtonDelete from '../ButtonDelete/ButtonDelete';
 import InputRecommendation from '../Inputs/InputRecommendation/InputRecommendation';
 import { useRetrieveUserQuery } from '../../redux/services/userApi';
-import { useEffect } from 'react';
 
 export type PlanInputType = {
   namePlan: string;
@@ -49,11 +48,6 @@ const PlanPageLayot = ({ textTitle, namePlan, data, register, onSubmit, isDirty,
   const age = clientData?.dob
     ? new Date(Date.now() - new Date(clientData?.dob || 0).getTime()).getFullYear() - 1970
     : null;
-
-  useEffect(() => {
-    console.log(client);
-    if (isSuccess) console.log(clientData);
-  }, [isSuccess]);
 
   return (
     <main className="App__container">
