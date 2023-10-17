@@ -29,7 +29,7 @@ const DayBlock = ({ item, register, index }: DayBlockType) => {
   };
 
   return (
-    <div className={styles.dayBlock}>
+    <div className={ isVisible ? `${styles.dayBlock} ${styles.dayBlock_show}` : `${styles.dayBlock}`}>
       <img className={styles.dayBlock__image} src={item.image} alt={item.alt} />
       <div className={styles.dayBlock__day}>
         <div className={styles.dayBlock__box} onClick={isOpenNote}>
@@ -40,16 +40,14 @@ const DayBlock = ({ item, register, index }: DayBlockType) => {
         </div>
         <p>{item.tip}</p>
       </div>
-      {isVisible && (
-        <label className={styles.dayBlock__label}>
-          <h2>{item.description}</h2>
-          <textarea
-            className={styles.dayBlock__input}
-            placeholder={item.placeholder}
-            {...register(`diet.${index}.spec_comment`)}
-          />
-        </label>
-      )}
+      <label className={styles.dayBlock__label}>
+        <h2>{item.description}</h2>
+        <textarea
+          className={styles.dayBlock__input}
+          placeholder={item.placeholder}
+          {...register(`diet.${index}.spec_comment`)}
+        />
+      </label>
     </div>
   );
 };

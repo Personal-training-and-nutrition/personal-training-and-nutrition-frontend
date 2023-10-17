@@ -37,4 +37,4 @@ const AboutClientCard = ({ title, textareaName, textaeraPlaceholder, register }:
 };
 
 export default AboutClientCard;
-// className={isShowCard ? `${styles.cc__inputWrap} ${styles.cc__inputWrap_show}` : `${styles.cc__inputWrap}`}
+
