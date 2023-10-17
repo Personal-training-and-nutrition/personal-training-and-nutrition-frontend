@@ -1,12 +1,10 @@
 import styles from './DayBlock.module.scss';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import plus from '../../assets/images/dayblock/plus-icon.svg';
 import minus from '../../assets/images/dayblock/minus-icon.svg';
 import { UseFormRegister, UseFormSetValue } from 'react-hook-form';
 import { PlanInputType } from '../PlanPageLayot/PlanPageLayot';
-// import { ItemType } from '../../utils/constants';
 
-// type Day = 'monday' | 'tuesday' | 'wednesday' | 'thursday' |  'friday' |  'saturday' | 'sunday';
 type ItemType = {
   day: string;
   weekday?: number | string;
@@ -22,7 +20,6 @@ type DayBlockType = {
   index: number;
   register: UseFormRegister<PlanInputType>;
   setValue: UseFormSetValue<PlanInputType>;
-  // setValue: (index: number, spec_comment: string) => void;
 };
 
 const DayBlock = ({ item, register, index }: DayBlockType) => {
@@ -30,15 +27,6 @@ const DayBlock = ({ item, register, index }: DayBlockType) => {
   const isOpenNote = () => {
     setVisible(!isVisible);
   };
-
-  /* useEffect(() => {
-    setValue(`diet.${index}.weekday`, String(index));
-  }, []); */
-
-  /* const handleChange = () => {
-    // setValue(`diet.${index}.weekday`, String(index));
-    // setValue(`${index}.weekday` as never, item.weekday as string);
-  }; */
 
   return (
     <div className={styles.dayBlock}>
@@ -59,7 +47,6 @@ const DayBlock = ({ item, register, index }: DayBlockType) => {
             className={styles.dayBlock__input}
             placeholder={item.placeholder}
             {...register(`diet.${index}.spec_comment`)}
-            // onChange={handleChange}
           />
         </label>
       )}

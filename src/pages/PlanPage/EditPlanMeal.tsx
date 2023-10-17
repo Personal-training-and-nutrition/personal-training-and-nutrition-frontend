@@ -30,7 +30,6 @@ const EditPlanMeal: React.FC = () => {
   });
   const onSubmit = handleSubmit((data) => {
     if (!planId || !specialistId || !plan?.user) return;
-    console.log(preparePlan(data));
     planUpdateTrigger({
       id: parseInt(planId),
       data: { ...preparePlan(data), user: plan.user, specialist: specialistId },
@@ -39,7 +38,6 @@ const EditPlanMeal: React.FC = () => {
 
   useEffect(() => {
     if (isSuccess) {
-      console.log(plan);
       reset(parsePlan(plan));
     }
   }, [isSuccess]);

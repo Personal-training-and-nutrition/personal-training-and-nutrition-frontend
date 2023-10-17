@@ -19,13 +19,13 @@ export type PlanInputType = {
   fats: number;
   carbohydrates: number;
   recomendations: string;
-  monday?: string;
+  /* monday?: string;
   tuesday?: string;
   wednesday?: string;
   thursday?: string;
   friday?: string;
   saturday?: string;
-  sunday?: string;
+  sunday?: string; */
   diet?: {
     spec_comment?: string;
   }[];

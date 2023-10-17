@@ -5,16 +5,7 @@ import { useForm } from 'react-hook-form';
 import { useAppSelector } from '../../redux/store';
 import { useCreateDietPlanMutation } from '../../redux/services/dietApi';
 import { useLocation } from 'react-router-dom';
-
-/* const daysOfWeek: Record<string, string> = {
-  monday: '1',
-  tuesday: '2',
-  wednesday: '3',
-  thursday: '4',
-  friday: '5',
-  saturday: '6',
-  sunday: '7',
-}; */
+import { preparePlan } from '../../utils/processPlans';
 
 const AddPlanMeal: React.FC = () => {
   const { id } = useAppSelector((store) => store.user);
@@ -33,26 +24,8 @@ const AddPlanMeal: React.FC = () => {
   });
 
   const onSubmit = handleSubmit((rawData) => {
-    if (!client) return;
-    const diet = [];
-    for (let i = 0; i <= 7; i++) {
-      if (rawData[i]) {
-        diet.push(rawData[i] as any);
-      }
-    }
-    const data = {
-      specialist: id!,
-      user: parseInt(client),
-      name: rawData.namePlan,
-      kkal: rawData.calories,
-      protein: rawData.protein,
-      carbo: rawData.carbohydrates,
-      fat: rawData.fats,
-      describe: rawData.recomendations,
-      diet,
-    };
-    console.log(data);
-    // create(data);
+    if (!client || !id) return;
+    create({ ...preparePlan(rawData), specialist: id, user: parseInt(client) });
   });
 
   return (
