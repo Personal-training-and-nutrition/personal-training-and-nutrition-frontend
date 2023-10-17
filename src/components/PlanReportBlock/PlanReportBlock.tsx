@@ -10,7 +10,7 @@ import UserNoteForm from '../UserNoteForm/UserNoteForm';
 
 type PlanReportBlockProps = {
   plan: {
-    id?: string;
+    id?: number;
     weekday: string;
     spec_comment?: string | null;
     user_comment?: string | null;
