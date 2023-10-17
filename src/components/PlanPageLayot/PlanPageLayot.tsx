@@ -6,11 +6,10 @@ import TitleBlock from '../TitleBlock/TitleBlock';
 import CaloriesInput from '../CaloriesInput/CaloriesInput';
 import DayBlock from '../DayBlock/DayBlock';
 import { DayBlockType } from '../../utils/constants';
-import { UseFormRegister } from 'react-hook-form';
+import { UseFormRegister, UseFormSetValue } from 'react-hook-form';
 import ButtonDelete from '../ButtonDelete/ButtonDelete';
 import InputRecommendation from '../Inputs/InputRecommendation/InputRecommendation';
 import { useRetrieveUserQuery } from '../../redux/services/userApi';
-import { useEffect } from 'react';
 
 export type PlanInputType = {
   namePlan: string;
@@ -19,14 +18,17 @@ export type PlanInputType = {
   fats: number;
   carbohydrates: number;
   recomendations: string;
-  monday?: string;
+  /* monday?: string;
   tuesday?: string;
   wednesday?: string;
   thursday?: string;
   friday?: string;
   saturday?: string;
-  sunday?: string;
-} & Record<string, string>;
+  sunday?: string; */
+  diet?: {
+    spec_comment?: string;
+  }[];
+};
 type PlanFormType = {
   textTitle: string;
   namePlan: string;
@@ -35,7 +37,7 @@ type PlanFormType = {
   onSubmit: React.FormEventHandler<HTMLFormElement>;
   isDirty?: boolean;
   isValid?: boolean;
-  setValue: (index: string, spec_comment: string) => void;
+  setValue: UseFormSetValue<PlanInputType>;
 };
 const PlanPageLayot = ({ textTitle, namePlan, data, register, onSubmit, isDirty, isValid, setValue }: PlanFormType) => {
   const location = useLocation();
@@ -46,11 +48,6 @@ const PlanPageLayot = ({ textTitle, namePlan, data, register, onSubmit, isDirty,
   const age = clientData?.dob
     ? new Date(Date.now() - new Date(clientData?.dob || 0).getTime()).getFullYear() - 1970
     : null;
-
-  useEffect(() => {
-    console.log(client);
-    if (isSuccess) console.log(clientData);
-  }, [isSuccess]);
 
   return (
     <main className="App__container">

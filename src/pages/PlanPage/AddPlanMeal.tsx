@@ -4,20 +4,12 @@ import { mealData } from '../../utils/constants';
 import { useForm } from 'react-hook-form';
 import { useAppSelector } from '../../redux/store';
 import { useCreateDietPlanMutation } from '../../redux/services/dietApi';
-import { useLocation } from 'react-router-dom';
-
-/* const daysOfWeek: Record<string, string> = {
-  monday: '1',
-  tuesday: '2',
-  wednesday: '3',
-  thursday: '4',
-  friday: '5',
-  saturday: '6',
-  sunday: '7',
-}; */
+import { useLocation, useNavigate } from 'react-router-dom';
+import { preparePlan } from '../../utils/processPlans';
 
 const AddPlanMeal: React.FC = () => {
   const { id } = useAppSelector((store) => store.user);
+  const navigate = useNavigate();
   const [create] = useCreateDietPlanMutation();
   const location = useLocation();
   const query = new URLSearchParams(location.search);
@@ -33,25 +25,8 @@ const AddPlanMeal: React.FC = () => {
   });
 
   const onSubmit = handleSubmit((rawData) => {
-    const diet = [];
-    for (let i = 0; i <= 7; i++) {
-      if (rawData[i]) {
-        diet.push(rawData[i] as any);
-      }
-    }
-    const data = {
-      specialist: id!,
-      user: parseInt(client || '9'),
-      name: rawData.namePlan,
-      kkal: rawData.calories,
-      protein: rawData.protein,
-      carbo: rawData.carbohydrates,
-      fat: rawData.fats,
-      describe: rawData.recomendations,
-      diet,
-    };
-    console.log(data);
-    create(data);
+    if (!client || !id) return;
+    create({ ...preparePlan(rawData), specialist: id, user: parseInt(client) }).then(() => navigate('/meal-plans'));
   });
 
   return (

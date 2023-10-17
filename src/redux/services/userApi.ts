@@ -7,7 +7,7 @@ export const userApi = combinedApi.injectEndpoints({
         return { url: 'users/' };
       },
     }),
-    retrieveUser: builder.query<IUser, number>({
+    retrieveUser: builder.query<IUser, string>({
       query(id) {
         return { url: `users/${id}/` };
       },

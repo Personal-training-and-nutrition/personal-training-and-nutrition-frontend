@@ -4,6 +4,7 @@ import styles from './MealPlans.module.scss';
 import planImage from '../../assets/mealPlanImage.png';
 import { Link } from 'react-router-dom';
 import { useGetDietPlansListQuery } from '../../redux/services/dietApi';
+import { useEffect } from 'react';
 
 function MealPlans() {
   const { data, isSuccess } = useGetDietPlansListQuery();
@@ -13,6 +14,10 @@ function MealPlans() {
       <PlanCard title={plan.name || 'Без названия'} date="Hell knows when" image={planImage} />
     </Link>
   ));
+
+  useEffect(() => {
+    if (isSuccess) console.log(data);
+  }, [isSuccess]);
 
   return (
     <main className="App__container">
