@@ -6,7 +6,7 @@ import TitleBlock from '../TitleBlock/TitleBlock';
 import CaloriesInput from '../CaloriesInput/CaloriesInput';
 import DayBlock from '../DayBlock/DayBlock';
 import { DayBlockType } from '../../utils/constants';
-import { UseFormRegister } from 'react-hook-form';
+import { UseFormRegister, UseFormSetValue } from 'react-hook-form';
 import ButtonDelete from '../ButtonDelete/ButtonDelete';
 import InputRecommendation from '../Inputs/InputRecommendation/InputRecommendation';
 import { useRetrieveUserQuery } from '../../redux/services/userApi';
@@ -26,7 +26,10 @@ export type PlanInputType = {
   friday?: string;
   saturday?: string;
   sunday?: string;
-} & Record<string, string>;
+  diet?: {
+    spec_comment?: string;
+  }[];
+};
 type PlanFormType = {
   textTitle: string;
   namePlan: string;
@@ -35,7 +38,7 @@ type PlanFormType = {
   onSubmit: React.FormEventHandler<HTMLFormElement>;
   isDirty?: boolean;
   isValid?: boolean;
-  setValue: (index: string, spec_comment: string) => void;
+  setValue: UseFormSetValue<PlanInputType>;
 };
 const PlanPageLayot = ({ textTitle, namePlan, data, register, onSubmit, isDirty, isValid, setValue }: PlanFormType) => {
   const location = useLocation();

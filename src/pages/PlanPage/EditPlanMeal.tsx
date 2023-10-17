@@ -3,6 +3,7 @@ import PlanPageLayot, { PlanInputType } from '../../components/PlanPageLayot/Pla
 import { mealData } from '../../utils/constants';
 import { useForm } from 'react-hook-form';
 import { tmpPlan } from '../../utils/tmp';
+import { parsePlan, preparePlan } from '../../utils/processPlans';
 
 const EditPlanMeal: React.FC = () => {
   const {
@@ -19,12 +20,11 @@ const EditPlanMeal: React.FC = () => {
     },
   });
   const onSubmit = handleSubmit((data) => {
-    console.log(data);
+    console.log(preparePlan(data));
   });
 
   useEffect(() => {
-    console.log(tmpPlan);
-    reset(tmpPlan as any);
+    reset(parsePlan(tmpPlan));
   }, []);
 
   return (

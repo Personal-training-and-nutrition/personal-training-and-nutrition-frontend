@@ -1,4 +1,4 @@
-export const tmpPlan = {
+export const tmpPlanbac = {
   id: 31,
   specialist: 9,
   user: 7,
@@ -36,7 +36,7 @@ export const tmpPlan = {
   ],
 };
 
-export const tmpPlanBac = {
+export const tmpPlan = {
   id: 31,
   specialist: 9,
   user: 7,
