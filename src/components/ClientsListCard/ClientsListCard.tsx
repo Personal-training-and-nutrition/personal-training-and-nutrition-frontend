@@ -18,11 +18,6 @@ function ClientsListCard({ user }: ClientListCardProps) {
   const dispatch = useAppDispatch();
 
   const fullname = user.first_name + ' ' + user.last_name!;
-  let age = 0;
-
-  if (user.dob) {
-    age = new Date().getFullYear() - new Date(user.dob).getFullYear();
-  }
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -41,10 +36,10 @@ function ClientsListCard({ user }: ClientListCardProps) {
 
       <div className={styles.clientsListCard__info}>
         <p className={styles.clientsListCard__name}>
-          {user.first_name} {user.last_name}, {getAgeEnding(age)}
+          {user.first_name} {user.last_name}, {getAgeEnding(user.age as number)}
         </p>
         {/* <p className={styles.clientsListCard__description}>{description}</p> */}
-        <p className={styles.clientsListCard__description}>Описание, которое хз откуда берется</p>
+        <p className={styles.clientsListCard__description}>{user.notes}</p>
       </div>
     </li>
   );
