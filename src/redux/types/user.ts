@@ -1,4 +1,4 @@
-export interface IUser {
+interface IUser {
   notes?: string;
   age?: number;
   id?: number;
@@ -18,15 +18,15 @@ export interface IUser {
   role?: string | null;
   gender?: string | null;
   params?: {
-    weight?: number | null,
-    height?: number | null
+    weight?: number | null;
+    height?: number | null;
   };
   specialist_id?: number | null;
   groups?: number[];
   user_permissions?: number[];
   specialist?: {
     about?: string;
-  }
+  };
 }
 
 interface IUserPassword {
