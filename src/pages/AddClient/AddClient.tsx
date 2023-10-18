@@ -57,11 +57,6 @@ const AddClient = () => {
     return (<h2>Загрузка...</h2>)
   }
 
-  useEffect(() => {
-    if (isSucess) {
-
-    }
-  }, [isSucess])
 
   const errorVisible = `${styles.addClient__error} ${styles.addClient__error_active}`;
   const errorInvisible = `${styles.addClient__error}`;
