@@ -13,7 +13,7 @@ const InputNumber = ({ name, label, placeholder, register }: Props) => {
   return (
     <div className={styles.inputNum__wrapper}>
       <label className={styles.inputNum__label} htmlFor={name}>{label}</label>
-      <input className={styles.inputNum__input} type="number" placeholder={placeholder} {...register(`${name}` as never, { maxLength: 3, minLength: 2})}/>
+      <input className={styles.inputNum__input} type="number" placeholder={placeholder} {...register(`${name}` as never, { maxLength: 3, minLength: 1})}/>
     </div>
   );
 };

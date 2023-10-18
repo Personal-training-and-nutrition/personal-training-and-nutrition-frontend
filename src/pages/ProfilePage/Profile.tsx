@@ -88,19 +88,19 @@ const Profile: React.FC = () => {
     if (formatDateToSent(data.dob) === initData?.dob) {
       data.dob = formatDateToSent(data.dob);
     }
-    const phone_numberFormat = String(data.phone_number).replace(/[+\s]+/g, '');
-    const params = { weight: data.weight, heigth: data.height };
-    const specialist = { about: data.about };
-    const role = null;
     const gender = data.gender === null ? '0' : data.gender;
+
     const dataUser = {
-      ...data,
-      phone_number: phone_numberFormat,
-      password: undefined,
-      params,
-      specialist,
-      role,
+      // ...data,
+      first_name: data.first_name,
+      last_name: data.last_name,
+      dob:data.dob,
       gender,
+      specialist: { about: data.about },
+      email: data.email,
+      phone_number: String(data.phone_number).replace(/[+\s]+/g, ''),
+      password: undefined,
+      // params: { weight: data.weight, heigth: data.height },
     };
     update({ id: id!, data: dataUser });
     setEditPhone(false);

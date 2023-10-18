@@ -27,6 +27,8 @@ const AddClient = () => {
     mode: 'all',
   });
   const onSubmit = handleSubmit((data) => {
+    console.log(data)
+    const gender = data.gender === null ? '0' : data.gender;
     createClient({
       first_name: data.first_name,
       last_name: data.last_name,
@@ -34,7 +36,7 @@ const AddClient = () => {
       email:data.email,
       phone_number:data.phone_number,
       dob:data.dob,
-      gender:data.gender,
+      gender: gender,
       diseases:data.diseases || null,
       exp_diets:data.exp_diets || null,
       exp_trainings:data.exp_trainings || null,
