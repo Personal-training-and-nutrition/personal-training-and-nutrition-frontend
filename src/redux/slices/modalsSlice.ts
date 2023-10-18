@@ -1,22 +1,39 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { TModal, TModalId } from "../types/modal";
+import { IModalAction, TModal } from "../types/modal";
 
 const initialState: TModal = {
   isOpen: false,
   modalId: '',
+  tooltip: {
+    title: '',
+    subtitle: '',
+    btnText: '',
+    isTraining: false,
+  }
 }
 
 const modalSlice = createSlice({
   initialState,
   name: "modal",
   reducers: {
-    openModal: (state, action: PayloadAction<TModalId>) => {
+    openModal: (state, action: PayloadAction<IModalAction>) => {
+      const { modalId, isTraining, btnText, title, subtitle  } = action.payload;
       state.isOpen = true;
-      state.modalId = action.payload;
+      state.modalId = modalId;
+      state.tooltip.btnText = btnText || '';
+      state.tooltip.isTraining = isTraining || false;
+      state.tooltip.subtitle = subtitle || '';
+      state.tooltip.title = title || '';
     },
     closeModal: (state) => {
       state.isOpen = false;
       state.modalId = '';
+      state.tooltip =  {
+        title: '',
+        subtitle: '',
+        btnText: '',
+        isTraining: false,
+      }
     },
   }
 })

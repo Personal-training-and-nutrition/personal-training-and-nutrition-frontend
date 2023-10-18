@@ -24,7 +24,7 @@ const RegisterModal = () => {
 
   const handleAuthClick = () => {
     dispatch(closeModal());
-    dispatch(openModal('modalAuth'));
+    dispatch(openModal({ modalId: 'modalAuth' }));
   };
 
   useEffect(() => {
@@ -60,7 +60,7 @@ const RegisterModal = () => {
       });
       setTimeout(() => {
         dispatch(closeModal());
-        dispatch(openModal('modalAuth'));
+        dispatch(openModal({ modalId: 'modalAuth' }));
       }, 1000);
     } catch (err) {
       console.error('register failed', err);
