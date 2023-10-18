@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import styles from './PlanReportBlock.module.scss';
 import { useLocation } from 'react-router-dom';
-import upArrow from '../../assets/images/icons/up-arrow-gray.svg';
 import downArrow from '../../assets/images/icons/down-arrow-gray.svg';
 import DescriptionBlock from '../DescriptionBlock/DescriptionBlock';
 import { useState } from 'react';
@@ -28,33 +27,36 @@ function PlanReportBlock({ plan, isLoggedIn, text, handleComment }: PlanReportBl
   const imgPath = isWorkoutPlanPage ? '/images/trainingdays/trainingday' : '/images/dayweekMeal/meal';
 
   return (
-    <li className={styles.PlanReport}>
+    <li className={showMore ? `${styles.PlanReport} ${styles.PlanReport_show}` : `${styles.PlanReport}`}>
       <img className={styles.PlanReport__image} src={`${imgPath}-${plan.weekday}.png`} alt="plan image" />
 
       <div className={styles.PlanReport__header} onClick={() => setShowMore((prev) => !prev)}>
         <h3 className={styles.PlanReport__headerTitle}>
           {getWeekDay(plan.weekday)}{' '}
-          <img src={showMore ? upArrow : downArrow} alt="arrow" style={{ marginLeft: '5px' }} />
+          <img
+            src={downArrow}
+            alt="arrow"
+            className={
+              showMore
+                ? `${styles.PlanReport__imgArrow} ${styles.PlanReport__imgArrow_more}`
+                : `${styles.PlanReport__imgArrow}`
+            }
+          />
         </h3>
         <p className={styles.PlanReport__headerSubTitle}>{text}</p>
       </div>
+      <div className={styles.PlanReport__workoutPlan}>
+        {(plan.spec_comment || '').split(/\r?\n/).map((item, index) => {
+          return (
+            <p style={{ margin: '0 0 6px' }} key={index}>
+              {item}
+            </p>
+          );
+        })}
+      </div>
 
-      {showMore && (
-        <>
-          <div className={styles.PlanReport__workoutPlan}>
-            {(plan.spec_comment || '').split(/\r?\n/).map((item, index) => {
-              return (
-                <p style={{ margin: '0 0 6px' }} key={index}>
-                  {item}
-                </p>
-              );
-            })}
-          </div>
-
-          {(isWorkoutPlanPage || isMealPlanPage) && (
-            <UserNoteForm title="Заметка за день" content={plan.user_comment || ''} handleComment={handleComment} />
-          )}
-        </>
+      {(isWorkoutPlanPage || isMealPlanPage) && (
+        <UserNoteForm title="Заметка за день" content={plan.user_comment || ''} handleComment={handleComment} />
       )}
 
       {/* Необходим рефакторинг */}

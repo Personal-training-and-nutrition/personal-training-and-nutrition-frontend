@@ -1,5 +1,14 @@
 @import '../../scss/colors/colors.scss';
 .cc {
+  &__item  {
+    max-height: 52px;
+    overflow: hidden;
+    transition: all .6s ease-in;
+    &_full {
+      // overflow: auto;
+      max-height: 1000px;
+    }
+  }
   &__titleWrap {
     display: flex;
     justify-content: space-between;
@@ -33,7 +42,7 @@
     padding: 0;
     transition: all 0.3s ease-in;
     &_active {
-      transform: rotate(180deg);
+      transform: rotate(-180deg);
     }
     &::after {
       display: block;
@@ -44,14 +53,10 @@
   }
   &__inputWrap {
     padding-top: 12px;
-    height: 0;
-    overflow: hidden;
-    transform: scaleY(0);
     transition: all 0.3s ease-in;
+    max-height: 0px;
     &_show {
-      transform: scaleY(1);
-      height: 134px;
-      // overflow: unset;
+      max-height: 134px;
     }
   }
 }

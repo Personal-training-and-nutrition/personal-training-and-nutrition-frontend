@@ -23,6 +23,7 @@ const AddClient = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate()
 
+
   const {
     register,
     handleSubmit,
@@ -91,6 +92,7 @@ const AddClient = () => {
   // if (isLoading) {
   //   return <h2>Загрузка...</h2>;
   // }
+
 
   const errorVisible = `${styles.addClient__error} ${styles.addClient__error_active}`;
   const errorInvisible = `${styles.addClient__error}`;

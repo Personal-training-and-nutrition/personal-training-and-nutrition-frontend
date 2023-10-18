@@ -16,7 +16,7 @@ import {useRetrieveClientQuery} from "../../redux/services/clientsApi.ts";
 
 function ClientCardPage() {
   const [showMore, setShowMore] = useState(true);
-  const { id = '' } = useParams();
+  const { id } = useParams();
   const { data: client = [] as IUser, isSuccess } = useRetrieveClientQuery(id);
 
   useEffect(() => {
