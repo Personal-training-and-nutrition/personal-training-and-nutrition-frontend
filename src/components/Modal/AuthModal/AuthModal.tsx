@@ -74,12 +74,12 @@ const AuthModal = () => {
 
   const handleFoggotPassordClick = () => {
     dispatch(closeModal());
-    dispatch(openModal('foggotModal'));
+    dispatch(openModal({modalId: 'foggotModal'}));
   };
 
   const handleRegistrationClick = () => {
     dispatch(closeModal());
-    dispatch(openModal('registerModal'));
+    dispatch(openModal({ modalId: 'registerModal'}));
   };
 
   const errorVisible = `${styles.authModal__error} ${styles.authModal__error_active}`;

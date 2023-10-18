@@ -12,14 +12,16 @@ import AboutClientCard from '../../components/AboutClientCard/AboutClientCard';
 import SpecNote from '../../components/SpecNote/SpecNote';
 import ButtonCancel from '../../components/ButtonCancel/ButtonCancel';
 import Button from '../../components/Button/Button';
-import {useCreateClientMutation} from "../../redux/services/clientsApi.ts";
+import { useCreateClientMutation } from '../../redux/services/clientsApi.ts';
 import { useAppDispatch } from '../../redux/store.ts';
-import { openModal } from '../../redux/slices/modalsSlice.ts';
+import { closeModal, openModal } from '../../redux/slices/modalsSlice.ts';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const AddClient = () => {
-
-  const [createClient, {isLoading, isSucess}] = useCreateClientMutation();
+  const [createClient, { isSuccess, isError, error }] = useCreateClientMutation();
   const dispatch = useAppDispatch();
+  const navigate = useNavigate()
 
   const {
     register,
@@ -29,38 +31,66 @@ const AddClient = () => {
   } = useForm<InputsType>({
     mode: 'all',
   });
-  const onSubmit = handleSubmit((data) => {
-    console.log(data)
+
+
+  const onSubmit = handleSubmit(async (data) => {
     const gender = data.gender === null ? '0' : data.gender;
-    createClient({
+    await createClient({
       first_name: data.first_name,
       last_name: data.last_name,
-      middle_name:data.middle_name,
-      email:data.email,
-      phone_number:data.phone_number,
-      dob:data.dob,
+      middle_name: data.middle_name,
+      email: data.email,
+      phone_number: data.phone_number,
+      capture: '',
+      role: '0',
+      dob: data.dob,
       gender: gender,
-      diseases:data.diseases || null,
-      exp_diets:data.exp_diets || null,
-      exp_trainings:data.exp_trainings || null,
-      bad_habits:data.bad_habits || null,
+      diseases: data.diseases || null,
+      exp_diets: data.exp_diets || null,
+      exp_trainings: data.exp_trainings || null,
+      bad_habits: data.bad_habits || null,
       notes: data.notes || null,
       food_preferences: data.food_preferences || null,
-      params:{
-        weight:data.weight,
-        height: data.height,
-      }
-    })
-    .then(() => {
-      if (isSucess) {
-        dispatch(openModal('tooltipModal'))
-      }
+      params: {
+        weight: Number(data.weight),
+        height: Number(data.height),
+      },
     })
   });
 
-  if(isLoading){
-    return (<h2>Загрузка...</h2>)
-  }
+  useEffect(() => {
+    if (isSuccess && !isError) {
+      dispatch(
+        openModal({
+          modalId: 'tooltipModal',
+          isTraining: true,
+          title: 'Клиент успешно добавлен',
+          subtitle: 'Вы будете перенаправлены на страницу клиента',
+          btnText: 'Закрыть',
+        }),
+      );
+      setTimeout(() => {
+        dispatch(closeModal())
+        navigate('/clients')
+      }, 5000)
+    }
+    if(!isSuccess && isError) {
+      console.log(error)
+      dispatch(
+        openModal({
+          modalId: 'tooltipModal',
+          isTraining: true,
+          title: 'Произошла ошибка',
+          subtitle: `${error}`,
+          btnText: 'Закрыть',
+        }),
+      );
+    }
+  }, [isSuccess, isError]);
+
+  // if (isLoading) {
+  //   return <h2>Загрузка...</h2>;
+  // }
 
   const errorVisible = `${styles.addClient__error} ${styles.addClient__error_active}`;
   const errorInvisible = `${styles.addClient__error}`;
@@ -71,7 +101,9 @@ const AddClient = () => {
         <form className={styles.addClient__form} action="" onSubmit={onSubmit}>
           <div className={styles.addClient__nameWrap}>
             <InputText name="last_name" label="Фамилия" placeholder="Фамилия" register={register} />{' '}
-            <span className={errors?.last_name ? errorVisible : errorInvisible}>{errors?.last_name?.message || ''}</span>
+            <span className={errors?.last_name ? errorVisible : errorInvisible}>
+              {errors?.last_name?.message || ''}
+            </span>
             <InputText
               name="first_name"
               label="Имя"
@@ -89,9 +121,7 @@ const AddClient = () => {
           <div className={styles.addClient__characteristic}>
             <div className={styles.addClient__dataWrap}>
               <DatePicker register={register} isInvalid={Boolean(errors.dob)} />
-              <span className={errors?.dob ? errorVisible : errorInvisible}>
-                {errors?.dob?.message || '!!!'}
-              </span>
+              <span className={errors?.dob ? errorVisible : errorInvisible}>{errors?.dob?.message || '!!!'}</span>
             </div>
 
             <InputNumber name="weight" label="Вес" placeholder="кг" register={register} />
@@ -100,7 +130,9 @@ const AddClient = () => {
           <div className={styles.addClient__contactsWrap}>
             <div>
               <InputPhone name="phone_number" register={register} isInvalid={Boolean(errors.phone_number)} />
-              <span className={errors?.phone_number ? errorVisible : errorInvisible}>{errors?.phone_number?.message || ''}</span>
+              <span className={errors?.phone_number ? errorVisible : errorInvisible}>
+                {errors?.phone_number?.message || ''}
+              </span>
             </div>
             <div>
               <InputEmail

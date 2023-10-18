@@ -10,12 +10,10 @@ const DatePicker = ({ register, isInvalid }: { isInvalid?: boolean; register: Us
     if (e.target.value) {
       e.target.value = formatDate(e.target.value);
     }
-    console.log(e.target.type);
   }
 
   function onFocusInput(e: React.ChangeEvent<HTMLInputElement>) {
     e.target.type = 'date';
-    console.log(e.target.type);
   }
 
   return (

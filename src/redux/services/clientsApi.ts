@@ -9,7 +9,7 @@ export const clientsApi = combinedApi.injectEndpoints({
         };
       },
     }),
-    createClient: builder.mutation<TResponse, IDietPlan>({
+    createClient: builder.mutation<TResponse, ICreateClient>({
       query(data) {
         return {
           url: 'clients/',

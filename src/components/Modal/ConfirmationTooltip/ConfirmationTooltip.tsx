@@ -2,6 +2,8 @@ import React from 'react';
 import Modal from '../Modal.tsx';
 import Button from '../../Button/Button.tsx';
 import styles from './ConfirmationTooltip.module.scss';
+import { useAppDispatch, useAppSelector } from '../../../redux/store.ts';
+import { closeModal } from '../../../redux/slices/modalsSlice.ts';
 
 type ConfirmationTooltipType = {
   title?: string;
@@ -11,8 +13,19 @@ type ConfirmationTooltipType = {
 };
 
 const ConfirmationTooltip: React.FC<ConfirmationTooltipType> = ({ title, subtitle, btnText, isTraining }) => {
+
+  const dispatch = useAppDispatch();
+
+  const handleCloseBtnClick = () => {
+    if(btnText === 'Закрыть') {
+      dispatch(closeModal())
+    }
+  }
+
+  const { isOpen, modalId } = useAppSelector((state) => state.modal);
+  const isTooltip = modalId === 'tooltipModal' ? 'tooltipModal' : '';
   return (
-    <Modal>
+    <Modal isOpen={isOpen} modalId={isTooltip}>
       <div className={styles.planTraining__wrapper}>
         <span
           className={` ${
@@ -25,7 +38,7 @@ const ConfirmationTooltip: React.FC<ConfirmationTooltipType> = ({ title, subtitl
           {title && <h2 className={styles.planTraining__title}>{title}</h2>}
           <p className={styles.planTraining__subtitle}>{subtitle}</p>
         </div>
-        <Button textBtn={btnText} type="button" isValid={true} isDirty={true} />
+        <Button textBtn={btnText} type="button" isValid={true} onCLick={handleCloseBtnClick} isDirty={true} />
       </div>
     </Modal>
   );

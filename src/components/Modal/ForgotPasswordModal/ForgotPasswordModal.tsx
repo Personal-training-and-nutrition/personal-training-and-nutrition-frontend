@@ -8,18 +8,18 @@ import { useAppDispatch, useAppSelector } from '../../../redux/store';
 import { closeModal, openModal } from '../../../redux/slices/modalsSlice';
 
 const ForgotPasswordModal = () => {
-  const { isOpen, modalId } = useAppSelector(state => state.modal)
-  const dispatch = useAppDispatch()
+  const { isOpen, modalId } = useAppSelector((state) => state.modal);
+  const dispatch = useAppDispatch();
 
-  const isFoggot = modalId === 'foggotModal' ? 'foggotModal' : ''
+  const isFoggot = modalId === 'foggotModal' ? 'foggotModal' : '';
   const {
     register,
     handleSubmit,
     formState: { isDirty, isValid, errors },
-  } = useForm<InputsType>({mode: 'all'});
+  } = useForm<InputsType>({ mode: 'all' });
   const onSubmit = handleSubmit((data) => {
-    dispatch(closeModal())
-    dispatch(openModal('resetPasswordModal'))
+    dispatch(closeModal());
+    dispatch(openModal({ modalId: 'resetPasswordModal' }));
     console.log(data);
   });
   return (
@@ -30,8 +30,21 @@ const ForgotPasswordModal = () => {
         восстановлению
       </p>
       <form action="" className={styles.forgotPassword__form} onSubmit={onSubmit}>
-        <InputEmail name="email" placeholder="Электронная почта" register={register} isInvalid = {Boolean(errors.email)}/>
-        <span className={errors?.email ? `${styles.forgotPassword__error} ${styles.forgotPassword__error_active}` : `${styles.forgotPassword__error}`}>{errors?.email?.message || ''}</span>
+        <InputEmail
+          name="email"
+          placeholder="Электронная почта"
+          register={register}
+          isInvalid={Boolean(errors.email)}
+        />
+        <span
+          className={
+            errors?.email
+              ? `${styles.forgotPassword__error} ${styles.forgotPassword__error_active}`
+              : `${styles.forgotPassword__error}`
+          }
+        >
+          {errors?.email?.message || ''}
+        </span>
         <Button textBtn="Восстановить" type="submit" isValid={isValid} isDirty={isDirty}></Button>
       </form>
     </Modal>

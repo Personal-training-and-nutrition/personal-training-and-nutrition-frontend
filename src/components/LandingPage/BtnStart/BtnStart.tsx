@@ -11,7 +11,7 @@ const BtnStart: React.FC = () => {
   const dispatch = useAppDispatch();
 
   const handleOpenModal = () => {
-    dispatch(openModal('modalAuth'));
+    dispatch(openModal({ modalId: 'modalAuth' }));
   };
 
   return (
