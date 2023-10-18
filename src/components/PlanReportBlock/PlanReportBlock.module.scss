@@ -12,15 +12,27 @@
   background: $white-100;
   overflow: hidden;
   margin-bottom: 16px;
-
+  max-height: 42px;
+  transition: all .3s ease-in ;
+  &_show {
+    max-height: 1000px;
+  }
   &__header {
     text-align: right;
     display: flex;
     flex-direction: column;
     align-items: end;
-    cursor: pointer;
+    @media (pointer: fine) {
+      cursor: pointer;
+    }
   }
-
+  &__imgArrow {
+    margin-left: 5px;
+    transition: all .2s ease-in;
+    &_more {
+      transform: rotate(180deg);
+    }
+  }
   &__image {
     position: absolute;
     top: 0;

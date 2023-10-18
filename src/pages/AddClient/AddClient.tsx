@@ -13,10 +13,13 @@ import SpecNote from '../../components/SpecNote/SpecNote';
 import ButtonCancel from '../../components/ButtonCancel/ButtonCancel';
 import Button from '../../components/Button/Button';
 import {useCreateClientMutation} from "../../redux/services/clientsApi.ts";
+import { useEffect } from 'react';
+import { useAppDispatch } from '../../redux/store.ts';
 
 const AddClient = () => {
 
   const [createClient, {isLoading, isSucess}] = useCreateClientMutation();
+  const dispatch = useAppDispatch();
 
   const {
     register,
@@ -53,6 +56,12 @@ const AddClient = () => {
   if(isLoading){
     return (<h2>Загрузка...</h2>)
   }
+
+  useEffect(() => {
+    if (isSucess) {
+
+    }
+  }, [isSucess])
 
   const errorVisible = `${styles.addClient__error} ${styles.addClient__error_active}`;
   const errorInvisible = `${styles.addClient__error}`;

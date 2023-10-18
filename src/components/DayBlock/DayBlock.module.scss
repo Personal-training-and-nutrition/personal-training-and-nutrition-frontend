@@ -6,7 +6,11 @@
   display: flex;
   flex-direction: column;
   position: relative;
-
+  max-height: 76px;
+  transition: all .6s ease-in;
+  &_show {
+    max-height: 500px;
+  }
   &__title {
     margin: 0 4px 0 0;
     font-weight: 700;
