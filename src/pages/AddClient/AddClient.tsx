@@ -13,10 +13,13 @@ import SpecNote from '../../components/SpecNote/SpecNote';
 import ButtonCancel from '../../components/ButtonCancel/ButtonCancel';
 import Button from '../../components/Button/Button';
 import {useCreateClientMutation} from "../../redux/services/clientsApi.ts";
+import { useAppDispatch } from '../../redux/store.ts';
+import { openModal } from '../../redux/slices/modalsSlice.ts';
 
 const AddClient = () => {
 
   const [createClient, {isLoading, isSucess}] = useCreateClientMutation();
+  const dispatch = useAppDispatch();
 
   const {
     register,
@@ -46,6 +49,11 @@ const AddClient = () => {
       params:{
         weight:data.weight,
         height: data.height,
+      }
+    })
+    .then(() => {
+      if (isSucess) {
+        dispatch(openModal('tooltipModal'))
       }
     })
   });

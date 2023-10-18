@@ -3,4 +3,4 @@ export type TModal = {
   modalId: TModalId ,
 }
 
-export type TModalId = 'modalAuth' | 'foggotModal' | 'registerModal' | 'resetPasswordModal' | ''
+export type TModalId = 'modalAuth' | 'foggotModal' | 'registerModal' | 'resetPasswordModal' | 'tooltipModal' | ''
