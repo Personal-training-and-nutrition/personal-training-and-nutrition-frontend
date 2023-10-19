@@ -18,7 +18,7 @@ export const clientsApi = combinedApi.injectEndpoints({
         };
       },
     }),
-    retrieveClient: builder.query<TResponse, number>({
+    retrieveClient: builder.query<IClientRetrieve, number>({
       query(id) {
         return {
           url: `clients/${id}/`,

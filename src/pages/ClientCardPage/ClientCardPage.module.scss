@@ -26,7 +26,15 @@
   &__link {
     text-decoration: none;
   }
-
+  &__img {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    transition: all .4s ease-in;
+    &_show {
+      transform: rotate(-180deg);
+    }
+  }
   &__button {
     position: relative;
     font-size: 22px;
@@ -69,12 +77,9 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 21px;
+    padding-bottom: 21px;
     cursor: pointer;
-  }
-
-  &__moreBlock img {
-    margin-bottom: 15px;
+    box-sizing: border-box;
   }
 
   &__title {
@@ -112,13 +117,23 @@
       align-items: center;
     }
   }
+  &__sectionDetails {
+    overflow: hidden;
+    max-height: 45px;
+    display: flex;
+    flex-direction: column;
+    gap: 21px;
+    transition: all .4s ease-in;
+    &_show {
+      max-height: 800px;
+    }
+  }
 
   &__detailsSection {
     display: flex;
     flex-direction: column;
     gap: 16px !important;
     margin-top: -20px;
-
     @media (min-width: 768px) {
       margin-top: -14px;
     }
@@ -130,6 +145,7 @@
     font-weight: 600;
     line-height: 130%;
     color: $blue-700;
+
   }
 
   &__details span {
