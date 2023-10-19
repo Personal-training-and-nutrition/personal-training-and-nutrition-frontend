@@ -18,7 +18,7 @@ export const trainingApi = combinedApi.injectEndpoints({
         };
       },
     }),
-    retrieveTrainingPlan: builder.query<TResponse, number>({
+    retrieveTrainingPlan: builder.query<ITrainingPlan, number>({
       query(id) {
         return {
           url: `training-plans/${id}/`,
