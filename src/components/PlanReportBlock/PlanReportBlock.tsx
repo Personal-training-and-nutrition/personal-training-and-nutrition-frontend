@@ -6,6 +6,7 @@ import DescriptionBlock from '../DescriptionBlock/DescriptionBlock';
 import { useState } from 'react';
 import { getWeekDay } from '../../utils/getWeekDay';
 import UserNoteForm from '../UserNoteForm/UserNoteForm';
+import { useAppSelector } from '../../redux/store';
 
 type PlanReportBlockProps = {
   plan: {
@@ -14,17 +15,20 @@ type PlanReportBlockProps = {
     spec_comment?: string | null;
     user_comment?: string | null;
   };
-  isLoggedIn: boolean;
+  // isLoggedIn: boolean;
   text: string;
-  handleComment: (message: string) => void;
+  handleComment?: (message: string) => void;
 };
 
-function PlanReportBlock({ plan, isLoggedIn, text, handleComment }: PlanReportBlockProps) {
+function PlanReportBlock({ plan, text, handleComment }: PlanReportBlockProps) {
   const [showMore, setShowMore] = useState(false);
   const location = useLocation();
   const isWorkoutPlanPage = location.pathname === '/workout-plan';
   const isMealPlanPage = location.pathname === '/meal-plan';
-  const imgPath = isWorkoutPlanPage ? '/images/trainingdays/trainingday' : '/images/dayweekMeal/meal';
+  const isTrainingReportPage = '/workout-report';
+  const isMealReportPage = '/nutrition-report';
+  const imgPath = isWorkoutPlanPage || isTrainingReportPage ? '/images/trainingdays/trainingday' : '/images/dayweekMeal/meal';
+  const isLoggedIn = useAppSelector((state) => state.user.isLoggedIn);
 
   return (
     <li className={showMore ? `${styles.PlanReport} ${styles.PlanReport_show}` : `${styles.PlanReport}`}>
@@ -60,12 +64,17 @@ function PlanReportBlock({ plan, isLoggedIn, text, handleComment }: PlanReportBl
       )}
 
       {/* Необходим рефакторинг */}
-      {isWorkoutPlanPage || isMealPlanPage
+      {/* {isWorkoutPlanPage || isMealPlanPage
         ? isLoggedIn &&
           !showMore &&
           plan.user_comment && <DescriptionBlock title="Заметка за день">{plan.user_comment}</DescriptionBlock>
         : isLoggedIn &&
-          plan.user_comment && <DescriptionBlock title="Заметка за день">{plan.user_comment}</DescriptionBlock>}
+          plan.user_comment && <DescriptionBlock title="Заметка за день">{plan.user_comment}</DescriptionBlock>} */}
+
+      {(isTrainingReportPage || isMealReportPage)
+      && isLoggedIn  &&  <DescriptionBlock title="Заметка за день">{plan.user_comment || ''}</DescriptionBlock>
+      }
+
     </li>
   );
 }

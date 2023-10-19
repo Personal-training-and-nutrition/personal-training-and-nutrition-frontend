@@ -4,7 +4,7 @@ interface ITrainingPlan {
   user: number;
   name?: string;
   describe?: string | null;
-  diet?: Array<TTrainingDay>;
+  training?: Array<TTrainingDay>;
   }
 
 type TTrainingDay = {
