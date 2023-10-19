@@ -2,7 +2,7 @@ import { combinedApi } from './combinedApi';
 
 export const trainingApi = combinedApi.injectEndpoints({
   endpoints: (builder) => ({
-    getTrainingPlansList: builder.query<TResponse, void>({
+    getTrainingPlansList: builder.query<ITrainingPlan[], void>({
       query() {
         return {
           url: 'training-plans/',
