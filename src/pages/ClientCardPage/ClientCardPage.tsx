@@ -13,12 +13,18 @@ import PlanCard from '../../components/PlanCard/PlanCard';
 import { Link, useParams } from 'react-router-dom';
 // import { IUser } from '../../redux/types/user';
 import { useRetrieveClientQuery } from '../../redux/services/clientsApi.ts';
+import { useDispatch } from 'react-redux';
+import { setCurrentClient } from '../../redux/slices/clientSlice.ts';
 
 function ClientCardPage() {
   const [showMore, setShowMore] = useState(true);
   const [showMoretext, setShoeMoreText] = useState(false);
   const { id } = useParams();
   const { data: client, isSuccess } = useRetrieveClientQuery(Number(id));
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (isSuccess) dispatch(setCurrentClient({id}));
+  }, [isSuccess]);
 
   // console.log(client);
 
@@ -33,7 +39,6 @@ function ClientCardPage() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
   if (isSuccess)
     return (
       <main className="App__container">
@@ -124,8 +129,8 @@ function ClientCardPage() {
             <section className={styles.clientCard__section}>
               <h2 className={styles.clientCard__title}>Планы тренировок</h2>
 
-              <Link to="/workout-report" className={styles.clientCard__link}>
-                <PlanCard image={workoutPlanImage} title="Входим в ритм!" date="Создан 27 августа 2023" />
+              <Link to={`/workout-report?id=${client?.trainings[0].id}`} className={styles.clientCard__link}>
+                <PlanCard image={workoutPlanImage} title={client?.trainings[0].name || ''} date={client?.trainings[0].describe || ''}/>
               </Link>
 
               <Link to="/workout-plans" className={styles.clientCard__moreBtn}>

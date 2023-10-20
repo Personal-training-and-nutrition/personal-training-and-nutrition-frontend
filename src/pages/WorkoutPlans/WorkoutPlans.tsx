@@ -8,23 +8,24 @@ import { useAppSelector } from '../../redux/store';
 
 function WorkoutPlans() {
   const { data, isSuccess } = useGetTrainingPlansListQuery();
-  const currentClient = useAppSelector((state) => state.currentClient.client);
+  const currentClientId = useAppSelector((state) => state.currentClient.client.id);
+
   const isSpecialist = useAppSelector((state) => state.user.isSpecialist);
   const path = isSpecialist ? '/workout-report' : '/workout-plan';
+
+  const currentClientPlans = data?.filter((plan) => plan.user === Number(currentClientId) && plan);
+
   return (
     <main className="App__container">
       <div className={styles.workoutPlans}>
         <TitleBlock text="планы тренировок" />
         <div className={styles.workoutPlans__list}>
-          {isSuccess && (
-            data?.map(
-              (plan) => plan.user === currentClient.id && (
-                <Link to={`${path}?id=${plan.id}`} className={styles.workoutPlans__link} key={plan.id}>
-                  <PlanCard title={plan.name || 'Без названия'} date={plan.describe || ''} image={planImage} />
-                </Link>
-              )
-            ))
-            }
+          {isSuccess &&
+            currentClientPlans?.map((train) => (
+              <Link to={`${path}?id=${train.id}`} className={styles.workoutPlans__link} key={train.id}>
+                <PlanCard title={train.name || 'Без названия'} date={train.describe || ''} image={planImage} />
+              </Link>
+            ))}
         </div>
       </div>
     </main>

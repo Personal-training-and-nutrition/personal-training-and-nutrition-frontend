@@ -42,3 +42,17 @@ export function preparePlan({ namePlan, calories, protein, carbohydrates, fats, 
     diet: weekdays,
   };
 }
+
+export function preparePlanTrain({ namePlan, recomendations, training }: PlanInputType) {
+  const weekdays: TTrainingDay[] = [];
+  if (training && training?.length > 0) {
+    for (let i = 0; i < training.length; i++) {
+      if (training[i]?.spec_comment) weekdays.push({ weekday: String(i + 1), spec_comment: training[i].spec_comment });
+    }
+  }
+  return {
+    name: namePlan,
+    describe: recomendations,
+    training: weekdays,
+  };
+}

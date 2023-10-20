@@ -9,7 +9,7 @@ export const trainingApi = combinedApi.injectEndpoints({
         };
       },
     }),
-    createTrainingPlan: builder.mutation<TResponse, ITrainingPlan>({
+    createTrainingPlan: builder.mutation<ITrainingPlan, ITrainingPlan>({
       query(data) {
         return {
           url: 'training-plans/',

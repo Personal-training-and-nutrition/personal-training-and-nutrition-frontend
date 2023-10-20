@@ -39,5 +39,5 @@ interface IClientRetrieve  {
     weight: number | null;
   };
   phone_number: string | null;
-  trainings: [];
+  trainings: ITrainingPlan[];
 }

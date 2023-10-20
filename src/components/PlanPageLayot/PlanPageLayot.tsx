@@ -28,6 +28,12 @@ export type PlanInputType = {
   diet?: {
     spec_comment?: string;
   }[];
+  training?: {
+    id?: number;
+    weekday: string;
+    spec_comment?: string | null;
+    user_comment?: string | null;
+  }[];
 };
 type PlanFormType = {
   textTitle: string;
