@@ -8,17 +8,31 @@ import { tempWorkoutPlan } from '../../utils/constants';
 import PlanReportBlock from '../PlanReportBlock/PlanReportBlock';
 import RecommendationBlock from '../RecommendationBlock/RecommendationBlock';
 import useResize from '../../hooks/useResize';
+import { openModal } from '../../redux/slices/modalsSlice';
+import { useAppDispatch } from '../../redux/store';
+import { useRetrieveTrainingPlanQuery } from '../../redux/services/trainingApi';
 
 type PlanUnAuthType = { children?: ReactNode; namePlan: string; subtitle: string; src: string; text: string };
+
 const PlanUnathLayot = ({ children, subtitle, namePlan, src, text }: PlanUnAuthType) => {
   const [isOpen, setOpen] = useState(false);
   const size = useResize();
+  const dispatch = useAppDispatch();
+
+
+  const url = new URLSearchParams(location.search);
+  const id = url.get('id');
+  const { data: plan } = useRetrieveTrainingPlanQuery(Number(id))
 
   useEffect(() => {
     if (size.width >= 768) {
       setOpen(true);
     }
   }, [size]);
+
+  const handleOpenModal = () => {
+    dispatch(openModal({ modalId: 'modalAuth' }));
+  };
 
   return (
     <div className={styles.planUnauth__content}>
@@ -48,8 +62,8 @@ const PlanUnathLayot = ({ children, subtitle, namePlan, src, text }: PlanUnAuthT
 
           {isOpen && (
             <div className={styles.planUnauth__listDay}>
-              {tempWorkoutPlan[0].training.map((plan, index) => {
-                return <PlanReportBlock isLoggedIn={false} key={index} plan={plan} text={text} />;
+              {plan?.training?.map((plan) => {
+                return <PlanReportBlock key={plan.id} plan={plan} text={text} />;
               })}
             </div>
           )}
@@ -69,7 +83,8 @@ const PlanUnathLayot = ({ children, subtitle, namePlan, src, text }: PlanUnAuthT
         <img src={src} className={styles.planUnauth__img} alt="Фото" />
       </section>
 
-      <Link to="/login" className={styles.planUnauth__btn}>
+      <Link to="" className={styles.planUnauth__btn}
+        onClick={() => (handleOpenModal())}>
         <Button type="button" textBtn="Начать" isDirty={true} isValid={true} />
       </Link>
     </div>

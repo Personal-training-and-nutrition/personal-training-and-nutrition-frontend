@@ -47,7 +47,7 @@ interface IEditClient {
 interface IClientRetrieve {
   age: number | null;
   bad_habits: string | null;
-  diets: [];
+  diets: IDietPlan[];
   diseases: string | null;
   email: string;
   exp_diets: string | null;
@@ -62,5 +62,5 @@ interface IClientRetrieve {
     weight: number | null;
   };
   phone_number: string | null;
-  trainings: [];
+  trainings: ITrainingPlan[];
 }

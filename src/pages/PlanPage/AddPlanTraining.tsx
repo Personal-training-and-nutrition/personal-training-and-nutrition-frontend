@@ -1,20 +1,66 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import PlanPageLayot, { PlanInputType } from '../../components/PlanPageLayot/PlanPageLayot';
 import { trainingData } from '../../utils/constants';
+import { useCreateTrainingPlanMutation } from '../../redux/services/trainingApi';
+import { useAppDispatch, useAppSelector } from '../../redux/store';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { closeModal, openModal } from '../../redux/slices/modalsSlice';
+import { preparePlanTrain } from '../../utils/processPlans';
 
 const AddPlanTraining: React.FC = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const specialistId = useAppSelector((state) => state.user.id);
+  const dispatch = useAppDispatch();
+  const [createWorkout, {isSuccess, isError, error}] = useCreateTrainingPlanMutation();
+  const query = new URLSearchParams(location.search);
+  const client = query.get('client');
+  // const clientId = useAppSelector((state) => state.currentClient.client.id);
+
+
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { isDirty, isValid },
   } = useForm<PlanInputType>({
     mode: 'onBlur',
   });
 
-  const onSubmit = handleSubmit((data) => {
-    console.log(data);
+  useEffect(() => {
+    if (isSuccess && !isError) {
+      dispatch(
+        openModal({
+          modalId: 'tooltipModal',
+          isTraining: true,
+          title: 'План тренировок создан',
+          subtitle: 'Вы будете перенаправлены на страницу планов клиента',
+          btnText: 'Закрыть',
+        }),
+      );
+      setTimeout(() => {
+        dispatch(closeModal())
+        navigate(`/workout-plans?id=${client}`)
+      }, 3000)
+    }
+    if(!isSuccess && isError) {
+      console.log(error)
+      dispatch(
+        openModal({
+          modalId: 'tooltipModal',
+          isTraining: true,
+          title: 'Произошла ошибка',
+          subtitle: `${error}`,
+          btnText: 'Закрыть',
+        }),
+      );
+    }
+  }, [isSuccess, isError]);
 
+  const onSubmit = handleSubmit((data) => {
+    if (!client || !specialistId) return;
+    createWorkout({...preparePlanTrain(data), user: parseInt(client), specialist: specialistId})
   });
 
   return (
@@ -26,6 +72,7 @@ const AddPlanTraining: React.FC = () => {
       onSubmit={onSubmit}
       isDirty={isDirty}
       isValid={isValid}
+      setValue={setValue}
     />
   );
 };

@@ -14,17 +14,24 @@ import { selectStatus } from '../../redux/slices/landingPageSlice.ts';
 import useResize from '../../hooks/useResize.ts';
 import { useWindowPosition } from '../../hooks/useWindowPosition.tsx';
 import Toggle from '../../components/LandingPage/Toggle/Toggle.tsx';
+import { useEffect } from 'react';
+import { useAppSelector } from '../../redux/store.ts';
+import { useNavigate } from 'react-router-dom';
 
 const LandingPage: React.FC = () => {
   const size = useResize();
   const scrollPosition = useWindowPosition();
+  const navigate = useNavigate();
 
+  const isLoggedIn = useAppSelector((state) => state.user.isLoggedIn);
   const { isStatusSpecialist } = useSelector(selectStatus);
 
   const listItems = isStatusSpecialist ? landingPageSpeciatistParams : landingPageUsersParams;
   const listImages =
     size.width >= 1440 && isStatusSpecialist ? landingPageSpecImagesFromDesktop : landingPageUsersImagesFromDesktop;
-
+useEffect(() => {
+  if(isLoggedIn) navigate('/clients')
+},[])
   return (
     <div className={styles.landing}>
       <div className={styles.landingContainer}>

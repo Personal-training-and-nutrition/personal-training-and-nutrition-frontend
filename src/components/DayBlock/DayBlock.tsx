@@ -4,6 +4,7 @@ import plus from '../../assets/images/dayblock/plus-icon.svg';
 import minus from '../../assets/images/dayblock/minus-icon.svg';
 import { UseFormRegister, UseFormSetValue } from 'react-hook-form';
 import { PlanInputType } from '../PlanPageLayot/PlanPageLayot';
+import { useLocation } from 'react-router-dom';
 
 type ItemType = {
   day: string;
@@ -19,14 +20,15 @@ type DayBlockType = {
   item: ItemType;
   index: number;
   register: UseFormRegister<PlanInputType>;
-  setValue: UseFormSetValue<PlanInputType>;
+  setValue?: UseFormSetValue<PlanInputType>;
 };
 
-const DayBlock = ({ item, register, index }: DayBlockType) => {
+const DayBlock = ({ item, register, index, setValue }: DayBlockType) => {
   const [isVisible, setVisible] = useState(false);
   const isOpenNote = () => {
     setVisible(!isVisible);
   };
+  const location = useLocation();
 
   return (
     <div className={ isVisible ? `${styles.dayBlock} ${styles.dayBlock_show}` : `${styles.dayBlock}`}>
@@ -42,11 +44,20 @@ const DayBlock = ({ item, register, index }: DayBlockType) => {
       </div>
       <label className={styles.dayBlock__label}>
         <h2>{item.description}</h2>
+        {(location.pathname === '/meal-plan/create' || location.pathname === '/meal-plan/edit') &&
         <textarea
           className={styles.dayBlock__input}
           placeholder={item.placeholder}
-          {...register(`diet.${index}.spec_comment`)}
+         {...register(`diet.${index}.spec_comment`)}
         />
+        }
+         {(location.pathname === '/workout-plan/create' || location.pathname === '/workout-plan/edit') && (
+          <textarea
+          className={styles.dayBlock__input}
+          placeholder={item.placeholder}
+         {...register(`training.${index}.spec_comment`)}
+        />
+       )}
       </label>
     </div>
   );
