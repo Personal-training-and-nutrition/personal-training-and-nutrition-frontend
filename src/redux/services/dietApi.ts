@@ -18,6 +18,7 @@ export const dietApi = combinedApi.injectEndpoints({
           body: data,
         };
       },
+      invalidatesTags: ['dietPlanList'],
     }),
     retrieveDietPlan: builder.query<IDietPlan, string>({
       query(id) {
@@ -36,7 +37,7 @@ export const dietApi = combinedApi.injectEndpoints({
           body: data,
         };
       },
-      invalidatesTags: ['dietPlan'],
+      invalidatesTags: ['dietPlan', 'dietPlanList'],
     }),
     destroyDietPlan: builder.mutation<TResponse, string>({
       query(id) {
