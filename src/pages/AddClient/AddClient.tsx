@@ -29,7 +29,7 @@ const AddClient = () => {
     await createClient({
       first_name: data.first_name,
       last_name: data.last_name,
-      middle_name: data.middle_name || null,
+      middle_name: data.middle_name,
       email: data.email,
       phone_number: data.phone_number,
       capture: '',
