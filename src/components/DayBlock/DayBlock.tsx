@@ -44,14 +44,14 @@ const DayBlock = ({ item, register, index, setValue }: DayBlockType) => {
       </div>
       <label className={styles.dayBlock__label}>
         <h2>{item.description}</h2>
-        {location.pathname === '/meal-plan/create' &&
+        {(location.pathname === '/meal-plan/create' || location.pathname === '/meal-plan/edit') &&
         <textarea
           className={styles.dayBlock__input}
           placeholder={item.placeholder}
          {...register(`diet.${index}.spec_comment`)}
         />
         }
-         {location.pathname === '/workout-plan/create' && (
+         {(location.pathname === '/workout-plan/create' || location.pathname === '/workout-plan/edit') && (
           <textarea
           className={styles.dayBlock__input}
           placeholder={item.placeholder}

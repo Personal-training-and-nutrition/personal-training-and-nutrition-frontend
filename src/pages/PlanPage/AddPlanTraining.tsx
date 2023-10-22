@@ -4,17 +4,20 @@ import PlanPageLayot, { PlanInputType } from '../../components/PlanPageLayot/Pla
 import { trainingData } from '../../utils/constants';
 import { useCreateTrainingPlanMutation } from '../../redux/services/trainingApi';
 import { useAppDispatch, useAppSelector } from '../../redux/store';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { closeModal, openModal } from '../../redux/slices/modalsSlice';
 import { preparePlanTrain } from '../../utils/processPlans';
 
 const AddPlanTraining: React.FC = () => {
   const navigate = useNavigate();
-
+  const location = useLocation();
+  const specialistId = useAppSelector((state) => state.user.id);
   const dispatch = useAppDispatch();
   const [createWorkout, {isSuccess, isError, error}] = useCreateTrainingPlanMutation();
-  const clientId = useAppSelector((state) => state.currentClient.client.id);
-  const specialistId = useAppSelector((state) => state.user.id);
+  const query = new URLSearchParams(location.search);
+  const client = query.get('client');
+  // const clientId = useAppSelector((state) => state.currentClient.client.id);
+
 
   const {
     register,
@@ -38,7 +41,7 @@ const AddPlanTraining: React.FC = () => {
       );
       setTimeout(() => {
         dispatch(closeModal())
-        navigate('/workout-plans')
+        navigate(`/workout-plans?id=${client}`)
       }, 3000)
     }
     if(!isSuccess && isError) {
@@ -56,13 +59,8 @@ const AddPlanTraining: React.FC = () => {
   }, [isSuccess, isError]);
 
   const onSubmit = handleSubmit((data) => {
-    console.log({...preparePlanTrain(data), user: clientId, specialist: specialistId});
-
-    createWorkout({...preparePlanTrain(data), user: clientId, specialist: specialistId})
-
-    // if (!client || !id) return;
-    // create({ ...preparePlan(rawData), specialist: id, user: parseInt(client) }).then(() => navigate('/meal-plans'));
-
+    if (!client || !specialistId) return;
+    createWorkout({...preparePlanTrain(data), user: parseInt(client), specialist: specialistId})
   });
 
   return (

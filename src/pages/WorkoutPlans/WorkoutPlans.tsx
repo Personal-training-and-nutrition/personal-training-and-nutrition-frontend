@@ -8,12 +8,18 @@ import { useAppSelector } from '../../redux/store';
 
 function WorkoutPlans() {
   const { data, isSuccess } = useGetTrainingPlansListQuery();
-  const currentClientId = useAppSelector((state) => state.currentClient.client.id);
+
+  const url = new URLSearchParams(location.search);
+  const idURL = url.get('id');
+
+  // const currentClientId = useAppSelector((state) => state.currentClient.client.id);
+  const idClienta = Number(idURL);
 
   const isSpecialist = useAppSelector((state) => state.user.isSpecialist);
   const path = isSpecialist ? '/workout-report' : '/workout-plan';
 
-  const currentClientPlans = data?.filter((plan) => plan.user === Number(currentClientId) && plan);
+  const currentClientPlans = data?.filter((plan) => plan.user === Number(idClienta) && plan);
+
 
   return (
     <main className="App__container">

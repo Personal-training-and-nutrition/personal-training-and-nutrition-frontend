@@ -52,7 +52,7 @@ function ClientCardPage() {
                 План питания <img className={styles.clientCard__buttonPlusIcon} src={plusIcon} alt="plus-icon" />
               </button>
             </Link>
-            <Link to="/workout-plan/create">
+            <Link to={`/workout-plan/create?client=${id}`}>
               <button className={`${styles.clientCard__button} ${styles.clientCard__workoutPlanBtn}`}>
                 План тренировок <img className={styles.clientCard__buttonPlusIcon} src={plusIcon} alt="plus-icon" />
               </button>
@@ -113,11 +113,11 @@ function ClientCardPage() {
             <section className={styles.clientCard__section}>
               <h2 className={styles.clientCard__title}>Планы питания</h2>
 
-              <Link to="/meal-plan" className={styles.clientCard__link}>
-                <PlanCard image={mealPlanImage} title="Минус 2кг (1 неделя)" date="Создан 27 августа 2023" />
+              <Link to={`/nutrition-report?id=${client?.diets[0].id}`} className={styles.clientCard__link}>
+                <PlanCard image={mealPlanImage} title={client?.diets[0].name || ''} date={client?.diets[0].describe || ''} />
               </Link>
 
-              <Link to="/meal-plans" className={styles.clientCard__moreBtn}>
+              <Link to={`/meal-plans?id=${id}`} className={styles.clientCard__moreBtn}>
                 Смотреть все
               </Link>
             </section>
@@ -133,7 +133,7 @@ function ClientCardPage() {
                 <PlanCard image={workoutPlanImage} title={client?.trainings[0].name || ''} date={client?.trainings[0].describe || ''}/>
               </Link>
 
-              <Link to="/workout-plans" className={styles.clientCard__moreBtn}>
+              <Link to={`/workout-plans?id=${id}`} className={styles.clientCard__moreBtn}>
                 Смотреть все
               </Link>
             </section>

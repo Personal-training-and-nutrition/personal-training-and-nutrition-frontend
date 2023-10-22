@@ -25,6 +25,23 @@ export function parsePlan({ name, kkal, protein, carbo, fat, describe, diet }: I
   };
 }
 
+export function parsePlanTrain({ name, describe, training }: ITrainingPlan) {
+  const weekdays: FormDay[] = [];
+  if (training) {
+    for (const ele of training) {
+      if (ele.spec_comment) {
+        const index = parseInt(ele.weekday) - 1;
+        weekdays[index] = { spec_comment: ele.spec_comment };
+      }
+    }
+  }
+  return {
+    namePlan: name,
+    recomendations: describe || '',
+    training: weekdays,
+  };
+}
+
 export function preparePlan({ namePlan, calories, protein, carbohydrates, fats, recomendations, diet }: PlanInputType) {
   const weekdays: TDietDay[] = [];
   if (diet && diet?.length > 0) {

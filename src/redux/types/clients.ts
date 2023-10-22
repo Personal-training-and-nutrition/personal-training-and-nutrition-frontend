@@ -24,7 +24,7 @@ interface ICreateClient {
 interface IClientRetrieve  {
   age: number | null;
   bad_habits: string | null;
-  diets: [];
+  diets: IDietPlan[];
   diseases: string | null;
   email: string | null;
   exp_diets: string | null;

@@ -20,7 +20,7 @@ export const trainingApi = combinedApi.injectEndpoints({
       },
       invalidatesTags: ['trainingPlanList'],
     }),
-    retrieveTrainingPlan: builder.query<ITrainingPlan, number>({
+    retrieveTrainingPlan: builder.query<ITrainingPlan, string>({
       query(id) {
         return {
           url: `training-plans/${id}/`,
