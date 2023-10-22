@@ -42,7 +42,7 @@ function ClientCardPage() {
           <UserInfo />
 
           <div className={styles.clientCard__buttons}>
-            <Link to="/meal-plan/create">
+            <Link to={`/meal-plan/create?client=${id}`}>
               <button className={`${styles.clientCard__button} ${styles.clientCard__mealPlanBtn}`}>
                 План питания <img className={styles.clientCard__buttonPlusIcon} src={plusIcon} alt="plus-icon" />
               </button>

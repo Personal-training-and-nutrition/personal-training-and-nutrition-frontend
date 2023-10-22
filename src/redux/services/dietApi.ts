@@ -18,6 +18,7 @@ export const dietApi = combinedApi.injectEndpoints({
           body: data,
         };
       },
+      invalidatesTags: ['dietPlanList'],
     }),
     retrieveDietPlan: builder.query<IDietPlan, string>({
       query(id) {
