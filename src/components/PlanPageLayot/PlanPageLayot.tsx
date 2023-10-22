@@ -28,6 +28,12 @@ export type PlanInputType = {
   diet?: {
     spec_comment?: string;
   }[];
+  training?: {
+    id?: number;
+    weekday: string;
+    spec_comment?: string | null;
+    user_comment?: string | null;
+  }[];
 };
 type PlanFormType = {
   textTitle: string;
@@ -38,8 +44,9 @@ type PlanFormType = {
   isDirty?: boolean;
   isValid?: boolean;
   setValue: UseFormSetValue<PlanInputType>;
-};
-const PlanPageLayot = ({ textTitle, namePlan, data, register, onSubmit, isDirty, isValid, setValue }: PlanFormType) => {
+  onDeletePlan?: () => void;
+  };
+const PlanPageLayot = ({ textTitle, namePlan, data, register, onSubmit, isDirty, isValid, setValue, onDeletePlan }: PlanFormType) => {
   const location = useLocation();
   const query = new URLSearchParams(location.search);
   const client = query.get('client');
@@ -71,7 +78,7 @@ const PlanPageLayot = ({ textTitle, namePlan, data, register, onSubmit, isDirty,
               placeholder="Напишите название плана"
             />
           </label>
-          {location.pathname.startsWith('/meal-plan') && <CaloriesInput register={register} />}
+                    {location.pathname.startsWith('/meal-plan') && <CaloriesInput register={register} />}
           <InputRecommendation register={register} />
           <div className={styles.plan__label_gap}>
             {data.map((item, index) => (
@@ -80,8 +87,8 @@ const PlanPageLayot = ({ textTitle, namePlan, data, register, onSubmit, isDirty,
           </div>
           <div className={styles.plan__buttons}>
             <Button textBtn="Сохранить" type="submit" isDirty={isDirty} isValid={isValid} />
-            {location.pathname === '/editPlanMeal' || location.pathname === '/editPlanTrain' ? (
-              <ButtonDelete text="Удалить этот план" />
+            {location.pathname === '/meal-plan/edit' || location.pathname === '/workout-plan/edit' ? (
+              <ButtonDelete text="Удалить этот план" onClick={onDeletePlan}/>
             ) : (
               <ButtonCancel text="Отменить" isDirty={isDirty} isValid={isValid} />
             )}

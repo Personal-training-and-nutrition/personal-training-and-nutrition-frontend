@@ -54,6 +54,6 @@ const baseQueryWithRefresh: BaseQueryFn<string | FetchArgs, unknown, FetchBaseQu
 
 export const combinedApi = createApi({
   baseQuery: baseQueryWithRefresh,
-  tagTypes: ['dietPlan', 'dietPlanList'],
+  tagTypes: ['dietPlan', 'dietPlanList', 'trainingPlan', 'trainingPlanList'],
   endpoints: () => ({}),
 });

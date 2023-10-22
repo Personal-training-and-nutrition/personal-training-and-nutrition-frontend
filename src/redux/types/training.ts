@@ -1,6 +1,6 @@
 interface ITrainingPlan {
-  id?: number;
-  specialist: number;
+  id?: number | null;
+  specialist: number | null;
   user: number;
   name?: string;
   describe?: string | null;

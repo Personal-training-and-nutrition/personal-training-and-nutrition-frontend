@@ -8,8 +8,9 @@ export const trainingApi = combinedApi.injectEndpoints({
           url: 'training-plans/',
         };
       },
+      providesTags: ['trainingPlanList'],
     }),
-    createTrainingPlan: builder.mutation<TResponse, ITrainingPlan>({
+    createTrainingPlan: builder.mutation<ITrainingPlan, ITrainingPlan>({
       query(data) {
         return {
           url: 'training-plans/',
@@ -17,8 +18,9 @@ export const trainingApi = combinedApi.injectEndpoints({
           body: data,
         };
       },
+      invalidatesTags: ['trainingPlanList'],
     }),
-    retrieveTrainingPlan: builder.query<ITrainingPlan, number>({
+    retrieveTrainingPlan: builder.query<ITrainingPlan, string>({
       query(id) {
         return {
           url: `training-plans/${id}/`,
@@ -34,6 +36,7 @@ export const trainingApi = combinedApi.injectEndpoints({
           body: data,
         };
       },
+      invalidatesTags: ['trainingPlanList'],
     }),
     destroyTrainingPlan: builder.mutation<TResponse, number>({
       query(id) {
@@ -42,6 +45,7 @@ export const trainingApi = combinedApi.injectEndpoints({
           method: 'DELETE',
         };
       },
+      invalidatesTags: ['trainingPlanList'],
     }),
   }),
 });
