@@ -26,7 +26,7 @@ export const navBarUserItemList: navBarItemListType[] = [
     textLink: 'Клиенты',
   },
   {
-    link: 'workout-plans',
+    link: 'message',
     img: messagesNotActiveIcon,
     alt: 'Иконка кнопки "Сообщения"',
     textLink: 'Сообщения',
