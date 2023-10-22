@@ -29,9 +29,11 @@ const LandingPage: React.FC = () => {
   const listItems = isStatusSpecialist ? landingPageSpeciatistParams : landingPageUsersParams;
   const listImages =
     size.width >= 1440 && isStatusSpecialist ? landingPageSpecImagesFromDesktop : landingPageUsersImagesFromDesktop;
-useEffect(() => {
-  if(isLoggedIn) navigate('/clients')
-},[])
+
+    useEffect(() => {
+    if (isLoggedIn) navigate('/clients');
+  }, [isLoggedIn]);
+
   return (
     <div className={styles.landing}>
       <div className={styles.landingContainer}>
