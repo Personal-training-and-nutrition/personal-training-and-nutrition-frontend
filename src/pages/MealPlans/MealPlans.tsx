@@ -10,13 +10,16 @@ import { useAppSelector } from '../../redux/store';
 function MealPlans() {
   const { data, isSuccess } = useGetDietPlansListQuery();
   const currentClient = useAppSelector((state) => state.currentClient.client);
+  const isSpecialist = useAppSelector((state) => state.user.isSpecialist);
+  const path = isSpecialist ? '/nutrition-report' : '/meal-plan';
 
   const plansCurrentClient = data?.map(
-    (plan) => plan.user === currentClient.id && (
-      <Link to={`/meal-plan?id=${plan.id}`} className={styles.mealPlans__link} key={plan.id}>
-        <PlanCard title={plan.name || 'Без названия'} date={plan.describe || ''} image={planImage} />
-      </Link>
-    ),
+    (plan) =>
+      plan.user === currentClient.id && (
+        <Link to={`${path}?id=${plan.id}`} className={styles.mealPlans__link} key={plan.id}>
+          <PlanCard title={plan.name || 'Без названия'} date={plan.describe || ''} image={planImage} />
+        </Link>
+      ),
   );
 
   // useEffect(() => {
@@ -27,9 +30,7 @@ function MealPlans() {
     <main className="App__container">
       <div className={styles.mealPlans}>
         <TitleBlock text="планы питания" />
-        <div className={styles.mealPlans__list}>
-          {isSuccess && plansCurrentClient}
-        </div>
+        <div className={styles.mealPlans__list}>{isSuccess && plansCurrentClient}</div>
       </div>
     </main>
   );
