@@ -1,16 +1,28 @@
-import styles from './AddClient.module.scss';
+import styles from './EditClient.module.scss';
 import TitleBlock from '../../components/TitleBlock/TitleBlock';
 import { useForm } from 'react-hook-form';
 // import { InputsType } from '../ProfilePage/Profile';
-import { useCreateClientMutation } from '../../redux/services/clientsApi.ts';
+import {
+  usePartialUpdateClientMutation,
+  useRetrieveClientQuery,
+  useUpdateClientMutation,
+} from '../../redux/services/clientsApi.ts';
 import { useAppDispatch } from '../../redux/store.ts';
 import { closeModal, openModal } from '../../redux/slices/modalsSlice.ts';
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import ClientPageLayout, { ClientInputType } from '../../components/ClientPageLayout/ClientPageLayout.tsx';
 
-const AddClient = () => {
-  const [createClient, { isSuccess, isError, error }] = useCreateClientMutation();
+const EditClient = () => {
+  const location = useLocation();
+  const query = new URLSearchParams(location.search);
+  const id = query.get('id');
+  const {
+    data: initialData,
+    isSuccess: isInitialSuccesss,
+    isLoading,
+  } = useRetrieveClientQuery(parseInt(id!), { skip: !id });
+  const [updateClient, { isSuccess, isError, error }] = useUpdateClientMutation();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -24,30 +36,17 @@ const AddClient = () => {
   });
 
   const onSubmit = handleSubmit(async (data) => {
-    const gender = data.gender === null ? '0' : data.gender;
+    if (!id) return;
+    data.gender = data.gender === null ? '0' : data.gender;
+    delete data.dob;
+    await updateClient({ id: parseInt(id), data });
     console.log(data);
-    await createClient({
-      first_name: data.first_name,
-      last_name: data.last_name,
-      middle_name: data.middle_name || null,
-      email: data.email,
-      phone_number: data.phone_number,
-      capture: '',
-      role: '0',
-      dob: data.dob,
-      gender: gender,
-      diseases: data.diseases || null,
-      exp_diets: data.exp_diets || null,
-      exp_trainings: data.exp_trainings || null,
-      bad_habits: data.bad_habits || null,
-      notes: data.notes || null,
-      food_preferences: data.food_preferences || null,
-      params: {
-        weight: Number(data.params.weight),
-        height: Number(data.params.height),
-      },
-    });
   });
+
+  useEffect(() => {
+    if (isInitialSuccesss) console.log(initialData);
+    reset(initialData);
+  }, [isInitialSuccesss]);
 
   useEffect(() => {
     if (isSuccess && !isError) {
@@ -79,14 +78,14 @@ const AddClient = () => {
     }
   }, [isSuccess, isError]);
 
-  // if (isLoading) {
-  //   return <h2>Загрузка...</h2>;
-  // }
+  if (isLoading) {
+    return <h2>Загрузка...</h2>;
+  }
 
   return (
     <div className="App__container">
-      <main className={styles.addClient__content}>
-        <TitleBlock text="добавление клиента" isBack={true} />
+      <main className={styles.editClient__content}>
+        <TitleBlock text="редактирование клиента" isBack={true} />
         <ClientPageLayout
           register={register}
           onSubmit={onSubmit}
@@ -100,4 +99,4 @@ const AddClient = () => {
   );
 };
 
-export default AddClient;
+export default EditClient;

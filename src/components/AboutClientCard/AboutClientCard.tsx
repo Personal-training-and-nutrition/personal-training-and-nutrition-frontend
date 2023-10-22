@@ -1,17 +1,22 @@
-import { UseFormRegister } from 'react-hook-form';
+import { FieldValues, Path, UseFormRegister } from 'react-hook-form';
 import { InputsType } from '../../pages/ProfilePage/Profile';
 import Textarea from '../Inputs/Textarea/Textarea';
 import styles from './AboutClientCard.module.scss';
 import { useState } from 'react';
 
-type Props = {
+type Props<TFormValues extends FieldValues> = {
   title: string;
-  textareaName: string;
+  textareaName: Path<TFormValues>;
   textaeraPlaceholder: string;
-  register: UseFormRegister<InputsType>;
+  register: UseFormRegister<TFormValues>;
 };
 
-const AboutClientCard = ({ title, textareaName, textaeraPlaceholder, register }: Props) => {
+const AboutClientCard = <TFormValues extends FieldValues>({
+  title,
+  textareaName,
+  textaeraPlaceholder,
+  register,
+}: Props<TFormValues>) => {
   const [isShowCard, setIsShowCard] = useState(false);
 
   function onShowClick() {
@@ -37,4 +42,3 @@ const AboutClientCard = ({ title, textareaName, textaeraPlaceholder, register }:
 };
 
 export default AboutClientCard;
-

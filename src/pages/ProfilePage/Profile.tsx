@@ -33,7 +33,7 @@ export type InputsType = {
   clientDiseases: string;
   accept: string;
   email: string;
-  notes?:string;
+  notes?: string;
   food_preferences?: string;
   bad_habits?: string;
   exp_trainings?: string;
@@ -94,7 +94,7 @@ const Profile: React.FC = () => {
       // ...data,
       first_name: data.first_name,
       last_name: data.last_name,
-      dob:data.dob,
+      dob: data.dob,
       gender,
       specialist: { about: data.about },
       email: data.email,
@@ -119,10 +119,10 @@ const Profile: React.FC = () => {
   const handleClickDelete = () => {
     try {
       destroyMe({ email: initData?.email }).then(() => {
-          localStorage.removeItem('accessToken');
-          localStorage.removeItem('refreshToken');
-          dispatch(setIsLoggedIn(true));
-          navigate('/');
+        localStorage.removeItem('accessToken');
+        localStorage.removeItem('refreshToken');
+        dispatch(setIsLoggedIn(true));
+        navigate('/');
       });
     } catch (err) {
       console.log(err);
@@ -168,12 +168,12 @@ const Profile: React.FC = () => {
                 </span>
               </div>
               <div>
-                <DatePicker register={register} isInvalid={Boolean(errors.dob)} />
+                <DatePicker name="dob" register={register} isInvalid={Boolean(errors.dob)} />
                 <span className={errors?.dob ? errorVisible : errorInvisible}>{errors?.dob?.message || ''}</span>
               </div>
             </div>
           </div>
-          <GenderInput register={register} />
+          <GenderInput name="gender" register={register} />
           {isSpecialist ? (
             <label className={styles.profile__label}>
               <h3 className={styles.profile__title_big}>Обо мне</h3>

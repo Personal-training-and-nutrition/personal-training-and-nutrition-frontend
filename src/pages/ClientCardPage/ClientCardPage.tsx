@@ -38,7 +38,7 @@ function ClientCardPage() {
     return (
       <main className="App__container">
         <div className={styles.clientCard__content}>
-          <TitleBlock text="карточка клиента" isBack isEdit />
+          <TitleBlock text="карточка клиента" isBack isEdit path={`/client/edit?id=${id}`} />
           <UserInfo />
 
           <div className={styles.clientCard__buttons}>

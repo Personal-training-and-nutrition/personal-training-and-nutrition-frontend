@@ -1,10 +1,17 @@
-import { UseFormRegister } from 'react-hook-form';
+import { FieldValues, Path, UseFormRegister } from 'react-hook-form';
 import { InputsType } from '../../../pages/ProfilePage/Profile';
 import { formatDate } from '../../../utils/formatDate';
 import styles from './DatePicker.module.scss';
 
-const DatePicker = ({ register, isInvalid }: { isInvalid?: boolean; register: UseFormRegister<InputsType> }) => {
-
+const DatePicker = <TFormValues extends FieldValues>({
+  name,
+  register,
+  isInvalid,
+}: {
+  name: Path<TFormValues>;
+  isInvalid?: boolean;
+  register: UseFormRegister<TFormValues>;
+}) => {
   function onBlurInput(e: React.ChangeEvent<HTMLInputElement>) {
     e.target.type = 'text';
     if (e.target.value) {
@@ -28,7 +35,7 @@ const DatePicker = ({ register, isInvalid }: { isInvalid?: boolean; register: Us
         }
         onFocus={onFocusInput}
         placeholder="Дата рождения"
-        {...register('dob', { required: false, onBlur: onBlurInput })}
+        {...register(name, { required: false, onBlur: onBlurInput })}
         // {...register('dob', { required: true, onBlur: onBlurInput, validate: (value) => (new Date(value)) < new Date() || 'Дата не должна быть больше текущей'  })}
       />
     </div>
