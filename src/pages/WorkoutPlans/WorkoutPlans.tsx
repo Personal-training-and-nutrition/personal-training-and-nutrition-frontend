@@ -5,7 +5,6 @@ import planImage from '../../assets/images/client-card/workoutPlanImage.png';
 import { Link } from 'react-router-dom';
 import { useGetTrainingPlansListQuery } from '../../redux/services/trainingApi';
 import { useAppSelector } from '../../redux/store';
-import { useEffect } from 'react';
 
 function WorkoutPlans() {
   const { data, isSuccess } = useGetTrainingPlansListQuery();
