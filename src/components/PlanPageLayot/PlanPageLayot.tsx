@@ -10,6 +10,7 @@ import { UseFormRegister, UseFormSetValue } from 'react-hook-form';
 import ButtonDelete from '../ButtonDelete/ButtonDelete';
 import InputRecommendation from '../Inputs/InputRecommendation/InputRecommendation';
 import { useRetrieveUserQuery } from '../../redux/services/userApi';
+import { getAgeEnding } from '../../utils/getAgeEnding';
 
 export type PlanInputType = {
   namePlan: string;
@@ -63,7 +64,7 @@ const PlanPageLayot = ({ textTitle, namePlan, data, register, onSubmit, isDirty,
         {isSuccess && (
           <h1 className={styles.plan__userData}>{`${clientData?.first_name || ''} ${clientData?.middle_name || ''} ${
             clientData?.last_name || ''
-          }, ${age ? age : ''}`}</h1>
+          }, ${age ? getAgeEnding(age) : ''}`}</h1>
         )}
         {/* <h1 className={styles.plan__userData}>{`Никитина Александра Сергеевна, 35 лет`}</h1> */}
         <form className={styles.plan__form} onSubmit={onSubmit}>

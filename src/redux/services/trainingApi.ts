@@ -26,6 +26,7 @@ export const trainingApi = combinedApi.injectEndpoints({
           url: `training-plans/${id}/`,
         };
       },
+      providesTags: ['trainingPlan'],
     }),
     updateTrainingPlan: builder.mutation<TResponse, { id: number; data: ITrainingPlan }>({
       query(arg) {
@@ -36,7 +37,7 @@ export const trainingApi = combinedApi.injectEndpoints({
           body: data,
         };
       },
-      invalidatesTags: ['trainingPlanList'],
+      invalidatesTags: ['trainingPlan', 'trainingPlanList'],
     }),
     destroyTrainingPlan: builder.mutation<TResponse, number>({
       query(id) {
