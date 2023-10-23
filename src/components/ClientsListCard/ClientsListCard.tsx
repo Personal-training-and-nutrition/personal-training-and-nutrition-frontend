@@ -3,14 +3,13 @@ import styles from './ClientsListCard.module.scss';
 import btnImage from '../../assets/images/clients/clientListBtnPlaceholder.svg';
 import { getFirstLetters } from '../../utils/getFirstLetters';
 import { getAgeEnding } from '../../utils/getAgeEnding';
-import { IUser } from '../../redux/types/user';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../../redux/store';
 
 import { setCurrentClient } from '../../redux/slices/clientSlice';
 
 type ClientListCardProps = {
-  user: IUser;
+  user: TClientListElement;
 };
 
 function ClientsListCard({ user }: ClientListCardProps) {
@@ -28,7 +27,7 @@ function ClientsListCard({ user }: ClientListCardProps) {
       className={styles.clientsListCard}
       onClick={() => {
         dispatch(setCurrentClient(user));
-        navigate(`/client/card/${user.id}`);
+        navigate(`/client/card/${user.client_id}`);
       }}
     >
       <span className={styles.clientsListCard__letters}>{getFirstLetters(fullname)}</span>

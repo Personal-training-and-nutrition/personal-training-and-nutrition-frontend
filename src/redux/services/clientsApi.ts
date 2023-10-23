@@ -2,12 +2,13 @@ import { combinedApi } from './combinedApi';
 
 export const clientsApi = combinedApi.injectEndpoints({
   endpoints: (builder) => ({
-    getClientsList: builder.query<TResponse, void>({
+    getClientsList: builder.query<TClientListElement[], void>({
       query() {
         return {
           url: 'clients/',
         };
       },
+      providesTags: ['clientList'],
     }),
     createClient: builder.mutation<TResponse, ICreateClient>({
       query(data) {
@@ -17,8 +18,9 @@ export const clientsApi = combinedApi.injectEndpoints({
           body: data,
         };
       },
+      invalidatesTags: ['clientList'],
     }),
-    retrieveClient: builder.query<IClientRetrieve, number>({
+    retrieveClient: builder.query<IClientRetrieve, string>({
       query(id) {
         return {
           url: `clients/${id}/`,

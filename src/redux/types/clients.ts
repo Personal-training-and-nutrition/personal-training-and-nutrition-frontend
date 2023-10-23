@@ -1,18 +1,20 @@
 interface ICreateClient {
-  first_name: string | null;
-  last_name?: string | null;
-  middle_name?: string | null;
-  role: string | null;
-  email: string | null;
-  phone_number: string | null;
-  dob?: string | null;
-  gender?: string | null;
-  params: {
-    weight?: number | null;
-    height?: number | null;
-    waist_size?: number | null;
+  user: {
+    first_name: string | null;
+    last_name?: string | null;
+    middle_name?: string | null;
+    role: string | null;
+    email: string | null;
+    phone_number: string | null;
+    dob?: string | null;
+    gender?: string | null;
+    params: {
+      weight?: number | null;
+      height?: number | null;
+      waist_size?: number | null;
+    };
+    capture: string | null;
   };
-  capture: string | null;
   diseases: string | null;
   exp_diets: string | null;
   exp_trainings: string | null;
@@ -64,3 +66,12 @@ interface IClientRetrieve {
   phone_number: string | null;
   trainings: ITrainingPlan[];
 }
+
+type TClientListElement = {
+  id: number;
+  client_id: string;
+  age: number;
+  last_name: string;
+  first_name: string;
+  notes: string;
+};
