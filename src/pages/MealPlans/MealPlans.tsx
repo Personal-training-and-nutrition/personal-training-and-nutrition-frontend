@@ -12,13 +12,12 @@ function MealPlans() {
 
   const url = new URLSearchParams(location.search);
   const idURL = url.get('id');
-  // const currentClient = useAppSelector((state) => state.currentClient.client);
   const isSpecialist = useAppSelector((state) => state.user.isSpecialist);
   const path = isSpecialist ? '/nutrition-report' : '/meal-plan';
 
   const plansCurrentClient = data?.map(
     (plan) =>
-      plan.user === Number(idURL) && (
+      plan.user === idURL && (
         <Link to={`${path}?id=${plan.id}`} className={styles.mealPlans__link} key={plan.id}>
           <PlanCard title={plan.name || 'Без названия'} date={plan.describe || ''} image={planImage} />
         </Link>

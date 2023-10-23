@@ -1,7 +1,7 @@
 interface ITrainingPlan {
   id?: number | null;
   specialist: number | null;
-  user: number;
+  user: string;
   name?: string;
   describe?: string | null;
   training?: Array<TTrainingDay>;

@@ -1,7 +1,7 @@
 interface IDietPlan {
   id?: number;
   specialist: number;
-  user: number;
+  user: string;
   name?: string;
   kkal?: number;
   protein?: number;

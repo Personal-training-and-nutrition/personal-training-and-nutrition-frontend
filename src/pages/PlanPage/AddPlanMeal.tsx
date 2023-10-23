@@ -16,7 +16,7 @@ const AddPlanMeal: React.FC = () => {
   const dispatch = useAppDispatch();
   const query = new URLSearchParams(location.search);
   const client = query.get('client');
-
+console.log(client)
   const {
     register,
     setValue,
@@ -57,7 +57,7 @@ const AddPlanMeal: React.FC = () => {
   }, [isSuccess, isError]);
   const onSubmit = handleSubmit((rawData) => {
     if (!client || !id) return;
-    create({ ...preparePlan(rawData), specialist: id, user: parseInt(client) });
+    create({ ...preparePlan(rawData), specialist: id, user: client });
   });
 
   return (
