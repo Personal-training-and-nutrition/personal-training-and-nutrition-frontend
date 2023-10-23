@@ -17,11 +17,7 @@ const EditClient = () => {
   const location = useLocation();
   const query = new URLSearchParams(location.search);
   const id = query.get('id');
-  const {
-    data: initialData,
-    isSuccess: isInitialSuccesss,
-    isLoading,
-  } = useRetrieveClientQuery(parseInt(id!), { skip: !id });
+  const { data: initialData, isSuccess: isInitialSuccesss, isLoading } = useRetrieveClientQuery(id!, { skip: !id });
   const [updateClient, { isSuccess, isError, error }] = useUpdateClientMutation();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -39,7 +35,7 @@ const EditClient = () => {
     if (!id) return;
     data.gender = data.gender === null ? '0' : data.gender;
     delete data.dob;
-    await updateClient({ id: parseInt(id), data });
+    // await updateClient({ id: parseInt(id), data });
     console.log(data);
   });
 

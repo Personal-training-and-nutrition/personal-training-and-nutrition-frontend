@@ -24,9 +24,10 @@ const AddClient = () => {
   });
 
   const onSubmit = handleSubmit(async (data) => {
-    const gender = data.gender === null ? '0' : data.gender;
+    data.user.gender = data.user.gender === null ? '0' : data.user.gender;
     console.log(data);
-    await createClient({
+    await createClient(data);
+    /* await createClient({
       first_name: data.first_name,
       last_name: data.last_name,
       middle_name: data.middle_name,
@@ -36,17 +37,17 @@ const AddClient = () => {
       role: '0',
       dob: data.dob,
       gender: gender,
+      params: {
+        weight: Number(data.params.weight),
+        height: Number(data.params.height),
+      },
       diseases: data.diseases || null,
       exp_diets: data.exp_diets || null,
       exp_trainings: data.exp_trainings || null,
       bad_habits: data.bad_habits || null,
       notes: data.notes || null,
       food_preferences: data.food_preferences || null,
-      params: {
-        weight: Number(data.params.weight),
-        height: Number(data.params.height),
-      },
-    });
+    }); */
   });
 
   useEffect(() => {

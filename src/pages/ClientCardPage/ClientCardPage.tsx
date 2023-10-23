@@ -20,10 +20,10 @@ function ClientCardPage() {
   const [showMore, setShowMore] = useState(true);
   const [showMoretext, setShoeMoreText] = useState(false);
   const { id } = useParams();
-  const { data: client, isSuccess } = useRetrieveClientQuery(Number(id));
+  const { data: client, isSuccess } = useRetrieveClientQuery(id!, { skip: !id });
   const dispatch = useDispatch();
   useEffect(() => {
-    if (isSuccess) dispatch(setCurrentClient({id}));
+    if (isSuccess) dispatch(setCurrentClient({ id }));
   }, [isSuccess]);
 
   // console.log(client);
@@ -114,7 +114,11 @@ function ClientCardPage() {
               <h2 className={styles.clientCard__title}>Планы питания</h2>
 
               <Link to={`/nutrition-report?id=${client?.diets[0].id}`} className={styles.clientCard__link}>
-                <PlanCard image={mealPlanImage} title={client?.diets[0].name || ''} date={client?.diets[0].describe || ''} />
+                <PlanCard
+                  image={mealPlanImage}
+                  title={client?.diets[0].name || ''}
+                  date={client?.diets[0].describe || ''}
+                />
               </Link>
 
               <Link to={`/meal-plans?id=${id}`} className={styles.clientCard__moreBtn}>
@@ -130,7 +134,11 @@ function ClientCardPage() {
               <h2 className={styles.clientCard__title}>Планы тренировок</h2>
 
               <Link to={`/workout-report?id=${client?.trainings[0].id}`} className={styles.clientCard__link}>
-                <PlanCard image={workoutPlanImage} title={client?.trainings[0].name || ''} date={client?.trainings[0].describe || ''}/>
+                <PlanCard
+                  image={workoutPlanImage}
+                  title={client?.trainings[0].name || ''}
+                  date={client?.trainings[0].describe || ''}
+                />
               </Link>
 
               <Link to={`/workout-plans?id=${id}`} className={styles.clientCard__moreBtn}>
