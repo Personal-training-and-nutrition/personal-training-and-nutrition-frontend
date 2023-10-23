@@ -60,7 +60,7 @@ const AddPlanTraining: React.FC = () => {
 
   const onSubmit = handleSubmit((data) => {
     if (!client || !specialistId) return;
-    createWorkout({...preparePlanTrain(data), user: parseInt(client), specialist: specialistId})
+    createWorkout({...preparePlanTrain(data), user: client, specialist: specialistId})
   });
 
   return (
