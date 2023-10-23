@@ -17,16 +17,19 @@ interface IUser {
   is_active?: boolean;
   role?: string | null;
   gender?: string | null;
-  params?: {
+  params?: [{
+    id: number;
     weight?: number | null;
     height?: number | null;
-  };
+    waist_size?: number | null;
+    // created_at:  Date;
+  }];
   specialist_id?: number | null;
   groups?: number[];
   user_permissions?: number[];
-  specialist?: {
-    about?: string;
-  };
+  specialist?: [{
+    about?: string | null;
+  }];
 }
 
 interface IUserPassword {

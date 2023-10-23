@@ -50,6 +50,7 @@ const Profile: React.FC = () => {
   const [destroyMe] = useDestroyMeMutation();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  // console.log(about)
   const {
     register,
     handleSubmit,
@@ -64,11 +65,13 @@ const Profile: React.FC = () => {
       gender: initData?.gender || '0',
       dob: initData?.dob || '',
       phone_number: initData?.phone_number || '',
-      weight: initData?.params?.weight,
-      height: initData?.params?.height,
-      about: initData?.specialist?.about || '',
+      // weight: initData?.params?.weight,
+      // height: initData?.params?.height,
+      // about: initData?.specialist?[0].about || '',
     },
   });
+console.log('initData =>', initData)
+// console.log('updateData =>', initData)
 
   useEffect(() => {
     if (isSuccess)
@@ -92,6 +95,7 @@ const Profile: React.FC = () => {
 
     const dataUser = {
       // ...data,
+      // id: id!,
       first_name: data.first_name,
       last_name: data.last_name,
       middle_name: data.last_name,
@@ -101,10 +105,11 @@ const Profile: React.FC = () => {
       phone_number: String(data.phone_number).replace(/[+\s]+/g, ''),
       dob: data.dob,
       gender,
-      // params: { weight: 100, heigth: 100, waist_size: 0 },
+      params: [{ weight: 100, heigth: 100, waist_size: 0 }],
       is_specialist: true,
-      // specialist: { about: data.about },
+      specialist: [{ about: data.about }],
     };
+    console.log(dataUser, id)
     update({ id: id!, data: dataUser });
     setEditPhone(false);
   });
