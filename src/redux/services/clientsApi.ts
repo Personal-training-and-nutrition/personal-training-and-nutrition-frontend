@@ -1,4 +1,4 @@
-import {combinedApi} from './combinedApi';
+import { combinedApi } from './combinedApi';
 
 export const clientsApi = combinedApi.injectEndpoints({
   endpoints: (builder) => ({
@@ -25,9 +25,9 @@ export const clientsApi = combinedApi.injectEndpoints({
         };
       },
     }),
-    updateClient: builder.mutation<TResponse, { id: number; data: IDietPlan }>({
+    updateClient: builder.mutation<TResponse, { id: number; data: IEditClient }>({
       query(arg) {
-        const {id, data} = arg;
+        const { id, data } = arg;
         return {
           url: `clients/${id}/`,
           method: 'PUT',
@@ -35,9 +35,9 @@ export const clientsApi = combinedApi.injectEndpoints({
         };
       },
     }),
-    partialUpdateClient: builder.mutation<TResponse, { id: number; data: IDietPlan }>({
+    partialUpdateClient: builder.mutation<TResponse, { id: number; data: IEditClient }>({
       query(arg) {
-        const {id, data} = arg;
+        const { id, data } = arg;
         return {
           url: `clients/${id}/`,
           method: 'PATCH',
@@ -62,5 +62,5 @@ export const {
   useRetrieveClientQuery,
   useUpdateClientMutation,
   usePartialUpdateClientMutation,
-  useDestroyClientMutation
+  useDestroyClientMutation,
 } = clientsApi;

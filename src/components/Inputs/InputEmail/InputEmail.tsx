@@ -1,18 +1,25 @@
 /* eslint-disable no-useless-escape */
-import { UseFormRegister } from 'react-hook-form';
+import { FieldValues, Path, UseFormRegister } from 'react-hook-form';
 import { InputsType } from '../../../pages/ProfilePage/Profile';
 import styles from './InputEmail.module.scss';
 
-type Props = {
-  name: string;
+type Props<TFormValues extends FieldValues> = {
+  name: Path<TFormValues>;
   placeholder: string;
   isLabel?: boolean;
   label?: string;
-  register: UseFormRegister<InputsType>;
+  register: UseFormRegister<TFormValues>;
   isInvalid: boolean;
 };
 
-const InputEmail = ({ name, placeholder, isLabel, label, register, isInvalid }: Props) => {
+const InputEmail = <TFormValues extends FieldValues>({
+  name,
+  placeholder,
+  isLabel,
+  label,
+  register,
+  isInvalid,
+}: Props<TFormValues>) => {
   return (
     <>
       {isLabel ? (
@@ -38,7 +45,7 @@ const InputEmail = ({ name, placeholder, isLabel, label, register, isInvalid }: 
           type="text"
           placeholder={placeholder}
           className={isInvalid ? `${styles.inputs__email} ${styles.inputs__email_invalid}` : styles.inputs__email}
-          {...register(`${name}` as never, {
+          {...register(name, {
             required: true,
             pattern: {
               value: /[\w\.\-]+@[\w\.\-]+\.[\w\.\-]{2,}/gi,

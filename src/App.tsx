@@ -31,6 +31,7 @@ import RequireUser from './components/RequireUser/RequireUser.tsx';
 import useIsAuth from './hooks/useIsAuth.ts';
 import { useEffect } from 'react';
 import { useAppSelector } from './redux/store.ts';
+import EditClient from './pages/EditClient/EditClient.tsx';
 
 function App() {
   const location = useLocation();
@@ -38,7 +39,7 @@ function App() {
   const unauthDesktopClass = location.pathname.endsWith('unauth') ? 'App__desktopUnauth' : '';
   const appDesktopClass = !navBarHideCases.includes(location.pathname) ? 'App__desktop' : '';
   const { isLoggedIn, checkIsAuth } = useIsAuth();
-  const { tooltip } = useAppSelector(state => state.modal)
+  const { tooltip } = useAppSelector((state) => state.modal);
 
   // console.log(location.pathname.endsWith('unauth'));
   useEffect(() => {
@@ -67,6 +68,7 @@ function App() {
         </Route>
         <Route path="/client/card/:id" element={<ClientCardPage />} />
         <Route path="/client/new" element={<AddClient />} />
+        <Route path="/client/edit" element={<EditClient />} />
         <Route path="/nutrition-report" element={<NutritionReport />} />
         <Route path="/workout-plans" element={<WorkoutPlans />} />
         <Route path="/workout-plan" element={<WorkoutPlan />} />
