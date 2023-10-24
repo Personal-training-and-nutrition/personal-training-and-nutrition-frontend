@@ -49,7 +49,6 @@ function MealPlan() {
         {data?.diet?.map((plan, index) => {
           return (
             <PlanReportBlock
-              isLoggedIn={true}
               key={index}
               plan={plan}
               handleComment={generateCommentHandler(plan.weekday)}

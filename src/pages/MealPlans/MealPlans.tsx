@@ -31,7 +31,7 @@ function MealPlans() {
   return (
     <main className="App__container">
       <div className={styles.mealPlans}>
-        <TitleBlock text="планы питания" />
+        <TitleBlock text="планы питания" isBack={true}/>
         <div className={styles.mealPlans__list}>{isSuccess && plansCurrentClient}</div>
       </div>
     </main>

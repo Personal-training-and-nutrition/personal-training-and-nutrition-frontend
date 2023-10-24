@@ -21,7 +21,7 @@ function WorkoutPlans() {
   return (
     <main className="App__container">
       <div className={styles.workoutPlans}>
-        <TitleBlock text="планы тренировок" />
+        <TitleBlock text="планы тренировок" isBack={true}/>
         <div className={styles.workoutPlans__list}>
           {isSuccess &&
             currentClientPlans?.map((train) => (

@@ -25,11 +25,10 @@ function PlanReportBlock({ plan, text, handleComment }: PlanReportBlockProps) {
   const location = useLocation();
   const isWorkoutPlanPage = location.pathname === '/workout-plan';
   const isMealPlanPage = location.pathname === '/meal-plan';
-  const isTrainingReportPage = '/workout-report';
-  const isMealReportPage = '/nutrition-report';
-  const imgPath = isWorkoutPlanPage || isTrainingReportPage ? '/images/trainingdays/trainingday' : '/images/dayweekMeal/meal';
+  const isTrainingReportPage = location.pathname === '/workout-report';
+  const isMealReportPage = location.pathname === '/nutrition-report';
+  const imgPath = (isWorkoutPlanPage || isTrainingReportPage) ? '/images/trainingdays/trainingday' : '/images/dayweekMeal/meal';
   const isLoggedIn = useAppSelector((state) => state.user.isLoggedIn);
-
   return (
     <li className={showMore ? `${styles.PlanReport} ${styles.PlanReport_show}` : `${styles.PlanReport}`}>
       <img className={styles.PlanReport__image} src={`${imgPath}-${plan.weekday}.png`} alt="plan image" />
