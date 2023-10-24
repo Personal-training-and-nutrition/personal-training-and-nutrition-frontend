@@ -1,6 +1,8 @@
 export type ApiError = {
   status: number;
-  data: { code: string; detail?: string; password?: string; email?: string };
+  data: {
+    errors: { code: string; detail?: string }[];
+  };
 };
 
 export function isApiError(error: unknown): error is ApiError {
