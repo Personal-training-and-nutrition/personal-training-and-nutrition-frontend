@@ -5,15 +5,9 @@ import {
   createApi,
   fetchBaseQuery,
 } from '@reduxjs/toolkit/dist/query/react';
+import { isApiError } from '../../utils/isApiError';
 
 const BASE_URL = 'http://80.87.110.219:8000/api';
-
-type TError = {
-  data: {
-    detail: string;
-    code: string;
-  };
-};
 
 const baseQuery = fetchBaseQuery({
   baseUrl: BASE_URL,
@@ -31,7 +25,7 @@ const baseQueryWithRefresh: BaseQueryFn<string | FetchArgs, unknown, FetchBaseQu
   extraOptions,
 ) => {
   let result = await baseQuery(args, api, extraOptions);
-  if (result.error && (result.error as TError)?.data?.code === 'token_not_valid') {
+  if (result.error && isApiError(result.error) && result.error.data.errors[0].code === 'token_not_valid') {
     console.log('token is not valid');
     const refreshToken = window.localStorage.getItem('refreshToken');
     const { data } = await baseQuery(
