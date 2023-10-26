@@ -28,7 +28,6 @@ const EditPlanTraining: React.FC = () => {
     mode: 'onBlur'
   });
   const onSubmit = handleSubmit((data) => {
-    console.log(data);
     if (!planId || !specialistId || !plan?.user) return;
     planUpdateTrigger({
       id: parseInt(planId),

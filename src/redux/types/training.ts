@@ -1,4 +1,4 @@
-interface ITrainingPlan {
+export interface ITrainingPlan {
   id?: number | null;
   specialist: number | null;
   user: string;
@@ -7,7 +7,7 @@ interface ITrainingPlan {
   training?: Array<TTrainingDay>;
   }
 
-type TTrainingDay = {
+export type TTrainingDay = {
   id?: number;
   weekday: string;
   spec_comment?: string | null;

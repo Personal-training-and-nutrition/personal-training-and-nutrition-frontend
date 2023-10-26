@@ -1,5 +1,6 @@
-export function getAgeEnding(age: number) {
-  var lastDigit = age % 10;
+export function getAgeEnding(age?: number | null) {
+  if(age){
+    var lastDigit = age % 10;
   var secondToLastDigit = Math.floor((age % 100) / 10);
 
   if (lastDigit === 1 && secondToLastDigit !== 1) {
@@ -8,5 +9,6 @@ export function getAgeEnding(age: number) {
     return age + ' года';
   } else {
     return age + ' лет';
+  }
   }
 }

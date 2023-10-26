@@ -1,15 +1,15 @@
-type TResponse = {
+export type TResponse = {
   status: string;
   message: string;
   filter: () => object[];
   map: () => object[];
 };
 
-type TTokensResponse = {
+export type TTokensResponse = {
   access: string;
   refresh: string;
 };
 
-type TRefreshResponse = {
+export type TRefreshResponse = {
   access: string;
 };

@@ -1,3 +1,5 @@
+import { TResponse } from '../types/common';
+import { IDietPlan } from '../types/diet';
 import { combinedApi } from './combinedApi';
 
 export const dietApi = combinedApi.injectEndpoints({

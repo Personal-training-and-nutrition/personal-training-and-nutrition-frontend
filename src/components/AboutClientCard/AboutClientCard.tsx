@@ -1,5 +1,4 @@
 import { FieldValues, Path, UseFormRegister } from 'react-hook-form';
-import { InputsType } from '../../pages/ProfilePage/Profile';
 import Textarea from '../Inputs/Textarea/Textarea';
 import styles from './AboutClientCard.module.scss';
 import { useState } from 'react';

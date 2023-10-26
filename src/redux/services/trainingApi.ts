@@ -1,3 +1,5 @@
+import { TResponse } from '../types/common';
+import { ITrainingPlan } from '../types/training';
 import { combinedApi } from './combinedApi';
 
 export const trainingApi = combinedApi.injectEndpoints({

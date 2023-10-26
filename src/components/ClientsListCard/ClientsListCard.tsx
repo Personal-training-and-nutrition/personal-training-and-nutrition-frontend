@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../../redux/store';
 
 import { setCurrentClient } from '../../redux/slices/clientSlice';
+import { TClientListElement } from '../../redux/types/clients';
 
 type ClientListCardProps = {
   user: TClientListElement;
@@ -21,7 +22,7 @@ function ClientsListCard({ user }: ClientListCardProps) {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    console.log(user)
+    // console.log(user)
   }, []);
 
   return (

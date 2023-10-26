@@ -1,4 +1,4 @@
-interface IUser {
+export interface IUser {
   notes?: string;
   age?: number;
   id?: number;
@@ -32,41 +32,41 @@ interface IUser {
   }];
 }
 
-interface IUserPassword {
+export interface IUserPassword {
   password: string;
 }
 
-interface IUserEmail {
+export interface IUserEmail {
   email?: string;
 }
 
-interface IUserResetEmail {
+export interface IUserResetEmail {
   new_email: string;
 }
 
-interface IUserActivationCreate {
+export interface IUserActivationCreate {
   uid: string;
   token: string;
 }
 
-interface IUserResetPasswordConfirm {
+export interface IUserResetPasswordConfirm {
   uid: string;
   token: string;
   new_password: string;
 }
 
-interface IUserSetEmail {
+export interface IUserSetEmail {
   current_password: string;
   new_email: string;
 }
 
-interface IUserSetPassword {
+export interface IUserSetPassword {
   new_password: string;
   re_new_password: string;
   current_password: string;
 }
 
-type TMeUser = {
+export type TMeUser = {
   password: string;
   id: number;
   email: string;

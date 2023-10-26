@@ -16,7 +16,6 @@ const AddPlanMeal: React.FC = () => {
   const dispatch = useAppDispatch();
   const query = new URLSearchParams(location.search);
   const client = query.get('client');
-console.log(client)
   const {
     register,
     setValue,

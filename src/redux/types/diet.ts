@@ -1,4 +1,4 @@
-interface IDietPlan {
+export interface IDietPlan {
   id?: number;
   specialist: number;
   user: string;
@@ -11,7 +11,7 @@ interface IDietPlan {
   diet?: Array<TDietDay>;
 }
 
-type TDietDay = {
+export type TDietDay = {
   id?: number;
   weekday: string;
   spec_comment?: string | null;
