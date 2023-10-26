@@ -21,6 +21,9 @@ function ClientCardPage() {
   const [showMoretext, setShoeMoreText] = useState(false);
   const { id } = useParams();
   const { data: client, isSuccess } = useRetrieveClientQuery(id!, { skip: !id });
+
+  console.log(client)
+
   const dispatch = useDispatch();
   useEffect(() => {
     if (isSuccess) dispatch(setCurrentClient({ id }));

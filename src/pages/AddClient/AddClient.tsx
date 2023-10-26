@@ -8,6 +8,7 @@ import { closeModal, openModal } from '../../redux/slices/modalsSlice.ts';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ClientPageLayout, { ClientInputType } from '../../components/ClientPageLayout/ClientPageLayout.tsx';
+import {formatToPhoneValue} from "../../utils/formatToPhone.ts";
 
 const AddClient = () => {
   const [createClient, { isSuccess, isError, error }] = useCreateClientMutation();
@@ -26,7 +27,8 @@ const AddClient = () => {
   const onSubmit = handleSubmit(async (data) => {
     data.user.gender = data.user.gender === null ? '0' : data.user.gender;
     console.log(data);
-    await createClient(data);
+    data.user.phone_number = data.user.phone_number?.replace(new RegExp(' ' , 'g'),  "").replace(new RegExp('-' , 'g'),  "")
+    createClient(data);
     /* await createClient({
       first_name: data.first_name,
       last_name: data.last_name,

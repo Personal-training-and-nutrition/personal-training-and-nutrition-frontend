@@ -4,12 +4,14 @@ import { getFirstLetters } from '../../utils/getFirstLetters';
 import { getAgeEnding } from '../../utils/getAgeEnding';
 import { useRetrieveUserQuery } from '../../redux/services/userApi';
 import { IUser } from '../../redux/types/user';
+import {useRetrieveClientQuery} from "../../redux/services/clientsApi.ts";
 
 function UserInfo() {
   // const client = useSelector((state: RootState) => state.currentClient.client);
   const { id = '' } = useParams();
-  const { data: client = [] as IUser, isLoading, isFetching, isError } = useRetrieveUserQuery(id);
+  const { data: client = [] as IUser, isLoading, isFetching, isError } = useRetrieveClientQuery(id);
   const fullname = client.first_name + ' ' + client.last_name!;
+  console.log(client)
 
   let age = 0;
   if (client.dob) {
@@ -25,11 +27,11 @@ function UserInfo() {
 
       <div className={styles.userInfo__data}>
         <p className={styles.userInfo__dataParam}>
-          Рост: <span className={styles.userInfo__dataValue}>170см</span>
+          Рост: <span className={styles.userInfo__dataValue}>{`${client.params[0].height} см`}</span>
         </p>
 
         <p className={styles.userInfo__dataParam}>
-          Вес: <span className={styles.userInfo__dataValue}>65кг</span>
+          Вес: <span className={styles.userInfo__dataValue}>{`${client.params[0].weight} кг`}</span>
         </p>
       </div>
     </div>

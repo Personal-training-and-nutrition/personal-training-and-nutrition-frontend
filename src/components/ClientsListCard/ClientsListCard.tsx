@@ -13,6 +13,7 @@ type ClientListCardProps = {
 };
 
 function ClientsListCard({ user }: ClientListCardProps) {
+
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
@@ -20,6 +21,7 @@ function ClientsListCard({ user }: ClientListCardProps) {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    console.log(user)
   }, []);
 
   return (
@@ -27,7 +29,7 @@ function ClientsListCard({ user }: ClientListCardProps) {
       className={styles.clientsListCard}
       onClick={() => {
         dispatch(setCurrentClient(user));
-        navigate(`/client/card/${user.client_id}`);
+        navigate(`/client/card/${user.id}`);
       }}
     >
       <span className={styles.clientsListCard__letters}>{getFirstLetters(fullname)}</span>

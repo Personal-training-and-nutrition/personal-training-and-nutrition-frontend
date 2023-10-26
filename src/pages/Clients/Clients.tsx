@@ -11,6 +11,8 @@ function Clients() {
   const [searchText, setSearchText] = useState('');
   const { data: allUsers = [], isSuccess } = useGetClientsListQuery();
 
+  console.log(allUsers)
+
   const filteredClients = allUsers.filter((client) => {
     if (client.last_name) {
       return client.last_name.toLowerCase().includes(searchText.toLowerCase().trim());
