@@ -17,7 +17,7 @@ import { setCurrentClient } from '../../redux/slices/clientSlice.ts';
 
 function ClientCardPage() {
   const [showMore, setShowMore] = useState(true);
-  const [showMoretext, setShoeMoreText] = useState(false);
+  // const [showMoretext, setShoeMoreText] = useState(false);
   const { id } = useParams();
   const { data: client, isSuccess } = useRetrieveClientQuery(id!, { skip: !id });
 
@@ -27,16 +27,6 @@ function ClientCardPage() {
       dispatch(setCurrentClient(client))};
   }, [isSuccess]);
 
-  // console.log(client);
-
-  // const getText = (client: string) : string => {
-  //   if(client.length <= 75) {
-  //     return client.slice(0, 74) + '...'
-  //   }
-  //   return client
-  // }
-  // const exampleStr = 'Очень длинный текст наполненный жизненным опытом от диет, взлетов и падений'
-  // console.log(getText(exampleStr))
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);

@@ -1,14 +1,13 @@
 import styles from './AddClient.module.scss';
 import TitleBlock from '../../components/TitleBlock/TitleBlock';
 import { useForm } from 'react-hook-form';
-// import { InputsType } from '../ProfilePage/Profile';
 import { useCreateClientMutation } from '../../redux/services/clientsApi.ts';
 import { useAppDispatch } from '../../redux/store.ts';
 import { closeModal, openModal } from '../../redux/slices/modalsSlice.ts';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ClientPageLayout, { ClientInputType } from '../../components/ClientPageLayout/ClientPageLayout.tsx';
-import {formatToPhoneValue} from "../../utils/formatToPhone.ts";
+import {ICreateClient} from "../../redux/types/clients.ts";
 
 const AddClient = () => {
   const [createClient, { isSuccess, isError, error }] = useCreateClientMutation();
@@ -26,30 +25,7 @@ const AddClient = () => {
 
   const onSubmit = handleSubmit(async (data) => {
     data.user.gender = data.user.gender === null ? '0' : data.user.gender;
-    console.log(data);
-    data.user.phone_number = data.user.phone_number?.replace(new RegExp(' ' , 'g'),  "").replace(new RegExp('-' , 'g'),  "")
-    createClient(data);
-    /* await createClient({
-      first_name: data.first_name,
-      last_name: data.last_name,
-      middle_name: data.middle_name,
-      email: data.email,
-      phone_number: data.phone_number,
-      capture: '',
-      role: '0',
-      dob: data.dob,
-      gender: gender,
-      params: {
-        weight: Number(data.params.weight),
-        height: Number(data.params.height),
-      },
-      diseases: data.diseases || null,
-      exp_diets: data.exp_diets || null,
-      exp_trainings: data.exp_trainings || null,
-      bad_habits: data.bad_habits || null,
-      notes: data.notes || null,
-      food_preferences: data.food_preferences || null,
-    }); */
+    createClient(data as ICreateClient);
   });
 
   useEffect(() => {
@@ -81,10 +57,6 @@ const AddClient = () => {
       );
     }
   }, [isSuccess, isError]);
-
-  // if (isLoading) {
-  //   return <h2>Загрузка...</h2>;
-  // }
 
   return (
     <div className="App__container">

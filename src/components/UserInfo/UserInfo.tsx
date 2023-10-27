@@ -2,20 +2,21 @@ import styles from './UserInfo.module.scss';
 import { useParams } from 'react-router-dom';
 import { getFirstLetters } from '../../utils/getFirstLetters';
 import { getAgeEnding } from '../../utils/getAgeEnding';
-import { IUser } from '../../redux/types/user';
 import {useRetrieveClientQuery} from "../../redux/services/clientsApi.ts";
+import {IClientRetrieve} from "../../redux/types/clients.ts";
 
 function UserInfo() {
   // const client = useSelector((state: RootState) => state.currentClient.client);
   const { id = '' } = useParams();
-  const { data: client = [] as IUser, isLoading, isFetching, isError } = useRetrieveClientQuery(id);
+  const { data: client = []  as never as IClientRetrieve} = useRetrieveClientQuery(id);
   const fullname = client.user.first_name + ' ' + client.user.last_name!;
+  console.log(client)
 
   return (
     <div className={styles.userInfo}>
       <div className={styles.userInfo__avatar}>{getFirstLetters(fullname)}</div>
       <div className={styles.userInfo__name}>
-        {client.user.first_name}  {client?.user?.middle_name} {client.user.last_name}, <span>{getAgeEnding(client.age)}</span>
+        {client.user.first_name}  {client?.user?.middle_name} {client.user.last_name}, <span>{getAgeEnding(client.age) || '0 лет'}</span>
       </div>
 
       <div className={styles.userInfo__data}>
