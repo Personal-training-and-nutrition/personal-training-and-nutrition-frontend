@@ -7,7 +7,6 @@ import mail from '../../assets/images/client-card/mail.svg';
 import mealPlanImage from '../../assets/images/client-card/plan-image.png';
 import workoutPlanImage from '../../assets/images/client-card/workoutPlanImage.png';
 import unfold from '../../assets/images/client-card/unfold.svg';
-import fold from '../../assets/images/client-card/fold.svg';
 import { useEffect, useState } from 'react';
 import PlanCard from '../../components/PlanCard/PlanCard';
 import { Link, useParams } from 'react-router-dom';
@@ -21,6 +20,7 @@ function ClientCardPage() {
   const [showMoretext, setShoeMoreText] = useState(false);
   const { id } = useParams();
   const { data: client, isSuccess } = useRetrieveClientQuery(id!, { skip: !id });
+
   const dispatch = useDispatch();
   useEffect(() => {
     if (isSuccess) dispatch(setCurrentClient({ id }));
@@ -64,11 +64,11 @@ function ClientCardPage() {
             <div className={`${styles.clientCard__textContainer} ${styles.clientCard__contactsBox}`}>
               <p className={styles.clientCard__contact}>
                 <img src={phone} alt="phone-icon" />
-                {client?.phone_number || 'Неизвестен'}
+                {client?.user.phone_number || 'Неизвестен'}
               </p>
               <p className={styles.clientCard__contact}>
                 <img src={mail} alt="mail-icon" />
-                {client?.email}
+                {client?.user.email}
               </p>
             </div>
           </section>

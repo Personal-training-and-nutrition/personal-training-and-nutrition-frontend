@@ -1,7 +1,6 @@
 import PlanReportBlock from '../../components/PlanReportBlock/PlanReportBlock';
 import TitleBlock from '../../components/TitleBlock/TitleBlock';
 import styles from './TrainingReport.module.scss';
-// import { tempWorkoutPlan } from '../../utils/constants';
 import { useRetrieveTrainingPlanQuery } from '../../redux/services/trainingApi';
 
 function TrainingReport() {

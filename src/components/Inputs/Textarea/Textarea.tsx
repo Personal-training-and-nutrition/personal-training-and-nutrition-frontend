@@ -1,5 +1,4 @@
 import { FieldValues, Path, UseFormRegister } from 'react-hook-form';
-import { InputsType } from '../../../pages/ProfilePage/Profile';
 import styles from './Textarea.module.scss';
 
 type Props<TFormValues extends FieldValues> = {

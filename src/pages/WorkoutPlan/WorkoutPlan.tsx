@@ -23,7 +23,6 @@ function WorkoutPlan() {
        {plan?.training?.map((plan) => {
         return (
           <PlanReportBlock
-            // isLoggedIn={true}
             key={plan.id}
             plan={plan}
             text="Твой план тренировки на этот день. Поделись ощущениями в конце."

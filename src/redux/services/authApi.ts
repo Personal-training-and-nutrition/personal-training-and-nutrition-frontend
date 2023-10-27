@@ -1,3 +1,5 @@
+import { IRegisterUser, ILoginUser, IRefreshToken, IAuthO } from '../types/auth';
+import { TResponse, TTokensResponse, TRefreshResponse } from '../types/common';
 import { combinedApi } from './combinedApi';
 
 export const authApi = combinedApi.injectEndpoints({

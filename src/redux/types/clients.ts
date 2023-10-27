@@ -1,4 +1,7 @@
-interface ICreateClient {
+import { IDietPlan } from "./diet";
+import { ITrainingPlan } from "./training";
+
+export interface ICreateClient {
   user: {
     first_name: string | null;
     last_name?: string | null;
@@ -23,7 +26,7 @@ interface ICreateClient {
   food_preferences: string | null;
 }
 
-interface IEditClient {
+export interface IEditClient {
   first_name?: string | null;
   last_name?: string | null;
   middle_name?: string | null;
@@ -46,28 +49,30 @@ interface IEditClient {
   food_preferences?: string | null;
 }
 
-interface IClientRetrieve {
+export interface IClientRetrieve {
   age: number | null;
   bad_habits: string | null;
   diets: IDietPlan[];
   diseases: string | null;
-  email: string;
   exp_diets: string | null;
   exp_trainings: string | null;
-  first_name: string | null;
   food_preferences: string | null;
-  last_name: string | null;
   notes: string | null;
-  params: {
-    height: number | null;
-    waist_size?: number | null;
-    weight: number | null;
-  };
-  phone_number: string | null;
   trainings: ITrainingPlan[];
+  user: {
+    email: string;
+    first_name: string | null;
+    last_name: string | null;
+    params: {
+      height?: number | null;
+      waist_size?: number | null;
+      weight?: number | null;
+    };
+    phone_number: string | null;
+  }
 }
 
-type TClientListElement = {
+export type TClientListElement = {
   id: number;
   client_id: string;
   age: number;

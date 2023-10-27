@@ -1,5 +1,4 @@
 import { FieldValues, Path, UseFormRegister } from 'react-hook-form';
-import { InputsType } from '../../../pages/ProfilePage/Profile';
 import { formatDate } from '../../../utils/formatDate';
 import styles from './DatePicker.module.scss';
 

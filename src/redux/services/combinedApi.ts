@@ -6,8 +6,9 @@ import {
   fetchBaseQuery,
 } from '@reduxjs/toolkit/dist/query/react';
 import { isApiError } from '../../utils/isApiError';
+import { TRefreshResponse } from '../types/common';
 
-const BASE_URL = 'http://80.87.110.219:8000/api';
+const BASE_URL = 'http://80.87.110.219:9000/api';
 
 const baseQuery = fetchBaseQuery({
   baseUrl: BASE_URL,

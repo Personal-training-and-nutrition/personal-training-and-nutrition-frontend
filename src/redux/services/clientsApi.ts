@@ -1,3 +1,5 @@
+import { TClientListElement, ICreateClient, IClientRetrieve, IEditClient } from '../types/clients';
+import { TResponse } from '../types/common';
 import { combinedApi } from './combinedApi';
 
 export const clientsApi = combinedApi.injectEndpoints({

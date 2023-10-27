@@ -1,3 +1,5 @@
+import { TResponse } from '../types/common';
+import { IUser, TMeUser, IUserPassword, IUserEmail, IUserActivationCreate, IUserResetEmail, IUserResetPasswordConfirm, IUserSetEmail, IUserSetPassword } from '../types/user';
 import { combinedApi } from './combinedApi';
 
 export const userApi = combinedApi.injectEndpoints({
