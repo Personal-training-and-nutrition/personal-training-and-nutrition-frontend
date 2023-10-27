@@ -7,7 +7,7 @@ import { useGetTrainingPlansListQuery } from '../../redux/services/trainingApi';
 import { useAppSelector } from '../../redux/store';
 
 function WorkoutPlans() {
-  const { data, isSuccess } = useGetTrainingPlansListQuery();
+  const { data, isSuccess, isLoading } = useGetTrainingPlansListQuery();
 
   const url = new URLSearchParams(location.search);
   const idURL = url.get('id');
@@ -17,7 +17,9 @@ function WorkoutPlans() {
 
   const currentClientPlans = data?.filter((plan) => plan.user === idURL && plan);
 
-
+  if (isLoading) {
+    return <h4>Загрузка...</h4>;
+  }
   return (
     <main className="App__container">
       <div className={styles.workoutPlans}>

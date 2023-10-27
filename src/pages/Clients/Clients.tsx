@@ -9,7 +9,7 @@ import { useGetClientsListQuery } from '../../redux/services/clientsApi.ts';
 
 function Clients() {
   const [searchText, setSearchText] = useState('');
-  const { data: allUsers = [], isSuccess } = useGetClientsListQuery();
+  const { data: allUsers = [], isSuccess, isLoading } = useGetClientsListQuery();
 
   const filteredClients = allUsers.filter((client) => {
     if (client.last_name) {
@@ -28,7 +28,9 @@ function Clients() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
+  if (isLoading) {
+    return <h4>Загрузка...</h4>;
+  }
   return (
     <main className="App__container">
       <div className={`${styles.clients__content}`}>

@@ -27,7 +27,7 @@ function ClientCardPage() {
       dispatch(setCurrentClient(client))};
   }, [isSuccess]);
 
-  console.log(client);
+  // console.log(client);
 
   // const getText = (client: string) : string => {
   //   if(client.length <= 75) {

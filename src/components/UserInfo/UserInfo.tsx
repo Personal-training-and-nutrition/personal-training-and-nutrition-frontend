@@ -15,7 +15,7 @@ function UserInfo() {
     <div className={styles.userInfo}>
       <div className={styles.userInfo__avatar}>{getFirstLetters(fullname)}</div>
       <div className={styles.userInfo__name}>
-        {client.user.first_name} {client.user.last_name}, <span>{getAgeEnding(client.age)}</span>
+        {client.user.first_name}  {client?.user?.middle_name} {client.user.last_name}, <span>{getAgeEnding(client.age)}</span>
       </div>
 
       <div className={styles.userInfo__data}>

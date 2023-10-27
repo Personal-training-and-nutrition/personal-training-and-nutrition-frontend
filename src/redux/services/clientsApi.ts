@@ -39,7 +39,7 @@ export const clientsApi = combinedApi.injectEndpoints({
         };
       },
     }),
-    partialUpdateClient: builder.mutation<TResponse, { id: number; data: IEditClient }>({
+    partialUpdateClient: builder.mutation<TResponse, { id: string; data: IEditClient }>({
       query(arg) {
         const { id, data } = arg;
         return {

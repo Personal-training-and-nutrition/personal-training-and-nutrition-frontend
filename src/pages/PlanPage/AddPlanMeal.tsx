@@ -10,7 +10,7 @@ import { closeModal, openModal } from '../../redux/slices/modalsSlice';
 
 const AddPlanMeal: React.FC = () => {
   const { id } = useAppSelector((store) => store.user);
-  const client_id = useAppSelector((store) => store.currentClient.client.id);
+  const client_id = useAppSelector((store) => store.currentClient.client.user.id);
   const navigate = useNavigate();
   const [create, {isSuccess, isError, error}] = useCreateDietPlanMutation();
   const location = useLocation();
@@ -58,6 +58,7 @@ const AddPlanMeal: React.FC = () => {
   }, [isSuccess, isError]);
 
   const onSubmit = handleSubmit((rawData) => {
+    console.log({ ...preparePlan(rawData), specialist: id, user: client_id })
     if (!client || !id) return;
     create({ ...preparePlan(rawData), specialist: id, user: client_id });
   });

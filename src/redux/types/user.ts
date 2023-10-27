@@ -31,6 +31,17 @@ export interface IUser {
     about?: string | null;
   }];
 }
+export interface IUserUpdate {
+  first_name: string | null,
+  last_name: string | null,
+  middle_name: string | null,
+  role: string | null,
+  email: string | null,
+  phone_number: string | null,
+  dob: string | null,
+  gender: string | null,
+  is_specialist: boolean,
+}
 
 export interface IUserPassword {
   password: string;

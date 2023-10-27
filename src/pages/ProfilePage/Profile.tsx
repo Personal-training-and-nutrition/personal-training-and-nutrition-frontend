@@ -70,7 +70,7 @@ const Profile: React.FC = () => {
       // about: initData?.specialist?[0].about || '',
     },
   });
-console.log('initData =>', initData)
+// console.log('initData =>', initData)
 // console.log('updateData =>', initData)
 
   useEffect(() => {
