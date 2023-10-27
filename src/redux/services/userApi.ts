@@ -1,5 +1,5 @@
 import { TResponse } from '../types/common';
-import { IUser, TMeUser, IUserPassword, IUserEmail, IUserActivationCreate, IUserResetEmail, IUserResetPasswordConfirm, IUserSetEmail, IUserSetPassword } from '../types/user';
+import { IUser, TMeUser, IUserPassword, IUserEmail, IUserActivationCreate, IUserResetEmail, IUserResetPasswordConfirm, IUserSetEmail, IUserSetPassword, IUserUpdate } from '../types/user';
 import { combinedApi } from './combinedApi';
 
 export const userApi = combinedApi.injectEndpoints({
@@ -24,7 +24,7 @@ export const userApi = combinedApi.injectEndpoints({
         };
       },
     }),
-    partialUpdateUser: builder.mutation<IUser, { id: number; data: Partial<IUser> }>({
+    partialUpdateUser: builder.mutation<IUserUpdate, { id: string; data: Partial<IUserUpdate> }>({
       query(arg) {
         const { id, data } = arg;
         return {

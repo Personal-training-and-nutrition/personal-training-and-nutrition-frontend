@@ -8,7 +8,7 @@ import { useGetDietPlansListQuery } from '../../redux/services/dietApi';
 import { useAppSelector } from '../../redux/store';
 
 function MealPlans() {
-  const { data, isSuccess } = useGetDietPlansListQuery();
+  const { data, isSuccess, isLoading } = useGetDietPlansListQuery();
 
   const url = new URLSearchParams(location.search);
   const idURL = url.get('id');
@@ -27,6 +27,10 @@ function MealPlans() {
   // useEffect(() => {
   //   if (isSuccess) console.log(data);
   // }, [isSuccess]);
+
+  if (isLoading) {
+    return <h2>Загрузка...</h2>;
+  }
 
   return (
     <main className="App__container">

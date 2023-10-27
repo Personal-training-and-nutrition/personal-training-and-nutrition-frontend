@@ -28,6 +28,7 @@ export const clientsApi = combinedApi.injectEndpoints({
           url: `clients/${id}/`,
         };
       },
+      providesTags: ['clientUpdate']
     }),
     updateClient: builder.mutation<TResponse, { id: number; data: IEditClient }>({
       query(arg) {
@@ -39,7 +40,7 @@ export const clientsApi = combinedApi.injectEndpoints({
         };
       },
     }),
-    partialUpdateClient: builder.mutation<TResponse, { id: number; data: IEditClient }>({
+    partialUpdateClient: builder.mutation<TResponse, { id: string; data: IEditClient }>({
       query(arg) {
         const { id, data } = arg;
         return {
@@ -48,6 +49,7 @@ export const clientsApi = combinedApi.injectEndpoints({
           body: data,
         };
       },
+      invalidatesTags: ['clientUpdate'],
     }),
     destroyClient: builder.mutation<TResponse, number>({
       query(id) {
