@@ -24,7 +24,6 @@ function ClientsListCard({ user }: ClientListCardProps) {
     window.scrollTo(0, 0);
     // console.log(user)
   }, []);
-
   return (
     <li
       className={styles.clientsListCard}

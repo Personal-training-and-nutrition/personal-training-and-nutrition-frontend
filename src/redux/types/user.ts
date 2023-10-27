@@ -1,7 +1,7 @@
 export interface IUser {
   notes?: string;
   age?: number;
-  id?: number;
+  id?: string;
   last_login?: string | null;
   email?: string;
   first_name?: string | null;

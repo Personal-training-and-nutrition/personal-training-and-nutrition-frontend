@@ -10,12 +10,14 @@ import { closeModal, openModal } from '../../redux/slices/modalsSlice';
 
 const AddPlanMeal: React.FC = () => {
   const { id } = useAppSelector((store) => store.user);
+  const client_id = useAppSelector((store) => store.currentClient.client.id);
   const navigate = useNavigate();
   const [create, {isSuccess, isError, error}] = useCreateDietPlanMutation();
   const location = useLocation();
   const dispatch = useAppDispatch();
   const query = new URLSearchParams(location.search);
   const client = query.get('client');
+
   const {
     register,
     setValue,
@@ -54,9 +56,10 @@ const AddPlanMeal: React.FC = () => {
       );
     }
   }, [isSuccess, isError]);
+
   const onSubmit = handleSubmit((rawData) => {
     if (!client || !id) return;
-    create({ ...preparePlan(rawData), specialist: id, user: client });
+    create({ ...preparePlan(rawData), specialist: id, user: client_id });
   });
 
   return (

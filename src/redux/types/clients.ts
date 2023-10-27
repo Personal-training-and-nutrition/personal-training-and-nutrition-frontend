@@ -63,12 +63,14 @@ export interface IClientRetrieve {
     email: string;
     first_name: string | null;
     last_name: string | null;
+    dob: string | null;
     params: {
       height?: number | null;
       waist_size?: number | null;
       weight?: number | null;
     };
     phone_number: string | null;
+    id: string;
   }
 }
 

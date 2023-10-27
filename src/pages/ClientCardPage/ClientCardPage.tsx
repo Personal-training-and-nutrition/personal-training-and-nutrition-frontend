@@ -23,10 +23,11 @@ function ClientCardPage() {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    if (isSuccess) dispatch(setCurrentClient({ id }));
+    if (isSuccess) {
+      dispatch(setCurrentClient(client))};
   }, [isSuccess]);
 
-  // console.log(client);
+  console.log(client);
 
   // const getText = (client: string) : string => {
   //   if(client.length <= 75) {
@@ -47,12 +48,12 @@ function ClientCardPage() {
           <UserInfo />
 
           <div className={styles.clientCard__buttons}>
-            <Link to={`/meal-plan/create?client=${id}`}>
+            <Link to={`/meal-plan/create?client=${client?.user.id}`}>
               <button className={`${styles.clientCard__button} ${styles.clientCard__mealPlanBtn}`}>
                 План питания <img className={styles.clientCard__buttonPlusIcon} src={plusIcon} alt="plus-icon" />
               </button>
             </Link>
-            <Link to={`/workout-plan/create?client=${id}`}>
+            <Link to={`/workout-plan/create?client=${client?.user.id}`}>
               <button className={`${styles.clientCard__button} ${styles.clientCard__workoutPlanBtn}`}>
                 План тренировок <img className={styles.clientCard__buttonPlusIcon} src={plusIcon} alt="plus-icon" />
               </button>
@@ -121,7 +122,7 @@ function ClientCardPage() {
                 />
               </Link>
 
-              <Link to={`/meal-plans?id=${id}`} className={styles.clientCard__moreBtn}>
+              <Link to={`/meal-plans?id=${client?.user.id}`} className={styles.clientCard__moreBtn}>
                 Смотреть все
               </Link>
             </section>
@@ -141,7 +142,7 @@ function ClientCardPage() {
                 />
               </Link>
 
-              <Link to={`/workout-plans?id=${id}`} className={styles.clientCard__moreBtn}>
+              <Link to={`/workout-plans?id=${client?.user.id}`} className={styles.clientCard__moreBtn}>
                 Смотреть все
               </Link>
             </section>
