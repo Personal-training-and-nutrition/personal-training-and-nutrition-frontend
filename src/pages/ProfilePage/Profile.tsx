@@ -40,6 +40,7 @@ export type InputsType = {
   exp_diets?: string;
   diseases?: string;
 };
+
 const Profile: React.FC = () => {
   const [isEditPassw, setEditPassw] = useState(false);
   const [isEditPhone, setEditPhone] = useState(false);
@@ -50,7 +51,7 @@ const Profile: React.FC = () => {
   const [destroyMe] = useDestroyMeMutation();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  // console.log(about)
+
   const {
     register,
     handleSubmit,
@@ -65,13 +66,9 @@ const Profile: React.FC = () => {
       gender: initData?.gender || '0',
       dob: initData?.dob || '',
       phone_number: initData?.phone_number || '',
-      // weight: initData?.params?.weight,
-      // height: initData?.params?.height,
-      // about: initData?.specialist?[0].about || '',
+      about: initData?.specialist[0].about || ''
     },
   });
-console.log('initData =>', initData)
-// console.log('updateData =>', initData)
 
   useEffect(() => {
     if (isSuccess)
@@ -94,8 +91,6 @@ console.log('initData =>', initData)
     const gender = data.gender === null ? '0' : data.gender;
 
     const dataUser = {
-      // ...data,
-      // id: id!,
       first_name: data.first_name,
       last_name: data.last_name,
       middle_name: data.last_name,
