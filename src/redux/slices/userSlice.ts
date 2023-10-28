@@ -1,15 +1,15 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface IUserState {
-  id: number | null;
-  accessToken: string | null;
+  id: string;
+  accessToken: string;
   isLoggedIn: boolean;
   isSpecialist: boolean;
 }
 
 export const initialState: IUserState = {
-  id: null,
-  accessToken: null,
+  id: '',
+  accessToken: '',
   isLoggedIn: false,
   isSpecialist: true,
 };
@@ -21,7 +21,7 @@ const userSlice = createSlice({
     setAccessToken: (state, action: PayloadAction<string>) => {
       state.accessToken = action.payload;
     },
-    setUserId: (state, action: PayloadAction<number>) => {
+    setUserId: (state, action: PayloadAction<string>) => {
       state.id = action.payload;
     },
     logout: () => initialState,

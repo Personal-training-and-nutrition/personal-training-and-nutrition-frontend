@@ -27,9 +27,13 @@ export interface IUser {
   specialist_id?: number | null;
   groups?: number[];
   user_permissions?: number[];
-  specialist?: [{
+  specialist?: {
     about?: string | null;
-  }];
+    id?: string | null;
+    experience?: string | null;
+    contacts?: string | null;
+    created_at?: string | null;
+  };
 }
 export interface IUserUpdate {
   first_name: string | null,
