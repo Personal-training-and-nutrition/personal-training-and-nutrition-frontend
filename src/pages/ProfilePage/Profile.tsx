@@ -83,7 +83,7 @@ const Profile: React.FC = () => {
         dob: formatDate(updateData?.dob),
         phone_number: formatToPhoneValue(updateData?.phone_number),
       });
-  }, [isUpdateSuccess]);
+  }, [isUpdateSuccess, updateData]);
 
   const onSubmit = handleSubmit((data) => {
     if (formatDateToSent(data.dob) === initData?.dob) {

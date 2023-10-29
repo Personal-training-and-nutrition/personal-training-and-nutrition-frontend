@@ -18,7 +18,7 @@ const InputPhone = <TFormValues extends FieldValues>({ name, register, isInvalid
   return (
     <div className={styles.inputTel__wrapper}>
       <label
-        className={pathname === '/client/new' ? `${styles.inputTel__label}` : `${styles.inputTel__label_style}`}
+        className={pathname === '/client/new' || pathname === '/client/edit' ? `${styles.inputTel__label}` : `${styles.inputTel__label_style}`}
         htmlFor="phone"
       >
         Телефон

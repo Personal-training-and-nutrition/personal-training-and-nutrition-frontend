@@ -1,6 +1,6 @@
 export interface ITrainingPlan {
   id?: number | null;
-  specialist: number | null;
+  specialist: string | null;
   user: string;
   name?: string;
   describe?: string | null;

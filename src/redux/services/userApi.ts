@@ -13,6 +13,7 @@ export const userApi = combinedApi.injectEndpoints({
       query(id) {
         return { url: `users/${id}/` };
       },
+      providesTags: ['userUpdate'],
     }),
     updateUser: builder.mutation<TResponse, { id: number; data: IUser }>({
       query(arg) {
@@ -33,6 +34,7 @@ export const userApi = combinedApi.injectEndpoints({
           body: data,
         };
       },
+      invalidatesTags: ['userUpdate'],
     }),
     // TODO: не работает, потому что эндпойнт в нарушение документации требует мыло и пароль юзера
     destroyUser: builder.mutation<TResponse, number>({

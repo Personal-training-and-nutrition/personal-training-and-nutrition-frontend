@@ -5,9 +5,9 @@ import { useRetrieveTrainingPlanQuery } from '../../redux/services/trainingApi';
 
 function TrainingReport() {
   const url = new URLSearchParams(location.search);
-  const id = Number(url.get('id'));
+  const id = url.get('id');
 
-  const { data: plan } = useRetrieveTrainingPlanQuery(id)
+  const { data: plan } = useRetrieveTrainingPlanQuery(id!)
 
   return (
     <div className={styles.trainingReport}>

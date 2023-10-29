@@ -41,7 +41,7 @@ const baseQueryWithRefresh: BaseQueryFn<string | FetchArgs, unknown, FetchBaseQu
     } else {
       window.localStorage.removeItem('refreshToken');
       window.localStorage.removeItem('accessToken');
-      window.location.href = '/login';
+      window.location.href = '/';
     }
   }
   return result;
@@ -49,6 +49,6 @@ const baseQueryWithRefresh: BaseQueryFn<string | FetchArgs, unknown, FetchBaseQu
 
 export const combinedApi = createApi({
   baseQuery: baseQueryWithRefresh,
-  tagTypes: ['dietPlan', 'dietPlanList', 'trainingPlan', 'trainingPlanList', 'clientList'],
+  tagTypes: ['dietPlan', 'dietPlanList', 'trainingPlan', 'trainingPlanList', 'clientList', 'clientUpdate',  'userUpdate'],
   endpoints: () => ({}),
 });

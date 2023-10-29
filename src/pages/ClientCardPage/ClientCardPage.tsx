@@ -10,7 +10,6 @@ import unfold from '../../assets/images/client-card/unfold.svg';
 import { useEffect, useState } from 'react';
 import PlanCard from '../../components/PlanCard/PlanCard';
 import { Link, useParams } from 'react-router-dom';
-// import { IUser } from '../../redux/types/user';
 import { useRetrieveClientQuery } from '../../redux/services/clientsApi.ts';
 import { useDispatch } from 'react-redux';
 import { setCurrentClient } from '../../redux/slices/clientSlice.ts';
