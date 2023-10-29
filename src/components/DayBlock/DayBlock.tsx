@@ -24,7 +24,7 @@ type DayBlockType = {
 };
 
 const DayBlock = ({ item, register, index, setValue }: DayBlockType) => {
-  const [isVisible, setVisible] = useState(false);
+  const [isVisible, setVisible] = useState(true);
   const isOpenNote = () => {
     setVisible(!isVisible);
   };

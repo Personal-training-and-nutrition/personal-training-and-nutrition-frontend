@@ -49,7 +49,7 @@ const AuthModal = () => {
         retriveUser(res.id)
         .unwrap()
         .then((userData) => {
-          dispatch(setIsSpecialist(userData.is_specialist))})
+          dispatch(setIsSpecialist(userData.is_specialist!))})
       })
     } else if (isApiError(error)) {
       setErrMessage(error.data.detail || 'Вход не удался, повторите попытку позднее.');

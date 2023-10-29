@@ -22,7 +22,7 @@ const PlanUnathLayot = ({ children, subtitle, namePlan, src, text }: PlanUnAuthT
 
   const url = new URLSearchParams(location.search);
   const id = url.get('id');
-  const { data: plan } = useRetrieveTrainingPlanQuery(Number(id))
+  const { data: plan } = useRetrieveTrainingPlanQuery(id!)
 
   useEffect(() => {
     if (size.width >= 768) {

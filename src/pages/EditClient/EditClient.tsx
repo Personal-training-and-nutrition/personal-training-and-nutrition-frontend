@@ -60,7 +60,7 @@ const EditClient = () => {
   });
 
   const onSubmit = handleSubmit(async (data) => {
-    console.log(data);
+    // console.log(data);
     if (!id) return;
     // data.gender = data.gender === null ? '0' : data.gender;
     // delete data.dob;
@@ -86,8 +86,9 @@ const EditClient = () => {
       gender: data.user.gender,
       is_specialist: true,
     }
-    await partialUpdateClient({ id: id, data: customerData });
     await partialUpdateUser({ id: client.user.id, data: personalData })
+    await partialUpdateClient({ id: id, data: customerData });
+
   });
 
   useEffect(() => {

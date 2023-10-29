@@ -1,6 +1,6 @@
 export interface IDietPlan {
   id?: number;
-  specialist: number;
+  specialist: string;
   user: string;
   name?: string;
   kkal?: number;

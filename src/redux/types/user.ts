@@ -83,6 +83,6 @@ export interface IUserSetPassword {
 
 export type TMeUser = {
   password: string;
-  id: number;
+  id: string;
   email: string;
 };

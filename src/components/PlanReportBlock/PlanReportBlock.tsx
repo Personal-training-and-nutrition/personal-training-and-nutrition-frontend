@@ -3,7 +3,7 @@ import styles from './PlanReportBlock.module.scss';
 import { useLocation } from 'react-router-dom';
 import downArrow from '../../assets/images/icons/down-arrow-gray.svg';
 import DescriptionBlock from '../DescriptionBlock/DescriptionBlock';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { getWeekDay } from '../../utils/getWeekDay';
 import UserNoteForm from '../UserNoteForm/UserNoteForm';
 import { useAppSelector } from '../../redux/store';
@@ -29,6 +29,12 @@ function PlanReportBlock({ plan, text, handleComment }: PlanReportBlockProps) {
   const isMealReportPage = location.pathname === '/nutrition-report';
   const imgPath = (isWorkoutPlanPage || isTrainingReportPage) ? '/images/trainingdays/trainingday' : '/images/dayweekMeal/meal';
   const isLoggedIn = useAppSelector((state) => state.user.isLoggedIn);
+useEffect(() => {
+  if(text) {
+    setShowMore(true)
+  }
+}, [])
+
   return (
     <li className={showMore ? `${styles.PlanReport} ${styles.PlanReport_show}` : `${styles.PlanReport}`}>
       <img className={styles.PlanReport__image} src={`${imgPath}-${plan.weekday}.png`} alt="plan image" />

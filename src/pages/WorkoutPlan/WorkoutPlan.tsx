@@ -9,7 +9,7 @@ function WorkoutPlan() {
 
   const url = new URLSearchParams(location.search);
   const id = url.get('id');
-  const { data: plan } = useRetrieveTrainingPlanQuery(Number(id))
+  const { data: plan } = useRetrieveTrainingPlanQuery(id!)
 
   return (
     <div className={styles.workoutPlan}>

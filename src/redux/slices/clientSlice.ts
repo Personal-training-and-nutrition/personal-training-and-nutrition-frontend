@@ -7,28 +7,35 @@ type Client = {
 
 const initialState: Client = {
   client: {
+    user: {
+      id: '',
+      first_name: null,
+      last_name: null,
+      middle_name: null,
+      role: null,
+      email: '',
+      phone_number: null,
+      dob: null,
+      gender: null,
+      params: {
+        id: '',
+        weight: null,
+        height: null,
+        waist_size: null,
+        created_at: '',
+      },
+      capture: null,
+    } ,
     age: null,
-    bad_habits: null,
-    diets: [],
+    specialist: null,
     diseases: null,
     exp_diets: null,
     exp_trainings: null,
+    bad_habits: null,
     food_preferences: null,
     notes: null,
+    diets: [],
     trainings: [],
-    user: {
-      email: '',
-      first_name: null,
-      last_name: null,
-      dob: null,
-      params: {
-        height: undefined,
-        waist_size: undefined,
-        weight: undefined
-      },
-      phone_number: null,
-      id: ''
-    }
   },
 };
 

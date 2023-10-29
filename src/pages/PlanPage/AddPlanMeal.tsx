@@ -60,7 +60,7 @@ const AddPlanMeal: React.FC = () => {
   const onSubmit = handleSubmit((rawData) => {
     console.log({ ...preparePlan(rawData), specialist: id, user: client_id })
     if (!client || !id) return;
-    create({ ...preparePlan(rawData), specialist: id, user: client_id });
+    create({ ...preparePlan(rawData), specialist: id, user: client_id! });
   });
 
   return (
