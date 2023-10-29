@@ -84,6 +84,7 @@ export interface IClientRetrieve {
     };
     capture: string | null;
   };
+  age:number | null;
   specialist: string | null;
   diseases: string | null;
   exp_diets: string | null;

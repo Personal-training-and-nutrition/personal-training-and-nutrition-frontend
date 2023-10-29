@@ -24,7 +24,7 @@ export const userApi = combinedApi.injectEndpoints({
         };
       },
     }),
-    partialUpdateUser: builder.mutation<IUserUpdate, { id: string; data: Partial<IUserUpdate> }>({
+    partialUpdateUser: builder.mutation<IUserUpdate, { id: string | null; data: Partial<IUserUpdate> }>({
       query(arg) {
         const { id, data } = arg;
         return {

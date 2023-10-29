@@ -24,7 +24,7 @@ const getNameMonth = (date: string ) => month.find((item, index) => (index + 1) 
 //   if (n === '11') return 'ноября';
 //   if (n === '12') return 'декабря';
 // };
-export const formatDate = (date: IUser['dob']): string => {
+export const formatDate = (date?: string | null) => {
   if (date) {
     const arr = date?.split('-');
     const year = arr[0];
@@ -37,7 +37,7 @@ export const formatDate = (date: IUser['dob']): string => {
 };
 
 
-export const formatDateToSent = (date: IUser['dob']): string => {
+export const formatDateToSent = (date?: string | null) => {
   if (date) {
     const arr = date?.split(' ');
     const year = arr[2];

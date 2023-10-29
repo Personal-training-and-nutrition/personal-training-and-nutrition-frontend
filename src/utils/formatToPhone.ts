@@ -1,55 +1,54 @@
-export const formatToPhone = (event:  React.ChangeEvent<HTMLInputElement>) => {
+export const formatToPhone = (event: React.ChangeEvent<HTMLInputElement>) => {
 
-  event.target.value=event.target.value.replace(/\D/g,'');
+  event.target.value = event.target.value.replace(/\D/g, '');
 
-  const input = event.target.value.substring(0,11);
-  let countryCode = input.substring(0,1);
-  const areaCode = input.substring(1,4);
-  const middle = input.substring(4,7);
-  const preLast = input.substring(7,9);
-  const last = input.substring(9,11);
+  const input = event.target.value.substring(0, 11);
+  let countryCode = input.substring(0, 1);
+  const areaCode = input.substring(1, 4);
+  const middle = input.substring(4, 7);
+  const preLast = input.substring(7, 9);
+  const last = input.substring(9, 11);
 
- const code = `${countryCode === '8' ? countryCode = '7' : countryCode}`;
+  const code = `${countryCode === '8' ? countryCode = '7' : countryCode}`;
 
-  if(input.length > 9) {
+  if (input.length > 9) {
     event.target.value = `+${code} (${areaCode}) ${middle}-${preLast}-${last}`
-  } else if(input.length > 7){
+  } else if (input.length > 7) {
     event.target.value = `+${code} (${areaCode}) ${middle}-${preLast}`
-  } else if(input.length > 4) {
+  } else if (input.length > 4) {
     event.target.value = `+${code} (${areaCode}) ${middle}`
-  } else if(input.length > 3) {
+  } else if (input.length > 3) {
     event.target.value = `+${code} (${areaCode})`
-  } else if(input.length <= 1 ) {
+  } else if (input.length <= 1) {
     event.target.value = `+${code}`
   }
 };
-export const formatToPhoneValue = (value: IUser['phone_number']): string | null | undefined => {
-if (value){
-  value=value.replace(/\D/g,'');
+export const formatToPhoneValue = (value?: string | null) => {
+  if (value) {
+    value = value.replace(/\D/g, '');
 
-  const input = value.substring(0,11);
-  let countryCode = input.substring(0,1);
-  const areaCode = input.substring(1,4);
-  const middle = input.substring(4,7);
-  const preLast = input.substring(7,9);
-  const last = input.substring(9,11);
+    const input = value.substring(0, 11);
+    let countryCode = input.substring(0, 1);
+    const areaCode = input.substring(1, 4);
+    const middle = input.substring(4, 7);
+    const preLast = input.substring(7, 9);
+    const last = input.substring(9, 11);
 
- const code = `${countryCode === '8' ? countryCode = '7' : countryCode}`;
+    const code = `${countryCode === '8' ? countryCode = '7' : countryCode}`;
 
-  if(input.length > 9) {
-    value = `+${code} (${areaCode}) ${middle}-${preLast}-${last}`
-  } else if(input.length > 7){
-    value = `+${code} (${areaCode}) ${middle}-${preLast}`
-  } else if(input.length > 4) {
-    value = `+${code} (${areaCode}) ${middle}`
-  } else if(input.length > 3) {
-    value = `+${code} (${areaCode})`
-  } else if(input.length <= 1 ) {
-    value = `+${code}`
+    if (input.length > 9) {
+      value = `+${code} (${areaCode}) ${middle}-${preLast}-${last}`
+    } else if (input.length > 7) {
+      value = `+${code} (${areaCode}) ${middle}-${preLast}`
+    } else if (input.length > 4) {
+      value = `+${code} (${areaCode}) ${middle}`
+    } else if (input.length > 3) {
+      value = `+${code} (${areaCode})`
+    } else if (input.length <= 1) {
+      value = `+${code}`
+    }
+    return value;
+
   }
-  return value;
-
-}
   return '';
-
 };

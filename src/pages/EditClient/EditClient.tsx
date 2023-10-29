@@ -5,7 +5,6 @@ import { useForm } from 'react-hook-form';
 import {
   usePartialUpdateClientMutation,
   useRetrieveClientQuery,
-  useUpdateClientMutation,
 } from '../../redux/services/clientsApi.ts';
 import { useAppDispatch, useAppSelector } from '../../redux/store.ts';
 import { closeModal, openModal } from '../../redux/slices/modalsSlice.ts';
@@ -17,12 +16,12 @@ import { usePartialUpdateUserMutation } from '../../redux/services/userApi.ts';
 const EditClient = () => {
   const location = useLocation();
   const query = new URLSearchParams(location.search);
-  const id = query.get('id');
+  const id: string | null = query.get('id');
   const client = useAppSelector((store) => store.currentClient.client);
   const idSpecialist = useAppSelector((store) => store.user.id);
   const [ partialUpdateUser ] = usePartialUpdateUserMutation();
 
-  const { data: initialData, isSuccess: isInitialSuccess, isLoading } = useRetrieveClientQuery(id!, { skip: !id });
+  const { data: initialData, isSuccess: isInitialSuccess, isLoading } = useRetrieveClientQuery(id!);
   // const [updateClient, { isSuccess, isError, error }] = useUpdateClientMutation();
   const [ partialUpdateClient, { isSuccess: isSuccessPartialUpdate, isError: isErrorPartial, error }] =
     usePartialUpdateClientMutation();
@@ -93,6 +92,7 @@ const EditClient = () => {
 
   useEffect(() => {
     if (isInitialSuccess) {
+      // @ts-ignore
       reset({ ...initialData });
     }
   }, [isInitialSuccess, initialData]);

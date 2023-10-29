@@ -17,6 +17,7 @@ import { formatToPhoneValue } from '../../utils/formatToPhone';
 import { formatDate, formatDateToSent } from '../../utils/formatDate';
 import { useNavigate } from 'react-router-dom';
 import { setIsLoggedIn } from '../../redux/slices/userSlice';
+import {IUser} from "../../redux/types/user.ts";
 
 export type InputsType = {
   last_name?: string | null;
@@ -26,7 +27,7 @@ export type InputsType = {
   gender?: string | null;
   weight?: number | null;
   height?: number | null;
-  about?: string;
+  about?: string | null;
   phone_number: string | null;
   password: string;
   retrypassword: string;
@@ -44,9 +45,9 @@ export type InputsType = {
 const Profile: React.FC = () => {
   const [isEditPassw, setEditPassw] = useState(false);
   const [isEditPhone, setEditPhone] = useState(false);
-  const id = useAppSelector((store) => store.user.id);
+  const id:string = useAppSelector((store) => store.user.id);
   const isSpecialist = useAppSelector((store) => store.user.isSpecialist);
-  const { data: initData, isSuccess } = useRetrieveUserQuery(id!);
+  const { data: initData, isSuccess } = useRetrieveUserQuery(id);
   const [update, { data: updateData, isSuccess: isUpdateSuccess }] = usePartialUpdateUserMutation();
   const [destroyMe] = useDestroyMeMutation();
   const dispatch = useAppDispatch();
@@ -66,7 +67,7 @@ const Profile: React.FC = () => {
       gender: initData?.gender || '0',
       dob: initData?.dob || '',
       phone_number: initData?.phone_number || '',
-      about: initData?.specialist[0].about || ''
+      about: initData?.specialist?.about || ''
     },
   });
 
@@ -78,7 +79,7 @@ const Profile: React.FC = () => {
   useEffect(() => {
     if (isUpdateSuccess)
       reset({
-        ...updateData,
+        ...updateData as IUser,
         dob: formatDate(updateData?.dob),
         phone_number: formatToPhoneValue(updateData?.phone_number),
       });
@@ -100,11 +101,10 @@ const Profile: React.FC = () => {
       phone_number: String(data.phone_number).replace(/[+\s]+/g, ''),
       dob: data.dob,
       gender,
-      params: [{ weight: 100, heigth: 100, waist_size: 0 }],
       is_specialist: true,
       specialist: [{ about: data.about }],
     };
-    console.log(dataUser, id)
+
     update({ id: id!, data: dataUser });
     setEditPhone(false);
   });
