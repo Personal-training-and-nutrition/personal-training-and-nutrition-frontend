@@ -1,7 +1,6 @@
 import styles from './EditClient.module.scss';
 import TitleBlock from '../../components/TitleBlock/TitleBlock';
 import { useForm } from 'react-hook-form';
-// import { InputsType } from '../ProfilePage/Profile';
 import {
   usePartialUpdateClientMutation,
   useRetrieveClientQuery,

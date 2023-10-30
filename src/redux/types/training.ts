@@ -4,7 +4,7 @@ export interface ITrainingPlan {
   user: string;
   name?: string;
   describe?: string | null;
-  training?: Array<TTrainingDay>;
+  training: Array<TTrainingDay>;
   }
 
 export type TTrainingDay = {
