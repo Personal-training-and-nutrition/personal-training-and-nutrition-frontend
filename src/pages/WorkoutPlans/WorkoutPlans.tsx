@@ -7,7 +7,7 @@ import { useGetTrainingPlansListQuery } from '../../redux/services/trainingApi';
 import { useAppSelector } from '../../redux/store';
 
 function WorkoutPlans() {
-  const { data, isSuccess, isLoading } = useGetTrainingPlansListQuery();
+  const { data, isSuccess } = useGetTrainingPlansListQuery();
 
   const url = new URLSearchParams(location.search);
   const idURL = url.get('id');
@@ -17,21 +17,23 @@ function WorkoutPlans() {
 
   const currentClientPlans = data?.filter((plan) => plan.user === idURL && plan);
 
-  if (isLoading) {
-    return <h4>Загрузка...</h4>;
-  }
+
   return (
     <main className="App__container">
       <div className={styles.workoutPlans}>
         <TitleBlock text="планы тренировок" isBack={true}/>
-        <div className={styles.workoutPlans__list}>
-          {isSuccess &&
-            currentClientPlans?.map((train) => (
-              <Link to={`${path}?id=${train.id}`} className={styles.workoutPlans__link} key={train.id}>
-                <PlanCard title={train.name || 'Без названия'} date={train.describe || ''} image={planImage} />
-              </Link>
-            ))}
-        </div>
+        {currentClientPlans && currentClientPlans.length > 0 ? (
+          <div className={styles.workoutPlans__list}>
+            {isSuccess &&
+              currentClientPlans?.map((train) => (
+                <Link to={`${path}?id=${train.id}`} className={styles.workoutPlans__link} key={train.id}>
+                  <PlanCard title={train.name || 'Без названия'} date={train.describe || ''} image={planImage} />
+                </Link>
+              ))}
+          </div>
+        ) :(
+          <p className={'App__not-found-element'}>У вас пока нет ни одного плана :(</p>
+        )}
       </div>
     </main>
   );

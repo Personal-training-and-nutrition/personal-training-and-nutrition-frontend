@@ -4,8 +4,13 @@ import { mealData } from '../../utils/constants';
 import { useForm } from 'react-hook-form';
 import { parsePlan, preparePlan } from '../../utils/processPlans';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useRetrieveDietPlanQuery, useUpdateDietPlanMutation } from '../../redux/services/dietApi';
-import { useAppSelector } from '../../redux/store';
+import {
+  useDestroyDietPlanMutation,
+  useRetrieveDietPlanQuery,
+  useUpdateDietPlanMutation
+} from '../../redux/services/dietApi';
+import {useAppDispatch, useAppSelector} from '../../redux/store';
+import {closeModal, openModal} from "../../redux/slices/modalsSlice.ts";
 
 const EditPlanMeal: React.FC = () => {
   const { id: specialistId } = useAppSelector((store) => store.user);
@@ -15,6 +20,8 @@ const EditPlanMeal: React.FC = () => {
   const planId = query.get('id');
   const { data: plan, isSuccess } = useRetrieveDietPlanQuery(planId!, { skip: !planId });
   const [planUpdateTrigger] = useUpdateDietPlanMutation();
+  const [deletePlan, { isSuccess: isSuccessDelete, isError: isErrorDelete, error}] = useDestroyDietPlanMutation();
+  const dispatch = useAppDispatch();
 
   const {
     register,
@@ -43,6 +50,40 @@ const EditPlanMeal: React.FC = () => {
     }
   }, [isSuccess]);
 
+  useEffect(() => {
+    if (isSuccessDelete && !isErrorDelete) {
+      dispatch(
+        openModal({
+          modalId: 'tooltipModal',
+          isTraining: true,
+          title: 'План удален',
+          subtitle: 'Вы будете перенаправлены на страницу планов клиента',
+          btnText: 'Закрыть',
+        }),
+      );
+      setTimeout(() => {
+        dispatch(closeModal())
+        navigate(`/workout-plans?id=${plan?.user}`)
+      }, 3000)
+    }
+    if(!isSuccess && isErrorDelete) {
+      console.log(error)
+      dispatch(
+        openModal({
+          modalId: 'tooltipModal',
+          isTraining: true,
+          title: 'Произошла ошибка',
+          subtitle: `${error}`,
+          btnText: 'Закрыть',
+        }),
+      );
+    }
+  }, [isSuccessDelete, isErrorDelete]);
+
+  const handleDeletePlan = () => {
+    deletePlan(Number(planId));
+  }
+
   if (!isSuccess) return <p>Loading...</p>;
 
   return (
@@ -55,6 +96,7 @@ const EditPlanMeal: React.FC = () => {
       isDirty={isDirty}
       isValid={isValid}
       setValue={setValue}
+      onDeletePlan={handleDeletePlan}
     />
   );
 };

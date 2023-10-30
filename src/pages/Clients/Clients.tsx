@@ -9,7 +9,7 @@ import { useGetClientsListQuery } from '../../redux/services/clientsApi.ts';
 
 function Clients() {
   const [searchText, setSearchText] = useState('');
-  const { data: allUsers = [], isSuccess, isLoading } = useGetClientsListQuery();
+  const { data: allUsers = [], isLoading } = useGetClientsListQuery();
 
   const filteredClients = allUsers.filter((client) => {
     if (client.last_name) {
@@ -20,10 +20,6 @@ function Clients() {
   });
 
   const navigate = useNavigate();
-
-  useEffect(() => {
-    if (isSuccess) console.log(allUsers);
-  }, [isSuccess]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
