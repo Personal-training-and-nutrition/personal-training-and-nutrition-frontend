@@ -6,6 +6,7 @@ export type TModal = {
     subtitle: string,
     btnText: string,
     isTraining: boolean,
+    link?: string | null
   }
 }
 
@@ -18,4 +19,5 @@ export interface IModalAction  {
   subtitle?: string | null,
   btnText?: string | null,
   isTraining?: boolean ,
+  link?: string | null
 }

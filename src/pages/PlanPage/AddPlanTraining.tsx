@@ -13,11 +13,10 @@ const AddPlanTraining: React.FC = () => {
   const location = useLocation();
   const specialistId = useAppSelector((state) => state.user.id);
   const dispatch = useAppDispatch();
-  const [createWorkout, {isSuccess, isError, error}] = useCreateTrainingPlanMutation();
+  const [createWorkout, {data: workout, isSuccess, isError, error}] = useCreateTrainingPlanMutation();
   const query = new URLSearchParams(location.search);
   const client = query.get('client');
   // const clientId = useAppSelector((state) => state.currentClient.client.id);
-
 
   const {
     register,
@@ -30,19 +29,21 @@ const AddPlanTraining: React.FC = () => {
 
   useEffect(() => {
     if (isSuccess && !isError) {
+      const link = `http://wellcoaching.ru/workout-plan/unauth?id=${workout?.id!}`
       dispatch(
         openModal({
           modalId: 'tooltipModal',
           isTraining: true,
-          title: 'План тренировок создан',
-          subtitle: 'Вы будете перенаправлены на страницу планов клиента',
-          btnText: 'Закрыть',
+          title: 'План тренировок сохранен',
+          subtitle: 'Отправьте его клиенту',
+          btnText: 'Скопировать ссылку',
+          link,
         }),
       );
-      setTimeout(() => {
-        dispatch(closeModal())
-        navigate(`/workout-plans?id=${client}`)
-      }, 3000)
+      // setTimeout(() => {
+      //   dispatch(closeModal())
+      //   navigate(`/workout-plans?id=${client}`)
+      // }, 3000)
     }
     if(!isSuccess && isError) {
       console.log(error)
@@ -58,9 +59,9 @@ const AddPlanTraining: React.FC = () => {
     }
   }, [isSuccess, isError]);
 
-  const onSubmit = handleSubmit((data) => {
+  const onSubmit = handleSubmit( async (data) => {
     if (!client || !specialistId) return;
-    createWorkout({...preparePlanTrain(data), user: client, specialist: specialistId})
+    await createWorkout({...preparePlanTrain(data), user: client, specialist: specialistId})
   });
 
   return (

@@ -82,6 +82,8 @@ function App() {
         subtitle={tooltip.subtitle}
         btnText={tooltip.btnText}
         isTraining={tooltip.isTraining}
+        link={tooltip.link!}
+
       />
       <AuthModal />
       <ForgotPasswordModal />

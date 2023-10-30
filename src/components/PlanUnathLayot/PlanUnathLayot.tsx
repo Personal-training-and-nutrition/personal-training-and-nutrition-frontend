@@ -4,13 +4,15 @@ import logo from '../../assets/logo.svg';
 import imgDesktop from '../../assets/images/landingPage/desktop/phone-img.png';
 import { ReactNode, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { tempWorkoutPlan } from '../../utils/constants';
 import PlanReportBlock from '../PlanReportBlock/PlanReportBlock';
 import RecommendationBlock from '../RecommendationBlock/RecommendationBlock';
 import useResize from '../../hooks/useResize';
 import { openModal } from '../../redux/slices/modalsSlice';
 import { useAppDispatch } from '../../redux/store';
 import { useRetrieveTrainingPlanQuery } from '../../redux/services/trainingApi';
+import { useLazyRetrieveUserQuery } from '../../redux/services/userApi';
+import { getAgeEnding } from '../../utils/getAgeEnding';
+import { calculateAge } from '../../utils/calculateAge';
 
 type PlanUnAuthType = { children?: ReactNode; namePlan: string; subtitle: string; src: string; text: string };
 
@@ -19,10 +21,16 @@ const PlanUnathLayot = ({ children, subtitle, namePlan, src, text }: PlanUnAuthT
   const size = useResize();
   const dispatch = useAppDispatch();
 
-
   const url = new URLSearchParams(location.search);
   const id = url.get('id');
-  const { data: plan } = useRetrieveTrainingPlanQuery(id!)
+  const { data: plan, isSuccess: isSuccessPlan } = useRetrieveTrainingPlanQuery(id!);
+  const [retrieveUser, { data: userData }] = useLazyRetrieveUserQuery();
+
+  useEffect(() => {
+    if (isSuccessPlan) {
+      retrieveUser(plan?.user);
+    }
+  }, [isSuccessPlan]);
 
   useEffect(() => {
     if (size.width >= 768) {
@@ -34,12 +42,15 @@ const PlanUnathLayot = ({ children, subtitle, namePlan, src, text }: PlanUnAuthT
     dispatch(openModal({ modalId: 'modalAuth' }));
   };
 
+  const personalData =
+    userData?.first_name + ' ' + userData?.last_name! + ', ' + getAgeEnding(calculateAge(userData?.dob!));
+
   return (
     <div className={styles.planUnauth__content}>
       <img src={logo} className={styles.planUnauth__logo} alt="Логотип WellCoach" />
 
       <div className={styles.planUnauth__wrap}>
-        <h2 className={styles.planUnauth__title}>Никитина Александра, 35 лет</h2>
+        <h2 className={styles.planUnauth__title}>{personalData}</h2>
         <h3 className={styles.planUnauth__subtitle}>{namePlan}</h3>
         {children}
 
@@ -83,8 +94,7 @@ const PlanUnathLayot = ({ children, subtitle, namePlan, src, text }: PlanUnAuthT
         <img src={src} className={styles.planUnauth__img} alt="Фото" />
       </section>
 
-      <Link to="" className={styles.planUnauth__btn}
-        onClick={() => (handleOpenModal())}>
+      <Link to="" className={styles.planUnauth__btn} onClick={() => handleOpenModal()}>
         <Button type="button" textBtn="Начать" isDirty={true} isValid={true} />
       </Link>
     </div>

@@ -10,7 +10,6 @@ function UserInfo() {
   const { id = '' } = useParams();
   const { data: client = []  as never as IClientRetrieve} = useRetrieveClientQuery(id);
   const fullname = client.user.first_name + ' ' + client.user.last_name!;
-  console.log(client)
 
   return (
     <div className={styles.userInfo}>
