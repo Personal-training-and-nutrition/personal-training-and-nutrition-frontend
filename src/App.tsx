@@ -32,6 +32,7 @@ import useIsAuth from './hooks/useIsAuth.ts';
 import { useEffect } from 'react';
 import { useAppSelector } from './redux/store.ts';
 import EditClient from './pages/EditClient/EditClient.tsx';
+import ChangePasswordModal from './components/Modal/ChangePasswordModal/ChangePasswordModal.tsx';
 
 function App() {
   const location = useLocation();
@@ -87,6 +88,7 @@ function App() {
       <ForgotPasswordModal />
       <RegisterModal />
       <ResetPasswordModal />
+      <ChangePasswordModal />
     </div>
   );
 }

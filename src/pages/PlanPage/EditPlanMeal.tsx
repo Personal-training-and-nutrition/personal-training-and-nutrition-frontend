@@ -63,7 +63,7 @@ const EditPlanMeal: React.FC = () => {
       );
       setTimeout(() => {
         dispatch(closeModal())
-        navigate(`/workout-plans?id=${plan?.user}`)
+        navigate(`/meal-plans?id=${plan?.user}`)
       }, 3000)
     }
     if(!isSuccess && isErrorDelete) {

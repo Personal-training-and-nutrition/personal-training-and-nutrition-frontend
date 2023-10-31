@@ -15,9 +15,10 @@ import { usePartialUpdateUserMutation, useRetrieveUserQuery, useDestroyMeMutatio
 import { useAppDispatch, useAppSelector } from '../../redux/store';
 import { formatToPhoneValue } from '../../utils/formatToPhone';
 import { formatDate, formatDateToSent } from '../../utils/formatDate';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { setIsLoggedIn } from '../../redux/slices/userSlice';
-import {IUser} from "../../redux/types/user.ts";
+import { IUser } from '../../redux/types/user.ts';
+import { openModal } from '../../redux/slices/modalsSlice.ts';
 
 export type InputsType = {
   last_name?: string | null;
@@ -40,12 +41,14 @@ export type InputsType = {
   exp_trainings?: string;
   exp_diets?: string;
   diseases?: string;
+  current_password: string;
+  new_password: string;
+  re_new_password: string;
 };
 
 const Profile: React.FC = () => {
-  const [isEditPassw, setEditPassw] = useState(false);
   const [isEditPhone, setEditPhone] = useState(false);
-  const id:string = useAppSelector((store) => store.user.id);
+  const id: string = useAppSelector((store) => store.user.id);
   const isSpecialist = useAppSelector((store) => store.user.isSpecialist);
   const { data: initData, isSuccess } = useRetrieveUserQuery(id);
   const [update, { data: updateData, isSuccess: isUpdateSuccess }] = usePartialUpdateUserMutation();
@@ -67,7 +70,7 @@ const Profile: React.FC = () => {
       gender: initData?.gender || '0',
       dob: initData?.dob || '',
       phone_number: initData?.phone_number || '',
-      about: initData?.specialist?.about || ''
+      about: initData?.specialist?.about || '',
     },
   });
 
@@ -79,7 +82,7 @@ const Profile: React.FC = () => {
   useEffect(() => {
     if (isUpdateSuccess)
       reset({
-        ...updateData as IUser,
+        ...(updateData as IUser),
         dob: formatDate(updateData?.dob),
         phone_number: formatToPhoneValue(updateData?.phone_number),
       });
@@ -130,6 +133,10 @@ const Profile: React.FC = () => {
     } catch (err) {
       console.log(err);
     }
+  };
+
+  const handleChangePassordClick = () => {
+    dispatch(openModal({ modalId: 'changePassModal' }));
   };
 
   return (
@@ -237,20 +244,13 @@ const Profile: React.FC = () => {
           <label className={styles.profile__label}>
             <span className={`${styles.profile__title} ${styles.profile__title_style}`}>Пароль</span>
             <div className={styles.profile__wrap}>
-              {isEditPassw ? (
-                <input
-                  className={`${styles.profile__input} ${styles.profile__input_style}`}
-                  type="password"
-                  {...register('password', { required: 'Поле не должно быть пустым' })}
-                />
-              ) : (
-                <div className={styles.profile__container}>
-                  <p className={styles.profile__subtitle}>******</p>
-                  <button className={styles.profile__pen} type="button" onClick={() => setEditPassw(true)}>
-                    <img src={penIcon} alt="Кнопка редактировать пароль" />
-                  </button>
-                </div>
-              )}
+              <div className={styles.profile__container}>
+                <p className={styles.profile__subtitle}>******</p>
+                <Link to="" className={styles.profile__pen} onClick={() => handleChangePassordClick()}>
+                  <img src={penIcon} alt="Кнопка редактировать пароль" />
+                </Link>
+              </div>
+              {/* )} */}
             </div>
             <span className={errors?.password ? errorVisible : errorInvisible}>
               {errors?.password?.message || 'Ошибка!'}
