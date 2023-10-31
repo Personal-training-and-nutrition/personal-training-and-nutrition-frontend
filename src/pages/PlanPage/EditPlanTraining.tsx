@@ -27,6 +27,7 @@ const EditPlanTraining: React.FC = () => {
   } = useForm<PlanInputType>({
     mode: 'onBlur'
   });
+
   const onSubmit = handleSubmit((data) => {
     if (!planId || !specialistId || !plan?.user) return;
     planUpdateTrigger({

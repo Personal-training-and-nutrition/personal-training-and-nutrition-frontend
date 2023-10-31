@@ -10,7 +10,7 @@ export type TModal = {
   }
 }
 
-type TModalId = 'modalAuth' | 'foggotModal' | 'registerModal' | 'resetPasswordModal' | 'tooltipModal' | ''
+type TModalId = 'modalAuth' | 'foggotModal' | 'registerModal' | 'resetPasswordModal' | 'tooltipModal' | 'changePassModal' | ''
 
 export interface IModalAction  {
   modalId: TModalId,

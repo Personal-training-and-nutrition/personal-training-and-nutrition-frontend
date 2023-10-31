@@ -28,7 +28,7 @@ export const dietApi = combinedApi.injectEndpoints({
           url: `diet-plans/${id}/`,
         };
       },
-      providesTags: ['dietPlan'],
+      providesTags: ['dietPlan', 'dietPlanList'],
     }),
     updateDietPlan: builder.mutation<TResponse, { id: number; data: IDietPlan }>({
       query(arg) {
@@ -41,7 +41,7 @@ export const dietApi = combinedApi.injectEndpoints({
       },
       invalidatesTags: ['dietPlan', 'dietPlanList'],
     }),
-    destroyDietPlan: builder.mutation<TResponse, string>({
+    destroyDietPlan: builder.mutation<TResponse, number>({
       query(id) {
         return {
           url: `diet-plans/${id}/`,

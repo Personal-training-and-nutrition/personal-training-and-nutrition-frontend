@@ -22,7 +22,7 @@ const AddPlanMeal: React.FC = () => {
     register,
     setValue,
     handleSubmit,
-    formState: { isDirty, isValid, errors },
+    formState: { isDirty, isValid },
   } = useForm<PlanInputType>({
     mode: 'onBlur',
   });
