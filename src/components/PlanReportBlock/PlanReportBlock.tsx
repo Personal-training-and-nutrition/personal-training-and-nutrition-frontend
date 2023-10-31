@@ -10,7 +10,7 @@ import { useAppSelector } from '../../redux/store';
 
 type PlanReportBlockProps = {
   plan: {
-    id?: number;
+    id?: string;
     weekday: string;
     spec_comment?: string | null;
     user_comment?: string | null;

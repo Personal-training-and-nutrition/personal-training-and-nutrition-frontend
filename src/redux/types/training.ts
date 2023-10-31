@@ -1,5 +1,5 @@
 export interface ITrainingPlan {
-  id?: number | null;
+  id?: string | null;
   specialist: string | null;
   user: string;
   name?: string;
@@ -8,7 +8,7 @@ export interface ITrainingPlan {
   }
 
 export type TTrainingDay = {
-  id?: number;
+  id?: string;
   weekday: string;
   spec_comment?: string | null;
   user_comment?: string | null;

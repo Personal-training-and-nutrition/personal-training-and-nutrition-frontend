@@ -12,7 +12,7 @@ export const dietApi = combinedApi.injectEndpoints({
       },
       providesTags: ['dietPlanList'],
     }),
-    createDietPlan: builder.mutation<TResponse, IDietPlan>({
+    createDietPlan: builder.mutation<IDietPlan, IDietPlan>({
       query(data) {
         return {
           url: 'diet-plans/',

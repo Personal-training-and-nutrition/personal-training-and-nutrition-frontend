@@ -12,7 +12,7 @@ const AddPlanMeal: React.FC = () => {
   const { id } = useAppSelector((store) => store.user);
   const client_id = useAppSelector((store) => store.currentClient.client.user.id);
   const navigate = useNavigate();
-  const [create, {isSuccess, isError, error}] = useCreateDietPlanMutation();
+  const [create, {data: meal, isSuccess, isError, error}] = useCreateDietPlanMutation();
   const location = useLocation();
   const dispatch = useAppDispatch();
   const query = new URLSearchParams(location.search);
@@ -29,31 +29,33 @@ const AddPlanMeal: React.FC = () => {
 
   useEffect(() => {
     if (isSuccess && !isError) {
+      const link = `http://wellcoaching.ru/meal-plan/unauth?id=${meal?.id!}`
       dispatch(
         openModal({
           modalId: 'tooltipModal',
-          isTraining: true,
-          title: 'План питания создан',
-          subtitle: 'Вы будете перенаправлены на страницу планов клиента',
-          btnText: 'Закрыть',
+          title: 'План питания сохранен',
+          subtitle: 'Отправьте его клиенту',
+          btnText: 'Скопировать ссылку',
+          link,
+          isIcons: true,
         }),
       );
-      setTimeout(() => {
-        dispatch(closeModal())
-        navigate(`/meal-plans?id=${client}`)
-      }, 3000)
-    }
-    if(!isSuccess && isError) {
-      console.log(error)
-      dispatch(
-        openModal({
-          modalId: 'tooltipModal',
-          isTraining: true,
-          title: 'Произошла ошибка',
-          subtitle: `${error}`,
-          btnText: 'Закрыть',
-        }),
-      );
+    //   setTimeout(() => {
+    //     dispatch(closeModal())
+    //     navigate(`/meal-plans?id=${client}`)
+    //   }, 3000)
+    // }
+    // if(!isSuccess && isError) {
+    //   console.log(error)
+    //   dispatch(
+    //     openModal({
+    //       modalId: 'tooltipModal',
+    //       isTraining: true,
+    //       title: 'Произошла ошибка',
+    //       subtitle: `${error}`,
+    //       btnText: 'Закрыть',
+    //     }),
+    //   );
     }
   }, [isSuccess, isError]);
 

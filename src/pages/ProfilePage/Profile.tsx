@@ -135,7 +135,7 @@ const Profile: React.FC = () => {
     }
   };
 
-  const handleChangePassordClick = () => {
+  const handleChangePasswordClick = () => {
     dispatch(openModal({ modalId: 'changePassModal' }));
   };
 
@@ -246,7 +246,7 @@ const Profile: React.FC = () => {
             <div className={styles.profile__wrap}>
               <div className={styles.profile__container}>
                 <p className={styles.profile__subtitle}>******</p>
-                <Link to="" className={styles.profile__pen} onClick={() => handleChangePassordClick()}>
+                <Link to="" className={styles.profile__pen} onClick={() => handleChangePasswordClick()}>
                   <img src={penIcon} alt="Кнопка редактировать пароль" />
                 </Link>
               </div>
