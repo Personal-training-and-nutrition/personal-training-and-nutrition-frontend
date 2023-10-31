@@ -38,6 +38,7 @@ const AddPlanTraining: React.FC = () => {
           subtitle: 'Отправьте его клиенту',
           btnText: 'Скопировать ссылку',
           link,
+          isIcons: true,
         }),
       );
       // setTimeout(() => {
@@ -45,18 +46,18 @@ const AddPlanTraining: React.FC = () => {
       //   navigate(`/workout-plans?id=${client}`)
       // }, 3000)
     }
-    if(!isSuccess && isError) {
-      console.log(error)
-      dispatch(
-        openModal({
-          modalId: 'tooltipModal',
-          isTraining: true,
-          title: 'Произошла ошибка',
-          subtitle: `${error}`,
-          btnText: 'Закрыть',
-        }),
-      );
-    }
+    // if(!isSuccess && isError) {
+    //   console.log(error)
+    //   dispatch(
+    //     openModal({
+    //       modalId: 'tooltipModal',
+    //       isTraining: true,
+    //       title: 'Произошла ошибка',
+    //       subtitle: `${error}`,
+    //       btnText: 'Закрыть',
+    //     }),
+    //   );
+    // }
   }, [isSuccess, isError]);
 
   const onSubmit = handleSubmit( async (data) => {

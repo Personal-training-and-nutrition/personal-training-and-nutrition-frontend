@@ -40,8 +40,35 @@
       content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='49' height='48' viewBox='0 0 49 48' fill='none'%3E%3Cg clip-path='url(%23clip0_1016_4255)'%3E%3Cpath d='M24.4999 47.9511C37.7278 47.9511 48.451 37.2278 48.451 24C48.451 10.7721 37.7278 0.0488281 24.4999 0.0488281C11.2721 0.0488281 0.548828 10.7721 0.548828 24C0.548828 37.2278 11.2721 47.9511 24.4999 47.9511Z' fill='%23FC3F1D'/%3E%3Cpath d='M33.1669 39.0355H27.9091V13.0311H25.5669C21.2736 13.0311 19.0247 15.1777 19.0247 18.3822C19.0247 22.0177 20.5758 23.7022 23.7847 25.8488L26.4291 27.6311L18.8291 39.031H13.1758L20.0158 28.8533C16.0824 26.0444 13.8691 23.3022 13.8691 18.6755C13.8691 12.8933 17.9002 8.95996 25.5313 8.95996H33.1313V39.0266H33.1669V39.0355Z' fill='white'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_1016_4255'%3E%3Crect width='48' height='48' fill='white' transform='translate(0.5)'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E");
     }
   }
+  &__btnWhatsApp{
+    border: none;
+    background-color: transparent;
+    padding: 0;
 
-  &__btnVk, &__btnMail, &__btnYa {
+    &::before {
+      width: 48px;
+      height: 48px;
+      display: block;
+      // content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='49' height='48' viewBox='0 0 49 48' fill='none'%3E%3Cg clip-path='url(%23clip0_1016_4255)'%3E%3Cpath d='M24.4999 47.9511C37.7278 47.9511 48.451 37.2278 48.451 24C48.451 10.7721 37.7278 0.0488281 24.4999 0.0488281C11.2721 0.0488281 0.548828 10.7721 0.548828 24C0.548828 37.2278 11.2721 47.9511 24.4999 47.9511Z' fill='%23FC3F1D'/%3E%3Cpath d='M33.1669 39.0355H27.9091V13.0311H25.5669C21.2736 13.0311 19.0247 15.1777 19.0247 18.3822C19.0247 22.0177 20.5758 23.7022 23.7847 25.8488L26.4291 27.6311L18.8291 39.031H13.1758L20.0158 28.8533C16.0824 26.0444 13.8691 23.3022 13.8691 18.6755C13.8691 12.8933 17.9002 8.95996 25.5313 8.95996H33.1313V39.0266H33.1669V39.0355Z' fill='white'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_1016_4255'%3E%3Crect width='48' height='48' fill='white' transform='translate(0.5)'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E");
+      content: url('/src/assets/images/icons/whatsapp.svg');
+
+    }
+  }
+  &__btnTelegram{
+    border: none;
+    background-color: transparent;
+    padding: 0;
+
+    &::before {
+      width: 48px;
+      height: 48px;
+      display: block;
+      // content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='49' height='48' viewBox='0 0 49 48' fill='none'%3E%3Cg clip-path='url(%23clip0_1016_4255)'%3E%3Cpath d='M24.4999 47.9511C37.7278 47.9511 48.451 37.2278 48.451 24C48.451 10.7721 37.7278 0.0488281 24.4999 0.0488281C11.2721 0.0488281 0.548828 10.7721 0.548828 24C0.548828 37.2278 11.2721 47.9511 24.4999 47.9511Z' fill='%23FC3F1D'/%3E%3Cpath d='M33.1669 39.0355H27.9091V13.0311H25.5669C21.2736 13.0311 19.0247 15.1777 19.0247 18.3822C19.0247 22.0177 20.5758 23.7022 23.7847 25.8488L26.4291 27.6311L18.8291 39.031H13.1758L20.0158 28.8533C16.0824 26.0444 13.8691 23.3022 13.8691 18.6755C13.8691 12.8933 17.9002 8.95996 25.5313 8.95996H33.1313V39.0266H33.1669V39.0355Z' fill='white'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_1016_4255'%3E%3Crect width='48' height='48' fill='white' transform='translate(0.5)'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E");
+      content: url('/src/assets/images/icons/telegram.svg');
+
+    }
+  }
+  &__btnVk, &__btnMail, &__btnYa, &__btnTelegram, &__btnWhatsApp {
     cursor:pointer;
     transition: all 0.2s ease;
 
@@ -50,4 +77,5 @@
       scale: 1.06;
     }
   }
+
 }
