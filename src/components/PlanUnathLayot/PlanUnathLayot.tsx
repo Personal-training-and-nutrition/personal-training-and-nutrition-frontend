@@ -9,28 +9,18 @@ import RecommendationBlock from '../RecommendationBlock/RecommendationBlock';
 import useResize from '../../hooks/useResize';
 import { openModal } from '../../redux/slices/modalsSlice';
 import { useAppDispatch } from '../../redux/store';
-import { useRetrieveTrainingPlanQuery } from '../../redux/services/trainingApi';
-import { useLazyRetrieveUserQuery } from '../../redux/services/userApi';
 import { getAgeEnding } from '../../utils/getAgeEnding';
 import { calculateAge } from '../../utils/calculateAge';
+import { IUser } from '../../redux/types/user';
+import { TTrainingDay } from '../../redux/types/training';
+import { TDietDay } from '../../redux/types/diet';
 
-type PlanUnAuthType = { children?: ReactNode; namePlan: string; subtitle: string; src: string; text: string };
+type PlanUnAuthType = { children?: ReactNode; namePlan: string; subtitle: string; src: string; text: string; userData?: IUser; plans?: TDietDay[] | TTrainingDay[] };
 
-const PlanUnathLayot = ({ children, subtitle, namePlan, src, text }: PlanUnAuthType) => {
+const PlanUnathLayot = ({ children, subtitle, namePlan, src, text, userData, plans }: PlanUnAuthType) => {
   const [isOpen, setOpen] = useState(false);
   const size = useResize();
   const dispatch = useAppDispatch();
-
-  const url = new URLSearchParams(location.search);
-  const id = url.get('id');
-  const { data: plan, isSuccess: isSuccessPlan } = useRetrieveTrainingPlanQuery(id!);
-  const [retrieveUser, { data: userData }] = useLazyRetrieveUserQuery();
-
-  useEffect(() => {
-    if (isSuccessPlan) {
-      retrieveUser(plan?.user);
-    }
-  }, [isSuccessPlan]);
 
   useEffect(() => {
     if (size.width >= 768) {
@@ -73,7 +63,7 @@ const PlanUnathLayot = ({ children, subtitle, namePlan, src, text }: PlanUnAuthT
 
           {isOpen && (
             <div className={styles.planUnauth__listDay}>
-              {plan?.training?.map((plan) => {
+              {plans?.map((plan) => {
                 return <PlanReportBlock key={plan.id} plan={plan} text={text} />;
               })}
             </div>

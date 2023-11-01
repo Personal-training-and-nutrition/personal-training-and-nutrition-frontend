@@ -8,8 +8,12 @@ const SocialIcons = ({ isMessanger }: SocialIconType) => {
     <div className={styles.socialIcons__wrapper}>
       {isMessanger ? (
         <>
-          <button type="button" className={styles.socialIcons__btnTelegram}></button>
-          <button type="button" className={styles.socialIcons__btnWhatsApp}></button>
+          <a title="Telegramm" href="https://t.me/telegram" target="_blank">
+            <button type="button" className={styles.socialIcons__btnTelegram}></button>
+          </a>
+          <a title="Whatsapp" href="https://wa.me" target="_blank">
+            <button type="button" className={styles.socialIcons__btnWhatsApp}></button>
+          </a>
         </>
       ) : (
         <>

@@ -29,7 +29,8 @@ const AddPlanTraining: React.FC = () => {
 
   useEffect(() => {
     if (isSuccess && !isError) {
-      const link = `http://wellcoaching.ru/workout-plan/unauth?id=${workout?.id!}`
+      // const link = `http://wellcoaching.ru/workout-plan/unauth?id=${workout?.id!}`
+      const link = `http://localhost:5173/workout-plan/unauth?id=${workout?.id!}`
       dispatch(
         openModal({
           modalId: 'tooltipModal',

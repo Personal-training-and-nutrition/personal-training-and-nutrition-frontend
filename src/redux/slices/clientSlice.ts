@@ -5,7 +5,7 @@ type Client = {
   client: IClientRetrieve;
 };
 
-const initialState: Client = {
+export const initialState: Client = {
   client: {
     user: {
       id: '',

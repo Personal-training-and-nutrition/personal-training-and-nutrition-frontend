@@ -53,7 +53,7 @@ const EditClient = () => {
       food_preferences: initialData?.food_preferences || '',
       bad_habits: initialData?.bad_habits || '',
       exp_trainings: initialData?.exp_trainings || '',
-      exp_diets: initialData?.notes || '',
+      exp_diets: initialData?.exp_diets || '',
       diseases: initialData?.diseases || '',
     },
   });
@@ -71,7 +71,7 @@ const EditClient = () => {
       food_preferences: data.food_preferences,
       bad_habits: data.bad_habits,
       exp_trainings: data.exp_trainings,
-      exp_diets: data.notes,
+      exp_diets: data.exp_diets,
       diseases: data.diseases,
     };
     const personalData ={

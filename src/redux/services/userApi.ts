@@ -155,7 +155,7 @@ export const userApi = combinedApi.injectEndpoints({
     usersSetPassword: builder.mutation<TResponse, IUserSetPassword>({
       query(data) {
         return {
-          url: 'users/set_password',
+          url: 'users/set_password/',
           method: 'POST',
           body: data,
         };

@@ -20,19 +20,20 @@ const ConfirmationTooltip: React.FC<ConfirmationTooltipType> = ({ title, subtitl
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
-  const handleCloseBtnClick = () => {
+  const handleCloseBtnClick = async () => {
     if(btnText === 'Закрыть') {
       dispatch(closeModal())
     }
     if(btnText === 'Скопировать ссылку') {
-      dispatch(closeModal())
+      // dispatch(closeModal())
       console.log(link);
+      await navigator.clipboard.writeText(`${link}`)
     }
   }
   const { isOpen, modalId } = useAppSelector((state) => state.modal);
   const isTooltip = modalId === 'tooltipModal' ? 'tooltipModal' : '';
   return (
-    <Modal isOpen={isOpen} modalId={isTooltip}>
+    <Modal isOpen={isOpen} modalId={isTooltip} link={link}>
       <div className={styles.planTraining__wrapper}>
         <span
           className={` ${
