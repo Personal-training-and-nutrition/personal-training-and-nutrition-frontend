@@ -2,15 +2,17 @@ import React, { useEffect } from 'react';
 import styles from './Modal.module.scss';
 import { closeModal } from '../../redux/slices/modalsSlice';
 import { useAppDispatch } from '../../redux/store';
+import { useNavigate } from 'react-router-dom';
 
 type Props = {
   children: React.ReactNode;
   isOpen: boolean;
   modalId: string | null;
+  link?: string;
 };
 
-export default function Modal({ children, isOpen, modalId }: Props) {
-
+export default function Modal({ children, isOpen, modalId, link }: Props) {
+  const navigate = useNavigate();
   const dispatch = useAppDispatch()
 
   useEffect(() => {
@@ -32,6 +34,7 @@ export default function Modal({ children, isOpen, modalId }: Props) {
 
 const handleClose = () => {
   dispatch(closeModal())
+  if(link) navigate(-1);
 }
 
   return (

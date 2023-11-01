@@ -16,7 +16,7 @@ const AboutClientCard = <TFormValues extends FieldValues>({
   textaeraPlaceholder,
   register,
 }: Props<TFormValues>) => {
-  const [isShowCard, setIsShowCard] = useState(false);
+  const [isShowCard, setIsShowCard] = useState(true);
 
   function onShowClick() {
     setIsShowCard(!isShowCard);
