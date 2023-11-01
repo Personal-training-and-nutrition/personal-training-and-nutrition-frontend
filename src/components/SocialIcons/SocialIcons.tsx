@@ -2,16 +2,20 @@ import styles from './SocialIcons.module.scss';
 
 type SocialIconType = {
   isMessanger: boolean;
+  link?:string;
+  phoneNumber?: string;
 };
-const SocialIcons = ({ isMessanger }: SocialIconType) => {
+const SocialIcons = ({ isMessanger, link, phoneNumber }: SocialIconType) => {
+
+  console.log(phoneNumber)
   return (
     <div className={styles.socialIcons__wrapper}>
       {isMessanger ? (
         <>
-          <a title="Telegramm" href="https://t.me/telegram" target="_blank">
+          <a title="Telegramm" href={`https://telegram.me/share/url?url=WeelCoach&link=${link}`} target="_blank">
             <button type="button" className={styles.socialIcons__btnTelegram}></button>
           </a>
-          <a title="Whatsapp" href="https://wa.me" target="_blank">
+          <a title="Whatsapp" href={`https://api.whatsapp.com/send/?phone=${phoneNumber}&text=${link}`} target="_blank">
             <button type="button" className={styles.socialIcons__btnWhatsApp}></button>
           </a>
         </>

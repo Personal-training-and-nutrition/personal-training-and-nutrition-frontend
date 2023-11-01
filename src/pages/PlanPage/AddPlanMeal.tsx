@@ -4,15 +4,14 @@ import { mealData } from '../../utils/constants';
 import { useForm } from 'react-hook-form';
 import { useAppDispatch, useAppSelector } from '../../redux/store';
 import { useCreateDietPlanMutation } from '../../redux/services/dietApi';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { preparePlan } from '../../utils/processPlans';
-import { closeModal, openModal } from '../../redux/slices/modalsSlice';
+import { openModal } from '../../redux/slices/modalsSlice';
 
 const AddPlanMeal: React.FC = () => {
   const { id } = useAppSelector((store) => store.user);
-  const client_id = useAppSelector((store) => store.currentClient.client.user.id);
-  const navigate = useNavigate();
-  const [create, {data: meal, isSuccess, isError, error}] = useCreateDietPlanMutation();
+  const {id:client_id, phone_number} = useAppSelector((store) => store.currentClient.client.user);
+  const [create, {data: meal, isSuccess, isError}] = useCreateDietPlanMutation();
   const location = useLocation();
   const dispatch = useAppDispatch();
   const query = new URLSearchParams(location.search);
@@ -38,6 +37,7 @@ const AddPlanMeal: React.FC = () => {
           subtitle: 'Отправьте его клиенту',
           btnText: 'Скопировать ссылку',
           link,
+          phoneNumber: phone_number?.replace(/[^0-9+]/g, ''),
           isIcons: true,
         }),
       );

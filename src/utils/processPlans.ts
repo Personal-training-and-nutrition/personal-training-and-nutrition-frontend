@@ -1,4 +1,6 @@
 import { PlanInputType } from '../components/PlanPageLayot/PlanPageLayot';
+import {IDietPlan, TDietDay} from "../redux/types/diet.ts";
+import {ITrainingPlan, TTrainingDay} from "../redux/types/training.ts";
 
 type FormDay = {
   spec_comment: string;

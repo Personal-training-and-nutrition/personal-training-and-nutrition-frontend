@@ -14,12 +14,12 @@ type ConfirmationTooltipType = {
   isTraining: boolean;
   link?: string;
   isIcons?: boolean;
+  phoneNumber?: string;
 };
 
-const ConfirmationTooltip: React.FC<ConfirmationTooltipType> = ({ title, subtitle, btnText, isTraining, link, isIcons }) => {
-  const navigate = useNavigate();
+const ConfirmationTooltip: React.FC<ConfirmationTooltipType> = ({ title, subtitle, btnText, isTraining, link, isIcons, phoneNumber}) => {
   const dispatch = useAppDispatch();
-
+console.log(phoneNumber)
   const handleCloseBtnClick = async () => {
     if(btnText === 'Закрыть') {
       dispatch(closeModal())
@@ -49,7 +49,7 @@ const ConfirmationTooltip: React.FC<ConfirmationTooltipType> = ({ title, subtitl
         <div className={styles.planTraining__container}>
           {isIcons && (
           <>
-          <SocialIcons isMessanger = {true}/>
+          <SocialIcons isMessanger = {true} link={link} phoneNumber = {phoneNumber}/>
           <p className={`${styles.planTraining__text} ${styles.planTraining__text_center} `}>или </p>
           </>)}
           <Button textBtn={btnText} type="button" isValid={true} onCLick={handleCloseBtnClick} isDirty={true} />
