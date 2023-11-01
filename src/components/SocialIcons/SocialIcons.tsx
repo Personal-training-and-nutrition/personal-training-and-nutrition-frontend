@@ -12,7 +12,7 @@ const SocialIcons = ({ isMessanger, link, phoneNumber }: SocialIconType) => {
     <div className={styles.socialIcons__wrapper}>
       {isMessanger ? (
         <>
-          <a title="Telegramm" href={`https://telegram.me/share/url?url=WeelCoach&link=${link}`} target="_blank">
+          <a title="Telegramm" href={`https://telegram.me/share/url?url=WeelCoach&text=${link}`} target="_blank">
             <button type="button" className={styles.socialIcons__btnTelegram}></button>
           </a>
           <a title="Whatsapp" href={`https://api.whatsapp.com/send/?phone=${phoneNumber}&text=${link}`} target="_blank">

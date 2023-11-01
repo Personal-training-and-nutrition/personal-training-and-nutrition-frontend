@@ -85,6 +85,7 @@ function App() {
         isTraining={tooltip.isTraining}
         link={tooltip.link!}
         isIcons={tooltip.isIcons}
+        phoneNumber={tooltip.phoneNumber}
       />
       <AuthModal />
       <ForgotPasswordModal />

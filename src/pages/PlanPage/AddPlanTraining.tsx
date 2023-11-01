@@ -4,19 +4,19 @@ import PlanPageLayot, { PlanInputType } from '../../components/PlanPageLayot/Pla
 import { trainingData } from '../../utils/constants';
 import { useCreateTrainingPlanMutation } from '../../redux/services/trainingApi';
 import { useAppDispatch, useAppSelector } from '../../redux/store';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { closeModal, openModal } from '../../redux/slices/modalsSlice';
+import { useLocation } from 'react-router-dom';
+import { openModal } from '../../redux/slices/modalsSlice';
 import { preparePlanTrain } from '../../utils/processPlans';
+import {useRetrieveUserQuery} from "../../redux/services/userApi.ts";
 
 const AddPlanTraining: React.FC = () => {
-  const navigate = useNavigate();
   const location = useLocation();
   const specialistId = useAppSelector((state) => state.user.id);
   const dispatch = useAppDispatch();
-  const [createWorkout, {data: workout, isSuccess, isError, error}] = useCreateTrainingPlanMutation();
+  const [createWorkout, {data: workout, isSuccess, isError}] = useCreateTrainingPlanMutation();
   const query = new URLSearchParams(location.search);
   const client = query.get('client');
-  // const clientId = useAppSelector((state) => state.currentClient.client.id);
+  const {data: clientData} = useRetrieveUserQuery(client!);
 
   const {
     register,
@@ -40,6 +40,7 @@ const AddPlanTraining: React.FC = () => {
           btnText: 'Скопировать ссылку',
           link,
           isIcons: true,
+          phoneNumber: clientData?.phone_number?.replace(/[^0-9]/g, ''),
         }),
       );
       // setTimeout(() => {

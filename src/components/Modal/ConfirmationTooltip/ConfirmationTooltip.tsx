@@ -4,7 +4,6 @@ import Button from '../../Button/Button.tsx';
 import styles from './ConfirmationTooltip.module.scss';
 import { useAppDispatch, useAppSelector } from '../../../redux/store.ts';
 import { closeModal } from '../../../redux/slices/modalsSlice.ts';
-import { useNavigate } from 'react-router-dom';
 import SocialIcons from '../../SocialIcons/SocialIcons.tsx';
 
 type ConfirmationTooltipType = {
@@ -19,7 +18,6 @@ type ConfirmationTooltipType = {
 
 const ConfirmationTooltip: React.FC<ConfirmationTooltipType> = ({ title, subtitle, btnText, isTraining, link, isIcons, phoneNumber}) => {
   const dispatch = useAppDispatch();
-console.log(phoneNumber)
   const handleCloseBtnClick = async () => {
     if(btnText === 'Закрыть') {
       dispatch(closeModal())
