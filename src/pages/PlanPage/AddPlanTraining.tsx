@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import PlanPageLayot, { PlanInputType } from '../../components/PlanPageLayot/PlanPageLayot';
 import { trainingData } from '../../utils/constants';
 import { useCreateTrainingPlanMutation } from '../../redux/services/trainingApi';
-import { useAppDispatch, useAppSelector } from '../../redux/store';
+import { useAppDispatch } from '../../redux/store';
 import { useLocation } from 'react-router-dom';
 import { openModal } from '../../redux/slices/modalsSlice';
 import { preparePlanTrain } from '../../utils/processPlans';
@@ -11,12 +11,15 @@ import {useRetrieveUserQuery} from "../../redux/services/userApi.ts";
 
 const AddPlanTraining: React.FC = () => {
   const location = useLocation();
-  const specialistId = useAppSelector((state) => state.user.id);
   const dispatch = useAppDispatch();
-  const [createWorkout, {data: workout, isSuccess, isError}] = useCreateTrainingPlanMutation();
+
   const query = new URLSearchParams(location.search);
   const client = query.get('client');
+  const specialistId = query.get('specId');
+
   const {data: clientData} = useRetrieveUserQuery(client!);
+  const [createWorkout, {data: workout, isSuccess, isError}] = useCreateTrainingPlanMutation();
+
 
   const {
     register,

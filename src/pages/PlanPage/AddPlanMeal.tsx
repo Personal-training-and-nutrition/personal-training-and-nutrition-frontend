@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import PlanPageLayot, {PlanInputType} from '../../components/PlanPageLayot/PlanPageLayot';
 import {mealData} from '../../utils/constants';
 import {useForm} from 'react-hook-form';
-import {useAppDispatch, useAppSelector} from '../../redux/store';
+import {useAppDispatch} from '../../redux/store';
 import {useCreateDietPlanMutation} from '../../redux/services/dietApi';
 import {useLocation} from 'react-router-dom';
 import {preparePlan} from '../../utils/processPlans';
@@ -10,15 +10,15 @@ import {openModal} from '../../redux/slices/modalsSlice';
 import {useRetrieveUserQuery} from "../../redux/services/userApi.ts";
 
 const AddPlanMeal: React.FC = () => {
-  const {id} = useAppSelector((store) => store.user);
-  const {id: client_id} = useAppSelector((store) => store.currentClient.client.user);
-  const [create, {data: meal, isSuccess, isError}] = useCreateDietPlanMutation();
-  const location = useLocation();
   const dispatch = useAppDispatch();
-  const query = new URLSearchParams(location.search);
-  const client = query.get('client');
-  const {data: clientData} = useRetrieveUserQuery(client!);
+  const location = useLocation();
 
+  const query = new URLSearchParams(location.search);
+  const specialistId = query.get('specId');
+  const client = query.get('client');
+
+  const [create, {data: meal, isSuccess, isError}] = useCreateDietPlanMutation();
+  const {data: clientData} = useRetrieveUserQuery(client!);
 
   const {
     register,
@@ -64,9 +64,8 @@ const AddPlanMeal: React.FC = () => {
   }, [isSuccess, isError]);
 
   const onSubmit = handleSubmit((rawData) => {
-    console.log({...preparePlan(rawData), specialist: id, user: client_id})
-    if (!client || !id) return;
-    create({...preparePlan(rawData), specialist: id, user: client_id!});
+    if (!client || !specialistId) return;
+    create({...preparePlan(rawData), specialist: specialistId, user: client});
   });
 
   return (

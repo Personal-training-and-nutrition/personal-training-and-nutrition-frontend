@@ -13,14 +13,15 @@ import { Link, useParams } from 'react-router-dom';
 import { useRetrieveClientQuery } from '../../redux/services/clientsApi.ts';
 import { useDispatch } from 'react-redux';
 import { setCurrentClient } from '../../redux/slices/clientSlice.ts';
+import { useGetMeQuery } from '../../redux/services/userApi.ts';
 
 function ClientCardPage() {
   const [showMore, setShowMore] = useState(true);
-  // const [showMoretext, setShoeMoreText] = useState(false);
+  const dispatch = useDispatch();
   const { id } = useParams();
   const { data: client, isSuccess } = useRetrieveClientQuery(id!, { skip: !id });
+  const { data: dataMe } = useGetMeQuery();
 
-  const dispatch = useDispatch();
   useEffect(() => {
     if (isSuccess) {
       dispatch(setCurrentClient(client))};
@@ -29,7 +30,9 @@ function ClientCardPage() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
   if (isSuccess)
+
     return (
       <main className="App__container">
         <div className={styles.clientCard__content}>
@@ -37,14 +40,14 @@ function ClientCardPage() {
           <UserInfo />
 
           <div className={styles.clientCard__buttons}>
-            <Link to={`/meal-plan/create?client=${client?.user.id}`}>
+            <Link to={`/meal-plan/create?client=${client?.user.id}&specId=${dataMe?.id}`}>
               <button className={`${styles.clientCard__button} ${styles.clientCard__mealPlanBtn}`}>
-                План питания <img className={styles.clientCard__buttonPlusIcon} src={plusIcon} alt="plus-icon" />
+                План питания <img className={styles.clientCard__buttonPlusIcon} src={plusIcon} alt="Иконка добавить" />
               </button>
             </Link>
             <Link to={`/workout-plan/create?client=${client?.user.id}`}>
               <button className={`${styles.clientCard__button} ${styles.clientCard__workoutPlanBtn}`}>
-                План тренировок <img className={styles.clientCard__buttonPlusIcon} src={plusIcon} alt="plus-icon" />
+                План тренировок <img className={styles.clientCard__buttonPlusIcon} src={plusIcon} alt="Иконка добавить" />
               </button>
             </Link>
           </div>
