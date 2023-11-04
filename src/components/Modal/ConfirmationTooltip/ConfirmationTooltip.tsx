@@ -4,7 +4,6 @@ import Button from '../../Button/Button.tsx';
 import styles from './ConfirmationTooltip.module.scss';
 import { useAppDispatch, useAppSelector } from '../../../redux/store.ts';
 import { closeModal } from '../../../redux/slices/modalsSlice.ts';
-import { useNavigate } from 'react-router-dom';
 import SocialIcons from '../../SocialIcons/SocialIcons.tsx';
 
 type ConfirmationTooltipType = {
@@ -14,12 +13,11 @@ type ConfirmationTooltipType = {
   isTraining: boolean;
   link?: string;
   isIcons?: boolean;
+  phoneNumber?: string;
 };
 
-const ConfirmationTooltip: React.FC<ConfirmationTooltipType> = ({ title, subtitle, btnText, isTraining, link, isIcons }) => {
-  const navigate = useNavigate();
+const ConfirmationTooltip: React.FC<ConfirmationTooltipType> = ({ title, subtitle, btnText, isTraining, link, isIcons, phoneNumber}) => {
   const dispatch = useAppDispatch();
-
   const handleCloseBtnClick = async () => {
     if(btnText === 'Закрыть') {
       dispatch(closeModal())
@@ -49,7 +47,7 @@ const ConfirmationTooltip: React.FC<ConfirmationTooltipType> = ({ title, subtitl
         <div className={styles.planTraining__container}>
           {isIcons && (
           <>
-          <SocialIcons isMessanger = {true}/>
+          <SocialIcons isMessanger = {true} link={link} phoneNumber = {phoneNumber}/>
           <p className={`${styles.planTraining__text} ${styles.planTraining__text_center} `}>или </p>
           </>)}
           <Button textBtn={btnText} type="button" isValid={true} onCLick={handleCloseBtnClick} isDirty={true} />

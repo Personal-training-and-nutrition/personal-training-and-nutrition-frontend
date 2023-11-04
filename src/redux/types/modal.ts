@@ -7,7 +7,8 @@ export type TModal = {
     btnText: string,
     isTraining: boolean,
     link?: string | null,
-    isIcons?: boolean
+    isIcons?: boolean,
+    phoneNumber?:string
   }
 }
 
@@ -15,11 +16,11 @@ type TModalId = 'modalAuth' | 'foggotModal' | 'registerModal' | 'resetPasswordMo
 
 export interface IModalAction  {
   modalId: TModalId,
-
   title?: string | null,
   subtitle?: string | null,
   btnText?: string | null,
   isTraining?: boolean ,
   link?: string | null,
-  isIcons?: boolean
+  isIcons?: boolean,
+  phoneNumber?:string | null,
 }

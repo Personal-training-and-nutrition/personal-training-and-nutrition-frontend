@@ -1,5 +1,5 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { IModalAction, TModal } from "../types/modal";
+import {PayloadAction, createSlice} from "@reduxjs/toolkit";
+import {IModalAction, TModal} from "../types/modal";
 
 const initialState: TModal = {
   isOpen: false,
@@ -11,6 +11,7 @@ const initialState: TModal = {
     isTraining: false,
     link: '',
     isIcons: false,
+    phoneNumber: '',
   }
 }
 
@@ -19,20 +20,21 @@ const modalSlice = createSlice({
   name: "modal",
   reducers: {
     openModal: (state, action: PayloadAction<IModalAction>) => {
-      const { modalId, isTraining, btnText, title, subtitle, link, isIcons  } = action.payload;
+      const {modalId, isTraining, btnText, title, subtitle, link, isIcons, phoneNumber} = action.payload;
       state.isOpen = true;
       state.modalId = modalId;
       state.tooltip.btnText = btnText || '';
       state.tooltip.isTraining = isTraining || false;
       state.tooltip.subtitle = subtitle || '';
       state.tooltip.title = title || '';
-      state.tooltip.link = link || '',
+      state.tooltip.link = link || '';
       state.tooltip.isIcons = isIcons || false;
+      state.tooltip.phoneNumber = phoneNumber || '';
     },
     closeModal: (state) => {
       state.isOpen = false;
       state.modalId = '';
-      state.tooltip =  {
+      state.tooltip = {
         title: '',
         subtitle: '',
         btnText: '',
@@ -42,6 +44,6 @@ const modalSlice = createSlice({
   }
 })
 
-export const { openModal, closeModal } = modalSlice.actions
+export const {openModal, closeModal} = modalSlice.actions
 
 export default modalSlice.reducer
