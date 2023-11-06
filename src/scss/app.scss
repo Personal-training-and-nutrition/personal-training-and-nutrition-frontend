@@ -1,0 +1,47 @@
+@import './colors/colors.scss';
+
+.App {
+  box-sizing: border-box;
+
+  &__desktop {
+    @media (min-width: 768px) {
+      display: grid;
+      grid-template-columns: 1.1fr 2fr;
+      gap: 40px;
+      min-height: 100vh;
+    }
+  }
+
+  &__desktopUnauth {
+    @media (min-width: 768px) {
+      background-color: $gray-300;
+      height: 110%;
+    }
+  }
+
+  &__container {
+    padding: 0 16px;
+    max-width: 375px;
+    margin: 0 auto;
+
+    @media (min-width: 575px) {
+      max-width: 575px;
+    }
+
+    @media (min-width: 768px) {
+      box-sizing: border-box;
+      max-width: 685px;
+      margin: 0;
+      padding: 40px 0 0 40px;
+    }
+  }
+
+  &__not-found-element{
+    color: $black-800;
+    text-align: center;
+    padding: 75px 0;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 120%;
+  }
+}

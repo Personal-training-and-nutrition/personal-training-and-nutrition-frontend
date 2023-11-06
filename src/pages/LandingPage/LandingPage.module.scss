@@ -1,0 +1,51 @@
+@import '../../scss/colors/colors.scss';
+
+.landing {
+  margin: 0 auto;
+  min-width: 375px;
+  background-color: $gray-300;
+
+  @media (min-width: 768px) {
+    margin: 0 auto;
+  }
+
+  @media (min-width: 1440px) {
+    margin: 0 auto;
+    height: 100%;
+    padding-bottom: 10px;
+  }
+
+  &-container {
+    max-width: 375px;
+    margin: 0 auto;
+    padding: 0 0 20px;
+
+    @media (min-width: 575px) {
+      max-width: 575px;
+    }
+
+    @media (min-width: 768px) {
+      max-width: 768px;
+    }
+
+    @media (min-width: 1280px) {
+      padding: 0;
+      max-width: 768px;
+    }
+
+    @media (min-width: 1440px) {
+      padding: 0;
+      max-width: 1400px;
+    }
+  }
+
+  &-sectionContainer {
+
+    @media (min-width: 1440px) {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 136px;
+    }
+  }
+}

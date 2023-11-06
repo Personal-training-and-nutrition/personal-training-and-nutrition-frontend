@@ -1,0 +1,78 @@
+@import '../../../scss/colors/colors.scss';
+
+.promo {
+  background: url('/images/landing/background.png') center/contain no-repeat;
+  text-align: center;
+  // padding: 28px 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+
+  @media (min-width: 768px) {
+    background-size: 768px;
+    padding: 16px 0 0;
+  }
+
+  @media (min-width: 1440px) {
+    align-items: center;
+    background: none;
+  }
+
+  &__title {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 110%;
+    margin: 0 0 24px;
+    padding: 0 16px;
+    white-space: break-spaces;
+
+    @media (min-width: 575px) {
+      max-width: 420px;
+    }
+
+    @media (min-width: 1440px) {
+      max-width: 760px;
+      font-size: 40px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 110%;
+      text-align: center;
+      padding: 0;
+    }
+
+    &_blue {
+      color: $blue-700;
+    }
+  }
+
+  &__subtitle {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    margin: 0 0 24px;
+    padding: 0 16px;
+
+    @media (min-width: 575px) {
+      max-width: 420px;
+    }
+
+    @media (min-width: 1440px) {
+      display: none;
+    }
+  }
+
+  &-image-Container {
+    padding: 13px 0 12px;
+
+    @media (min-width: 1440px) {
+      display: none;
+    }
+  }
+
+  &__image {
+    height: 500px;
+  }
+}

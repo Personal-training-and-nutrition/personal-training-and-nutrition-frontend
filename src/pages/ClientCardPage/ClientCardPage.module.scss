@@ -1,0 +1,225 @@
+@import '../../scss/colors/colors.scss';
+
+.clientCard {
+  &__content {
+    display: flex;
+    flex-direction: column;
+    padding: 0 0 80px;
+    margin: 0 auto;
+
+    @media (min-width: 768px) {
+      margin: 0;
+      padding: 0 40px 80px 0;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 12px;
+    margin: 32px 0;
+
+    @media (min-width: 768px) {
+      gap: 36px;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+  }
+  &__img {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    transition: all .4s ease-in;
+    &_show {
+      transform: rotate(-180deg);
+    }
+  }
+  &__button {
+    position: relative;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+    width: 165.5px;
+    height: 180px;
+    text-align: left;
+    padding: 20px 16px 0;
+    padding-bottom: 46px;
+    border-radius: 32px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s linear;
+
+    &:hover {
+      transform: scale(1.03);
+      // opacity: .8;
+    }
+  }
+
+  &__buttonPlusIcon {
+    position: absolute;
+    top: 20px;
+    right: 16px;
+  }
+
+  &__mealPlanBtn {
+    background: url('../../assets/images/client-card/button-images/add-meal-plan.png');
+    background-size: contain;
+  }
+
+  &__workoutPlanBtn {
+    background: url('../../assets/images/client-card/button-images/add-workout-plan.png');
+    background-size: contain;
+  }
+
+  &__moreBlock {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 21px;
+    cursor: pointer;
+    box-sizing: border-box;
+  }
+
+  &__title {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+    margin: 0;
+  }
+
+  &__contacts {
+    padding-bottom: 14px;
+  }
+
+  &__note {
+    color: $blue-600;
+
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+  }
+
+  &__textContainer {
+    padding: 16px;
+    margin: 0;
+    background: $gray-300;
+    border-radius: 12px;
+  }
+
+  &__contactsBox {
+    @media (min-width: 768px) {
+      display: flex;
+      gap: 36px;
+      align-items: center;
+    }
+  }
+  &__sectionDetails {
+    overflow: hidden;
+    max-height: 45px;
+    display: flex;
+    flex-direction: column;
+    gap: 21px;
+    transition: all .4s ease-in;
+    &_show {
+      max-height: 800px;
+    }
+  }
+
+  &__detailsSection {
+    display: flex;
+    flex-direction: column;
+    gap: 16px !important;
+    margin-top: -20px;
+    @media (min-width: 768px) {
+      margin-top: -14px;
+    }
+  }
+
+  &__details {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 130%;
+    color: $blue-700;
+
+  }
+
+  &__details span {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%;
+    color: $black-700;
+  }
+
+  &__contact {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: $black-700;
+  }
+
+  &__contactsTitle {
+    margin-bottom: 11px;
+
+    @media (min-width: 768px) {
+      margin-bottom: 0;
+    }
+  }
+
+  &__contact:first-child {
+    margin-bottom: 11px;
+
+    @media (min-width: 768px) {
+      margin-bottom: 0;
+    }
+  }
+
+  &__section {
+    margin-bottom: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    @media (min-width: 768px) {
+      margin-bottom: 35px;
+    }
+  }
+
+  &__moreBtn {
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%; /* 18px */
+    margin-bottom: 22px;
+    text-decoration-line: underline;
+    color: $blue-700;
+    transition: opacity 0.2s ease-in-out;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  @media (max-width: 370px) {
+    &__button {
+      font-size: 18px;
+      width: 160px;
+      height: 175px;
+    }
+  }
+
+  @media (max-width: 320px) {
+    &__button {
+      font-size: 18px;
+
+      width: 138px;
+      height: 150px;
+    }
+  }
+}

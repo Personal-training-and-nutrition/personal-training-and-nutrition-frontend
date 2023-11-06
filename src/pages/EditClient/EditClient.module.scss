@@ -1,0 +1,15 @@
+@import '../../scss/colors/colors.scss';
+
+.editClient {
+  &__content {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 80px;
+
+    @media (min-width: 768px) {
+      margin: 0;
+      padding: 0 40px 0 0;
+    }
+  }
+}

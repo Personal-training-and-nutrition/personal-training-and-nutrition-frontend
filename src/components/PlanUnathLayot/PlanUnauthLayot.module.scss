@@ -1,0 +1,183 @@
+@import '../../scss/colors/colors.scss';
+
+.planUnauth {
+  &__content {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto 20px;
+    max-width: 375px;
+
+    @media (min-width: 768px) {
+      padding-top: 48px;
+      display: grid;
+      grid-template-columns: 1.8fr 1.2fr;
+      grid-template-areas:
+        'logo startBtn'
+        'plan promo';
+      max-width: 940px;
+      transform: translateX(-6px);
+      margin: 0 auto;
+    }
+  }
+  &__logo {
+    width: 159px;
+    margin: 3px auto;
+    grid-area: logo;
+
+    @media (min-width: 768px) {
+      width: 320px;
+      margin-left: 16px;
+      align-self: baseline;
+    }
+  }
+  &__wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-bottom: 20px;
+    grid-area: plan;
+
+    @media (min-width: 768px) {
+      gap: 30px;
+    }
+  }
+  &__title {
+    margin: 32px 16px 0;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 26.4px;
+    color: $blue-700;
+
+    @media (min-width: 768px) {
+      margin: 0;
+      margin-top: 48px;
+      margin-left: 16px;
+      color: $black-800;
+      height: 33px;
+    }
+  }
+  &__subtitle {
+    margin: 0 16px;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 26.4px;
+    color: $black-800;
+
+    @media (min-width: 768px) {
+      margin: 0;
+      margin-left: 16px;
+      color: $blue-700;
+    }
+  }
+  &__plan {
+    margin: 0 16px;
+  }
+  &__name {
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    h2 {
+      font-weight: 700;
+      font-size: 15px;
+      line-height: 18px;
+      color: $black-800;
+      margin: 0;
+      text-transform: uppercase;
+    }
+    p {
+      margin: 0;
+      font-weight: 400;
+      font-size: 15px;
+      line-height: 18px;
+      color: $blue-700;
+      transition: opacity 0.2s ease-in-out;
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+  &__listDay {
+    margin-top: 32px;
+  }
+  &__info {
+    grid-area: promo;
+    background-color: $gray-300;
+    margin-top: 8px;
+    margin-bottom: 20px;
+
+    @media (min-width: 768px) {
+      background-image: url('/images/landing/shape-unauth.svg');
+      background-position: 0px 222px;
+      background-repeat: no-repeat;
+      min-height: 1000px;
+    }
+  }
+
+  &__aboutWrap {
+    margin-left: 64px;
+    margin-top: 38px;
+  }
+
+  &__about {
+    margin: 20px 16px 16px;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 24.2px;
+
+    @media (min-width: 768px) {
+      font-size: 24px;
+      font-style: normal;
+      line-height: 110%;
+    }
+  }
+  &__link {
+    margin: 0 16px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20.8px;
+    color: $blue-700;
+    text-decoration: none;
+    transition: opacity 0.2s ease-in-out;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  &__img {
+    @media (min-width: 768px) {
+      display: none;
+    }
+  }
+
+  &__imgDesktop {
+    display: none;
+
+    @media (min-width: 768px) {
+      display: block;
+      margin: 0 auto;
+      margin-top: 98px;
+    }
+  }
+
+  &__btn {
+    grid-area: startBtn;
+    margin: 0 16px;
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    bottom: 20px;
+    z-index: 10;
+    text-decoration: none;
+
+    @media (min-width: 768px) {
+      width: 213px;
+      height: 44px;
+      position: static;
+      align-self: end;
+      justify-self: center;
+      margin-bottom: 12px;
+    }
+  }
+}

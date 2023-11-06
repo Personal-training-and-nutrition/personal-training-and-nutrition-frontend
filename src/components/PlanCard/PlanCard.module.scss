@@ -1,0 +1,37 @@
+@import '../../scss/colors/colors.scss';
+
+.planCard {
+  display: grid;
+  grid-template-columns: min-content 1fr 44px;
+  align-items: center;
+  gap: 4px;
+  border-radius: 14px;
+  border: 1px solid #efefe8;
+  background: rgba(247, 247, 246, 0.2);
+  padding-right: 16px;
+  overflow: hidden;
+  cursor: pointer;
+
+  &__title {
+    margin: 0 0 5px;
+    color: $black-800;
+
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 130%; /* 20.8px */
+  }
+
+  &__createdDate {
+    margin: 0;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    color: $gray-400;
+  }
+}
+
+.planCard:hover {
+  background: $gray-300;
+}

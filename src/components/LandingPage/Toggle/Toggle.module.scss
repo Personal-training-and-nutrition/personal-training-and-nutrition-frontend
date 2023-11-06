@@ -1,0 +1,53 @@
+@import '../../../scss/colors/colors.scss';
+
+.toogle {
+  margin: 0 auto;
+  display: flex;
+  padding: 4px;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 32px;
+  border: 1px solid $gray-350;
+  background-color: $white-100;
+  max-width: 288px;
+  gap: 4px;
+
+  @media (min-width: 1440px) {
+     position: sticky;
+     bottom: 39px;
+     left: 0;
+     right: 0;
+    margin: 36px auto 20px;
+    max-width: 354px;
+  }
+
+  &__button {
+    width: 140px;
+    height: 34px;
+    border: none;
+    padding: 0;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 130%;
+    border-radius: 32px;
+    color: $gray-400;
+    background-color: $white-100;
+    cursor: pointer;
+
+    @media (min-width: 1440px) {
+      width: 171px;
+      height: 45px;
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 120%;
+    }
+
+    &_active {
+      color: $white-100;
+      background-color: $btn-blue-600;
+      transition: all 0.3s ease-in-out;
+      cursor: auto;
+    }
+  }
+}

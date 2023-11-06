@@ -1,0 +1,20 @@
+@import '../../scss/colors/colors.scss';
+
+.delete {
+    margin: 19px auto 32px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    border: none;
+    background-color: transparent;
+    color: $error-500;
+    cursor: pointer;
+   &:hover {
+    opacity: 0.8;
+   }
+
+   @media (min-width: 768px) {
+    margin: 0;
+  }
+  }
+

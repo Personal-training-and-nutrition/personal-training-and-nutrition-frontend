@@ -1,0 +1,42 @@
+@import '../../scss/colors/colors.scss';
+.caloriesSection {
+  &__calories {
+    margin: 32px 0px;
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    grid-column-gap: 9px;
+    text-align: center;
+
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(4, max-content);
+      justify-content: center;
+      grid-column-gap: 40px;
+    }
+  }
+
+  &__unauth {
+    @media (min-width: 768px) {
+      margin: 0 20px;
+      grid-column-gap: 0px;
+      justify-content: space-between;
+    }
+  }
+
+  &__item {
+    h4 {
+      font-weight: 400;
+      font-size: 15px;
+      line-height: 18px;
+      color: $black-800;
+      margin: 0;
+    }
+    p {
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 21.6px;
+      color: $blue-700;
+      margin: 0;
+      padding: 9px 0;
+    }
+  }
+}

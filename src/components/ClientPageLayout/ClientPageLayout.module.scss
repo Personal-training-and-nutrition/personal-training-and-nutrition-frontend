@@ -1,0 +1,106 @@
+@import '../../scss/colors/colors.scss';
+
+.clientPageLayout {
+  &__content {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 80px;
+
+    @media (min-width: 768px) {
+      margin: 0;
+      padding: 0 40px 0 0;
+    }
+  }
+  &__form {
+    display: flex;
+    flex-direction: column;
+    padding-top: 34px;
+  }
+  &__nameWrap {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 44px;
+
+    @media (min-width: 768px) {
+      flex-direction: row;
+      gap: 8px;
+    }
+  }
+  &__about {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 32px 0;
+    justify-content: center;
+
+    @media (min-width: 768px) {
+    }
+  }
+  &__dataWrap {
+    margin-bottom: 7px;
+
+    @media (min-width: 768px) {
+      margin-right: 14px;
+      width: 166px;
+    }
+  }
+  &__characteristic {
+    display: grid;
+    grid-template-columns: 48.4% 20.99% 20.99%;
+    column-gap: 16px;
+
+    @media (min-width: 768px) {
+      display: flex;
+      margin-top: 22px;
+    }
+  }
+
+  &__contactsWrap {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 44px;
+
+    @media (min-width: 768px) {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 10px;
+      margin-bottom: 18px;
+    }
+  }
+
+  &__buttonsWrap {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 44px;
+
+    @media (min-width: 768px) {
+      display: grid;
+      grid-template-columns: 220px 220px;
+      justify-content: center;
+      align-items: center;
+      margin-top: 10px;
+    }
+  }
+
+  &__error {
+    display: block;
+    height: 15px;
+    opacity: 0;
+    font-size: 15px;
+    line-height: 18px;
+    margin-bottom: 8px;
+    margin-top: 2px;
+    color: $error-500;
+    &_active {
+      opacity: 1;
+    }
+  }
+}

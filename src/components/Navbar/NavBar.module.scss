@@ -1,0 +1,119 @@
+@import '../../scss/colors/colors.scss';
+
+.navbar {
+  display: flex;
+  padding: 8px 0;
+  width: 100%;
+  justify-content: center;
+  background-color: $gray-300;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+
+  box-shadow: 0 -1px 5px 0 rgba(228, 228, 227, 0.73);
+  border-top: 0.5px solid $gray-300;
+  z-index: 10000;
+
+  &__navlink {
+    text-decoration: none;
+    color: $gray-400;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 13.2px;
+
+    &_active {
+      color: $blue-700;
+    }
+  }
+
+  &__logo {
+    display: none;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    width: 86px;
+  }
+
+  &__image {
+    width: 28px;
+    height: 28px;
+
+    &_active {
+      filter: brightness(0) saturate(100%) invert(22%) sepia(69%) saturate(2286%) hue-rotate(182deg) brightness(105%)
+        contrast(102%);
+    }
+
+    svg {
+      fill: $blue-700;
+    }
+  }
+
+  &__exitBtn {
+    display: none;
+    margin-top: 90px;
+    border: none;
+    background-color: transparent;
+    color: $gray-400;
+
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 130%; /* 20.8px */
+    cursor: pointer;
+  }
+}
+
+@media (min-width: 768px) {
+  .navbar {
+    position: static;
+    order: -1;
+
+    display: grid;
+    justify-content: end;
+    justify-items: end;
+    align-content: start;
+    padding-top: 40px;
+    padding-right: 40px;
+
+    &__navlink {
+      padding-bottom: 20px;
+      &:hover {
+        opacity: 0.5;
+      }
+    }
+
+    &__container {
+      align-items: end;
+      font-family: Inter;
+      font-size: 22px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 120%; /* 26.4px */
+    }
+
+    &__logo {
+      display: block;
+      width: 160px;
+      height: 40px;
+      margin-bottom: 102px;
+    }
+
+    &__image {
+      display: none;
+    }
+
+    &__exitBtn {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      &:hover {
+        opacity: 0.5;
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+.mealPlans {
+  height: 100vh;
+  padding-top: 13px;
+  // max-width: 375px;
+  margin: 0 auto;
+
+  @media (min-width: 768px) {
+    margin: 0;
+    padding: 0 40px 0 0;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 32px;
+  }
+  &__link {
+    text-decoration: none;
+  }
+}

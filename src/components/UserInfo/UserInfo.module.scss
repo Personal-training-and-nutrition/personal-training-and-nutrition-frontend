@@ -1,0 +1,77 @@
+@import '../../scss/colors/colors.scss';
+
+.userInfo {
+  display: grid;
+  column-gap: 20px;
+  margin-top: 10px;
+  grid-template-columns: 92px 1fr;
+  grid-template-areas:
+    'avatar userName'
+    'avatar data';
+
+  @media (min-width: 768px) {
+    margin-top: 40px;
+  }
+
+  &__avatar {
+    grid-area: avatar;
+    height: 92px;
+    width: 92px;
+
+    display: grid;
+    place-content: center;
+    border-radius: 50%;
+    background: #f3f2ec;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 22px; /* 61.111% */
+    letter-spacing: -0.41px;
+    color: $white-100;
+
+    // это кружочек вокруг аватарки
+    // background:
+    //   linear-gradient(#f3f2ec, #f3f2ec) padding-box,
+    //   linear-gradient(to right, dodgerblue, hotpink) border-box;
+    // border-radius: 50em;
+    // border: 3px solid transparent;
+  }
+
+  &__name {
+    display: block;
+    grid-area: userName;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%; /* 21.6px */
+    padding-bottom: 8px;
+    padding-top: 8px;
+
+    @media (min-width: 768px) {
+      padding-top: 12px;
+    }
+  }
+
+  &__data {
+    grid-area: data;
+    display: flex;
+    gap: 20px;
+  }
+
+  &__dataParam {
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%; /* 18px */
+    color: $gray-400;
+    margin: 0;
+  }
+
+  &__dataValue {
+    color: black;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 120%; /* 18px */
+  }
+}

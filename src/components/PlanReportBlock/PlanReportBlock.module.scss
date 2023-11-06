@@ -1,0 +1,79 @@
+@import '../../scss/colors/colors.scss';
+
+.PlanReport {
+  position: relative;
+  list-style: none;
+  display: flex;
+  padding: 16px;
+  flex-direction: column;
+  gap: 28px;
+  border-radius: 14px;
+  border: 1px solid #efefe8;
+  background: $white-100;
+  overflow: hidden;
+  margin-bottom: 16px;
+  max-height: 42px;
+  transition: all .3s ease-in ;
+  &_show {
+    max-height: 1000px;
+  }
+  &__header {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    @media (pointer: fine) {
+      cursor: pointer;
+    }
+  }
+  &__imgArrow {
+    margin-left: 5px;
+    transition: all .2s ease-in;
+    &_more {
+      transform: rotate(180deg);
+    }
+  }
+  &__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  &__headerTitle {
+    color: $black-800;
+
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 120%;
+    margin: 0 0 3px;
+    display: flex;
+    // align-items: baseline;
+    justify-content: end;
+  }
+
+  &__headerSubTitle {
+    color: $gray-400;
+
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 120%; /* 15.6px */
+    margin: 0;
+    max-width: 250px;
+    padding-right: 20px;
+  }
+
+  &__workoutPlanExercises {
+    margin: 0;
+    padding-left: 25px;
+    display: grid;
+    gap: 6px;
+  }
+
+  &__workoutPlanTitle {
+    margin: 0 0 8px;
+  }
+
+  &__workoutPlanSubTitle {
+    margin: 0 0 8px;
+  }
+}

@@ -1,0 +1,29 @@
+@import '../../scss/colors/colors.scss';
+
+.recommendation {
+  &__content {
+    margin: 0 16px;
+    background-color: $gray-300;
+    border-radius: 12px;
+    font-size: 16px;
+    line-height: 20.8px;
+
+    @media (min-width: 768px) {
+      max-width: 90%;
+    }
+  }
+  &__title {
+    padding: 16px;
+    margin: 0;
+    font-weight: 500;
+    color: $blue-700;
+
+    @media (min-width: 768px) {
+      padding: 0;
+    }
+  }
+  &__subtitle {
+    font-weight: 400;
+    color: $black-700;
+  }
+}

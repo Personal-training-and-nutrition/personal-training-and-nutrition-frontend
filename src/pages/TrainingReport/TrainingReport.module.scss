@@ -1,0 +1,25 @@
+.trainingReport {
+  height: 100%;
+  padding: 0 16px 80px;
+  margin: 0 auto;
+  max-width: 375px;
+  @media (min-width: 768px) {
+    max-width: 645px;
+    padding: 40px 40px 80px 40px;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  &__mainTitle {
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+    text-align: right;
+    margin: 18px 0 32px;
+
+    @media (min-width: 768px) {
+      text-align: start;
+      margin:  36px 0;
+    }
+  }
+}

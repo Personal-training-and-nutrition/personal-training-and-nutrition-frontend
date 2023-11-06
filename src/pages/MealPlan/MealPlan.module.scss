@@ -1,0 +1,49 @@
+@import '../../scss/colors/colors.scss';
+
+.mealPlan {
+  height: 100%;
+  padding-bottom: 80px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: 768px) {
+    margin: 0;
+    padding: 0 40px 40px 0;
+  }
+
+  &__mainTitle {
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+    text-align: right;
+    margin: 18px 0 32px;
+
+    @media (min-width: 768px) {
+      text-align: left;
+    }
+  }
+
+  &__header {
+    margin-bottom: 32px;
+
+    @media (min-width: 768px) {
+      margin-top: 22px;
+    }
+  }
+
+  &__deleteBtn {
+    color: var(--buttons-error-500, #9d1435);
+    margin: 16px auto 16px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 130%; /* 20.8px */
+    border: none;
+    background: none;
+    cursor: pointer;
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}

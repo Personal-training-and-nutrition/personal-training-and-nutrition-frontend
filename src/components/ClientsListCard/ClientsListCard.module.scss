@@ -1,0 +1,78 @@
+@import '../../scss/colors/colors.scss';
+
+.clientsListCard {
+  position: relative;
+  overflow: hidden;
+  border-radius: 14px;
+  border: 1px solid var(--buttonns-orange-100, #f3f2ec);
+  background: $gray-300;
+  padding-right: 8px;
+  height: 72.7px;
+  cursor: pointer;
+  list-style: none;
+  margin: 0;
+  margin-bottom: 16px;
+  display: grid;
+  grid-template-columns: 86px 1fr;
+  align-items: center;
+  transition: all 0.1s linear;
+
+  &:hover {
+    filter: brightness(97%);
+  }
+
+  &__info {
+    z-index: 100;
+  }
+
+  &__name {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 130%; /* 20.8px */
+    color: $black-800;
+    margin: 0;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 230px;
+
+    @media (min-width: 768px) {
+      width: 100%;
+    }
+  }
+
+  &__description {
+    color: $gray-400;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    font-family: Inter;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%; /* 15.6px */
+    margin: 0;
+    width: 230px;
+
+    @media (min-width: 768px) {
+      width: 100%;
+    }
+  }
+
+  &__letters {
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 22px; /* 61.111% */
+    letter-spacing: -0.41px;
+    color: $white-100;
+
+    position: absolute;
+    top: 26px;
+    left: 3px;
+    z-index: 100;
+  }
+}

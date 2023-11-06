@@ -1,0 +1,59 @@
+@import '../../../scss/colors/colors.scss';
+.gender {
+  &__label {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin-bottom: 32px;
+  }
+  &__title {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 21px;
+    margin: 0 0 16px 0;
+    // }
+  }
+
+  &__wrap {
+    display: flex;
+    @media (min-width: 768px) {
+      padding-left: 11px;
+    }
+  }
+  &__radio {
+    display: flex;
+
+    p {
+      margin: 0;
+      padding: 0 25px 0 35px;
+      display: inline-block;
+      cursor: pointer;
+      position: relative;
+      margin-right: 0;
+      top: -2px;
+      &:before {
+        content: '';
+        display: inline-block;
+        width: 22px;
+        height: 22px;
+        position: absolute;
+        left: 0;
+        background: url(../../../assets/images/profile/radio-button.svg) 0 0 no-repeat;
+      }
+    }
+
+    input {
+      display: none;
+    }
+
+    input:checked + p:before {
+      background-size: 22px;
+      background: url(../../../assets/images/profile/radio-button-checked.svg) 0 0 no-repeat;
+      background-position: center;
+    }
+    p:hover:before {
+      // opacity: 0.2;
+      filter: brightness(120%);
+    }
+  }
+}

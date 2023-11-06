@@ -1,0 +1,39 @@
+@import '../../../scss/colors/colors.scss';
+
+.btnStart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 342px;
+  height: 44px;
+  border-radius: 32px;
+  background-color: $btn-blue-600;
+
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 130%;
+  text-decoration: none;
+  color: $white-100;
+
+  transition: background-color 0.2s ease-in-out;
+  margin: 0 auto;
+
+  &:hover {
+    background-color: $blue-500;
+  }
+
+  &-container {
+    padding-bottom: 20px;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    z-index: 1;
+
+    @media (min-width: 1440px) {
+      transform: none;
+      padding-bottom: 0;
+      position: sticky;
+    }
+  }
+}
