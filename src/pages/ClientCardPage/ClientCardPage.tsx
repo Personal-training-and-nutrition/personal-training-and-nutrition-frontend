@@ -45,7 +45,7 @@ function ClientCardPage() {
                 План питания <img className={styles.clientCard__buttonPlusIcon} src={plusIcon} alt="Иконка добавить" />
               </button>
             </Link>
-            <Link to={`/workout-plan/create?client=${client?.user.id}`}>
+            <Link to={`/workout-plan/create?client=${client?.user.id}&specId=${dataMe?.id}`}>
               <button className={`${styles.clientCard__button} ${styles.clientCard__workoutPlanBtn}`}>
                 План тренировок <img className={styles.clientCard__buttonPlusIcon} src={plusIcon} alt="Иконка добавить" />
               </button>

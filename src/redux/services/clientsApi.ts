@@ -28,7 +28,7 @@ export const clientsApi = combinedApi.injectEndpoints({
           url: `clients/${id}/`,
         };
       },
-      providesTags: ['clientUpdate']
+      providesTags: ['clientUpdate', 'dietPlanList', 'trainingPlanList']
     }),
     updateClient: builder.mutation<TResponse, { id: number; data: IEditClient }>({
       query(arg) {
