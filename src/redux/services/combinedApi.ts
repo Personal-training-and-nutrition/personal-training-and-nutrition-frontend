@@ -8,7 +8,7 @@ import {
 import { isApiError } from '../../utils/isApiError';
 import { TRefreshResponse } from '../types/common';
 
-const BASE_URL = 'http://80.87.110.219:9000/api';
+const BASE_URL = 'https://www.well-coach.ru/api';
 
 const baseQuery = fetchBaseQuery({
   baseUrl: BASE_URL,
