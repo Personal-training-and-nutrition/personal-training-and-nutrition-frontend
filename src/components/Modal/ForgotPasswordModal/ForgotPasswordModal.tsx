@@ -6,10 +6,23 @@ import { useForm } from 'react-hook-form';
 import { InputsType } from '../../../pages/ProfilePage/Profile';
 import { useAppDispatch, useAppSelector } from '../../../redux/store';
 import { closeModal, openModal } from '../../../redux/slices/modalsSlice';
+import {useUsersResetPasswordCreateMutation} from "../../../redux/services/userApi.ts";
+import {IUserEmail} from "../../../redux/types/user.ts";
+import {useEffect} from "react";
 
 const ForgotPasswordModal = () => {
   const { isOpen, modalId } = useAppSelector((state) => state.modal);
   const dispatch = useAppDispatch();
+
+
+  const [resetPassword, { isSuccess}] = useUsersResetPasswordCreateMutation();
+
+  useEffect(()=>{
+    if (isSuccess){
+      dispatch(closeModal());
+      dispatch(openModal({modalId: 'forgotPasswordTooltipModal'}))
+    }
+  }, [isSuccess])
 
   const isFoggot = modalId === 'foggotModal' ? 'foggotModal' : '';
   const {
@@ -17,10 +30,8 @@ const ForgotPasswordModal = () => {
     handleSubmit,
     formState: { isDirty, isValid, errors },
   } = useForm<InputsType>({ mode: 'all' });
-  const onSubmit = handleSubmit((data) => {
-    dispatch(closeModal());
-    dispatch(openModal({ modalId: 'resetPasswordModal' }));
-    console.log(data);
+  const onSubmit = handleSubmit(async (data) => {
+    await resetPassword(data as IUserEmail);
   });
   return (
     <Modal isOpen={isOpen} modalId={isFoggot}>
