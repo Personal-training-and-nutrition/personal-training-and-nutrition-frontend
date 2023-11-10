@@ -15,13 +15,16 @@ import useResize from '../../hooks/useResize.ts';
 import { useWindowPosition } from '../../hooks/useWindowPosition.tsx';
 import Toggle from '../../components/LandingPage/Toggle/Toggle.tsx';
 import { useEffect } from 'react';
-import { useAppSelector } from '../../redux/store.ts';
-import { useNavigate } from 'react-router-dom';
+import {useAppDispatch, useAppSelector} from '../../redux/store.ts';
+import {useLocation, useNavigate} from 'react-router-dom';
+import {openModal} from "../../redux/slices/modalsSlice.ts";
 
 const LandingPage: React.FC = () => {
   const size = useResize();
   const scrollPosition = useWindowPosition();
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const location = useLocation();
 
   const isLoggedIn = useAppSelector((state) => state.user.isLoggedIn);
   const { isStatusSpecialist } = useSelector(selectStatus);
@@ -33,6 +36,12 @@ const LandingPage: React.FC = () => {
     useEffect(() => {
     if (isLoggedIn) navigate('/clients');
   }, [isLoggedIn]);
+
+    useEffect(()=>{
+      if (location.pathname === '/reset-password/'){
+        dispatch(openModal({ modalId: 'resetPasswordModal' }));
+      }
+    }, [location]);
 
   return (
     <div className={styles.landing}>
