@@ -3,7 +3,6 @@ import Modal from '../Modal';
 import Button from '../../Button/Button';
 import {useAppDispatch, useAppSelector} from "../../../redux/store.ts";
 import {closeModal} from "../../../redux/slices/modalsSlice.ts";
-import {useEffect} from "react";
 
 const ForgotPasswordTooltipModal = () => {
 
@@ -11,10 +10,6 @@ const ForgotPasswordTooltipModal = () => {
 
   const {isOpen, modalId} = useAppSelector(state => state.modal)
   const isForgotPass = modalId === 'forgotPasswordTooltipModal' ? 'forgotPasswordTooltipModal' : ''
-
-  useEffect(() => {
-    setTimeout(() => dispatch(closeModal()), 5000)
-  }, [isForgotPass])
 
   const handleClick = () => {
     dispatch(closeModal());
