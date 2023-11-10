@@ -53,11 +53,7 @@ const ResetPasswordModal = () => {
         dispatch(closeModal())
       }, 3000)
     }
-    if (isError) {
-      console.log(error);
-      setErrMessage('Восстановление пароля не удалось, повторите попытку позднее.');
-    }
-  }, [isLoading]);
+  }, [isSuccess]);
 
   const onSubmit = handleSubmit(async (data) => {
     if (data.new_password !== data.re_new_password) {
