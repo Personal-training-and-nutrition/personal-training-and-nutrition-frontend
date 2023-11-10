@@ -5,22 +5,20 @@ import Button from '../../Button/Button';
 import InputEmail from '../../Inputs/InputEmail/InputEmail';
 import InputPassword from '../../Inputs/InputPassword/InputPassword';
 import InputCheckbox from '../../Inputs/InputCheckbox/InputCheckbox';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useRegisterUserMutation } from '../../../redux/services/authApi';
 import { useForm } from 'react-hook-form';
 import { InputsType } from '../../../pages/ProfilePage/Profile.tsx';
-import { isApiError } from '../../../utils/isApiError.tsx';
+// import { isApiError } from '../../../utils/isApiError.tsx';
 import { useAppDispatch, useAppSelector } from '../../../redux/store.ts';
 import { closeModal, openModal } from '../../../redux/slices/modalsSlice.ts';
 
 const RegisterModal = () => {
   const dispatch = useAppDispatch();
-
-  const [registerUser, { isLoading, isSuccess, error }] = useRegisterUserMutation();
-
+  const [registerUser, { isLoading, isSuccess, isError, error }] = useRegisterUserMutation();
   const { isOpen, modalId } = useAppSelector((state) => state.modal);
-
   const isRegister = modalId === 'registerModal' ? 'registerModal' : '';
+  const [errMessage, setErrMessage] = useState<string | null>(null);
 
   const handleAuthClick = () => {
     dispatch(closeModal());
@@ -29,17 +27,28 @@ const RegisterModal = () => {
 
   useEffect(() => {
     console.log('registering user...');
+    setErrMessage('')
+    // if (isSuccess) {
+    //   console.log('registration successfull');
+    // } else if (isApiError(error)) {
+    //   if (error.data.email) {
+    //     setError('email', { message: error.data.email });
+    //   }
+    //   if (error.data.password) {
+    //     setError('password', { message: error.data.password });
+    //   }
+    // }
     if (isSuccess) {
-      console.log('registration successfull');
-    } else if (isApiError(error)) {
-      if (error.data.email) {
-        setError('email', { message: error.data.email });
-      }
-      if (error.data.password) {
-        setError('password', { message: error.data.password });
-      }
+      setTimeout(() => {
+        dispatch(closeModal());
+        dispatch(openModal({ modalId: 'modalAuth' }));
+      }, 1000);
     }
-  }, [isLoading]);
+    if (isError && !isSuccess) {
+      console.log(error)
+        setErrMessage(error?.data.detail || 'Что-то пошло не так.');
+    }
+  }, [isLoading, isError, isSuccess]);
 
   const {
     register,
@@ -52,22 +61,17 @@ const RegisterModal = () => {
     if (data.password !== data.retrypassword) {
       return setError('retrypassword', { type: 'string', message: 'Убедитесь, что пароли совпадают' });
     }
-    try {
-      await registerUser({
-        email: data.email,
-        password: data.password,
-        re_password: data.retrypassword,
-      });
-      setTimeout(() => {
-        dispatch(closeModal());
-        dispatch(openModal({ modalId: 'modalAuth' }));
-      }, 1000);
-    } catch (err) {
-      console.error('register failed', err);
-    }
+    await registerUser({
+      email: data.email,
+      password: data.password,
+      re_password: data.retrypassword,
+    });
   });
+
   const errorVisible = `${styles.registerModal__error} ${styles.registerModal__error_active}`;
   const errorInvisible = `${styles.registerModal__error}`;
+  const errorRemoved = `${styles.registerModal__error_removed}`;
+
   return (
     <Modal isOpen={isOpen} modalId={isRegister}>
       <h2 className={styles.registerModal__title}>Регистрация</h2>
@@ -100,6 +104,7 @@ const RegisterModal = () => {
           {errors?.retrypassword?.message || ''}
         </span>
         <InputCheckbox register={register} />
+        <span className={errMessage ? errorVisible : errorRemoved}>{errMessage}</span>
         <Button textBtn="Зарегистрироваться" type="submit" isDirty={isDirty} isValid={isValid} />
       </form>
     </Modal>
