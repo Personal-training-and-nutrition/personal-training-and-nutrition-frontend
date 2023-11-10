@@ -29,11 +29,12 @@ export const navBarHideCases = [
   '/',
   '/login',
   '/register',
-  '/password-recovery',
-  '/password-recovery/form',
-  '/password-recovery/success',
+  // '/password-recovery',
+  // '/password-recovery/form',
+  // '/password-recovery/success',
   '/meal-plan/unauth',
   '/workout-plan/unauth',
+  '/reset-password/'
 ];
 
 export const trainingData: DayBlockType = [
@@ -250,22 +251,4 @@ export const tempMealPlan = [
       },
     ],
   },
-];
-
-export const clients = [
-  { name: 'Никитина Александра', age: 35, description: 'Обратилась с запросом похудеть назначила то-то то-то' },
-  { name: 'Агутин Леонид', age: 55, description: 'Просто красавчик' },
-  { name: 'Пушкин Александр', age: 36, description: 'Хочет набрать форму перед дуэлью' },
-  { name: 'Никитина Александра', age: 35, description: 'Обратилась с запросом похудеть назначила то-то то-то' },
-  { name: 'Агутин Леонид', age: 55, description: 'Просто красавчик' },
-  { name: 'Пушкин Александр', age: 36, description: 'Хочет набрать форму перед дуэлью' },
-  { name: 'Никитина Александра', age: 35, description: 'Обратилась с запросом похудеть назначила то-то то-то' },
-  { name: 'Агутин Леонид', age: 55, description: 'Просто красавчик' },
-  { name: 'Пушкин Александр', age: 36, description: 'Хочет набрать форму перед дуэлью' },
-  { name: 'Никитина Александра', age: 35, description: 'Обратилась с запросом похудеть назначила то-то то-то' },
-  { name: 'Агутин Леонид', age: 55, description: 'Просто красавчик' },
-  { name: 'Пушкин Александр', age: 36, description: 'Хочет набрать форму перед дуэлью' },
-  { name: 'Никитина Александра', age: 35, description: 'Обратилась с запросом похудеть назначила то-то то-то' },
-  { name: 'Агутин Леонид', age: 55, description: 'Просто красавчик' },
-  { name: 'Пушкин Александр', age: 36, description: 'Хочет набрать форму перед дуэлью' },
 ];

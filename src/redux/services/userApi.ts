@@ -128,7 +128,7 @@ export const userApi = combinedApi.injectEndpoints({
     usersResetPasswordCreate: builder.mutation<TResponse, IUserEmail>({
       query(data) {
         return {
-          url: 'users/reset-password/',
+          url: 'users/reset_password/',
           method: 'POST',
           body: data,
         };
@@ -137,7 +137,7 @@ export const userApi = combinedApi.injectEndpoints({
     usersResetPasswordConfirm: builder.mutation<TResponse, IUserResetPasswordConfirm>({
       query(data) {
         return {
-          url: 'users/reset_email_confirm/',
+          url: 'users/reset_password_confirm/',
           method: 'POST',
           body: data,
         };
