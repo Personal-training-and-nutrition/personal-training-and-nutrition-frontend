@@ -7,7 +7,6 @@ type SocialIconType = {
 };
 const SocialIcons = ({ isMessanger, link, phoneNumber }: SocialIconType) => {
 
-  // console.log(phoneNumber)
   return (
     <div className={styles.socialIcons__wrapper}>
       {isMessanger ? (
@@ -21,8 +20,12 @@ const SocialIcons = ({ isMessanger, link, phoneNumber }: SocialIconType) => {
         </>
       ) : (
         <>
+
           <button type="button" className={styles.socialIcons__btnVk} onClick={() => console.log('it work!')}></button>
-          <button type="button" className={styles.socialIcons__btnMail}></button>
+          <a href='https://oauth.mail.ru/login?client_id=c5510ba3fdef489e957d557f7a934605&response_type=code&scope=userinfo&redirect_uri=http://localhost:5173&state=some_state'>
+            <button type="button" className={styles.socialIcons__btnMail} ></button>
+          </a>
+
           <button type="button" className={styles.socialIcons__btnYa}></button>
         </>
       )}

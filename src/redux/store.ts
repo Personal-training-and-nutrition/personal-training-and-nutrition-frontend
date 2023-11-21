@@ -8,19 +8,22 @@ import { loginMiddleware, refreshMiddleware } from './middleware/tokensStorage.t
 import { userApi } from './services/userApi.ts';
 import { combinedApi } from './services/combinedApi.ts';
 import {clientsApi} from "./services/clientsApi.ts";
+import {mailApi} from './services/mailApi.ts';
+
 
 export const store = configureStore({
   reducer: {
     [combinedApi.reducerPath]: combinedApi.reducer,
     [userApi.reducerPath]: combinedApi.reducer,
     [clientsApi.reducerPath]: combinedApi.reducer,
+    [mailApi.reducerPath]: mailApi.reducer,
     landing: landingReducer,
     user: userReducer,
     currentClient: currentClientReducer,
     modal: modalReducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat([combinedApi.middleware, loginMiddleware.middleware, refreshMiddleware.middleware]),
+    getDefaultMiddleware().concat([combinedApi.middleware, loginMiddleware.middleware, refreshMiddleware.middleware, mailApi.middleware]),
 });
 
 export type AppDispatch = typeof store.dispatch;
