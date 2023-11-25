@@ -7,7 +7,7 @@ import { useAppDispatch } from '../../redux/store';
 import { useLocation } from 'react-router-dom';
 import { openModal } from '../../redux/slices/modalsSlice';
 import { preparePlanTrain } from '../../utils/processPlans';
-import {useRetrieveUserQuery} from "../../redux/services/userApi.ts";
+import {useRetrieveUserQuery} from "../../redux/services/userApi";
 
 const AddPlanTraining: React.FC = () => {
   const location = useLocation();

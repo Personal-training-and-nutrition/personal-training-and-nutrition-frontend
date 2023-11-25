@@ -1,11 +1,11 @@
 import styles from './NavBar.module.scss';
 import {Link, NavLink, useNavigate} from 'react-router-dom';
 import React from 'react';
-import { navBarSpecialistItemList, navBarUserItemList } from '../../utils/NabBarParams.ts';
+import { navBarSpecialistItemList, navBarUserItemList } from '../../utils/NabBarParams';
 import logo from '../../assets/logo.svg';
 import exitIcon from '../../assets/images/icons/exit-icon.svg';
-import { useAppDispatch, useAppSelector } from '../../redux/store.ts';
-import { logout } from '../../redux/slices/userSlice.ts';
+import { useAppDispatch, useAppSelector } from '../../redux/store';
+import { logout } from '../../redux/slices/userSlice';
 
 const NavBar: React.FC = () => {
   const isSpecialist = useAppSelector((store) => store.user.isSpecialist);

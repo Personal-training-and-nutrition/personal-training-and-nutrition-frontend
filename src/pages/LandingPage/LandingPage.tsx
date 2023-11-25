@@ -1,23 +1,23 @@
 import styles from './LandingPage.module.scss';
-import Header from '../../components/LandingPage/Header/Header.tsx';
-import PromoSection from '../../components/LandingPage/PromoSection/PromoSection.tsx';
-import MainSection from '../../components/LandingPage/MainSection/MainSection.tsx';
-import BtnStart from '../../components/LandingPage/BtnStart/BtnStart.tsx';
+import Header from '../../components/LandingPage/Header/Header';
+import PromoSection from '../../components/LandingPage/PromoSection/PromoSection';
+import MainSection from '../../components/LandingPage/MainSection/MainSection';
+import BtnStart from '../../components/LandingPage/BtnStart/BtnStart';
 import {
   landingPageSpeciatistParams,
   landingPageSpecImagesFromDesktop,
   landingPageUsersImagesFromDesktop,
   landingPageUsersParams,
-} from '../../utils/LandingPageParams.ts';
+} from '../../utils/LandingPageParams';
 import { useSelector } from 'react-redux';
-import { selectStatus } from '../../redux/slices/landingPageSlice.ts';
-import useResize from '../../hooks/useResize.ts';
-import { useWindowPosition } from '../../hooks/useWindowPosition.tsx';
-import Toggle from '../../components/LandingPage/Toggle/Toggle.tsx';
+import { selectStatus } from '../../redux/slices/landingPageSlice';
+import useResize from '../../hooks/useResize';
+import { useWindowPosition } from '../../hooks/useWindowPosition';
+import Toggle from '../../components/LandingPage/Toggle/Toggle';
 import { useEffect } from 'react';
-import {useAppDispatch, useAppSelector} from '../../redux/store.ts';
+import {useAppDispatch, useAppSelector} from '../../redux/store';
 import {useLocation, useNavigate} from 'react-router-dom';
-import {openModal} from "../../redux/slices/modalsSlice.ts";
+import {openModal} from "../../redux/slices/modalsSlice";
 
 const LandingPage: React.FC = () => {
   const size = useResize();

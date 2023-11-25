@@ -2,8 +2,8 @@ import styles from './UserInfo.module.scss';
 import { useParams } from 'react-router-dom';
 import { getFirstLetters } from '../../utils/getFirstLetters';
 import { getAgeEnding } from '../../utils/getAgeEnding';
-import {useRetrieveClientQuery} from "../../redux/services/clientsApi.ts";
-import {IClientRetrieve} from "../../redux/types/clients.ts";
+import {useRetrieveClientQuery} from "../../redux/services/clientsApi";
+import {IClientRetrieve} from "../../redux/types/clients";
 
 function UserInfo() {
   // const client = useSelector((state: RootState) => state.currentClient.client);

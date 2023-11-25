@@ -1,6 +1,6 @@
 import styles from './MainSection.module.scss';
 import React from 'react';
-import useResize from '../../../hooks/useResize.ts';
+import useResize from '../../../hooks/useResize';
 
 type MainSectionProps = {
   title: string;

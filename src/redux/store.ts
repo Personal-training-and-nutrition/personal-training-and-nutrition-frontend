@@ -1,13 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
-import landingReducer from './slices/landingPageSlice.ts';
-import currentClientReducer from './slices/clientSlice.ts';
-import modalReducer from './slices/modalsSlice.ts';
-import userReducer from './slices/userSlice.ts';
+import landingReducer from './slices/landingPageSlice';
+import currentClientReducer from './slices/clientSlice';
+import modalReducer from './slices/modalsSlice';
+import userReducer from './slices/userSlice';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
-import { loginMiddleware, refreshMiddleware } from './middleware/tokensStorage.ts';
-import { userApi } from './services/userApi.ts';
-import { combinedApi } from './services/combinedApi.ts';
-import {clientsApi} from "./services/clientsApi.ts";
+import { loginMiddleware, refreshMiddleware } from './middleware/tokensStorage';
+import { userApi } from './services/userApi';
+import { combinedApi } from './services/combinedApi';
+import {clientsApi} from "./services/clientsApi";
 
 export const store = configureStore({
   reducer: {

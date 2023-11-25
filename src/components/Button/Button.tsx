@@ -11,7 +11,7 @@ type ButtonType = {
   onCLick?: () => void;
 };
 
-const Button: React.FC<ButtonType> = ({ textBtn, type, isDirty, isValid, onCLick }) => {
+const Button: React.FC<ButtonType> = ({ textBtn, type, isDirty, isValid, onCLick }: ButtonType) => {
   return (
     <button
       className={styles.button}

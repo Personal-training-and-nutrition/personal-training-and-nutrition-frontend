@@ -8,10 +8,10 @@ import InputCheckbox from '../../Inputs/InputCheckbox/InputCheckbox';
 import { useEffect, useState } from 'react';
 import { useRegisterUserMutation } from '../../../redux/services/authApi';
 import { useForm } from 'react-hook-form';
-import { InputsType } from '../../../pages/ProfilePage/Profile.tsx';
+import { InputsType } from '../../../pages/ProfilePage/Profile';
 // import { isApiError } from '../../../utils/isApiError.tsx';
-import { useAppDispatch, useAppSelector } from '../../../redux/store.ts';
-import { closeModal, openModal } from '../../../redux/slices/modalsSlice.ts';
+import { useAppDispatch, useAppSelector } from '../../../redux/store';
+import { closeModal, openModal } from '../../../redux/slices/modalsSlice';
 
 const RegisterModal = () => {
   const dispatch = useAppDispatch();

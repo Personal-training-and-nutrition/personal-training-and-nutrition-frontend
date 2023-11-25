@@ -7,7 +7,7 @@ import {useCreateDietPlanMutation} from '../../redux/services/dietApi';
 import {useLocation} from 'react-router-dom';
 import {preparePlan} from '../../utils/processPlans';
 import {openModal} from '../../redux/slices/modalsSlice';
-import {useRetrieveUserQuery} from "../../redux/services/userApi.ts";
+import {useRetrieveUserQuery} from "../../redux/services/userApi";
 
 const AddPlanMeal: React.FC = () => {
   const dispatch = useAppDispatch();
