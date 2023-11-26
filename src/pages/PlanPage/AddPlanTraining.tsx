@@ -33,7 +33,7 @@ const AddPlanTraining: React.FC = () => {
   useEffect(() => {
     if (isSuccess && !isError) {
       // const link = `http://wellcoaching.ru/workout-plan/unauth?id=${workout?.id!}`
-      const link = `http://localhost:5173/workout-plan/unauth?id=${workout?.id!}`
+      const link = workout?.id ? `http://localhost:5173/workout-plan/unauth?id=${workout.id}` : 'http://localhost:5173/workout-plan/unauth';
       dispatch(
         openModal({
           modalId: 'tooltipModal',

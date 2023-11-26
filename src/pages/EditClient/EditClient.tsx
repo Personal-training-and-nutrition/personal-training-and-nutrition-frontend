@@ -92,7 +92,7 @@ const EditClient = () => {
 
   useEffect(() => {
     if (isInitialSuccess) {
-      // @ts-ignore
+      // @ts-expect-error:The use of @ts-ignore is not recommended as it can hide real issues in the code.
       reset({ ...initialData });
     }
   }, [isInitialSuccess, initialData]);

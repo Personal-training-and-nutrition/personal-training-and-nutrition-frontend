@@ -32,7 +32,7 @@ const AddPlanMeal: React.FC = () => {
   useEffect(() => {
     if (isSuccess && !isError) {
       // const link = `http://wellcoaching.ru/meal-plan/unauth?id=${meal?.id!}`
-      const link = `http://localhost:5173/meal-plan/unauth?id=${meal?.id!}`
+      const link = meal?.id ? `http://localhost:5173/meal-plan/unauth?id=${meal.id}` : 'http://localhost:5173/meal-plan/unauth';
       dispatch(
         openModal({
           modalId: 'tooltipModal',
