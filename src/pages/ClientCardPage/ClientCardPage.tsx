@@ -10,10 +10,10 @@ import unfold from '../../assets/images/client-card/unfold.svg';
 import { useEffect, useState } from 'react';
 import PlanCard from '../../components/PlanCard/PlanCard';
 import { Link, useParams } from 'react-router-dom';
-import { useRetrieveClientQuery } from '../../redux/services/clientsApi.ts';
+import { useRetrieveClientQuery } from '../../redux/services/clientsApi';
 import { useDispatch } from 'react-redux';
-import { setCurrentClient } from '../../redux/slices/clientSlice.ts';
-import { useGetMeQuery } from '../../redux/services/userApi.ts';
+import { setCurrentClient } from '../../redux/slices/clientSlice';
+import { useGetMeQuery } from '../../redux/services/userApi';
 
 function ClientCardPage() {
   const [showMore, setShowMore] = useState(true);

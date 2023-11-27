@@ -17,8 +17,8 @@ import { formatToPhoneValue } from '../../utils/formatToPhone';
 import { formatDate, formatDateToSent } from '../../utils/formatDate';
 import { Link, useNavigate } from 'react-router-dom';
 import { setIsLoggedIn } from '../../redux/slices/userSlice';
-import { IUser } from '../../redux/types/user.ts';
-import { openModal } from '../../redux/slices/modalsSlice.ts';
+import { IUser } from '../../redux/types/user';
+import { openModal } from '../../redux/slices/modalsSlice';
 
 export type InputsType = {
   last_name?: string | null;

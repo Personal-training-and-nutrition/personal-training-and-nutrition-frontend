@@ -10,7 +10,7 @@ import {
   useUpdateDietPlanMutation
 } from '../../redux/services/dietApi';
 import {useAppDispatch, useAppSelector} from '../../redux/store';
-import {closeModal, openModal} from "../../redux/slices/modalsSlice.ts";
+import {closeModal, openModal} from "../../redux/slices/modalsSlice";
 
 const EditPlanMeal: React.FC = () => {
   const { id: specialistId } = useAppSelector((store) => store.user);

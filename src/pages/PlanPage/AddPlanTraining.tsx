@@ -7,7 +7,7 @@ import { useAppDispatch } from '../../redux/store';
 import { useLocation } from 'react-router-dom';
 import { openModal } from '../../redux/slices/modalsSlice';
 import { preparePlanTrain } from '../../utils/processPlans';
-import {useRetrieveUserQuery} from "../../redux/services/userApi.ts";
+import {useRetrieveUserQuery} from "../../redux/services/userApi";
 
 const AddPlanTraining: React.FC = () => {
   const location = useLocation();
@@ -33,7 +33,7 @@ const AddPlanTraining: React.FC = () => {
   useEffect(() => {
     if (isSuccess && !isError) {
       // const link = `http://wellcoaching.ru/workout-plan/unauth?id=${workout?.id!}`
-      const link = `http://localhost:5173/workout-plan/unauth?id=${workout?.id!}`
+      const link = workout?.id ? `http://localhost:5173/workout-plan/unauth?id=${workout.id}` : 'http://localhost:5173/workout-plan/unauth';
       dispatch(
         openModal({
           modalId: 'tooltipModal',

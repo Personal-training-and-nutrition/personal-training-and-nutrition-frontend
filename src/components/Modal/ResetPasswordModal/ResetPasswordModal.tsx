@@ -5,11 +5,11 @@ import InputPassword from '../../Inputs/InputPassword/InputPassword';
 import Modal from '../Modal';
 import styles from './ResetPasswordModal.module.scss';
 import {useAppDispatch, useAppSelector} from '../../../redux/store';
-import {useUsersResetPasswordConfirmMutation} from "../../../redux/services/userApi.ts";
+import {useUsersResetPasswordConfirmMutation} from "../../../redux/services/userApi";
 import {useEffect, useState} from "react";
-import {closeModal, openModal} from "../../../redux/slices/modalsSlice.ts";
+import {closeModal, openModal} from "../../../redux/slices/modalsSlice";
 import {useSearchParams} from "react-router-dom";
-import {IUserResetPasswordConfirm} from "../../../redux/types/user.ts";
+import {IUserResetPasswordConfirm} from "../../../redux/types/user";
 
 const ResetPasswordModal = () => {
   const [resetPassword, {isSuccess, isError, error, isLoading}] = useUsersResetPasswordConfirmMutation();

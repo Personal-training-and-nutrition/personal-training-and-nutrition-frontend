@@ -1,8 +1,8 @@
 import styles from './ForgotPasswordTooltipModal.module.scss';
 import Modal from '../Modal';
 import Button from '../../Button/Button';
-import {useAppDispatch, useAppSelector} from "../../../redux/store.ts";
-import {closeModal} from "../../../redux/slices/modalsSlice.ts";
+import {useAppDispatch, useAppSelector} from "../../../redux/store";
+import {closeModal} from "../../../redux/slices/modalsSlice";
 
 const ForgotPasswordTooltipModal = () => {
 

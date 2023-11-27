@@ -4,13 +4,13 @@ import { useForm } from 'react-hook-form';
 import {
   usePartialUpdateClientMutation,
   useRetrieveClientQuery,
-} from '../../redux/services/clientsApi.ts';
-import { useAppDispatch, useAppSelector } from '../../redux/store.ts';
-import { closeModal, openModal } from '../../redux/slices/modalsSlice.ts';
+} from '../../redux/services/clientsApi';
+import { useAppDispatch, useAppSelector } from '../../redux/store';
+import { closeModal, openModal } from '../../redux/slices/modalsSlice';
 import { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import ClientPageLayout, { ClientInputType } from '../../components/ClientPageLayout/ClientPageLayout.tsx';
-import { usePartialUpdateUserMutation } from '../../redux/services/userApi.ts';
+import ClientPageLayout, { ClientInputType } from '../../components/ClientPageLayout/ClientPageLayout';
+import { usePartialUpdateUserMutation } from '../../redux/services/userApi';
 
 const EditClient = () => {
   const location = useLocation();
@@ -92,7 +92,7 @@ const EditClient = () => {
 
   useEffect(() => {
     if (isInitialSuccess) {
-      // @ts-ignore
+      // @ts-expect-error:The use of @ts-ignore is not recommended as it can hide real issues in the code.
       reset({ ...initialData });
     }
   }, [isInitialSuccess, initialData]);

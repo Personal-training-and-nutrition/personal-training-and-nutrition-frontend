@@ -7,7 +7,7 @@ import {useCreateDietPlanMutation} from '../../redux/services/dietApi';
 import {useLocation} from 'react-router-dom';
 import {preparePlan} from '../../utils/processPlans';
 import {openModal} from '../../redux/slices/modalsSlice';
-import {useRetrieveUserQuery} from "../../redux/services/userApi.ts";
+import {useRetrieveUserQuery} from "../../redux/services/userApi";
 
 const AddPlanMeal: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -32,7 +32,7 @@ const AddPlanMeal: React.FC = () => {
   useEffect(() => {
     if (isSuccess && !isError) {
       // const link = `http://wellcoaching.ru/meal-plan/unauth?id=${meal?.id!}`
-      const link = `http://localhost:5173/meal-plan/unauth?id=${meal?.id!}`
+      const link = meal?.id ? `http://localhost:5173/meal-plan/unauth?id=${meal.id}` : 'http://localhost:5173/meal-plan/unauth';
       dispatch(
         openModal({
           modalId: 'tooltipModal',

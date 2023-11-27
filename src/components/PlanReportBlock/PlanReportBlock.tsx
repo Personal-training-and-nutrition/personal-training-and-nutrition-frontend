@@ -38,7 +38,7 @@ function PlanReportBlock({ plan, text, handleComment }: PlanReportBlockProps) {
 
   return (
     <li className={showMore ? `${styles.PlanReport} ${styles.PlanReport_show}` : `${styles.PlanReport}`}>
-      <img className={styles.PlanReport__image} src={`${imgPath}-${plan.weekday}.png`} alt="plan image" />
+      <img className={styles.PlanReport__image} src={`${imgPath}-${plan.weekday}.png`} alt="planImage" />
 
       <div className={styles.PlanReport__header} onClick={() => setShowMore((prev) => !prev)}>
         <h3 className={styles.PlanReport__headerTitle}>
