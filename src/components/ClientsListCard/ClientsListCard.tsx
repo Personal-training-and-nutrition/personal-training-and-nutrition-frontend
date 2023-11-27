@@ -25,7 +25,7 @@ function ClientsListCard({ user }: ClientListCardProps) {
     // console.log(user)
   }, []);
   return (
-    <button
+    <li
       className={styles.clientsListCard}
       onClick={() => {
         dispatch(setCurrentClient(user));
@@ -42,7 +42,7 @@ function ClientsListCard({ user }: ClientListCardProps) {
         {/* <p className={styles.clientsListCard__description}>{description}</p> */}
         <p className={styles.clientsListCard__description}>{user.notes}</p>
       </div>
-    </button>
+    </li>
   );
 }
 
