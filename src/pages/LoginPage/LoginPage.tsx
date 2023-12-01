@@ -19,14 +19,10 @@ import AuthPageLayout from '../../components/AuthPageLayout/AuthPageLayout';
 const LoginPage = () => {
   const navigate = useNavigate();
   const [errMessage, setErrMessage] = useState<string | null>(null);
-  // const redirectTo = location.state?.from.pathname || '/';
   const [login, { isSuccess, isLoading, error }] = useLoginMutation();
-  // const { isOpen, modalId } = useAppSelector((state) => state.modal);
   const [getMe] = useLazyGetMeQuery();
   const [retriveUser] = useLazyRetrieveUserQuery();
   const dispatch = useAppDispatch();
-
-  // const isAuth = modalId === 'modalAuth' ? 'modalAuth' : '';
 
   const {
     register,
@@ -73,45 +69,35 @@ const LoginPage = () => {
     dispatch(openModal({ modalId: 'foggotModal' }));
   };
 
-  const handleRegistrationClick = () => {
-    dispatch(closeModal());
-    dispatch(openModal({ modalId: 'registerModal' }));
-  };
-
   const errorVisible = `${styles.loginPage__error} ${styles.loginPage__error_active}`;
   const errorInvisible = `${styles.loginPage__error}`;
   const errorRemoved = `${styles.loginPage__error_removed}`;
 
   return (
-    <AuthPageLayout >
-        <h2 className={styles.loginPage__title}>Добро пожаловать!</h2>
-        <p className={styles.loginPage__text}>Первый раз с нами?</p>
-        <Link to="/sign-up" className={styles.loginPage__link} onClick={handleRegistrationClick}>
-          Зарегистрироваться
+    <AuthPageLayout text='вход'>
+      <h2 className={styles.loginPage__title}>Добро пожаловать!</h2>
+      <p className={styles.loginPage__text}>Первый раз с нами?</p>
+      <Link to="/sign-up" className={styles.loginPage__link}>
+        Зарегистрироваться
+      </Link>
+      <form className={styles.loginPage__form} onSubmit={onSubmit}>
+        <InputEmail
+          name="email"
+          placeholder="Электронная почта"
+          register={register}
+          isInvalid={Boolean(errors.email)}
+        />
+        <span className={errors?.email ? errorVisible : errorInvisible}>{errors?.email?.message || ''}</span>
+        <InputPassword name="password" placeholder="Пароль" register={register} isInvalid={Boolean(errors.password)} />
+        <span className={errors?.password ? errorVisible : errorInvisible}>{errors?.password?.message || ''}</span>
+        <span className={errMessage ? errorVisible : errorRemoved}>{errMessage}</span>
+        <Link to="" className={styles.loginPage__link} onClick={handleFoggotPassordClick}>
+          Я не помню пароль
         </Link>
-        <form className={styles.loginPage__form} onSubmit={onSubmit}>
-          <InputEmail
-            name="email"
-            placeholder="Электронная почта"
-            register={register}
-            isInvalid={Boolean(errors.email)}
-          />
-          <span className={errors?.email ? errorVisible : errorInvisible}>{errors?.email?.message || ''}</span>
-          <InputPassword
-            name="password"
-            placeholder="Пароль"
-            register={register}
-            isInvalid={Boolean(errors.password)}
-          />
-          <span className={errors?.password ? errorVisible : errorInvisible}>{errors?.password?.message || ''}</span>
-          <span className={errMessage ? errorVisible : errorRemoved}>{errMessage}</span>
-          <Link to="" className={styles.loginPage__link} onClick={handleFoggotPassordClick}>
-            Я не помню пароль
-          </Link>
-          <Button textBtn="Войти" type="submit" isDirty={isDirty} isValid={isValid}></Button>
-        </form>
-        <p className={`${styles.loginPage__text} ${styles.loginPage__text_center} `}>или использовать</p>
-        <SocialIcons />
+        <Button textBtn="Войти" type="submit" isDirty={isDirty} isValid={isValid}></Button>
+      </form>
+      <p className={`${styles.loginPage__text} ${styles.loginPage__text_center} `}>или использовать</p>
+      <SocialIcons />
     </AuthPageLayout>
   );
 };

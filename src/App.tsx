@@ -34,6 +34,7 @@ import EditClient from './pages/EditClient/EditClient';
 import ChangePasswordModal from './components/Modal/ChangePasswordModal/ChangePasswordModal';
 import ForgotPasswordTooltipModal from "./components/Modal/ForgotPasswordTooltipModal/ForgotPasswordTooltipModal";
 import LoginPage from './pages/LoginPage/LoginPage';
+import RegisterPage from './pages/RegisterPage/RegisterPage';
 
 function App() {
   const location = useLocation();
@@ -49,7 +50,7 @@ function App() {
     if (isLoggedIn) {
       navigate('/clients');
     }
-  }, []);
+  }, [isLoggedIn]);
 
   return (
     <div className={`App ${appDesktopClass} ${unauthDesktopClass}`}>
@@ -58,6 +59,7 @@ function App() {
           <Route path="/reset-password"/>
         </Route>
         <Route path="/sign-in" element={<LoginPage/>}/>
+        <Route path="/sign-up" element={<RegisterPage/>}/>
         <Route path="*" element={<NotFoundPage/>}/>
         <Route path="/meal-plan/unauth" element={<PlanUnathMeal/>}/>
         <Route path="/workout-plan/unauth" element={<PlanUnathTraining/>}/>
