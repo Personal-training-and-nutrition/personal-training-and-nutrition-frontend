@@ -27,7 +27,7 @@ export type DayBlockType = {
 
 export const navBarHideCases = [
   '/',
-  '/login',
+  '/sign-in',
   '/register',
   // '/password-recovery',
   // '/password-recovery/form',

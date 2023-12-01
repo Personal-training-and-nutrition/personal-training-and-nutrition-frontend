@@ -33,6 +33,7 @@ import {useAppSelector} from './redux/store';
 import EditClient from './pages/EditClient/EditClient';
 import ChangePasswordModal from './components/Modal/ChangePasswordModal/ChangePasswordModal';
 import ForgotPasswordTooltipModal from "./components/Modal/ForgotPasswordTooltipModal/ForgotPasswordTooltipModal";
+import LoginPage from './pages/LoginPage/LoginPage';
 
 function App() {
   const location = useLocation();
@@ -56,6 +57,7 @@ function App() {
         <Route path="/" element={<LandingPage/>}>
           <Route path="/reset-password"/>
         </Route>
+        <Route path="/sign-in" element={<LoginPage/>}/>
         <Route path="*" element={<NotFoundPage/>}/>
         <Route path="/meal-plan/unauth" element={<PlanUnathMeal/>}/>
         <Route path="/workout-plan/unauth" element={<PlanUnathTraining/>}/>
