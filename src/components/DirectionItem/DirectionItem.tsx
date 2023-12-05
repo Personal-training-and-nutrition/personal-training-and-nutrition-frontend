@@ -14,7 +14,7 @@ const DirectionItem: React.FC<TDirectionItem> = ({title, value}) => {
 
   return (
     <>
-      <li onClick={handleClick} className={styles.directionItem}>
+      <li role="menuitem" onClick={handleClick} className={styles.directionItem}>
         {title}
       </li>
     </>
