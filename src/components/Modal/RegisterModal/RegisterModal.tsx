@@ -29,7 +29,7 @@ const RegisterModal = () => {
     console.log('registering user...');
     setErrMessage('')
     // if (isSuccess) {
-    //   console.log('registration successfull');
+    //   console.log('Registration successfull');
     // } else if (isApiError(error)) {
     //   if (error.data.email) {
     //     setError('email', { message: error.data.email });

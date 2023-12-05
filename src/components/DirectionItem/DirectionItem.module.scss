@@ -1,0 +1,18 @@
+@import '../../scss/colors/colors.scss';
+
+.directionItem{
+  background-color: $blue-500;
+  color: $white-100;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 120%;
+  padding: 16px;
+
+  border-radius: 14px;
+
+  transition: background-color 0.25s ease-in-out;
+
+  &:hover {
+    background-color: $btn-blue-600;
+  }
+}

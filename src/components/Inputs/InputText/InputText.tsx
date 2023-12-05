@@ -3,7 +3,7 @@ import styles from './InputText.module.scss';
 
 type Props<TFormValues extends FieldValues> = {
   name: Path<TFormValues>;
-  label: string;
+  label?: string;
   minLength?: number;
   maxLength?: number;
   placeholder?: string;
@@ -23,9 +23,10 @@ const InputText = <TFormValues extends FieldValues>({
 }: Props<TFormValues>) => {
   return (
     <div className={styles.inputText__wrapper}>
-      <label className={styles.inputText__label} htmlFor={name}>
+      {label &&
+        <label className={styles.inputText__label} htmlFor={name}>
         {label}
-      </label>
+      </label>}
       <input
         className={
           isInvalid ? `${styles.inputText__input} ${styles.inputText__input_invalid}` : styles.inputText__input
