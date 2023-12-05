@@ -5,6 +5,8 @@ import ButtonDelete from './ButtonDelete';
 const meta: Meta<typeof ButtonDelete> = {
   title: 'ButtonDelete',
   component: ButtonDelete,
+  tags: ['autodocs'],
+
 
 }satisfies Meta<typeof ButtonDelete>;
 
