@@ -90,6 +90,7 @@ const Profile: React.FC = () => {
   }, [isUpdateSuccess, updateData]);
 
   const onSubmit = handleSubmit((data) => {
+    console.log(data);
     if (formatDateToSent(data.dob) === initData?.dob) {
       data.dob = formatDateToSent(data.dob);
     }
