@@ -10,15 +10,18 @@ type Props<TFormValues extends FieldValues> = {
   register: UseFormRegister<TFormValues>;
   textError?: string;
   isInvalid?: boolean;
+  textErrorPattern?: string;
+  pattern?: RegExp;
 };
 const InputText = <TFormValues extends FieldValues>({
   name,
   label,
-  minLength,
   maxLength,
   placeholder,
   register,
   textError,
+  textErrorPattern,
+  pattern,
   isInvalid,
 }: Props<TFormValues>) => {
   return (
@@ -32,7 +35,14 @@ const InputText = <TFormValues extends FieldValues>({
         }
         type="text"
         placeholder={placeholder}
-        {...register(name, { required: textError, maxLength: maxLength, minLength: minLength })}
+        {...register(name, {
+          required: textError || '',
+          maxLength: { value: maxLength!, message: textError || '' },
+          pattern: {
+            value: pattern!,
+            message: textErrorPattern || '',
+          },
+        })}
       />
     </div>
   );

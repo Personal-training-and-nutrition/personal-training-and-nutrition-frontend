@@ -19,6 +19,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { setIsLoggedIn } from '../../redux/slices/userSlice';
 import { IUser } from '../../redux/types/user';
 import { openModal } from '../../redux/slices/modalsSlice';
+import { REGEX_USER_NAME } from '../../utils/constants';
 
 export type InputsType = {
   last_name?: string | null;
@@ -157,7 +158,10 @@ const Profile: React.FC = () => {
                   label="Фамилия"
                   placeholder="Фамилия"
                   register={register}
-                  textError={'Поле не должно быть пустым'}
+                  maxLength={50}
+                  pattern={REGEX_USER_NAME}
+                  textErrorPattern={'Допускается использование пробелов, кириллица, латиница, дефис'}
+                  textError={'Требуется от 1 до 50 симоволов'}
                   isInvalid={Boolean(errors.last_name)}
                 />
                 <span className={errors?.last_name ? errorVisible : errorInvisible}>
@@ -170,7 +174,10 @@ const Profile: React.FC = () => {
                   label="Имя"
                   placeholder="Имя"
                   register={register}
-                  textError={'Поле не должно быть пустым'}
+                  maxLength={50}
+                  pattern={REGEX_USER_NAME}
+                  textErrorPattern={'Допускается использование пробелов, кириллица, латиница, дефис'}
+                  textError={'Требуется от 1 до 50 симоволов'}
                   isInvalid={Boolean(errors.first_name)}
                 />
                 <span className={errors?.first_name ? errorVisible : errorInvisible}>
