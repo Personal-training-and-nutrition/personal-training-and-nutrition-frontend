@@ -17,6 +17,7 @@ const InputText = <TFormValues extends FieldValues>({
   name,
   label,
   maxLength,
+  minLength,
   placeholder,
   register,
   textError,
@@ -38,6 +39,7 @@ const InputText = <TFormValues extends FieldValues>({
         {...register(name, {
           required: textError || '',
           maxLength: { value: maxLength!, message: textError || '' },
+          minLength: { value: minLength!, message: textError || '' },
           pattern: {
             value: pattern!,
             message: textErrorPattern || '',

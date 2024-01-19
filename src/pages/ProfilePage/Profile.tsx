@@ -159,9 +159,10 @@ const Profile: React.FC = () => {
                   placeholder="Фамилия"
                   register={register}
                   maxLength={50}
+                  minLength={2}
                   pattern={REGEX_USER_NAME}
                   textErrorPattern={'Допускается использование пробелов, кириллица, латиница, дефис'}
-                  textError={'Требуется от 1 до 50 симоволов'}
+                  textError={'Требуется от 2 до 50 символов'}
                   isInvalid={Boolean(errors.last_name)}
                 />
                 <span className={errors?.last_name ? errorVisible : errorInvisible}>
@@ -175,9 +176,10 @@ const Profile: React.FC = () => {
                   placeholder="Имя"
                   register={register}
                   maxLength={50}
+                  minLength={2}
                   pattern={REGEX_USER_NAME}
                   textErrorPattern={'Допускается использование пробелов, кириллица, латиница, дефис'}
-                  textError={'Требуется от 1 до 50 симоволов'}
+                  textError={'Требуется от 2 до 50 символов'}
                   isInvalid={Boolean(errors.first_name)}
                 />
                 <span className={errors?.first_name ? errorVisible : errorInvisible}>
