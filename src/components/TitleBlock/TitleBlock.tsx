@@ -35,7 +35,6 @@ const TitleBlock = ({ text, isBack, isEdit, path, isVisibleLinkLike }: TitleBloc
         )}
         {isVisibleLinkLike && (
           <div className={styles.titlePage__wrap}>
-            <button type="button" className={`${styles.titlePage__btn} ${styles.titlePage__link}`}></button>
             <button type="submit" className={`${styles.titlePage__btn} ${styles.titlePage__like}`}></button>
           </div>
         )}

@@ -33,7 +33,7 @@ import { useAppSelector } from './redux/store';
 import EditClient from './pages/EditClient/EditClient';
 import ChangePasswordModal from './components/Modal/ChangePasswordModal/ChangePasswordModal';
 import ForgotPasswordTooltipModal from './components/Modal/ForgotPasswordTooltipModal/ForgotPasswordTooltipModal';
-import SpecialistCard from './pages/SpecialistCard/SpecialistCard';
+import SpecialistPage from './pages/SpecialistPage/SpecialistPage';
 
 function App() {
   const location = useLocation();
@@ -79,7 +79,7 @@ function App() {
         <Route path="/workout-plan/create" element={<AddPlanTraining />} />
         <Route path="/workout-plan/edit" element={<EditPlanTraining />} />
         <Route path="/workout-report" element={<TrainingReport />} />
-        <Route path="/spec-card" element={<SpecialistCard />} />
+        <Route path="/spec-card" element={<SpecialistPage />} />
       </Routes>
       {!navBarHideCases.includes(location.pathname) && <NavBar />}
       <ConfirmationTooltip

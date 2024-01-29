@@ -32,7 +32,11 @@
       box-sizing: border-box;
       max-width: 645px;
       margin: 0;
-      padding: 40px 0 0 40px;
+      padding: 40px 30px 0 40px;
+    }
+
+    @media (min-width: 1060px) {
+      padding-right: 0;
     }
   }
 
