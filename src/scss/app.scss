@@ -30,13 +30,13 @@
 
     @media (min-width: 768px) {
       box-sizing: border-box;
-      max-width: 685px;
+      max-width: 645px;
       margin: 0;
       padding: 40px 0 0 40px;
     }
   }
 
-  &__not-found-element{
+  &__not-found-element {
     color: $black-800;
     text-align: center;
     padding: 75px 0;

@@ -3,13 +3,14 @@ import styles from './TitleBlock.module.scss';
 import editIcon from '../../assets/images/icons/edit-icon.svg';
 
 type TitleBlockProps = {
-  text: string;
+  text?: string;
   isBack?: boolean;
   isEdit?: boolean;
   path?: string;
+  isVisibleLinkLike?: boolean;
 };
 
-const TitleBlock = ({ text, isBack, isEdit, path }: TitleBlockProps) => {
+const TitleBlock = ({ text, isBack, isEdit, path, isVisibleLinkLike }: TitleBlockProps) => {
   const navigate = useNavigate();
   const goBack = () => {
     navigate(-1);
@@ -31,6 +32,12 @@ const TitleBlock = ({ text, isBack, isEdit, path }: TitleBlockProps) => {
           <Link to={path} className={styles.titlePage__edit}>
             <img src={editIcon} alt="кнопка редактирования" />
           </Link>
+        )}
+        {isVisibleLinkLike && (
+          <div className={styles.titlePage__wrap}>
+            <button type="button" className={`${styles.titlePage__btn} ${styles.titlePage__link}`}></button>
+            <button type="submit" className={`${styles.titlePage__btn} ${styles.titlePage__like}`}></button>
+          </div>
         )}
       </div>
     </nav>
