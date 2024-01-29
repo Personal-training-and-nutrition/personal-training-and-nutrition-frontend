@@ -7,6 +7,14 @@
     display: grid;
     gap: 4px;
   }
+  &__foto {
+    display: block;
+    width: 343px;
+    height: 342px;
+    border-radius: 20px;
+    scroll-snap-align: start;
+    // transform: translateX();
+  }
   &__name {
     font-size: 22px;
     font-weight: 700;

@@ -1,9 +1,16 @@
+import Slider from '../Slider/Slider';
 import styles from './PersonalDataSpec.module.scss';
+import foto from '../../assets/images/spec-card/foto-spec.svg';
 
 const PersonalDataSpec: React.FC = () => {
   return (
     <section className={styles.personalData}>
-      <div>Карусель фото</div>
+      <Slider>
+        <img className={styles.personalData__foto} alt="" src={foto} />
+        <img className={styles.personalData__foto} alt="" src={foto} />
+        <img className={styles.personalData__foto} alt="" src={foto} />
+      </Slider>
+
       <div className={styles.personalData__wrap}>
         <h3 className={styles.personalData__name}>Александра Груздева</h3>
         <p className={styles.personalData__profession}>Нутрициолог, диетолог</p>
