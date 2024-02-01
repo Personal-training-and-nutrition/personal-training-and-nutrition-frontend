@@ -1,6 +1,11 @@
 @import '../../scss/colors/colors.scss';
 
-.specialist__page {
-  display: grid;
-  gap: 40px;
+.specialist {
+  &__container {
+    padding: 0 0 80px;
+  }
+  &__page {
+    display: grid;
+    gap: 40px;
+  }
 }
