@@ -1,0 +1,79 @@
+@import '../../../scss/colors/colors.scss';
+.services {
+  display: grid;
+  gap: 16px;
+  &__title {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 22px;
+    letter-spacing: 0px;
+  }
+  &__list {
+    margin: 0;
+    padding: 16px;
+    list-style: none;
+    background-color: $gray-300;
+    border-radius: 16px;
+    display: grid;
+    gap: 12px;
+  }
+  &__item {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 4px;
+  }
+  &__name {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 21px;
+    letter-spacing: 0px;
+    color: $blue-700;
+  }
+  &__price {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0px;
+    text-align: end;
+  }
+  &__discription {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0px;
+    grid-column-start: 1;
+    grid-column-end: 3;
+  }
+  &__wrap {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+  }
+  &__btn {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0px;
+    color: $blue-600;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid $blue-600;
+    padding: 0;
+    cursor: pointer;
+  }
+  &__arrow {
+    display: block;
+    width: 12px;
+    height: 6px;
+    &_up {
+      background-image: url(../../../assets/images/spec-card/arrow-up-blue.svg);
+    }
+    &_down {
+      background-image: url(../../../assets/images/spec-card/arrow-down-blue.svg);
+    }
+  }
+}

@@ -1,10 +1,8 @@
-// import { useState } from 'react';
 import ResumeLayot from '../ResumeLayot/ResumeLayot';
 import { useAppDispatch, useAppSelector } from '../../../redux/store';
 import { toggleVisibleExperience } from '../../../redux/slices/specialistSlice';
 
 const Experience: React.FC = () => {
-  // const [isVisible, setVisible] = useState<boolean>(false);
   const dispatch = useAppDispatch();
   const isVisibleExperience = useAppSelector((store) => store.specialist.isVisibleExperience);
 

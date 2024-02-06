@@ -1,6 +1,7 @@
 import Education from '../../components/SpecialistPageBlocks/Education/Education';
 import Experience from '../../components/SpecialistPageBlocks/Experience/Experience';
 import PersonalDataSpec from '../../components/SpecialistPageBlocks/PersonalDataSpec/PersonalDataSpec';
+import Services from '../../components/SpecialistPageBlocks/Services/Services';
 import TitleBlock from '../../components/TitleBlock/TitleBlock';
 import styles from './SpecialistPage.module.scss';
 
@@ -11,7 +12,7 @@ const SpecialistPage: React.FC = () => {
         <TitleBlock isBack={true} isVisibleLinkLike={true} />
         <div className={styles.specialist__page}>
           <PersonalDataSpec />
-          {/* <ServiceSpec /> */}
+          <Services />
           {/* <AboutSpec /> */}
           <Education />
           <Experience />
