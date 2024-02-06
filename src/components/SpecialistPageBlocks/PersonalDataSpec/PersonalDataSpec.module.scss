@@ -3,6 +3,7 @@
 .personalData {
   display: grid;
   gap: 8px;
+  grid-area: personalData;
   &__wrap {
     display: grid;
     gap: 4px;

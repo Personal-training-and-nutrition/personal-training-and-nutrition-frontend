@@ -2,10 +2,35 @@
 
 .specialist {
   &__container {
+    display: grid;
     padding: 0 0 80px;
   }
   &__page {
     display: grid;
     gap: 40px;
+    // grid-template-columns: 1fr;
+    // // grid-template-rows: repeat(4, 1fr);
+    grid-template-areas:
+      'personalData'
+      'services'
+      'education'
+      'expirience'
+      'buttons';
+
+    @media (min-width: 768px) {
+      grid-template-areas:
+        'personalData'
+        'buttons'
+        'services'
+        'education'
+        'expirience';
+    }
+  }
+
+  &__btn {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 8px;
+    grid-area: buttons;
   }
 }

@@ -1,3 +1,4 @@
+import Button from '../../components/Button/Button';
 import Education from '../../components/SpecialistPageBlocks/Education/Education';
 import Experience from '../../components/SpecialistPageBlocks/Experience/Experience';
 import PersonalDataSpec from '../../components/SpecialistPageBlocks/PersonalDataSpec/PersonalDataSpec';
@@ -18,8 +19,11 @@ const SpecialistPage: React.FC = () => {
           <Experience />
           {/* <DocumentsSpec /> */}
           {/* <Feedback /> */}
+          <div className={styles.specialist__btn}>
+            <Button textBtn="Записаться" type="submit" isDirty={true} isValid={true} style={true} />
+            <Button textBtn="Написать" type="button" isDirty={true} isValid={true} />
+          </div>
         </div>
-        <button />
       </div>
     </main>
   );

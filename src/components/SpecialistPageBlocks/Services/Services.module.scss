@@ -2,6 +2,7 @@
 .services {
   display: grid;
   gap: 16px;
+  grid-area: services;
   &__title {
     margin: 0;
     font-size: 18px;
