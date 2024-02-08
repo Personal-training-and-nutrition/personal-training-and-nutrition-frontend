@@ -34,7 +34,13 @@ const AboutClientCard = <TFormValues extends FieldValues>({
         ></button>
       </div>
       <div className={isShowCard ? `${styles.cc__inputWrap} ${styles.cc__inputWrap_show}` : `${styles.cc__inputWrap}`}>
-        <Textarea name={textareaName} placeholder={textaeraPlaceholder} register={register} />
+        <Textarea
+          name={textareaName}
+          placeholder={textaeraPlaceholder}
+          register={register}
+          maxLength={300}
+          minLength={1}
+        />
       </div>
     </li>
   );

@@ -6,19 +6,34 @@ type Props<TFormValues extends FieldValues> = {
   label: string;
   placeholder: string;
   register: UseFormRegister<TFormValues>;
+  textError?: string;
+  maxValue?: number;
+  isInvalid?: boolean;
 };
 
-const InputNumber = <TFormValues extends FieldValues>({ name, label, placeholder, register }: Props<TFormValues>) => {
+const InputNumber = <TFormValues extends FieldValues>({
+  name,
+  label,
+  placeholder,
+  register,
+  maxValue,
+  textError,
+  isInvalid,
+}: Props<TFormValues>) => {
   return (
     <div className={styles.inputNum__wrapper}>
       <label className={styles.inputNum__label} htmlFor={name}>
         {label}
       </label>
       <input
-        className={styles.inputNum__input}
+        className={isInvalid ? `${styles.inputNum__input} ${styles.inputNum__input_invalid}` : styles.inputNum__input}
         type="number"
         placeholder={placeholder}
-        {...register(name, { maxLength: 3, minLength: 1 })}
+        {...register(name, {
+          maxLength: 3,
+          minLength: 1,
+          max: { value: maxValue!, message: textError || '' },
+        })}
       />
     </div>
   );

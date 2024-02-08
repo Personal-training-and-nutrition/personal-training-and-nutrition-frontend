@@ -14,9 +14,11 @@ import meal5 from '../assets/images/dayweekMeal/meal-5-img.png';
 import meal6 from '../assets/images/dayweekMeal/meal-6-img.png';
 import meal7 from '../assets/images/dayweekMeal/meal-7-img.png';
 
+export const REGEX_USER_NAME = /^[A-Za-zА-Яа-яЁё/s /-]+$/;
+
 export type DayBlockType = {
   day: string;
-  weekday?: number | string,
+  weekday?: number | string;
   nameInput: string;
   placeholder: string;
   image: string;
@@ -34,7 +36,7 @@ export const navBarHideCases = [
   // '/password-recovery/success',
   '/meal-plan/unauth',
   '/workout-plan/unauth',
-  '/reset-password/'
+  '/reset-password/',
 ];
 
 export const trainingData: DayBlockType = [

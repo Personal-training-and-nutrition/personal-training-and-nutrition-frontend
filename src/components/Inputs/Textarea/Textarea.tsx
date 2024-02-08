@@ -5,12 +5,33 @@ type Props<TFormValues extends FieldValues> = {
   placeholder: string;
   name: Path<TFormValues>;
   register: UseFormRegister<TFormValues>;
+  maxLength: number;
+  minLength: number;
 };
 
-const Textarea = <TFormValues extends FieldValues>({ placeholder, name, register }: Props<TFormValues>) => {
+const Textarea = <TFormValues extends FieldValues>({
+  placeholder,
+  name,
+  register,
+  maxLength,
+  minLength,
+}: Props<TFormValues>) => {
   return (
     <>
-      <textarea className={styles.textarea__input} placeholder={placeholder} {...register(name)}></textarea>
+      <textarea
+        className={styles.textarea__input}
+        placeholder={placeholder}
+        {...register(name, {
+          maxLength: {
+            value: maxLength,
+            message: 'error message',
+          },
+          minLength: {
+            value: minLength,
+            message: 'error message',
+          },
+        })}
+      ></textarea>
     </>
   );
 };
