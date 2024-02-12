@@ -1,11 +1,11 @@
-import styles from './NavBar.module.scss';
-import {Link, NavLink, useNavigate} from 'react-router-dom';
 import React from 'react';
-import { navBarSpecialistItemList, navBarUserItemList } from '../../utils/NabBarParams';
-import logo from '../../assets/logo.svg';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import exitIcon from '../../assets/images/icons/exit-icon.svg';
-import { useAppDispatch, useAppSelector } from '../../redux/store';
+import logo from '../../assets/logo.svg';
 import { logout } from '../../redux/slices/userSlice';
+import { useAppDispatch, useAppSelector } from '../../redux/store';
+import { navBarSpecialistItemList, navBarUserItemList } from '../../utils/NabBarParams';
+import styles from './NavBar.module.scss';
 
 const NavBar: React.FC = () => {
   const isSpecialist = useAppSelector((store) => store.user.isSpecialist);
@@ -13,11 +13,11 @@ const NavBar: React.FC = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const handleLogout =  () => {
-    localStorage.removeItem('accessToken')
-    dispatch(logout())
-    navigate('/')
-  }
+  const handleLogout = () => {
+    localStorage.removeItem('accessToken');
+    dispatch(logout());
+    navigate('/');
+  };
 
   const activeClassName = ({ isActive }: { isActive: boolean }) => {
     if (isActive) {
@@ -28,7 +28,9 @@ const NavBar: React.FC = () => {
 
   return (
     <nav className={styles.navbar}>
-      <Link to='/'><img className={styles.navbar__logo} src={logo} alt="logo" /> </Link>
+      <Link to="/" className={styles.navbar__logoLink}>
+        <img className={styles.navbar__logo} src={logo} alt="logo" />{' '}
+      </Link>
 
       {listIcons.map((item, index) => (
         <NavLink className={activeClassName} key={index} to={`/${item.link}`}>

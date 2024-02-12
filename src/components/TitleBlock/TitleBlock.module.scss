@@ -2,6 +2,11 @@
 
 .titlePage {
   &__container {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: white;
+
     display: flex;
     justify-content: flex-end;
     align-items: center;

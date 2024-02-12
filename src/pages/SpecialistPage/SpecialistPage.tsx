@@ -11,9 +11,7 @@ const SpecialistPage: React.FC = () => {
   return (
     <main className="App__container">
       <div className={styles.specialist__container}>
-        <div className={styles.specialist__headerPosition}>
-          <TitleBlock isBack={true} isVisibleLinkLike={true} />
-        </div>
+        <TitleBlock isBack={true} isVisibleLinkLike={true} />
         <div className={styles.specialist__page}>
           <PersonalDataSpec />
           <Services />

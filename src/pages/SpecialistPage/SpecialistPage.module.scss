@@ -1,13 +1,6 @@
 @import '../../scss/colors/colors.scss';
 
 .specialist {
-  &__headerPosition {
-    position: sticky;
-    top: 0;
-    z-index: 10000;
-    background-color: white;
-  }
-
   &__container {
     display: grid;
     padding: 0 0;
