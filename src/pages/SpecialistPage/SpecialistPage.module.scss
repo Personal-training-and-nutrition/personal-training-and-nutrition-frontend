@@ -1,18 +1,30 @@
 @import '../../scss/colors/colors.scss';
 
 .specialist {
+  &__headerPosition {
+    position: sticky;
+    top: 0;
+    z-index: 10000;
+    background-color: white;
+  }
+
   &__container {
     display: grid;
-    padding: 0 0 80px;
+    padding: 0 0;
   }
   &__page {
+    // display: flex;
+    // gap: 40px;
+    // flex-direction: column;
     display: grid;
+    grid-template-columns: 1fr;
     gap: 40px;
-    // grid-template-columns: 1fr;
-    // // grid-template-rows: repeat(4, 1fr);
+
+    // grid-template-rows: repeat(4, 1fr);
     grid-template-areas:
       'personalData'
       'services'
+      'aboutMe'
       'education'
       'expirience'
       'buttons';
@@ -22,15 +34,23 @@
         'personalData'
         'buttons'
         'services'
+        'aboutMe'
         'education'
         'expirience';
     }
   }
 
   &__btn {
+    position: sticky;
+    bottom: 29px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: 8px;
     grid-area: buttons;
+    @media (min-width: 768px) {
+      // position: relative;
+      // bottom: 0;
+      top: 44px;
+    }
   }
 }

@@ -37,6 +37,7 @@ export const navBarHideCases = [
   '/meal-plan/unauth',
   '/workout-plan/unauth',
   '/reset-password/',
+  // '/spec-card',
 ];
 
 export const trainingData: DayBlockType = [

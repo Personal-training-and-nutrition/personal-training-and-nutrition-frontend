@@ -5,6 +5,7 @@ export const initialState: ISpecialist = {
   isVisibleEducation: false,
   isVisibleExperience: false,
   isOpenService: false,
+  // isVisibleTextAboutMe: false,
 };
 
 const specialistSlice = createSlice({
