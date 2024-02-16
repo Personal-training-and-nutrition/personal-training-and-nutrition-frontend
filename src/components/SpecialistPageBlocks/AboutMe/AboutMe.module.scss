@@ -5,8 +5,6 @@
   gap: 16px;
   grid-area: aboutMe;
 
-  // &__description {
-  // }
   &__title {
     margin: 0;
     font-size: 18px;
@@ -63,19 +61,7 @@
     gap: 8px;
     padding: 0;
     margin: 0;
-    // position: relative;
-    // height: 121px;
-    // overflow: hidden;
-    // &:last-of-type {
-    //   position: relative;
-    // }
   }
-
-  // &__skillsListWrap {
-  //   display: flex;
-  //   flex-wrap: wrap;
-  //   gap: 8px;
-  // }
   &__skill {
     display: inline-block;
     width: max-content;
@@ -96,7 +82,6 @@
     cursor: pointer;
     background-color: transparent;
     border: none;
-    // position: absolute;
     &:hover {
       opacity: 0.6;
     }

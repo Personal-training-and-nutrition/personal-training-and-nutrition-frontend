@@ -21,10 +21,8 @@ const SpecialistPage: React.FC = () => {
           {/* <DocumentsSpec /> */}
           {/* <Feedback /> */}
           <div className={styles.specialist__btn}>
-            {/* <div className={styles.specialist__btn22}> */}
             <Button textBtn="Записаться" type="submit" isDirty={true} isValid={true} style={true} />
             <Button textBtn="Написать" type="button" isDirty={true} isValid={true} />
-            {/* </div> */}
           </div>
         </div>
       </div>

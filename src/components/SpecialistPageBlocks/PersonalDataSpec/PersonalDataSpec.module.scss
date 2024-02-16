@@ -8,14 +8,13 @@
     display: grid;
     gap: 4px;
   }
-  &__foto {
-    display: block;
-    width: 343px;
-    height: 342px;
-    border-radius: 20px;
-    scroll-snap-align: start;
-    // transform: translateX();
-  }
+  // &__foto {
+  //   display: block;
+  //   width: 343px;
+  //   height: 342px;
+  //   border-radius: 20px;
+  //   scroll-snap-align: start;
+  // }
   &__name {
     font-size: 22px;
     font-weight: 700;
@@ -42,7 +41,7 @@
   }
   &__verifiedIcon {
     display: block;
-    background-image: url(../../assets/images/spec-card/checkmark-icon.svg);
+    background-image: url(../../../assets/images/spec-card/checkmark-icon.svg);
     width: 17px;
     height: 17px;
   }
@@ -75,10 +74,10 @@
     height: 24px;
   }
   &__iconComment {
-    background-image: url(../../assets/images/spec-card/comment-icon.svg);
+    background-image: url(../../../assets/images/spec-card/comment-icon.svg);
   }
   &__iconStar {
-    background-image: url(../../assets/images/spec-card/star-icon.svg);
+    background-image: url(../../../assets/images/spec-card/star-icon.svg);
   }
   &__ratingTitle {
     margin: 0;
@@ -105,10 +104,10 @@
     width: 20px;
     height: 17px;
     &_online {
-      background-image: url(../../assets/images/spec-card/camera-icon.svg);
+      background-image: url(../../../assets/images/spec-card/camera-icon.svg);
     }
     &_point {
-      background-image: url(../../assets/images/spec-card/point-icon.svg);
+      background-image: url(../../../assets/images/spec-card/point-icon.svg);
     }
   }
 }

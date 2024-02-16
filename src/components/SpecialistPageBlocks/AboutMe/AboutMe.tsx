@@ -4,7 +4,7 @@ import tg from '../../../assets/images/spec-card/telegram-icon.svg';
 import vk from '../../../assets/images/spec-card/vk-icon.svg';
 import youtube from '../../../assets/images/spec-card/youtube-icon.svg';
 import styles from './AboutMe.module.scss';
-const AboutMe: React.FC<AboutMeProps> = (props) => {
+const AboutMe = () => {
   const [isShowMoreText, setShowMoreText] = useState(false);
   const [isShowMoreSkills, setShowMoreSkills] = useState(false);
   const skills = [
