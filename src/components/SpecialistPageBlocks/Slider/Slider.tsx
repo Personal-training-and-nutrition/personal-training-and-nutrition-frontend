@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import foto from '../../assets/images/spec-card/foto-spec.svg';
+import foto from '../../../assets/images/spec-card/foto-spec.svg';
 import styles from './Slider.module.scss';
 
 const arrImage: string[] = [foto, foto, foto, foto, foto];

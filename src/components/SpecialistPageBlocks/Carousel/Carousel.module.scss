@@ -1,0 +1,28 @@
+.carousel {
+  overflow: hidden;
+  max-width: 375px;
+  // margin-bottom: 24px;
+  position: relative;
+  @media (min-width: 575px) {
+    max-width: 575px;
+  }
+  @media (min-width: 768px) {
+    max-width: 645px;
+    // margin: 36px 0 30px;
+  }
+
+  &__container {
+    position: relative;
+    width: 100%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    will-change: transform;
+    user-select: none;
+    cursor: pointer;
+    scrollbar-width: none;
+    display: flex;
+    gap: 8px;
+    transition: transform 1s ease-in-out;
+  }
+}

@@ -1,5 +1,6 @@
 import Button from '../../components/Button/Button';
 import AboutMe from '../../components/SpecialistPageBlocks/AboutMe/AboutMe';
+import Certificate from '../../components/SpecialistPageBlocks/Certificate/Certificate';
 import Education from '../../components/SpecialistPageBlocks/Education/Education';
 import Experience from '../../components/SpecialistPageBlocks/Experience/Experience';
 import PersonalDataSpec from '../../components/SpecialistPageBlocks/PersonalDataSpec/PersonalDataSpec';
@@ -18,7 +19,7 @@ const SpecialistPage: React.FC = () => {
           <AboutMe />
           <Education />
           <Experience />
-          {/* <DocumentsSpec /> */}
+          <Certificate />
           {/* <Feedback /> */}
           <div className={styles.specialist__btn}>
             <Button textBtn="Записаться" type="submit" isDirty={true} isValid={true} style={true} />
