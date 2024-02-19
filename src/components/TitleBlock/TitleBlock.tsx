@@ -1,6 +1,6 @@
-import { useNavigate, Link } from 'react-router-dom';
-import styles from './TitleBlock.module.scss';
+import { Link, useNavigate } from 'react-router-dom';
 import editIcon from '../../assets/images/icons/edit-icon.svg';
+import styles from './TitleBlock.module.scss';
 
 type TitleBlockProps = {
   text?: string;
@@ -8,9 +8,10 @@ type TitleBlockProps = {
   isEdit?: boolean;
   path?: string;
   isVisibleLinkLike?: boolean;
+  isSort?: boolean;
 };
 
-const TitleBlock = ({ text, isBack, isEdit, path, isVisibleLinkLike }: TitleBlockProps) => {
+const TitleBlock = ({ text, isBack, isEdit, path, isVisibleLinkLike, isSort }: TitleBlockProps) => {
   const navigate = useNavigate();
   const goBack = () => {
     navigate(-1);
@@ -36,6 +37,11 @@ const TitleBlock = ({ text, isBack, isEdit, path, isVisibleLinkLike }: TitleBloc
         {isVisibleLinkLike && (
           <div className={styles.titlePage__wrap}>
             <button type="submit" className={`${styles.titlePage__btn} ${styles.titlePage__like}`}></button>
+          </div>
+        )}
+        {isSort && (
+          <div className={styles.titlePage__wrap}>
+            <button type="button" className={`${styles.titlePage__btn} ${styles.titlePage__sort}`}></button>
           </div>
         )}
       </div>

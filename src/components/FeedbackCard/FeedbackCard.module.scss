@@ -1,0 +1,83 @@
+@import '../../scss/colors/colors.scss';
+.feedBackCard {
+  padding: 16px;
+  display: grid;
+  gap: 12px;
+  background-color: $gray-300;
+  border-radius: 12px;
+  &__header {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__block {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  &__avatar {
+    display: block;
+    width: 40px;
+    height: 40px;
+  }
+  &__wrap {
+    display: grid;
+    gap: 4px;
+  }
+  &__name {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 18px;
+    letter-spacing: 0px;
+  }
+  &__date {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: 0px;
+    color: $blue-600;
+  }
+  &__review {
+    display: flex;
+    gap: 12px;
+  }
+  &__icon {
+    width: 16px;
+    height: 16px;
+    background-image: url(../../assets/images/spec-card/icon-star.svg);
+  }
+  &__contant {
+    display: grid;
+    gap: 8px;
+  }
+  &__text {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: 0px;
+  }
+  &__subtitle {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0px;
+  }
+  &__fotoList {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    gap: 6px;
+  }
+  &__fotoItem {
+    width: 64px;
+    height: 80px;
+  }
+  &__fotoBtn {
+    padding: 0;
+    border: 0;
+  }
+}

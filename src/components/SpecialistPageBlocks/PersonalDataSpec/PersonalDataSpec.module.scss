@@ -66,18 +66,21 @@
   &__ratingList {
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 12px;
   }
   &__ratingIcon {
     display: block;
-    width: 24px;
-    height: 24px;
   }
   &__iconComment {
     background-image: url(../../../assets/images/spec-card/comment-icon.svg);
+    width: 24px;
+    height: 24px;
   }
   &__iconStar {
-    background-image: url(../../../assets/images/spec-card/star-icon.svg);
+    background-image: url(../../../assets/images/spec-card/icon-star.svg);
+
+    width: 16px;
+    height: 16px;
   }
   &__ratingTitle {
     margin: 0;

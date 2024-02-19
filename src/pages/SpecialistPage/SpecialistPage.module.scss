@@ -16,6 +16,8 @@
       'aboutMe'
       'education'
       'expirience'
+      'certificate'
+      'feedback'
       'buttons';
 
     @media (min-width: 768px) {
@@ -25,7 +27,9 @@
         'services'
         'aboutMe'
         'education'
-        'expirience';
+        'expirience'
+        'certificate'
+        'feedback';
     }
   }
 

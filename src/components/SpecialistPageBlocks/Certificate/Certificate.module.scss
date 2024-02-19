@@ -1,6 +1,7 @@
 .certificate {
   display: grid;
   gap: 16px;
+  grid-area: certificate;
   &__title {
     margin: 0;
     font-size: 18px;
@@ -9,10 +10,18 @@
     letter-spacing: 0px;
   }
 
-  &__item {
+  &__btn {
+    background-color: transparent;
+    border: none;
+    padding: 0;
     display: inline-block;
     width: 120px;
     height: 120px;
     scroll-snap-align: center;
+    cursor: pointer;
+  }
+  &__item {
+    width: 120px;
+    height: 120px;
   }
 }

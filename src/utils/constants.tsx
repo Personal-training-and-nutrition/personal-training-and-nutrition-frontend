@@ -16,6 +16,9 @@ import meal7 from '../assets/images/dayweekMeal/meal-7-img.png';
 
 export const REGEX_USER_NAME = /^[A-Za-zА-Яа-яЁё/s /-]+$/;
 
+export const PATH_FEEDBACK_PAGE = '/feedback';
+export const PATH_CARDSPEC_PAGE = '/card-spec';
+
 export type DayBlockType = {
   day: string;
   weekday?: number | string;

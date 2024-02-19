@@ -93,4 +93,11 @@
   &__link {
     background-image: url(../../assets/images/spec-card/link-icon.svg);
   }
+  &__sort {
+    background-image: url(../../assets/images/feedback/sort-icon.svg);
+    width: 16px;
+    height: 16px;
+    margin-left: 4px;
+    background-size: contain;
+  }
 }

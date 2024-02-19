@@ -1,0 +1,54 @@
+@import '../../../scss/colors/colors.scss';
+.feedback {
+  display: grid;
+  gap: 16px;
+  grid-area: feedback;
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__wrap {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  &__title {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 22px;
+    letter-spacing: 0px;
+  }
+  &__icon {
+    width: 16px;
+    height: 16px;
+    background-image: url(../../../assets/images/spec-card/icon-star.svg);
+  }
+  &__subtitle {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0px;
+    margin: 0;
+  }
+  &__btn {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  &__count {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0px;
+    color: $blue-600;
+  }
+  &__arrow {
+    display: inline-block;
+    width: 8px;
+    height: 14px;
+    background-image: url(../../../assets/images/spec-card/arrow-right.svg);
+  }
+}

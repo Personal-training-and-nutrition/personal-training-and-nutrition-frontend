@@ -1,39 +1,40 @@
-import './scss/app.scss';
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
+import './scss/app.scss';
 
-import LandingPage from './pages/LandingPage/LandingPage';
-import Profile from './pages/ProfilePage/Profile';
-import AddPlanMeal from './pages/PlanPage/AddPlanMeal';
-import AddPlanTraining from './pages/PlanPage/AddPlanTraining';
+import { useEffect } from 'react';
 import AuthModal from './components/Modal/AuthModal/AuthModal';
-import RegisterModal from './components/Modal/RegisterModal/RegisterModal';
-import ForgotPasswordModal from './components/Modal/ForgotPasswordModal/ForgotPasswordModal';
-import ResetPasswordModal from './components/Modal/ResetPasswordModal/ResetPasswordModal';
+import ChangePasswordModal from './components/Modal/ChangePasswordModal/ChangePasswordModal';
 import ConfirmationTooltip from './components/Modal/ConfirmationTooltip/ConfirmationTooltip';
-import EditPlanTraining from './pages/PlanPage/EditPlanTraining';
-import EditPlanMeal from './pages/PlanPage/EditPlanMeal';
-import ClientCardPage from './pages/ClientCardPage/ClientCardPage';
-import AddClient from './pages/AddClient/AddClient';
-import Clients from './pages/Clients/Clients';
-import WorkoutPlans from './pages/WorkoutPlans/WorkoutPlans';
-import TrainingReport from './pages/TrainingReport/TrainingReport';
-import PlanUnathMeal from './pages/PlanPage/PlanUnathMeal';
-import PlanUnathTraining from './pages/PlanPage/PlanUnathTraining';
-import WorkoutPlan from './pages/WorkoutPlan/WorkoutPlan';
-import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
+import ForgotPasswordModal from './components/Modal/ForgotPasswordModal/ForgotPasswordModal';
+import ForgotPasswordTooltipModal from './components/Modal/ForgotPasswordTooltipModal/ForgotPasswordTooltipModal';
+import RegisterModal from './components/Modal/RegisterModal/RegisterModal';
+import ResetPasswordModal from './components/Modal/ResetPasswordModal/ResetPasswordModal';
 import NavBar from './components/Navbar/NavBar';
-import { navBarHideCases } from './utils/constants';
-import MealPlans from './pages/MealPlans/MealPlans';
-import MealPlan from './pages/MealPlan/MealPlan';
-import NutritionReport from './pages/NutritionReport/NutritionReport';
 import RequireUser from './components/RequireUser/RequireUser';
 import useIsAuth from './hooks/useIsAuth';
-import { useEffect } from 'react';
-import { useAppSelector } from './redux/store';
+import AddClient from './pages/AddClient/AddClient';
+import ClientCardPage from './pages/ClientCardPage/ClientCardPage';
+import Clients from './pages/Clients/Clients';
 import EditClient from './pages/EditClient/EditClient';
-import ChangePasswordModal from './components/Modal/ChangePasswordModal/ChangePasswordModal';
-import ForgotPasswordTooltipModal from './components/Modal/ForgotPasswordTooltipModal/ForgotPasswordTooltipModal';
+import FeedbackPage from './pages/FeedbackPage/FeedbackPage';
+import LandingPage from './pages/LandingPage/LandingPage';
+import MealPlan from './pages/MealPlan/MealPlan';
+import MealPlans from './pages/MealPlans/MealPlans';
+import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
+import NutritionReport from './pages/NutritionReport/NutritionReport';
+import AddPlanMeal from './pages/PlanPage/AddPlanMeal';
+import AddPlanTraining from './pages/PlanPage/AddPlanTraining';
+import EditPlanMeal from './pages/PlanPage/EditPlanMeal';
+import EditPlanTraining from './pages/PlanPage/EditPlanTraining';
+import PlanUnathMeal from './pages/PlanPage/PlanUnathMeal';
+import PlanUnathTraining from './pages/PlanPage/PlanUnathTraining';
+import Profile from './pages/ProfilePage/Profile';
 import SpecialistPage from './pages/SpecialistPage/SpecialistPage';
+import TrainingReport from './pages/TrainingReport/TrainingReport';
+import WorkoutPlan from './pages/WorkoutPlan/WorkoutPlan';
+import WorkoutPlans from './pages/WorkoutPlans/WorkoutPlans';
+import { useAppSelector } from './redux/store';
+import { PATH_CARDSPEC_PAGE, PATH_FEEDBACK_PAGE, navBarHideCases } from './utils/constants';
 
 function App() {
   const location = useLocation();
@@ -79,7 +80,8 @@ function App() {
         <Route path="/workout-plan/create" element={<AddPlanTraining />} />
         <Route path="/workout-plan/edit" element={<EditPlanTraining />} />
         <Route path="/workout-report" element={<TrainingReport />} />
-        <Route path="/spec-card" element={<SpecialistPage />} />
+        <Route path={PATH_CARDSPEC_PAGE} element={<SpecialistPage />} />
+        <Route path={PATH_FEEDBACK_PAGE} element={<FeedbackPage />} />
       </Routes>
       {!navBarHideCases.includes(location.pathname) && <NavBar />}
       <ConfirmationTooltip

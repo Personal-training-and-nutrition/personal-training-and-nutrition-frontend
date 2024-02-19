@@ -1,0 +1,14 @@
+.feedbackPage {
+  &__container {
+    display: grid;
+    gap: 20px;
+
+    @media (min-width: 768px) {
+      gap: 36px;
+    }
+  }
+  &__page {
+    display: grid;
+    gap: 12px;
+  }
+}

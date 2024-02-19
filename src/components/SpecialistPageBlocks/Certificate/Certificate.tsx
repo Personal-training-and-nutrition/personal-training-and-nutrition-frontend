@@ -4,12 +4,17 @@ import styles from './Certificate.module.scss';
 
 const arrCertif = [certif, certif, certif, certif, certif];
 const Certificate = () => {
+  const handleClick = (index: number) => {
+    console.log(index);
+  };
   return (
     <section className={styles.certificate}>
       <h4 className={styles.certificate__title}>Сертификаты</h4>
       <Carousel>
         {arrCertif.map((image, index) => (
-          <img key={index} className={styles.certificate__item} alt="" src={image} />
+          <button className={styles.certificate__btn} onClick={() => handleClick(index)} key={index}>
+            <img alt="" src={image} className={styles.certificate__item} />
+          </button>
         ))}
       </Carousel>
     </section>
