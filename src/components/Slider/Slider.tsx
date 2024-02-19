@@ -6,11 +6,12 @@ const arrImage: string[] = [foto, foto, foto, foto, foto];
 const Slider = () => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [isDown, setDown] = useState<boolean>(false);
-  const [startX, setStartX] = useState<number>(null);
-  const [scrollLeft, setScrollLeft] = useState<number>(null);
+  const [startX, setStartX] = useState<number>(0);
+  const [scrollLeft, setScrollLeft] = useState<number>(0);
   const [activeSlide, setActiveSlide] = useState<number>(0);
   const WIDTH_SLIDE_ITEM = 343;
   const containerEl = containerRef.current;
+
   useEffect(() => {
     const containerEl = containerRef.current;
     if (containerEl) {
@@ -23,11 +24,11 @@ const Slider = () => {
       };
     }
   }, [isDown]);
-  const handleMouseMove = (e) => {
+  const handleMouseMove = (evt: MouseEvent) => {
     if (containerEl) {
       if (!isDown) return;
-      e.preventDefault();
-      const x = e.pageX - containerEl.offsetLeft;
+      evt.preventDefault();
+      const x = evt.pageX - containerEl.offsetLeft;
       const walk = (x - startX) * 3; //scroll-fast
       containerEl.scrollLeft = scrollLeft - walk;
     }
@@ -46,7 +47,7 @@ const Slider = () => {
       if (scrollLeft >= 1140) setActiveSlide(4);
     }
   };
-  const handleMouseUp = (e) => {
+  const handleMouseUp = () => {
     if (containerEl) {
       findActiveSlide();
       containerEl.removeEventListener('mousemove', handleMouseMove);
@@ -54,10 +55,10 @@ const Slider = () => {
     setDown(false);
   };
 
-  const handleMouseDown = (e) => {
+  const handleMouseDown = (evt) => {
     if (containerEl) {
       setDown(true);
-      setStartX(e.pageX - containerEl.offsetLeft);
+      setStartX(evt.pageX - containerEl.offsetLeft);
       setScrollLeft(containerEl.scrollLeft);
     }
   };
