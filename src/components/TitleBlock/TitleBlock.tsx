@@ -40,9 +40,10 @@ const TitleBlock = ({ text, isBack, isEdit, path, isVisibleLinkLike, isSort }: T
           </div>
         )}
         {isSort && (
-          <div className={styles.titlePage__wrap}>
+          <button className={styles.titlePage__wrapSort}>
+            <p className={styles.titlePage__text}>Сортировка</p>
             <button type="button" className={`${styles.titlePage__btn} ${styles.titlePage__sort}`}></button>
-          </div>
+          </button>
         )}
       </div>
     </nav>
