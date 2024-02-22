@@ -1,5 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 import editIcon from '../../assets/images/icons/edit-icon.svg';
+import SortBlock from '../SortBlock/SortBlock';
 import styles from './TitleBlock.module.scss';
 
 type TitleBlockProps = {
@@ -39,12 +40,7 @@ const TitleBlock = ({ text, isBack, isEdit, path, isVisibleLinkLike, isSort }: T
             <button type="submit" className={`${styles.titlePage__btn} ${styles.titlePage__like}`}></button>
           </div>
         )}
-        {isSort && (
-          <button className={styles.titlePage__wrapSort}>
-            <p className={styles.titlePage__text}>Сортировка</p>
-            <button type="button" className={`${styles.titlePage__btn} ${styles.titlePage__sort}`}></button>
-          </button>
-        )}
+        {isSort && <SortBlock />}
       </div>
     </nav>
   );

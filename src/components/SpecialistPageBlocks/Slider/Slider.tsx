@@ -10,7 +10,6 @@ const Slider = () => {
   const [scrollLeft, setScrollLeft] = useState<number>(0);
   const [activeSlide, setActiveSlide] = useState<number>(0);
   const WIDTH_SLIDE_ITEM = 343;
-  const containerEl = containerRef.current;
 
   useEffect(() => {
     const containerEl = containerRef.current;
@@ -19,12 +18,11 @@ const Slider = () => {
         containerEl.addEventListener('mousemove', handleMouseMove);
         containerEl.addEventListener('mouseup', handleMouseUp);
       }
-      return () => {
-        containerEl.removeEventListener('mouseup', handleMouseUp);
-      };
     }
   }, [isDown]);
   const handleMouseMove = (evt: MouseEvent) => {
+    const containerEl = containerRef.current;
+
     if (containerEl) {
       if (!isDown) return;
       evt.preventDefault();
@@ -34,11 +32,11 @@ const Slider = () => {
     }
   };
   const findActiveSlide = () => {
+    const containerEl = containerRef.current;
+
     if (containerEl) {
       // const scrollWidth = containerEl.scrollWidth; // ширина всей карусели
-      const scrollLeft = containerEl.scrollLeft; // на сколько сдвинута карусель влево
-      // console.log('scrollLeft <= WIDTH_SLIDE_ITEM', scrollLeft, WIDTH_SLIDE_ITEM);
-      // console.log('scrollLeft <= scrollWidth - WIDTH_SLIDE_ITEM', scrollLeft, scrollWidth - WIDTH_SLIDE_ITEM);
+      const scrollLeft = containerEl.scrollLeft;
 
       if (scrollLeft >= 0 && scrollLeft < 89) setActiveSlide(0);
       if (scrollLeft >= 89 && scrollLeft <= 440) setActiveSlide(1);
@@ -48,6 +46,8 @@ const Slider = () => {
     }
   };
   const handleMouseUp = () => {
+    const containerEl = containerRef.current;
+
     if (containerEl) {
       findActiveSlide();
       containerEl.removeEventListener('mousemove', handleMouseMove);
@@ -56,6 +56,8 @@ const Slider = () => {
   };
 
   const handleMouseDown = (evt) => {
+    const containerEl = containerRef.current;
+
     if (containerEl) {
       setDown(true);
       setStartX(evt.pageX - containerEl.offsetLeft);
@@ -64,6 +66,8 @@ const Slider = () => {
   };
 
   const handlerClickDot = (index: number) => {
+    const containerEl = containerRef.current;
+
     if (containerEl) {
       containerEl.scrollTo({
         left: (WIDTH_SLIDE_ITEM ?? 0) * index,

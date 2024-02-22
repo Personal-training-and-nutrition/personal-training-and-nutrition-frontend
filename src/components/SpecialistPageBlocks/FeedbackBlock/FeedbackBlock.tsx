@@ -44,7 +44,7 @@ const FeedbackBlock = () => {
           <p className={styles.feedback__subtitle}>5,0</p>
         </div>
         <Link to={PATH_FEEDBACK_PAGE} state={{ arrFeedback: arrFeedback }} className={styles.feedback__btn}>
-          <div className={styles.feedback__count}>15 отзывов</div>
+          <div className={styles.feedback__count}>3 отзыва</div>
           <span className={styles.feedback__arrow}></span>
         </Link>
       </div>

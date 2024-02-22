@@ -37,6 +37,9 @@
     display: flex;
     align-items: center;
     gap: 8px;
+    &:hover {
+      opacity: 0.6;
+    }
   }
   &__count {
     font-size: 15px;

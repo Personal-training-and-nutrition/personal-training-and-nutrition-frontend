@@ -6,11 +6,12 @@ import styles from './FeedbackPage.module.scss';
 
 const FeedbackPage = () => {
   const { state } = useLocation();
+  // const dispatch = useAppDispatch();
   const arrFeedback: IFeedbackCard[] = state.arrFeedback;
   return (
     <main className="App__container">
       <div className={styles.feedbackPage__container}>
-        <TitleBlock text="отзывы (15)" isBack={true} isSort={true} />
+        <TitleBlock text="отзывы (3)" isBack={true} isSort={true} />
         <div className={styles.feedbackPage__page}>
           {arrFeedback &&
             arrFeedback.length !== 0 &&

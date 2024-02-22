@@ -39,6 +39,9 @@
     &_hidden {
       background-image: url(../../../assets/images/client-card/unfold.svg);
     }
+    &:hover {
+      opacity: 0.6;
+    }
   }
 
   &__list {

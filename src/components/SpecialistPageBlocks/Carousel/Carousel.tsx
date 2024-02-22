@@ -10,7 +10,6 @@ const Carousel = ({ children }: ICarousel) => {
   const [isDown, setDown] = useState<boolean>(false);
   const [startX, setStartX] = useState<number>(0);
   const [scrollLeft, setScrollLeft] = useState<number>(0);
-  const containerEl = containerRef.current;
 
   useEffect(() => {
     const containerEl = containerRef.current;
@@ -19,12 +18,10 @@ const Carousel = ({ children }: ICarousel) => {
         containerEl.addEventListener('mousemove', handleMouseMove);
         containerEl.addEventListener('mouseup', handleMouseUp);
       }
-      return () => {
-        containerEl.removeEventListener('mouseup', handleMouseUp);
-      };
     }
   }, [isDown]);
   const handleMouseMove = (evt: MouseEvent) => {
+    const containerEl = containerRef.current;
     if (containerEl) {
       if (!isDown) return;
       evt.preventDefault();
@@ -35,6 +32,7 @@ const Carousel = ({ children }: ICarousel) => {
   };
 
   const handleMouseUp = () => {
+    const containerEl = containerRef.current;
     if (containerEl) {
       containerEl.removeEventListener('mousemove', handleMouseMove);
     }
@@ -42,6 +40,7 @@ const Carousel = ({ children }: ICarousel) => {
   };
 
   const handleMouseDown = (evt) => {
+    const containerEl = containerRef.current;
     if (containerEl) {
       setDown(true);
       setStartX(evt.pageX - containerEl.offsetLeft);
