@@ -39,7 +39,7 @@ const Carousel = ({ children }: ICarousel) => {
     setDown(false);
   };
 
-  const handleMouseDown = (evt) => {
+  const handleMouseDown = (evt: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     const containerEl = containerRef.current;
     if (containerEl) {
       setDown(true);
@@ -50,7 +50,7 @@ const Carousel = ({ children }: ICarousel) => {
 
   return (
     <div className={styles.carousel}>
-      <div className={styles.carousel__container} ref={containerRef} onMouseDown={handleMouseDown}>
+      <div className={styles.carousel__container} ref={containerRef} onMouseDown={(evt) => handleMouseDown(evt)}>
         {children}
       </div>
     </div>

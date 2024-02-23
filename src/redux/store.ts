@@ -3,6 +3,7 @@ import landingReducer from './slices/landingPageSlice';
 import currentClientReducer from './slices/clientSlice';
 import modalReducer from './slices/modalsSlice';
 import userReducer from './slices/userSlice';
+import feedbackReducer from './slices/feedbackSlice';
 import specialistReducer from './slices/specialistSlice';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { loginMiddleware, refreshMiddleware } from './middleware/tokensStorage';
@@ -20,6 +21,7 @@ export const store = configureStore({
     currentClient: currentClientReducer,
     modal: modalReducer,
     specialist: specialistReducer,
+    feedback: feedbackReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat([combinedApi.middleware, loginMiddleware.middleware, refreshMiddleware.middleware]),

@@ -1,16 +1,22 @@
-import { useEffect, useRef, useState } from 'react';
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+import { useEffect, useRef } from 'react';
 import styles from './SortBlock.module.scss';
+import { useAppDispatch, useAppSelector } from '../../redux/store';
+import { SortType } from '../../redux/types/feedback';
+import { setOpen, setSort, toggleOpen } from '../../redux/slices/feedbackSlice';
 
-type SortItem = { name: string };
-const sortList: SortItem[] = [
+const sortList: SortType[] = [
+  { name: 'Сортировка' },
   { name: 'По дате ↓' },
   { name: 'По дате ↑' },
   { name: 'По оценке ↓' },
   { name: 'По оценке ↑' },
 ];
 const SortBlock = () => {
-  const [isOpen, setIsOpen] = useState(false);
   const sortRef = useRef<HTMLDivElement>(null);
+  const dispatch = useAppDispatch();
+  const isOpen = useAppSelector((store) => store.feedback.isOpen);
+  const sort = useAppSelector((store) => store.feedback.sort);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -24,7 +30,7 @@ const SortBlock = () => {
 
   const handleSortBtnClick = (evt: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     evt.stopPropagation();
-    setIsOpen(!isOpen);
+    dispatch(toggleOpen());
   };
 
   const handleClickOutside = ({ target }: MouseEvent): void => {
@@ -34,7 +40,6 @@ const SortBlock = () => {
   };
   const handleCloseByEsc = (evt: KeyboardEvent) => {
     if (evt.key === 'Escape') {
-      // dispatch(closeModal())
       handleClose();
     }
   };
@@ -44,22 +49,25 @@ const SortBlock = () => {
     }
   };
   const handleClose = () => {
-    setIsOpen(false);
+    dispatch(setOpen(false));
   };
-
+  const onClickselectSort = (obj: SortType) => {
+    dispatch(setSort(obj));
+    handleClose();
+  };
   return (
     <>
       <button className={styles.sortBlock__wrapSort} type="button" onClick={(evt) => handleSortBtnClick(evt)}>
-        <p className={styles.sortBlock__text}>Сортировка</p>
+        <p className={styles.sortBlock__text}>{sort.name}</p>
         <div className={`${styles.sortBlock__btn} ${styles.sortBlock__sort}`}></div>
       </button>
       {isOpen && (
         <div className={styles.sortBlock__container} onMouseDown={handleOverlayClose} ref={sortRef}>
           <ul className={styles.sortBlock__list}>
-            {sortList.map((el, i) => {
+            {sortList.map((obj, i) => {
               return (
-                <li key={i} className={styles.sortBlock__item}>
-                  <p className={`${styles.sortBlock__text} ${styles.sortBlock__text_unactive}`}>{el.name}</p>
+                <li key={i} className={styles.sortBlock__item} onClick={() => onClickselectSort(obj)}>
+                  <p className={`${styles.sortBlock__text} ${styles.sortBlock__text_unactive}`}>{obj.name}</p>
                 </li>
               );
             })}
