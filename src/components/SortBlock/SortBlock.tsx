@@ -11,24 +11,35 @@ const sortList: SortItem[] = [
 const SortBlock = () => {
   const [isOpen, setIsOpen] = useState(false);
   const sortRef = useRef<HTMLDivElement>(null);
-  const handleSortBtnClick = () => {
-    setIsOpen(!isOpen);
-  };
 
   useEffect(() => {
     if (!isOpen) return;
-    const closeByEsc = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        // dispatch(closeModal())
-        setIsOpen(false);
-      }
+    document.body.addEventListener('click', handleClickOutside);
+    document.addEventListener('keydown', handleCloseByEsc);
+    return () => {
+      document.removeEventListener('keydown', handleCloseByEsc);
+      document.body.removeEventListener('click', handleClickOutside);
     };
-    document.addEventListener('keydown', closeByEsc);
-    return () => document.removeEventListener('keydown', closeByEsc);
   }, [isOpen]);
 
-  const handleOverlayClose = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (e.target === e.currentTarget) {
+  const handleSortBtnClick = (evt: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    evt.stopPropagation();
+    setIsOpen(!isOpen);
+  };
+
+  const handleClickOutside = ({ target }: MouseEvent): void => {
+    if (sortRef.current && !sortRef.current.contains(target as Node)) {
+      handleClose();
+    }
+  };
+  const handleCloseByEsc = (evt: KeyboardEvent) => {
+    if (evt.key === 'Escape') {
+      // dispatch(closeModal())
+      handleClose();
+    }
+  };
+  const handleOverlayClose = (evt: React.MouseEvent<HTMLDivElement>) => {
+    if (evt.target === evt.currentTarget) {
       handleClose();
     }
   };
@@ -38,7 +49,7 @@ const SortBlock = () => {
 
   return (
     <>
-      <button className={styles.sortBlock__wrapSort} type="button" onClick={handleSortBtnClick}>
+      <button className={styles.sortBlock__wrapSort} type="button" onClick={(evt) => handleSortBtnClick(evt)}>
         <p className={styles.sortBlock__text}>Сортировка</p>
         <div className={`${styles.sortBlock__btn} ${styles.sortBlock__sort}`}></div>
       </button>
