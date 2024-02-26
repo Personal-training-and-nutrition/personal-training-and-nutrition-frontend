@@ -13,3 +13,15 @@ export interface IFeedbackCard {
   arrFoto: string[];
   isHideText?: boolean;
 }
+
+export interface IActivity {
+  mesto: string;
+  period: string;
+}
+export interface IResume {
+  title: string;
+  subtitle?: string;
+  activity: IActivity[];
+  isVisible: boolean;
+  onClick: () => void;
+}

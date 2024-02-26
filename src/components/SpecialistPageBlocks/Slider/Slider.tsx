@@ -3,6 +3,8 @@ import foto from '../../../assets/images/spec-card/foto-spec.svg';
 import styles from './Slider.module.scss';
 
 const arrImage: string[] = [foto, foto, foto, foto, foto];
+
+// КОМПОНЕНТ ДЛЯ КАРУСЕЛИ С ТОЧКАМИ - ПЕРЕЛИСТЫВАНИЕ СВАЙПОМ/МЫШКОЙ И КЛИКОМ ПО ТОЧКАМ
 const Slider = () => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [isDown, setDown] = useState<boolean>(false);
@@ -55,7 +57,7 @@ const Slider = () => {
     setDown(false);
   };
 
-  const handleMouseDown = (evt) => {
+  const handleMouseDown = (evt: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     const containerEl = containerRef.current;
 
     if (containerEl) {
@@ -78,7 +80,7 @@ const Slider = () => {
   };
   return (
     <div className={styles.slider}>
-      <div className={styles.slider__container} ref={containerRef} onMouseDown={handleMouseDown}>
+      <div className={styles.slider__container} ref={containerRef} onMouseDown={(evt) => handleMouseDown(evt)}>
         {arrImage.map((image, index) => (
           <img key={index} className={styles.slider__item} alt="" src={image} />
         ))}

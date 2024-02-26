@@ -1,16 +1,5 @@
+import { IResume } from '../../../redux/types/specialist';
 import styles from './ResumeLayot.module.scss';
-
-interface IActivity {
-  mesto: string;
-  period: string;
-}
-interface IResume {
-  title: string;
-  subtitle?: string;
-  activity: IActivity[];
-  isVisible: boolean;
-  onClick: () => void;
-}
 
 const ResumeLayot = ({ title, subtitle, activity, isVisible, onClick }: IResume) => {
   return (

@@ -1,6 +1,5 @@
 import Slider from '../Slider/Slider';
 import styles from './PersonalDataSpec.module.scss';
-// import foto from '../../../assets/images/spec-card/foto-spec.svg';
 
 const PersonalDataSpec: React.FC = () => {
   return (

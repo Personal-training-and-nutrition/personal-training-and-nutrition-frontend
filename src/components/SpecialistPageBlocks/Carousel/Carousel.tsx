@@ -5,6 +5,7 @@ import styles from './Carousel.module.scss';
 interface ICarousel {
   children?: ReactNode;
 }
+// КОМПОНЕНТ ДЛЯ КАРУСЕЛИ - ПЕРЕЛИСТЫВАНИЕ СВАЙПОМ/МЫШКОЙ
 const Carousel = ({ children }: ICarousel) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [isDown, setDown] = useState<boolean>(false);

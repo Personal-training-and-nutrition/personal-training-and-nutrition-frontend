@@ -1,17 +1,17 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import { useEffect, useRef } from 'react';
-import styles from './SortBlock.module.scss';
+import { setOpen, setSort, toggleOpen } from '../../redux/slices/feedbackSlice';
 import { useAppDispatch, useAppSelector } from '../../redux/store';
 import { SortType } from '../../redux/types/feedback';
-import { setOpen, setSort, toggleOpen } from '../../redux/slices/feedbackSlice';
+import styles from './SortBlock.module.scss';
 
 const sortList: SortType[] = [
-  { name: 'Сортировка' },
   { name: 'По дате ↓' },
   { name: 'По дате ↑' },
   { name: 'По оценке ↓' },
   { name: 'По оценке ↑' },
 ];
+
 const SortBlock = () => {
   const sortRef = useRef<HTMLDivElement>(null);
   const dispatch = useAppDispatch();
