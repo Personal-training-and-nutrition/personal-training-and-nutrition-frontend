@@ -24,11 +24,11 @@
   &_style {
     color: $blue-500;
     background-color: white;
-
     border: 1px solid $blue-500;
     &:hover {
-      background-color: transparent;
-      opacity: 0.7;
+      color: $btn-blue-600;
+      border: 1px solid $btn-blue-600;
+      background-color: $white-100;
     }
   }
 }

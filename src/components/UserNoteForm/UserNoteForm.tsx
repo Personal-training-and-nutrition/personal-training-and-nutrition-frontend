@@ -4,7 +4,7 @@ import styles from './UserNoteForm.module.scss';
 type UserNoteFormProps = {
   title: string;
   content: string;
-  handleComment: (message: string) => void;
+  handleComment?: (message: string) => void;
 };
 
 function UserNoteForm({ title, content, handleComment }: UserNoteFormProps) {
@@ -12,7 +12,7 @@ function UserNoteForm({ title, content, handleComment }: UserNoteFormProps) {
 
   function handleSubmit(evt: React.FormEvent) {
     evt.preventDefault();
-    handleComment(message);
+    if (handleComment) handleComment(message);
   }
 
   return (

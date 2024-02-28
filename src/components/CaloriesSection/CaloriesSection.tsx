@@ -1,5 +1,6 @@
-import styles from './CaloriesSection.module.scss';
 import { useLocation } from 'react-router-dom';
+import { PATH_MEAL_PLAN_UNAUTH, PATH_WORKOUT_PLAN_UNAUTH } from '../../utils/constants';
+import styles from './CaloriesSection.module.scss';
 
 type CaloriesProps = {
   kkal?: number;
@@ -10,7 +11,8 @@ type CaloriesProps = {
 
 const CaloriesSection = ({ kkal, protein, fat, carbo }: CaloriesProps) => {
   const location = useLocation();
-  const unauthPage = location.pathname === '/workout-plan/unauth' || location.pathname === '/meal-plan/unauth';
+  const unauthPage =
+    location.pathname === `${PATH_WORKOUT_PLAN_UNAUTH}` || location.pathname === `${PATH_MEAL_PLAN_UNAUTH}`;
 
   return (
     <section className={`${styles.caloriesSection__calories} ${unauthPage && styles.caloriesSection__unauth}`}>

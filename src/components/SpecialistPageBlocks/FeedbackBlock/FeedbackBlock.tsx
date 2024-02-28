@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import avatar from '../../../assets/images/foto-test/feetback-avatar.svg';
 import foto from '../../../assets/images/foto-test/feetback1 .svg';
 import { IFeedbackCard } from '../../../redux/types/specialist';
-import { PATH_FEEDBACK_PAGE } from '../../../utils/constants';
+import { PATH_FEEDBACK } from '../../../utils/constants';
 import FeedbackCard from '../../FeedbackCard/FeedbackCard';
 import Carousel from '../Carousel/Carousel';
 import styles from './FeedbackBlock.module.scss';
@@ -43,7 +43,7 @@ const FeedbackBlock = () => {
           <span className={styles.feedback__icon}></span>
           <p className={styles.feedback__subtitle}>5,0</p>
         </div>
-        <Link to={PATH_FEEDBACK_PAGE} state={{ arrFeedback: arrFeedback }} className={styles.feedback__btn}>
+        <Link to={PATH_FEEDBACK} state={{ arrFeedback: arrFeedback }} className={styles.feedback__btn}>
           <div className={styles.feedback__count}>3 отзыва</div>
           <span className={styles.feedback__arrow}></span>
         </Link>

@@ -4,7 +4,14 @@ import dietsNotActiveIcon from '../assets/images/navbar/food-not-active-icon.svg
 import messagesNotActiveIcon from '../assets/images/navbar/messages-not-active-icon.svg';
 import profileNotActiveIcon from '../assets/images/navbar/profile-not-active-icon.svg';
 import trainingNotActiveIcon from '../assets/images/navbar/sport-not-active-icon.svg';
-import { PATH_CARDSPEC_PAGE } from './constants';
+import {
+  PATH_CLIENTS,
+  PATH_MEAL_ALL_PLANS,
+  PATH_PROFILE_CLIENT,
+  PATH_PROFILE_SPEC,
+  PATH_SPECIALIST_PAGE,
+  PATH_WORKOUT_ALL_PLANS,
+} from './constants';
 
 export type navBarItemListType = {
   link: string;
@@ -15,13 +22,13 @@ export type navBarItemListType = {
 
 export const navBarUserItemList: navBarItemListType[] = [
   {
-    link: PATH_CARDSPEC_PAGE,
+    link: PATH_SPECIALIST_PAGE,
     img: recordsNotActiveIcon,
     alt: 'Иконка кнопки "Записи"',
     textLink: 'Специалист ',
   },
   {
-    link: '/clients',
+    link: PATH_CLIENTS,
     img: clientsNotActiveIcon,
     alt: 'Иконка кнопки "Клиенты"',
     textLink: 'Клиенты',
@@ -33,7 +40,7 @@ export const navBarUserItemList: navBarItemListType[] = [
     textLink: 'Сообщения',
   },
   {
-    link: '/user-profile/specialist',
+    link: PATH_PROFILE_SPEC,
     img: profileNotActiveIcon,
     alt: 'Иконка кнопки "Профиль"',
     textLink: 'Профиль',
@@ -42,13 +49,13 @@ export const navBarUserItemList: navBarItemListType[] = [
 
 export const navBarSpecialistItemList: navBarItemListType[] = [
   {
-    link: '/meal-plans',
+    link: PATH_MEAL_ALL_PLANS,
     img: dietsNotActiveIcon,
     alt: 'Иконка кнопки "Питание"',
     textLink: 'Питание',
   },
   {
-    link: '/workout-plans',
+    link: PATH_WORKOUT_ALL_PLANS,
     img: trainingNotActiveIcon,
     alt: 'Иконка кнопки "Тренировки"',
     textLink: 'Тренировки',
@@ -60,7 +67,7 @@ export const navBarSpecialistItemList: navBarItemListType[] = [
     textLink: 'Сообщения',
   },
   {
-    link: '/user-profile/client',
+    link: PATH_PROFILE_CLIENT,
     img: profileNotActiveIcon,
     alt: 'Иконка кнопки "Профиль"',
     textLink: 'Профиль',
