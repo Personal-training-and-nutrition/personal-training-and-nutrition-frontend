@@ -1,3 +1,4 @@
+// import buttonUp from '../../assets/images/spec-card/button-up.svg';
 import Button from '../../components/Button/Button';
 import AboutMe from '../../components/SpecialistPageBlocks/AboutMe/AboutMe';
 import Certificate from '../../components/SpecialistPageBlocks/Certificate/Certificate';
@@ -22,6 +23,7 @@ const SpecialistPage: React.FC = () => {
           <Experience />
           <Certificate />
           <FeedbackBlock />
+
           <div className={styles.specialist__btn}>
             <Button textBtn="Записаться" type="submit" isDirty={true} isValid={true} style={true} />
             <Button textBtn="Написать" type="button" isDirty={true} isValid={true} />

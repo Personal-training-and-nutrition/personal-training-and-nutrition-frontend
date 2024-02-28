@@ -34,6 +34,7 @@ import TrainingReport from './pages/TrainingReport/TrainingReport';
 import WorkoutPlan from './pages/WorkoutPlan/WorkoutPlan';
 import WorkoutPlans from './pages/WorkoutPlans/WorkoutPlans';
 import { useAppSelector } from './redux/store';
+
 import {
   PATH_CLIENTS,
   PATH_CLIENT_CARD,
@@ -121,6 +122,8 @@ function App() {
       <ResetPasswordModal />
       <ChangePasswordModal />
       <ForgotPasswordTooltip />
+
+
     </div>
   );
 }
