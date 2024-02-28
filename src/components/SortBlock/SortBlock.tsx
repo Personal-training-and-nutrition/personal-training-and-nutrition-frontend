@@ -6,10 +6,10 @@ import { SortType } from '../../redux/types/feedback';
 import styles from './SortBlock.module.scss';
 
 const sortList: SortType[] = [
-  { name: 'По дате ↓' },
-  { name: 'По дате ↑' },
-  { name: 'По оценке ↓' },
-  { name: 'По оценке ↑' },
+  { name: 'Новые отзывы' },
+  { name: 'Старые отзывы' },
+  { name: 'С высоким рейтингом' },
+  { name: 'С низким рейтингом' },
 ];
 
 const SortBlock = () => {

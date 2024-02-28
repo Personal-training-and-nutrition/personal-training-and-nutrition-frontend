@@ -35,12 +35,14 @@
 
   &__btn {
     position: sticky;
-    bottom: 29px;
+    bottom: 80px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: 8px;
     grid-area: buttons;
+    background-color: white;
     @media (min-width: 768px) {
+      bottom: 29px;
       top: 44px;
     }
   }

@@ -1,10 +1,10 @@
-import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import { IFeedbackSliceState, SortType } from '../types/feedback';
 
 export const initialState: IFeedbackSliceState = {
   isOpen: false,
-  sort: { name: 'Сортировка' },
+  sort: { name: 'Новые отзывы' },
 };
 
 const feedbackSlice = createSlice({

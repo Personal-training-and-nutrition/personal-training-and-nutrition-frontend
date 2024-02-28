@@ -33,7 +33,7 @@ const NavBar: React.FC = () => {
       </Link>
 
       {listIcons.map((item, index) => (
-        <NavLink className={activeClassName} key={index} to={`/${item.link}`}>
+        <NavLink className={activeClassName} key={index} to={`${item.link}`}>
           {({ isActive }) => (
             <div className={styles.navbar__container}>
               <img
