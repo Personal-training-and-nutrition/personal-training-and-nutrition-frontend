@@ -11,12 +11,15 @@
   justify-content: center;
   background-color: rgba($color: #000000, $alpha: .7);
   z-index: 100000;
+
   &_show {
     display: flex;
   }
+
   @media screen and (max-width: 767px) {
     background-color: rgba($color: #000000, $alpha: .3);
   }
+
   &__container {
     background-color: $white-100;
     padding: 40px 20px;
@@ -27,6 +30,7 @@
     box-sizing: border-box;
 
   }
+
   &__closeBtn {
     position: absolute;
     background-color: transparent;
@@ -35,22 +39,10 @@
     top: 20px;
     right: 20px;
     cursor: pointer;
-    transition: all .3s ease-in-out;
+    transition: transform .2s ease-in-out;
 
     &:hover {
-      -webkit-animation: rotation 0.4s normal linear;
-      animation: rotation 0.4s normal linear;
-      scale: 1.3;
-      opacity: .8;
-    }
-
-    @keyframes rotation {
-      from {
-        transform: rotate(0deg);
-      }
-      to {
-        transform: rotate(90deg);
-      }
+      transform: scale(1.2);
     }
 
     &::before {

@@ -9,6 +9,22 @@
     padding: 0;
   }
 
+  &__listItem{
+    padding: 16px;
+    border-radius: 14px;
+    background-color: $green-700;
+    list-style-type: none;
+    cursor: pointer;
+
+    &_color_blue{
+      background-color: $btn-blue-500;
+    }
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
   &__title {
     margin: 0;
     font-size: 18px;
@@ -17,12 +33,24 @@
     color: $black-800;
   }
 
-  &__text {
+  &__subtitle {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 120%;
+    color: $white-100;
+    margin: 0 0 4px;
+  }
+
+  &__description {
     margin: 0;
     font-size: 15px;
     font-weight: 400;
     line-height: 120%;
     color: $black-800;
+
+  &_color_white {
+    color: $white-100;
+  }
   }
 
   &__link {

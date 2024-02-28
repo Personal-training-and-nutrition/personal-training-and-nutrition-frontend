@@ -8,11 +8,12 @@ import {useRegisterUserMutation} from "../../redux/services/authApi.ts";
 import {closeModal, openModal} from "../../redux/slices/modalsSlice.ts";
 import {useForm} from "react-hook-form";
 import {InputsType} from "../../pages/ProfilePage/Profile.tsx";
+import {TRegister} from "../../pages/RegisterPage/RegisterPage.tsx";
 
-const EnterPassword: React.FC = () => {
+const EnterPassword: React.FC<TRegister> = ({handleNextStep}) => {
 
   const dispatch = useAppDispatch();
-  const [registerUser, { isLoading, isSuccess, isError, error }] = useRegisterUserMutation();
+  const [registerUser, {isLoading, isSuccess, isError, error}] = useRegisterUserMutation();
   const [errMessage, setErrMessage] = useState<string | null>(null);
 
   useEffect(() => {
@@ -21,7 +22,7 @@ const EnterPassword: React.FC = () => {
     if (isSuccess) {
       setTimeout(() => {
         dispatch(closeModal());
-        dispatch(openModal({ modalId: 'modalAuth' }));
+        dispatch(openModal({modalId: 'modalAuth'}));
       }, 1000);
     }
     if (isError && !isSuccess) {
@@ -34,12 +35,12 @@ const EnterPassword: React.FC = () => {
     register,
     handleSubmit,
     setError,
-    formState: { isDirty, isValid, errors },
-  } = useForm<InputsType>({ mode: 'all' });
+    formState: {isDirty, isValid, errors},
+  } = useForm<InputsType>({mode: 'all'});
 
   const onSubmit = handleSubmit(async (data) => {
     if (data.password !== data.retrypassword) {
-      return setError('retrypassword', { type: 'string', message: 'Убедитесь, что пароли совпадают' });
+      return setError('retrypassword', {type: 'string', message: 'Убедитесь, что пароли совпадают'});
     }
     await registerUser({
       email: data.email,
@@ -55,7 +56,8 @@ const EnterPassword: React.FC = () => {
   return (
     <>
       <h2 className={styles.registration__title}>Придумайте пароль</h2>
-      <p className={styles.registration__text}>Пароль должен содержать от 8 до 25 знаков и может включать латиницу, цифры и любые спецсимволы</p>
+      <p className={styles.registration__text}>Пароль должен содержать от 8 до 25 знаков и может включать латиницу,
+        цифры и любые спецсимволы</p>
       <form className={styles.registration__form} onSubmit={onSubmit}>
         <InputPassword
           name="password"
@@ -73,9 +75,10 @@ const EnterPassword: React.FC = () => {
         <span className={errors?.retrypassword ? errorVisible : errorInvisible}>
           {errors?.retrypassword?.message || ''}
         </span>
-        <InputCheckbox register={register} />
+        <InputCheckbox register={register}/>
         <span className={errMessage ? errorVisible : errorRemoved}>{errMessage}</span>
-        <Button textBtn="Зарегистрироваться" type="submit" isDirty={isDirty} isValid={isValid} />
+        <Button onCLick={handleNextStep} textBtn="Зарегистрироваться" type="submit" isDirty={isDirty}
+                isValid={isValid}/>
       </form>
     </>
   );

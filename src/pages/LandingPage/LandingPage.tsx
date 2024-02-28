@@ -14,7 +14,7 @@ import { selectStatus } from '../../redux/slices/landingPageSlice';
 import useResize from '../../hooks/useResize';
 import { useWindowPosition } from '../../hooks/useWindowPosition';
 import Toggle from '../../components/LandingPage/Toggle/Toggle';
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import {useAppDispatch, useAppSelector} from '../../redux/store';
 import {useLocation, useNavigate} from 'react-router-dom';
 import {openModal} from "../../redux/slices/modalsSlice";

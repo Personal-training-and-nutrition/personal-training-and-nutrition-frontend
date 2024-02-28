@@ -4,8 +4,9 @@ import Button from "../Button/Button.tsx";
 import {useForm} from "react-hook-form";
 import {InputsType} from "../../pages/ProfilePage/Profile.tsx";
 import InputText from "../Inputs/InputText/InputText.tsx";
+import {TRegister} from "../../pages/RegisterPage/RegisterPage.tsx";
 
-const EnterData: React.FC = () => {
+const EnterData: React.FC<TRegister> = ({handleNextStep}) => {
 
   const {
     register,
@@ -50,7 +51,7 @@ const EnterData: React.FC = () => {
           isInvalid={Boolean(errors.email)}
         />
         <span className={errors?.email ? errorVisible : errorInvisible}>{errors?.email?.message || ''}</span>
-        <Button textBtn="Дальше" type="submit" isDirty={isDirty} isValid={isValid}/>
+        <Button onCLick={handleNextStep} textBtn="Дальше" type="submit" isDirty={isDirty} isValid={isValid}/>
       </form>
     </>
   );
