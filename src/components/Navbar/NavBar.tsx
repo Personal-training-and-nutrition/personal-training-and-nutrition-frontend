@@ -17,11 +17,7 @@ const NavBar: React.FC = () => {
 
   useEffect(() => {
     window.addEventListener('scroll', () => {
-      console.log(' window.addEventListener scroll');
-
       if (window.scrollY > 150) {
-        console.log('window.scrollY ', window.scrollY);
-
         setBackToTop(true);
       } else {
         setBackToTop(false);
