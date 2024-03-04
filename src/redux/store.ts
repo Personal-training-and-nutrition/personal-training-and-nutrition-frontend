@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import landingReducer from './slices/landingPageSlice';
+import landingReducer from './slices/registration.ts';
 import currentClientReducer from './slices/clientSlice';
 import modalReducer from './slices/modalsSlice';
 import userReducer from './slices/userSlice';

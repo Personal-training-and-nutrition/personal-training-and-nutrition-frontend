@@ -3,7 +3,7 @@ import twoPhonesSpecImg from '../../../assets/images/landingPage/mobile/spec/two
 import twoPhonesUserImg from '../../../assets/images/landingPage/mobile/users/two-phones.png';
 import React from 'react';
 import {useSelector} from 'react-redux';
-import {selectStatus} from '../../../redux/slices/landingPageSlice';
+import {selectStatus} from '../../../redux/slices/registration.ts';
 import useResize from '../../../hooks/useResize';
 import BtnStart from '../BtnStart/BtnStart';
 

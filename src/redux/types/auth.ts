@@ -17,3 +17,19 @@ export interface IAuthO {
   refresh: string;
   user: string;
 }
+
+export type TRegistration = {
+  isStatusSpecialist?: boolean;
+  role: string;
+  direction: string;
+  name: string;
+  surname: string;
+  email:string;
+  password:string;
+};
+
+export type TUserInfo = {
+  name: string;
+  surname: string;
+  email:string;
+};

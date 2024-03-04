@@ -10,7 +10,7 @@ import {
   landingPageUsersParams,
 } from '../../utils/LandingPageParams';
 import { useSelector } from 'react-redux';
-import { selectStatus } from '../../redux/slices/landingPageSlice';
+import { selectStatus } from '../../redux/slices/registration.ts';
 import useResize from '../../hooks/useResize';
 import { useWindowPosition } from '../../hooks/useWindowPosition';
 import Toggle from '../../components/LandingPage/Toggle/Toggle';
