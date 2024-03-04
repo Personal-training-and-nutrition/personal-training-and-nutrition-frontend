@@ -1,10 +1,16 @@
-import styles from './DayBlock.module.scss';
 import { useState } from 'react';
-import plus from '../../assets/images/dayblock/plus-icon.svg';
-import minus from '../../assets/images/dayblock/minus-icon.svg';
 import { UseFormRegister, UseFormSetValue } from 'react-hook-form';
-import { PlanInputType } from '../PlanPageLayot/PlanPageLayot';
 import { useLocation } from 'react-router-dom';
+import minus from '../../assets/images/dayblock/minus-icon.svg';
+import plus from '../../assets/images/dayblock/plus-icon.svg';
+import {
+  PATH_MEAL_PLAN_CREATE,
+  PATH_MEAL_PLAN_EDIT,
+  PATH_WORKOUT_PLAN_CREATE,
+  PATH_WORKOUT_PLAN_EDIT,
+} from '../../utils/constants';
+import { PlanInputType } from '../PlanPageLayot/PlanPageLayot';
+import styles from './DayBlock.module.scss';
 
 type ItemType = {
   day: string;
@@ -43,7 +49,7 @@ const DayBlock = ({ item, register, index }: DayBlockType) => {
       </div>
       <label className={styles.dayBlock__label}>
         <h2>{item.description}</h2>
-        {(location.pathname === '/meal-plan/create' || location.pathname === '/meal-plan/edit') && (
+        {(location.pathname === PATH_MEAL_PLAN_CREATE || location.pathname === PATH_MEAL_PLAN_EDIT) && (
           <textarea
             className={styles.dayBlock__input}
             placeholder={item.placeholder}
@@ -59,7 +65,7 @@ const DayBlock = ({ item, register, index }: DayBlockType) => {
             })}
           />
         )}
-        {(location.pathname === '/workout-plan/create' || location.pathname === '/workout-plan/edit') && (
+        {(location.pathname === `${PATH_WORKOUT_PLAN_CREATE}` || location.pathname === `${PATH_WORKOUT_PLAN_EDIT}`) && (
           <>
             <textarea
               className={styles.dayBlock__input}

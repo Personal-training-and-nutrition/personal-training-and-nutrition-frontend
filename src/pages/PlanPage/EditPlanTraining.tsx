@@ -1,12 +1,16 @@
 import React, { useEffect } from 'react';
-import PlanPageLayot, { PlanInputType } from '../../components/PlanPageLayot/PlanPageLayot';
-import { trainingData } from '../../utils/constants';
 import { useForm } from 'react-hook-form';
-import { useAppDispatch, useAppSelector } from '../../redux/store';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useDestroyTrainingPlanMutation, useRetrieveTrainingPlanQuery, useUpdateTrainingPlanMutation } from '../../redux/services/trainingApi';
-import { parsePlanTrain, preparePlanTrain } from '../../utils/processPlans';
+import PlanPageLayot, { PlanInputType } from '../../components/PlanPageLayot/PlanPageLayot';
+import {
+  useDestroyTrainingPlanMutation,
+  useRetrieveTrainingPlanQuery,
+  useUpdateTrainingPlanMutation,
+} from '../../redux/services/trainingApi';
 import { closeModal, openModal } from '../../redux/slices/modalsSlice';
+import { useAppDispatch, useAppSelector } from '../../redux/store';
+import { PATH_WORKOUT_ALL_PLANS, PATH_WORKOUT_REPORT, trainingData } from '../../utils/constants';
+import { parsePlanTrain, preparePlanTrain } from '../../utils/processPlans';
 
 const EditPlanTraining: React.FC = () => {
   const { id: specialistId } = useAppSelector((store) => store.user);
@@ -16,7 +20,7 @@ const EditPlanTraining: React.FC = () => {
   const planId = query.get('id');
   const { data: plan, isSuccess } = useRetrieveTrainingPlanQuery(planId!, { skip: !planId });
   const [planUpdateTrigger] = useUpdateTrainingPlanMutation();
-  const [deletePlan, { isSuccess: isSuccessDelete, isError: isErrorDelete, error}] = useDestroyTrainingPlanMutation();
+  const [deletePlan, { isSuccess: isSuccessDelete, isError: isErrorDelete, error }] = useDestroyTrainingPlanMutation();
   const dispatch = useAppDispatch();
   const {
     register,
@@ -25,7 +29,7 @@ const EditPlanTraining: React.FC = () => {
     reset,
     formState: { isDirty, isValid },
   } = useForm<PlanInputType>({
-    mode: 'onBlur'
+    mode: 'onBlur',
   });
 
   const onSubmit = handleSubmit((data) => {
@@ -33,7 +37,7 @@ const EditPlanTraining: React.FC = () => {
     planUpdateTrigger({
       id: parseInt(planId),
       data: { ...preparePlanTrain(data), user: plan.user, specialist: specialistId },
-    }).then(() => navigate(`/workout-report?id=${planId}`));
+    }).then(() => navigate(`${PATH_WORKOUT_REPORT}?id=${planId}`));
   });
 
   useEffect(() => {
@@ -54,12 +58,12 @@ const EditPlanTraining: React.FC = () => {
         }),
       );
       setTimeout(() => {
-        dispatch(closeModal())
-        navigate(`/workout-plans?id=${plan?.user}`)
-      }, 3000)
+        dispatch(closeModal());
+        navigate(`${PATH_WORKOUT_ALL_PLANS}?id=${plan?.user}`);
+      }, 3000);
     }
-    if(!isSuccess && isErrorDelete) {
-      console.log(error)
+    if (!isSuccess && isErrorDelete) {
+      console.log(error);
       dispatch(
         openModal({
           modalId: 'tooltipModal',
@@ -73,8 +77,8 @@ const EditPlanTraining: React.FC = () => {
   }, [isSuccessDelete, isErrorDelete]);
 
   const handleDeletePlan = () => {
-    deletePlan(Number(planId))
-  }
+    deletePlan(Number(planId));
+  };
 
   if (!isSuccess) return <p>Loading...</p>;
 
@@ -89,7 +93,6 @@ const EditPlanTraining: React.FC = () => {
       isValid={isValid}
       setValue={setValue}
       onDeletePlan={handleDeletePlan}
-
     />
   );
 };

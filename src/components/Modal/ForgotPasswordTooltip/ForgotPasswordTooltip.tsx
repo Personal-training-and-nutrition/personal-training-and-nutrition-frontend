@@ -1,15 +1,14 @@
-import styles from './ForgotPasswordTooltipModal.module.scss';
-import Modal from '../Modal';
+import { closeModal } from '../../../redux/slices/modalsSlice';
+import { useAppDispatch, useAppSelector } from '../../../redux/store';
 import Button from '../../Button/Button';
-import {useAppDispatch, useAppSelector} from "../../../redux/store";
-import {closeModal} from "../../../redux/slices/modalsSlice";
+import Modal from '../Modal';
+import styles from './ForgotPasswordTooltip.module.scss';
 
 const ForgotPasswordTooltipModal = () => {
-
   const dispatch = useAppDispatch();
 
-  const {isOpen, modalId} = useAppSelector(state => state.modal)
-  const isForgotPass = modalId === 'forgotPasswordTooltipModal' ? 'forgotPasswordTooltipModal' : ''
+  const { isOpen, modalId } = useAppSelector((state) => state.modal);
+  const isForgotPass = modalId === 'forgotPasswordTooltipModal' ? 'forgotPasswordTooltipModal' : '';
 
   const handleClick = () => {
     dispatch(closeModal());

@@ -1,20 +1,20 @@
 import { useEffect } from 'react';
-import styles from './ClientsListCard.module.scss';
-import btnImage from '../../assets/images/clients/clientListBtnPlaceholder.svg';
-import { getFirstLetters } from '../../utils/getFirstLetters';
-import { getAgeEnding } from '../../utils/getAgeEnding';
 import { useNavigate } from 'react-router-dom';
+import btnImage from '../../assets/images/clients/clientListBtnPlaceholder.svg';
 import { useAppDispatch } from '../../redux/store';
+import { getAgeEnding } from '../../utils/getAgeEnding';
+import { getFirstLetters } from '../../utils/getFirstLetters';
+import styles from './ClientsListCard.module.scss';
 
 import { setCurrentClient } from '../../redux/slices/clientSlice';
 import { TClientListElement } from '../../redux/types/clients';
+import { PATH_CLIENT_CARD } from '../../utils/constants';
 
 type ClientListCardProps = {
   user: TClientListElement;
 };
 
 function ClientsListCard({ user }: ClientListCardProps) {
-
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
@@ -25,11 +25,12 @@ function ClientsListCard({ user }: ClientListCardProps) {
     // console.log(user)
   }, []);
   return (
+    // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
     <li
       className={styles.clientsListCard}
       onClick={() => {
         dispatch(setCurrentClient(user));
-        navigate(`/client/card/${user.id}`);
+        navigate(`${PATH_CLIENT_CARD}/${user.id}`);
       }}
     >
       <span className={styles.clientsListCard__letters}>{getFirstLetters(fullname)}</span>

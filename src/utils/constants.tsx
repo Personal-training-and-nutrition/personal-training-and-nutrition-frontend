@@ -14,6 +14,33 @@ import meal5 from '../assets/images/dayweekMeal/meal-5-img.png';
 import meal6 from '../assets/images/dayweekMeal/meal-6-img.png';
 import meal7 from '../assets/images/dayweekMeal/meal-7-img.png';
 
+export const BASE_URL = 'http://wellcoaching.ru';
+
+export const PATH_PROFILE_SPEC = '/user-profile/specialist';
+export const PATH_PROFILE_CLIENT = '/user-profile/client';
+
+export const PATH_FEEDBACK = '/feedback';
+export const PATH_SPECIALIST_PAGE = '/card-spec';
+
+export const PATH_CLIENTS = '/clients';
+export const PATH_CLIENT_CARD = '/client/card';
+export const PATH_CREATE_CLIENT = '/client/new';
+export const PATH_EDIT_CLIENT = '/client/edit';
+
+export const PATH_WORKOUT_ALL_PLANS = '/workout-plans';
+export const PATH_WORKOUT_PLAN = '/workout-plan';
+export const PATH_WORKOUT_PLAN_UNAUTH = '/workout-plan/unauth';
+export const PATH_WORKOUT_PLAN_CREATE = '/workout-plan/create';
+export const PATH_WORKOUT_PLAN_EDIT = '/workout-plan/edit';
+export const PATH_WORKOUT_REPORT = '/workout-report';
+
+export const PATH_MEAL_ALL_PLANS = '/meal-plans';
+export const PATH_MEAL_PLAN = '/meal-plan';
+export const PATH_MEAL_PLAN_UNAUTH = '/meal-plan/unauth';
+export const PATH_MEAL_PLAN_CREATE = '/meal-plan/create';
+export const PATH_MEAL_PLAN_EDIT = '/meal-plan/edit';
+export const PATH_MEAL_REPORT = '/meal-report';
+
 export const REGEX_USER_NAME = /^[A-Za-zА-Яа-яЁё/s /-]+$/;
 
 export type DayBlockType = {
@@ -34,9 +61,10 @@ export const navBarHideCases = [
   // '/password-recovery',
   // '/password-recovery/form',
   // '/password-recovery/success',
-  '/meal-plan/unauth',
-  '/workout-plan/unauth',
+  PATH_MEAL_PLAN_UNAUTH,
+  PATH_WORKOUT_PLAN_UNAUTH,
   '/reset-password/',
+  // PATH_SPECIALIST_PAGE,
 ];
 
 export const trainingData: DayBlockType = [

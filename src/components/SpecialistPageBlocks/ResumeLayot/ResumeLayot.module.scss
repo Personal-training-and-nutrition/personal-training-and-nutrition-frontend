@@ -1,0 +1,76 @@
+@import '../../../scss/colors/colors.scss';
+.resume {
+  display: grid;
+  gap: 18px;
+  &__wrap {
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+  }
+  &__title {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 22px;
+    letter-spacing: 0px;
+  }
+  &__titleWrap {
+    display: flex;
+    gap: 12px;
+  }
+  &__p {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 21px;
+    letter-spacing: 0px;
+  }
+  &__btn {
+    width: 24px;
+    height: 24px;
+    background-color: transparent;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    &_open {
+      background-image: url(../../../assets/images/client-card/fold.svg);
+    }
+    &_hidden {
+      background-image: url(../../../assets/images/client-card/unfold.svg);
+    }
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 12px;
+    list-style: none;
+
+    &_invisible {
+      display: none;
+    }
+  }
+
+  &__item {
+    display: grid;
+    gap: 4px;
+    border-bottom: 1px solid $blue-100;
+    padding-bottom: 8px;
+  }
+  &__subtitle {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0px;
+    margin: 0;
+
+    &_style {
+      color: $blue-600;
+    }
+  }
+}

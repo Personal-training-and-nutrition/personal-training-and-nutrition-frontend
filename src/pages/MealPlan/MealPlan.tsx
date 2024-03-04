@@ -1,14 +1,15 @@
-import TitleBlock from '../../components/TitleBlock/TitleBlock';
-import styles from './MealPlan.module.scss';
-import PlanReportBlock from '../../components/PlanReportBlock/PlanReportBlock';
-import DescriptionBlock from '../../components/DescriptionBlock/DescriptionBlock';
-import CaloriesSection from '../../components/CaloriesSection/CaloriesSection';
 import { useLocation, useNavigate } from 'react-router-dom';
+import CaloriesSection from '../../components/CaloriesSection/CaloriesSection';
+import DescriptionBlock from '../../components/DescriptionBlock/DescriptionBlock';
+import PlanReportBlock from '../../components/PlanReportBlock/PlanReportBlock';
+import TitleBlock from '../../components/TitleBlock/TitleBlock';
 import {
   useDestroyDietPlanMutation,
   useRetrieveDietPlanQuery,
   useUpdateDietPlanMutation,
 } from '../../redux/services/dietApi';
+import { PATH_MEAL_ALL_PLANS } from '../../utils/constants';
+import styles from './MealPlan.module.scss';
 
 function MealPlan() {
   const navigate = useNavigate();
@@ -28,7 +29,7 @@ function MealPlan() {
     };
   }
   function handleDelete() {
-    if (plan) deleteTrigger(plan).then(() => navigate('/meal-plans'));
+    if (plan) deleteTrigger(plan).then(() => navigate(PATH_MEAL_ALL_PLANS));
   }
 
   if (!isSuccess) return <p>Loading...</p>;

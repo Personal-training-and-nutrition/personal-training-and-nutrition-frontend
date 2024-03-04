@@ -1,19 +1,20 @@
-import styles from './AuthModal.module.scss';
-import Modal from '../Modal';
-import { Link, useNavigate } from 'react-router-dom';
-import Button from '../../Button/Button';
-import SocialIcons from '../../SocialIcons/SocialIcons';
-import InputEmail from '../../Inputs/InputEmail/InputEmail';
-import InputPassword from '../../Inputs/InputPassword/InputPassword';
-import { useLoginMutation } from '../../../redux/services/authApi';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { Link, useNavigate } from 'react-router-dom';
 import { InputsType } from '../../../pages/ProfilePage/Profile';
-import { isApiError } from '../../../utils/isApiError';
-import { useAppDispatch, useAppSelector } from '../../../redux/store';
+import { useLoginMutation } from '../../../redux/services/authApi';
+import { useLazyGetMeQuery, useLazyRetrieveUserQuery } from '../../../redux/services/userApi';
 import { closeModal, openModal } from '../../../redux/slices/modalsSlice';
 import { setIsLoggedIn, setIsSpecialist, setUserId } from '../../../redux/slices/userSlice';
-import { useLazyGetMeQuery, useLazyRetrieveUserQuery } from '../../../redux/services/userApi';
+import { useAppDispatch, useAppSelector } from '../../../redux/store';
+import { PATH_CLIENTS } from '../../../utils/constants';
+import { isApiError } from '../../../utils/isApiError';
+import Button from '../../Button/Button';
+import InputEmail from '../../Inputs/InputEmail/InputEmail';
+import InputPassword from '../../Inputs/InputPassword/InputPassword';
+import SocialIcons from '../../SocialIcons/SocialIcons';
+import Modal from '../Modal';
+import styles from './AuthModal.module.scss';
 
 const AuthModal = () => {
   const navigate = useNavigate();
@@ -22,11 +23,10 @@ const AuthModal = () => {
   const [login, { isSuccess, isLoading, error }] = useLoginMutation();
   const { isOpen, modalId } = useAppSelector((state) => state.modal);
   const [getMe] = useLazyGetMeQuery();
-  const [retriveUser] = useLazyRetrieveUserQuery()
+  const [retriveUser] = useLazyRetrieveUserQuery();
   const dispatch = useAppDispatch();
 
   const isAuth = modalId === 'modalAuth' ? 'modalAuth' : '';
-
 
   const {
     register,
@@ -39,18 +39,19 @@ const AuthModal = () => {
     setErrMessage(null);
     if (isSuccess) {
       console.log('login successfull');
-      navigate('/clients');
+      navigate(PATH_CLIENTS);
       dispatch(closeModal());
       getMe()
-      .unwrap()
-      .then((res) => {
-        dispatch(setUserId(res.id))
-        dispatch(setIsLoggedIn(true))
-        retriveUser(res.id)
         .unwrap()
-        .then((userData) => {
-          dispatch(setIsSpecialist(userData.is_specialist!))})
-      })
+        .then((res) => {
+          dispatch(setUserId(res.id));
+          dispatch(setIsLoggedIn(true));
+          retriveUser(res.id)
+            .unwrap()
+            .then((userData) => {
+              dispatch(setIsSpecialist(userData.is_specialist!));
+            });
+        });
     } else if (isApiError(error)) {
       setErrMessage(error.data.detail || 'Вход не удался, повторите попытку позднее.');
     }
@@ -67,19 +68,19 @@ const AuthModal = () => {
       password: data.password,
     });
     if (isSuccess) {
-      navigate('/clients');
+      navigate(PATH_CLIENTS);
       dispatch(closeModal());
     }
   });
 
   const handleFoggotPassordClick = () => {
     dispatch(closeModal());
-    dispatch(openModal({modalId: 'foggotModal'}));
+    dispatch(openModal({ modalId: 'foggotModal' }));
   };
 
   const handleRegistrationClick = () => {
     dispatch(closeModal());
-    dispatch(openModal({ modalId: 'registerModal'}));
+    dispatch(openModal({ modalId: 'registerModal' }));
   };
 
   const errorVisible = `${styles.authModal__error} ${styles.authModal__error_active}`;

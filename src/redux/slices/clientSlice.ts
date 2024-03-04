@@ -1,4 +1,5 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
+import type { PayloadAction } from '@reduxjs/toolkit';
 import { IClientRetrieve } from '../types/clients';
 
 type Client = {
@@ -25,7 +26,7 @@ export const initialState: Client = {
         created_at: '',
       },
       capture: null,
-    } ,
+    },
     age: null,
     specialist: null,
     diseases: null,

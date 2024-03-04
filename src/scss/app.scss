@@ -23,20 +23,24 @@
     padding: 0 16px;
     max-width: 375px;
     margin: 0 auto;
-
+    padding-bottom: 80px;
     @media (min-width: 575px) {
       max-width: 575px;
     }
 
     @media (min-width: 768px) {
       box-sizing: border-box;
-      max-width: 685px;
+      max-width: 645px;
       margin: 0;
-      padding: 40px 0 0 40px;
+      padding: 40px 30px 0 40px;
+    }
+
+    @media (min-width: 1060px) {
+      padding-right: 0;
     }
   }
 
-  &__not-found-element{
+  &__not-found-element {
     color: $black-800;
     text-align: center;
     padding: 75px 0;

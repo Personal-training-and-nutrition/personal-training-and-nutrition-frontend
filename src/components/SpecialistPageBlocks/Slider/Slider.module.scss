@@ -1,0 +1,68 @@
+@import '../../../scss/colors/colors.scss';
+
+.slider {
+  overflow: hidden;
+  max-width: 375px;
+  margin-bottom: 24px;
+  position: relative;
+  @media (min-width: 575px) {
+    max-width: 575px;
+  }
+  @media (min-width: 768px) {
+    max-width: 645px;
+    margin: 36px 0 30px;
+  }
+
+  &__container {
+    position: relative;
+    width: 100%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    will-change: transform;
+    user-select: none;
+    cursor: pointer;
+    scrollbar-width: none;
+    display: flex;
+    gap: 8px;
+    transition: transform 1s ease-in-out;
+    &::-webkit-scrollbar {
+      width: 0;
+      height: 0;
+    }
+  }
+  &__item {
+    display: inline-block;
+    width: 343px;
+    height: 342px;
+    border-radius: 20px;
+    scroll-snap-align: center;
+  }
+
+  &__dots {
+    cursor: pointer;
+
+    display: flex;
+    gap: 4px;
+    position: absolute;
+    z-index: 5000;
+    bottom: 8px;
+    left: 50%;
+  }
+  &__dot {
+    display: block;
+    width: 6px;
+    height: 6px;
+    background-color: $white-100;
+    border-radius: 50%;
+    border: none;
+    padding: 0;
+    transition: background-color 0.2s ease-in;
+    &:hover {
+      background-color: $gray-400;
+    }
+    &_active {
+      background-color: $gray-400;
+    }
+  }
+}

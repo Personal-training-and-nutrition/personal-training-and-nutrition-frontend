@@ -1,16 +1,14 @@
-import styles from './EditClient.module.scss';
-import TitleBlock from '../../components/TitleBlock/TitleBlock';
-import { useForm } from 'react-hook-form';
-import {
-  usePartialUpdateClientMutation,
-  useRetrieveClientQuery,
-} from '../../redux/services/clientsApi';
-import { useAppDispatch, useAppSelector } from '../../redux/store';
-import { closeModal, openModal } from '../../redux/slices/modalsSlice';
 import { useEffect } from 'react';
+import { useForm } from 'react-hook-form';
 import { useLocation, useNavigate } from 'react-router-dom';
 import ClientPageLayout, { ClientInputType } from '../../components/ClientPageLayout/ClientPageLayout';
+import TitleBlock from '../../components/TitleBlock/TitleBlock';
+import { usePartialUpdateClientMutation, useRetrieveClientQuery } from '../../redux/services/clientsApi';
 import { usePartialUpdateUserMutation } from '../../redux/services/userApi';
+import { closeModal, openModal } from '../../redux/slices/modalsSlice';
+import { useAppDispatch, useAppSelector } from '../../redux/store';
+import { PATH_CLIENT_CARD } from '../../utils/constants';
+import styles from './EditClient.module.scss';
 
 const EditClient = () => {
   const location = useLocation();
@@ -18,11 +16,11 @@ const EditClient = () => {
   const id: string | null = query.get('id');
   const client = useAppSelector((store) => store.currentClient.client);
   const idSpecialist = useAppSelector((store) => store.user.id);
-  const [ partialUpdateUser ] = usePartialUpdateUserMutation();
+  const [partialUpdateUser] = usePartialUpdateUserMutation();
 
   const { data: initialData, isSuccess: isInitialSuccess, isLoading } = useRetrieveClientQuery(id!);
   // const [updateClient, { isSuccess, isError, error }] = useUpdateClientMutation();
-  const [ partialUpdateClient, { isSuccess: isSuccessPartialUpdate, isError: isErrorPartial, error }] =
+  const [partialUpdateClient, { isSuccess: isSuccessPartialUpdate, isError: isErrorPartial, error }] =
     usePartialUpdateClientMutation();
 
   const dispatch = useAppDispatch();
@@ -74,7 +72,7 @@ const EditClient = () => {
       exp_diets: data.exp_diets,
       diseases: data.diseases,
     };
-    const personalData ={
+    const personalData = {
       first_name: data.user.first_name,
       last_name: data.user.last_name,
       middle_name: data.user.middle_name,
@@ -84,10 +82,9 @@ const EditClient = () => {
       dob: data.user.dob,
       gender: data.user.gender,
       is_specialist: true,
-    }
-    await partialUpdateUser({ id: client.user.id, data: personalData })
+    };
+    await partialUpdateUser({ id: client.user.id, data: personalData });
     await partialUpdateClient({ id: id, data: customerData });
-
   });
 
   useEffect(() => {
@@ -110,7 +107,7 @@ const EditClient = () => {
       );
       setTimeout(() => {
         dispatch(closeModal());
-        navigate(`/client/card/${id}`);
+        navigate(`${PATH_CLIENT_CARD}/${id}`);
       }, 3000);
     }
     if (!isSuccessPartialUpdate && isErrorPartial) {
