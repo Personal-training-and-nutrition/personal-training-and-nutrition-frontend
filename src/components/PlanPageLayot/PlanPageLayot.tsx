@@ -1,16 +1,16 @@
+import { UseFormRegister, UseFormSetValue } from 'react-hook-form';
 import { useLocation } from 'react-router-dom';
-import styles from './PlanPageLayot.module.scss';
+import { useRetrieveUserQuery } from '../../redux/services/userApi';
+import { DayBlockType, PATH_MEAL_PLAN, PATH_MEAL_PLAN_EDIT, PATH_WORKOUT_PLAN_EDIT } from '../../utils/constants';
+import { getAgeEnding } from '../../utils/getAgeEnding';
 import Button from '../Button/Button';
 import ButtonCancel from '../ButtonCancel/ButtonCancel';
-import TitleBlock from '../TitleBlock/TitleBlock';
+import ButtonDelete from '../ButtonDelete/ButtonDelete';
 import CaloriesInput from '../CaloriesInput/CaloriesInput';
 import DayBlock from '../DayBlock/DayBlock';
-import { DayBlockType } from '../../utils/constants';
-import { UseFormRegister, UseFormSetValue } from 'react-hook-form';
-import ButtonDelete from '../ButtonDelete/ButtonDelete';
 import InputRecommendation from '../Inputs/InputRecommendation/InputRecommendation';
-import { useRetrieveUserQuery } from '../../redux/services/userApi';
-import { getAgeEnding } from '../../utils/getAgeEnding';
+import TitleBlock from '../TitleBlock/TitleBlock';
+import styles from './PlanPageLayot.module.scss';
 
 export type PlanInputType = {
   namePlan: string;
@@ -46,8 +46,18 @@ type PlanFormType = {
   isValid?: boolean;
   setValue: UseFormSetValue<PlanInputType>;
   onDeletePlan?: () => void;
-  };
-const PlanPageLayot = ({ textTitle, namePlan, data, register, onSubmit, isDirty, isValid, setValue, onDeletePlan }: PlanFormType) => {
+};
+const PlanPageLayot = ({
+  textTitle,
+  namePlan,
+  data,
+  register,
+  onSubmit,
+  isDirty,
+  isValid,
+  setValue,
+  onDeletePlan,
+}: PlanFormType) => {
   const location = useLocation();
   const query = new URLSearchParams(location.search);
   const client = query.get('client');
@@ -79,7 +89,7 @@ const PlanPageLayot = ({ textTitle, namePlan, data, register, onSubmit, isDirty,
               placeholder="Напишите название плана"
             />
           </label>
-                    {location.pathname.startsWith('/meal-plan') && <CaloriesInput register={register} />}
+          {location.pathname.startsWith(PATH_MEAL_PLAN) && <CaloriesInput register={register} />}
           <InputRecommendation register={register} />
           <div className={styles.plan__label_gap}>
             {data.map((item, index) => (
@@ -88,8 +98,8 @@ const PlanPageLayot = ({ textTitle, namePlan, data, register, onSubmit, isDirty,
           </div>
           <div className={styles.plan__buttons}>
             <Button textBtn="Сохранить" type="submit" isDirty={isDirty} isValid={isValid} />
-            {location.pathname === '/meal-plan/edit' || location.pathname === '/workout-plan/edit' ? (
-              <ButtonDelete text="Удалить этот план" onClick={onDeletePlan}/>
+            {location.pathname === PATH_MEAL_PLAN_EDIT || location.pathname === PATH_WORKOUT_PLAN_EDIT ? (
+              <ButtonDelete text="Удалить этот план" onClick={onDeletePlan} />
             ) : (
               <ButtonCancel text="Отменить" isDirty={isDirty} isValid={isValid} />
             )}

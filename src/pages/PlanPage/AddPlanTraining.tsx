@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import PlanPageLayot, { PlanInputType } from '../../components/PlanPageLayot/PlanPageLayot';
-import { trainingData } from '../../utils/constants';
-import { useCreateTrainingPlanMutation } from '../../redux/services/trainingApi';
-import { useAppDispatch } from '../../redux/store';
 import { useLocation } from 'react-router-dom';
+import PlanPageLayot, { PlanInputType } from '../../components/PlanPageLayot/PlanPageLayot';
+import { useCreateTrainingPlanMutation } from '../../redux/services/trainingApi';
+import { useRetrieveUserQuery } from '../../redux/services/userApi';
 import { openModal } from '../../redux/slices/modalsSlice';
+import { useAppDispatch } from '../../redux/store';
+import { PATH_WORKOUT_PLAN_UNAUTH, trainingData } from '../../utils/constants';
 import { preparePlanTrain } from '../../utils/processPlans';
-import {useRetrieveUserQuery} from "../../redux/services/userApi.ts";
 
 const AddPlanTraining: React.FC = () => {
   const location = useLocation();
@@ -17,9 +17,8 @@ const AddPlanTraining: React.FC = () => {
   const client = query.get('client');
   const specialistId = query.get('specId');
 
-  const {data: clientData} = useRetrieveUserQuery(client!);
-  const [createWorkout, {data: workout, isSuccess, isError}] = useCreateTrainingPlanMutation();
-
+  const { data: clientData } = useRetrieveUserQuery(client!);
+  const [createWorkout, { data: workout, isSuccess, isError }] = useCreateTrainingPlanMutation();
 
   const {
     register,
@@ -32,8 +31,10 @@ const AddPlanTraining: React.FC = () => {
 
   useEffect(() => {
     if (isSuccess && !isError) {
-      // const link = `http://wellcoaching.ru/workout-plan/unauth?id=${workout?.id!}`
-      const link = `http://localhost:5173/workout-plan/unauth?id=${workout?.id!}`
+      // const link = `${BASE_URL}${${PATH_WORKOUT_PLAN_UNAUTH}}?id=${workout?.id!}`
+      const link = workout?.id
+        ? `http://localhost:5173${PATH_WORKOUT_PLAN_UNAUTH}?id=${workout.id}`
+        : `http://localhost:5173${PATH_WORKOUT_PLAN_UNAUTH}`;
       dispatch(
         openModal({
           modalId: 'tooltipModal',
@@ -48,7 +49,7 @@ const AddPlanTraining: React.FC = () => {
       );
       // setTimeout(() => {
       //   dispatch(closeModal())
-      //   navigate(`/workout-plans?id=${client}`)
+      //   navigate(`${PATH_WORKOUT_ALL_PLANS}?id=${client}`)
       // }, 3000)
     }
     // if(!isSuccess && isError) {
@@ -65,9 +66,9 @@ const AddPlanTraining: React.FC = () => {
     // }
   }, [isSuccess, isError]);
 
-  const onSubmit = handleSubmit( async (data) => {
+  const onSubmit = handleSubmit(async (data) => {
     if (!client || !specialistId) return;
-    await createWorkout({...preparePlanTrain(data), user: client, specialist: specialistId})
+    await createWorkout({ ...preparePlanTrain(data), user: client, specialist: specialistId });
   });
 
   return (

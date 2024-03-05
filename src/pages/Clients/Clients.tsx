@@ -5,7 +5,7 @@ import plusIcon from '../../assets/images/icons/white-plus.svg';
 import searchIcon from '../../assets/images/icons/search-icon.svg';
 import ClientsListCard from '../../components/ClientsListCard/ClientsListCard';
 import { useNavigate } from 'react-router-dom';
-import { useGetClientsListQuery } from '../../redux/services/clientsApi.ts';
+import { useGetClientsListQuery } from '../../redux/services/clientsApi';
 
 function Clients() {
   const [searchText, setSearchText] = useState('');

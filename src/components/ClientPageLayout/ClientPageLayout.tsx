@@ -76,8 +76,24 @@ export default function ClientPageLayout({ register, onSubmit, isDirty, isValid,
           </span>
         </div>
 
-        <InputNumber name="user.params.weight" label="Вес" placeholder="кг" register={register} />
-        <InputNumber name="user.params.height" label="Рост" placeholder="см" register={register} />
+        <InputNumber
+          name="user.params.weight"
+          label="Вес"
+          placeholder="кг"
+          register={register}
+          maxValue={251}
+          textError={'Максимальное значение не более 251'}
+          isInvalid={Boolean(errors?.user?.params?.weight)}
+        />
+        <InputNumber
+          name="user.params.height"
+          label="Рост"
+          placeholder="см"
+          register={register}
+          maxValue={251}
+          textError={'Максимальное значение не более 251'}
+          isInvalid={Boolean(errors?.user?.params?.height)}
+        />
       </div>
       <div className={styles.clientPageLayout__contactsWrap}>
         <div>

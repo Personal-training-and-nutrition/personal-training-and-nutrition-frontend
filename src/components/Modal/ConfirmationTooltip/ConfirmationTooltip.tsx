@@ -1,10 +1,10 @@
 import React from 'react';
-import Modal from '../Modal.tsx';
-import Button from '../../Button/Button.tsx';
+import Modal from '../Modal';
+import Button from '../../Button/Button';
 import styles from './ConfirmationTooltip.module.scss';
-import { useAppDispatch, useAppSelector } from '../../../redux/store.ts';
-import { closeModal } from '../../../redux/slices/modalsSlice.ts';
-import SocialIcons from '../../SocialIcons/SocialIcons.tsx';
+import { useAppDispatch, useAppSelector } from '../../../redux/store';
+import { closeModal } from '../../../redux/slices/modalsSlice';
+import SocialIcons from '../../SocialIcons/SocialIcons';
 
 type ConfirmationTooltipType = {
   title?: string;

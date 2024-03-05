@@ -1,9 +1,9 @@
 /* eslint-disable no-useless-escape */
-import styles from './InputPhone.module.scss';
-import { formatToPhone } from '../../../utils/formatToPhone';
 import { FieldValues, Path, UseFormRegister } from 'react-hook-form';
-import { InputsType } from '../../../pages/ProfilePage/Profile';
 import { useLocation } from 'react-router-dom';
+import { PATH_CREATE_CLIENT, PATH_EDIT_CLIENT } from '../../../utils/constants';
+import { formatToPhone } from '../../../utils/formatToPhone';
+import styles from './InputPhone.module.scss';
 
 type Props<TFormValues extends FieldValues> = {
   name: Path<TFormValues>;
@@ -18,7 +18,11 @@ const InputPhone = <TFormValues extends FieldValues>({ name, register, isInvalid
   return (
     <div className={styles.inputTel__wrapper}>
       <label
-        className={pathname === '/client/new' || pathname === '/client/edit' ? `${styles.inputTel__label}` : `${styles.inputTel__label_style}`}
+        className={
+          pathname === `${PATH_CREATE_CLIENT}` || pathname === `${PATH_EDIT_CLIENT}`
+            ? `${styles.inputTel__label}`
+            : `${styles.inputTel__label_style}`
+        }
         htmlFor="phone"
       >
         Телефон

@@ -1,13 +1,14 @@
-import styles from './AddClient.module.scss';
-import TitleBlock from '../../components/TitleBlock/TitleBlock';
-import { useForm } from 'react-hook-form';
-import { useCreateClientMutation } from '../../redux/services/clientsApi.ts';
-import { useAppDispatch } from '../../redux/store.ts';
-import { closeModal, openModal } from '../../redux/slices/modalsSlice.ts';
 import { useEffect } from 'react';
+import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import ClientPageLayout, { ClientInputType } from '../../components/ClientPageLayout/ClientPageLayout.tsx';
-import {ICreateClient} from "../../redux/types/clients.ts";
+import ClientPageLayout, { ClientInputType } from '../../components/ClientPageLayout/ClientPageLayout';
+import TitleBlock from '../../components/TitleBlock/TitleBlock';
+import { useCreateClientMutation } from '../../redux/services/clientsApi';
+import { closeModal, openModal } from '../../redux/slices/modalsSlice';
+import { useAppDispatch } from '../../redux/store';
+import { ICreateClient } from '../../redux/types/clients';
+import { PATH_CLIENTS } from '../../utils/constants';
+import styles from './AddClient.module.scss';
 
 const AddClient = () => {
   const [createClient, { isSuccess, isError, error }] = useCreateClientMutation();
@@ -41,7 +42,7 @@ const AddClient = () => {
       );
       setTimeout(() => {
         dispatch(closeModal());
-        navigate('/clients');
+        navigate(PATH_CLIENTS);
       }, 5000);
     }
     if (!isSuccess && isError) {

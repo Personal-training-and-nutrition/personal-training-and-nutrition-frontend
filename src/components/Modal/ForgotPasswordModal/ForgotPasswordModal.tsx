@@ -6,8 +6,8 @@ import { useForm } from 'react-hook-form';
 import { InputsType } from '../../../pages/ProfilePage/Profile';
 import { useAppDispatch, useAppSelector } from '../../../redux/store';
 import { closeModal, openModal } from '../../../redux/slices/modalsSlice';
-import {useUsersResetPasswordCreateMutation} from "../../../redux/services/userApi.ts";
-import {IUserEmail} from "../../../redux/types/user.ts";
+import {useUsersResetPasswordCreateMutation} from "../../../redux/services/userApi";
+import {IUserEmail} from "../../../redux/types/user";
 import {useEffect} from "react";
 
 const ForgotPasswordModal = () => {

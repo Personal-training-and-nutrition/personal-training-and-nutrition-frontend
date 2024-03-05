@@ -21,5 +21,14 @@
     opacity: 0.3;
     cursor: default;
   }
+  &_style {
+    color: $blue-500;
+    background-color: white;
+    border: 1px solid $blue-500;
+    &:hover {
+      color: $btn-blue-600;
+      border: 1px solid $btn-blue-600;
+      background-color: $white-100;
+    }
+  }
 }
-

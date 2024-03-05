@@ -34,8 +34,18 @@ const DatePicker = <TFormValues extends FieldValues>({
         }
         onFocus={onFocusInput}
         placeholder="Дата рождения"
-        {...register(name, { required: false, onBlur: onBlurInput })}
-        // {...register('dob', { required: true, onBlur: onBlurInput, validate: (value) => (new Date(value)) < new Date() || 'Дата не должна быть больше текущей'  })}
+        {...register(name, {
+          required: 'Введите дату',
+          onBlur: onBlurInput,
+          validate: {
+            dataMoreCurrent: (value) => {
+              return new Date(value) < new Date() || 'Дата не должна быть больше текущей';
+            },
+            dataOld: (value) => {
+              return new Date(value) > new Date('1900-01-01') || 'Введите корректную дату';
+            },
+          },
+        })}
       />
     </div>
   );

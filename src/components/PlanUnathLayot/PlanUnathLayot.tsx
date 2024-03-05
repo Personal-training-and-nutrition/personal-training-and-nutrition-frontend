@@ -33,7 +33,7 @@ const PlanUnathLayot = ({ children, subtitle, namePlan, src, text, userData, pla
   };
 
   const personalData =
-    userData?.first_name + ' ' + userData?.last_name! + ', ' + getAgeEnding(calculateAge(userData?.dob!));
+    userData?.first_name + ' ' + (userData?.last_name || '') + ', ' + getAgeEnding(calculateAge(userData?.dob || ''));
 
   return (
     <div className={styles.planUnauth__content}>
@@ -72,7 +72,7 @@ const PlanUnathLayot = ({ children, subtitle, namePlan, src, text, userData, pla
       </div>
 
       <section className={styles.planUnauth__info}>
-        <img src={imgDesktop} className={styles.planUnauth__imgDesktop} alt="phone image" />
+        <img src={imgDesktop} className={styles.planUnauth__imgDesktop} alt="phone" />
 
         <div className={styles.planUnauth__aboutWrap}>
           <h3 className={styles.planUnauth__about}>Удобный сервис регулярной заботы о себе</h3>

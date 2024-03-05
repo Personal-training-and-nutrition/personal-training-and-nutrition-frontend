@@ -1,23 +1,42 @@
-import styles from './NavBar.module.scss';
-import {Link, NavLink, useNavigate} from 'react-router-dom';
-import React from 'react';
-import { navBarSpecialistItemList, navBarUserItemList } from '../../utils/NabBarParams.ts';
-import logo from '../../assets/logo.svg';
+import React, { useEffect, useState } from 'react';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import exitIcon from '../../assets/images/icons/exit-icon.svg';
-import { useAppDispatch, useAppSelector } from '../../redux/store.ts';
-import { logout } from '../../redux/slices/userSlice.ts';
+import arrowUp from '../../assets/images/navbar/arrow-up-icon.svg';
+import logo from '../../assets/logo.svg';
+import { logout } from '../../redux/slices/userSlice';
+import { useAppDispatch, useAppSelector } from '../../redux/store';
+import { navBarSpecialistItemList, navBarUserItemList } from '../../utils/NabBarParams';
+import styles from './NavBar.module.scss';
 
 const NavBar: React.FC = () => {
   const isSpecialist = useAppSelector((store) => store.user.isSpecialist);
   const listIcons = isSpecialist ? navBarUserItemList : navBarSpecialistItemList;
+  const [backToTop, setBackToTop] = useState(false);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const handleLogout =  () => {
-    localStorage.removeItem('accessToken')
-    dispatch(logout())
-    navigate('/')
-  }
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 150) {
+        setBackToTop(true);
+      } else {
+        setBackToTop(false);
+      }
+    });
+  }, [backToTop]);
+
+  const scrollUp = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('accessToken');
+    dispatch(logout());
+    navigate('/');
+  };
 
   const activeClassName = ({ isActive }: { isActive: boolean }) => {
     if (isActive) {
@@ -28,10 +47,12 @@ const NavBar: React.FC = () => {
 
   return (
     <nav className={styles.navbar}>
-      <Link to='/'><img className={styles.navbar__logo} src={logo} alt="logo" /> </Link>
+      <Link to="/" className={styles.navbar__logoLink}>
+        <img className={styles.navbar__logo} src={logo} alt="logo" />{' '}
+      </Link>
 
       {listIcons.map((item, index) => (
-        <NavLink className={activeClassName} key={index} to={`/${item.link}`}>
+        <NavLink className={activeClassName} key={index} to={`${item.link}`}>
           {({ isActive }) => (
             <div className={styles.navbar__container}>
               <img
@@ -48,6 +69,11 @@ const NavBar: React.FC = () => {
       <button onClick={() => handleLogout()} className={styles.navbar__exitBtn}>
         <span>Выйти</span> <img src={exitIcon} alt="exit icon" />
       </button>
+      {backToTop && (
+        <button className={styles.navbar__upBtn} onClick={scrollUp}>
+          <img src={arrowUp} alt="Подняться наверх страницы" />
+        </button>
+      )}
     </nav>
   );
 };

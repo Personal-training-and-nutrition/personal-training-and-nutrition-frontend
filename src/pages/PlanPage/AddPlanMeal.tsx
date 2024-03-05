@@ -1,13 +1,13 @@
-import React, {useEffect} from 'react';
-import PlanPageLayot, {PlanInputType} from '../../components/PlanPageLayot/PlanPageLayot';
-import {mealData} from '../../utils/constants';
-import {useForm} from 'react-hook-form';
-import {useAppDispatch} from '../../redux/store';
-import {useCreateDietPlanMutation} from '../../redux/services/dietApi';
-import {useLocation} from 'react-router-dom';
-import {preparePlan} from '../../utils/processPlans';
-import {openModal} from '../../redux/slices/modalsSlice';
-import {useRetrieveUserQuery} from "../../redux/services/userApi.ts";
+import React, { useEffect } from 'react';
+import { useForm } from 'react-hook-form';
+import { useLocation } from 'react-router-dom';
+import PlanPageLayot, { PlanInputType } from '../../components/PlanPageLayot/PlanPageLayot';
+import { useCreateDietPlanMutation } from '../../redux/services/dietApi';
+import { useRetrieveUserQuery } from '../../redux/services/userApi';
+import { openModal } from '../../redux/slices/modalsSlice';
+import { useAppDispatch } from '../../redux/store';
+import { PATH_MEAL_PLAN_UNAUTH, mealData } from '../../utils/constants';
+import { preparePlan } from '../../utils/processPlans';
 
 const AddPlanMeal: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -17,22 +17,24 @@ const AddPlanMeal: React.FC = () => {
   const specialistId = query.get('specId');
   const client = query.get('client');
 
-  const [create, {data: meal, isSuccess, isError}] = useCreateDietPlanMutation();
-  const {data: clientData} = useRetrieveUserQuery(client!);
+  const [create, { data: meal, isSuccess, isError }] = useCreateDietPlanMutation();
+  const { data: clientData } = useRetrieveUserQuery(client!);
 
   const {
     register,
     setValue,
     handleSubmit,
-    formState: {isDirty, isValid},
+    formState: { isDirty, isValid },
   } = useForm<PlanInputType>({
     mode: 'onBlur',
   });
 
   useEffect(() => {
     if (isSuccess && !isError) {
-      // const link = `http://wellcoaching.ru/meal-plan/unauth?id=${meal?.id!}`
-      const link = `http://localhost:5173/meal-plan/unauth?id=${meal?.id!}`
+      // const link = `${BASE_URL}${PATH_MEAL_PLAN_UNAUTH}?id=${meal?.id!}`
+      const link = meal?.id
+        ? `http://localhost:5173${PATH_MEAL_PLAN_UNAUTH}?id=${meal.id}`
+        : `http://localhost:5173${PATH_MEAL_PLAN_UNAUTH}`;
       dispatch(
         openModal({
           modalId: 'tooltipModal',
@@ -46,7 +48,7 @@ const AddPlanMeal: React.FC = () => {
       );
       //   setTimeout(() => {
       //     dispatch(closeModal())
-      //     navigate(`/meal-plans?id=${client}`)
+      //     navigate(`${PATH_MEAL_ALL_PLANS}?id=${client}`)
       //   }, 3000)
       // }
       // if(!isSuccess && isError) {
@@ -65,7 +67,7 @@ const AddPlanMeal: React.FC = () => {
 
   const onSubmit = handleSubmit((rawData) => {
     if (!client || !specialistId) return;
-    create({...preparePlan(rawData), specialist: specialistId, user: client});
+    create({ ...preparePlan(rawData), specialist: specialistId, user: client });
   });
 
   return (

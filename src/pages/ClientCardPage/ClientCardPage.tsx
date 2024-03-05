@@ -1,19 +1,28 @@
+import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { Link, useParams } from 'react-router-dom';
+import plusIcon from '../../assets/images/client-card/button-images/plus-icon.svg';
+import mail from '../../assets/images/client-card/mail.svg';
+import phone from '../../assets/images/client-card/phone.svg';
+import mealPlanImage from '../../assets/images/client-card/plan-image.png';
+import unfold from '../../assets/images/client-card/unfold.svg';
+import workoutPlanImage from '../../assets/images/client-card/workoutPlanImage.png';
+import PlanCard from '../../components/PlanCard/PlanCard';
 import TitleBlock from '../../components/TitleBlock/TitleBlock';
 import UserInfo from '../../components/UserInfo/UserInfo';
+import { useRetrieveClientQuery } from '../../redux/services/clientsApi';
+import { useGetMeQuery } from '../../redux/services/userApi';
+import { setCurrentClient } from '../../redux/slices/clientSlice';
+import {
+  PATH_EDIT_CLIENT,
+  PATH_MEAL_ALL_PLANS,
+  PATH_MEAL_PLAN_CREATE,
+  PATH_MEAL_REPORT,
+  PATH_WORKOUT_ALL_PLANS,
+  PATH_WORKOUT_PLAN_CREATE,
+  PATH_WORKOUT_REPORT,
+} from '../../utils/constants';
 import styles from './ClientCardPage.module.scss';
-import plusIcon from '../../assets/images/client-card/button-images/plus-icon.svg';
-import phone from '../../assets/images/client-card/phone.svg';
-import mail from '../../assets/images/client-card/mail.svg';
-import mealPlanImage from '../../assets/images/client-card/plan-image.png';
-import workoutPlanImage from '../../assets/images/client-card/workoutPlanImage.png';
-import unfold from '../../assets/images/client-card/unfold.svg';
-import { useEffect, useState } from 'react';
-import PlanCard from '../../components/PlanCard/PlanCard';
-import { Link, useParams } from 'react-router-dom';
-import { useRetrieveClientQuery } from '../../redux/services/clientsApi.ts';
-import { useDispatch } from 'react-redux';
-import { setCurrentClient } from '../../redux/slices/clientSlice.ts';
-import { useGetMeQuery } from '../../redux/services/userApi.ts';
 
 function ClientCardPage() {
   const [showMore, setShowMore] = useState(true);
@@ -24,7 +33,8 @@ function ClientCardPage() {
 
   useEffect(() => {
     if (isSuccess) {
-      dispatch(setCurrentClient(client))};
+      dispatch(setCurrentClient(client));
+    }
   }, [isSuccess]);
 
   useEffect(() => {
@@ -32,22 +42,22 @@ function ClientCardPage() {
   }, []);
 
   if (isSuccess)
-
     return (
       <main className="App__container">
         <div className={styles.clientCard__content}>
-          <TitleBlock text="карточка клиента" isBack isEdit path={`/client/edit?id=${id}`} />
+          <TitleBlock text="карточка клиента" isBack isEdit path={`${PATH_EDIT_CLIENT}?id=${id}`} />
           <UserInfo />
 
           <div className={styles.clientCard__buttons}>
-            <Link to={`/meal-plan/create?client=${client?.user.id}&specId=${dataMe?.id}`}>
+            <Link to={`${PATH_MEAL_PLAN_CREATE}?client=${client?.user.id}&specId=${dataMe?.id}`}>
               <button className={`${styles.clientCard__button} ${styles.clientCard__mealPlanBtn}`}>
                 План питания <img className={styles.clientCard__buttonPlusIcon} src={plusIcon} alt="Иконка добавить" />
               </button>
             </Link>
-            <Link to={`/workout-plan/create?client=${client?.user.id}&specId=${dataMe?.id}`}>
+            <Link to={`${PATH_WORKOUT_PLAN_CREATE}?client=${client?.user.id}&specId=${dataMe?.id}`}>
               <button className={`${styles.clientCard__button} ${styles.clientCard__workoutPlanBtn}`}>
-                План тренировок <img className={styles.clientCard__buttonPlusIcon} src={plusIcon} alt="Иконка добавить" />
+                План тренировок{' '}
+                <img className={styles.clientCard__buttonPlusIcon} src={plusIcon} alt="Иконка добавить" />
               </button>
             </Link>
           </div>
@@ -106,7 +116,7 @@ function ClientCardPage() {
             <section className={styles.clientCard__section}>
               <h2 className={styles.clientCard__title}>Планы питания</h2>
 
-              <Link to={`/nutrition-report?id=${client?.diets[0].id}`} className={styles.clientCard__link}>
+              <Link to={`${PATH_MEAL_REPORT}?id=${client?.diets[0].id}`} className={styles.clientCard__link}>
                 <PlanCard
                   image={mealPlanImage}
                   title={client?.diets[0].name || ''}
@@ -114,7 +124,7 @@ function ClientCardPage() {
                 />
               </Link>
 
-              <Link to={`/meal-plans?id=${client?.user.id}`} className={styles.clientCard__moreBtn}>
+              <Link to={`${PATH_MEAL_ALL_PLANS}?id=${client?.user.id}`} className={styles.clientCard__moreBtn}>
                 Смотреть все
               </Link>
             </section>
@@ -126,7 +136,7 @@ function ClientCardPage() {
             <section className={styles.clientCard__section}>
               <h2 className={styles.clientCard__title}>Планы тренировок</h2>
 
-              <Link to={`/workout-report?id=${client?.trainings[0].id}`} className={styles.clientCard__link}>
+              <Link to={`${PATH_WORKOUT_REPORT}?id=${client?.trainings[0].id}`} className={styles.clientCard__link}>
                 <PlanCard
                   image={workoutPlanImage}
                   title={client?.trainings[0].name || ''}
@@ -134,7 +144,7 @@ function ClientCardPage() {
                 />
               </Link>
 
-              <Link to={`/workout-plans?id=${client?.user.id}`} className={styles.clientCard__moreBtn}>
+              <Link to={`${PATH_WORKOUT_ALL_PLANS}?id=${client?.user.id}`} className={styles.clientCard__moreBtn}>
                 Смотреть все
               </Link>
             </section>

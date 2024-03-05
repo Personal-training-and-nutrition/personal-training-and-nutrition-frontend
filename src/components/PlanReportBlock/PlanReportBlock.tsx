@@ -1,17 +1,24 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-import styles from './PlanReportBlock.module.scss';
+import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import downArrow from '../../assets/images/icons/down-arrow-gray.svg';
-import DescriptionBlock from '../DescriptionBlock/DescriptionBlock';
-import { useEffect, useState } from 'react';
-import { getWeekDay } from '../../utils/getWeekDay';
-import UserNoteForm from '../UserNoteForm/UserNoteForm';
 import { useAppSelector } from '../../redux/store';
-import { TTrainingDay } from '../../redux/types/training';
 import { TDietDay } from '../../redux/types/diet';
+import { TTrainingDay } from '../../redux/types/training';
+import {
+  PATH_MEAL_PLAN,
+  PATH_MEAL_REPORT,
+  PATH_WORKOUT_PLAN,
+  PATH_WORKOUT_PLAN_UNAUTH,
+  PATH_WORKOUT_REPORT,
+} from '../../utils/constants';
+import { getWeekDay } from '../../utils/getWeekDay';
+import DescriptionBlock from '../DescriptionBlock/DescriptionBlock';
+import UserNoteForm from '../UserNoteForm/UserNoteForm';
+import styles from './PlanReportBlock.module.scss';
 
 type PlanReportBlockProps = {
-  plan: TDietDay | TTrainingDay
+  plan: TDietDay | TTrainingDay;
   text: string;
   handleComment?: (message: string) => void;
 };
@@ -19,15 +26,17 @@ type PlanReportBlockProps = {
 function PlanReportBlock({ plan, text, handleComment }: PlanReportBlockProps) {
   const [showMore, setShowMore] = useState(false);
   const location = useLocation();
-  const isWorkoutPlanPage = location.pathname === '/workout-plan';
-  const isMealPlanPage = location.pathname === '/meal-plan';
-  const isTrainingReportPage = location.pathname === '/workout-report';
-  const isMealReportPage = location.pathname === '/nutrition-report';
-  const unAuthPlanTrain = location.pathname === '/workout-plan/unauth';
-  // const unAuthPlanMeal = location.pathname === '/meal-plan/unauth';
+  const isWorkoutPlanPage = location.pathname === PATH_WORKOUT_PLAN;
+  const isMealPlanPage = location.pathname === PATH_MEAL_PLAN;
+  const isTrainingReportPage = location.pathname === PATH_WORKOUT_REPORT;
+  const isMealReportPage = location.pathname === PATH_MEAL_REPORT;
+  const unAuthPlanTrain = location.pathname === PATH_WORKOUT_PLAN_UNAUTH;
+  // const unAuthPlanMeal = location.pathname === PATH_MEAL_PLAN_UNAUTH;
 
   const imgPath =
-    isWorkoutPlanPage || isTrainingReportPage || unAuthPlanTrain ? '/images/trainingdays/trainingday' : '/images/dayweekMeal/meal';
+    isWorkoutPlanPage || isTrainingReportPage || unAuthPlanTrain
+      ? '/images/trainingdays/trainingday'
+      : '/images/dayweekMeal/meal';
   const isLoggedIn = useAppSelector((state) => state.user.isLoggedIn);
 
   useEffect(() => {
@@ -38,7 +47,7 @@ function PlanReportBlock({ plan, text, handleComment }: PlanReportBlockProps) {
 
   return (
     <li className={showMore ? `${styles.PlanReport} ${styles.PlanReport_show}` : `${styles.PlanReport}`}>
-      <img className={styles.PlanReport__image} src={`${imgPath}-${plan.weekday}.png`} alt="plan image" />
+      <img className={styles.PlanReport__image} src={`${imgPath}-${plan.weekday}.png`} alt="planImage" />
 
       <div className={styles.PlanReport__header} onClick={() => setShowMore((prev) => !prev)}>
         <h3 className={styles.PlanReport__headerTitle}>

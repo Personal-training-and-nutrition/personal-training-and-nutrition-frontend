@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import styles from './BtnStart.module.scss';
-import { useAppDispatch } from '../../../redux/store';
-import { openModal } from '../../../redux/slices/modalsSlice';
 import useIsAuth from '../../../hooks/useIsAuth';
+import { openModal } from '../../../redux/slices/modalsSlice';
+import { useAppDispatch } from '../../../redux/store';
+import { PATH_CLIENTS } from '../../../utils/constants';
+import styles from './BtnStart.module.scss';
 
 const BtnStart: React.FC = () => {
   const navigate = useNavigate();
@@ -18,8 +19,8 @@ const BtnStart: React.FC = () => {
     <div className={styles.btnStartContainer}>
       <Link
         className={styles.btnStart}
-        to={isLoggedIn ? '/clients' : ''}
-        onClick={() => (isLoggedIn ? navigate('/clients') : handleOpenModal())}
+        to={isLoggedIn ? `${PATH_CLIENTS}` : ''}
+        onClick={() => (isLoggedIn ? navigate(`${PATH_CLIENTS}`) : handleOpenModal())}
       >
         Начать
       </Link>

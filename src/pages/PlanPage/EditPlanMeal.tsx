@@ -1,16 +1,16 @@
 import React, { useEffect } from 'react';
-import PlanPageLayot, { PlanInputType } from '../../components/PlanPageLayot/PlanPageLayot';
-import { mealData } from '../../utils/constants';
 import { useForm } from 'react-hook-form';
-import { parsePlan, preparePlan } from '../../utils/processPlans';
 import { useLocation, useNavigate } from 'react-router-dom';
+import PlanPageLayot, { PlanInputType } from '../../components/PlanPageLayot/PlanPageLayot';
 import {
   useDestroyDietPlanMutation,
   useRetrieveDietPlanQuery,
-  useUpdateDietPlanMutation
+  useUpdateDietPlanMutation,
 } from '../../redux/services/dietApi';
-import {useAppDispatch, useAppSelector} from '../../redux/store';
-import {closeModal, openModal} from "../../redux/slices/modalsSlice.ts";
+import { closeModal, openModal } from '../../redux/slices/modalsSlice';
+import { useAppDispatch, useAppSelector } from '../../redux/store';
+import { PATH_MEAL_ALL_PLANS, PATH_MEAL_REPORT, mealData } from '../../utils/constants';
+import { parsePlan, preparePlan } from '../../utils/processPlans';
 
 const EditPlanMeal: React.FC = () => {
   const { id: specialistId } = useAppSelector((store) => store.user);
@@ -20,7 +20,7 @@ const EditPlanMeal: React.FC = () => {
   const planId = query.get('id');
   const { data: plan, isSuccess } = useRetrieveDietPlanQuery(planId!, { skip: !planId });
   const [planUpdateTrigger] = useUpdateDietPlanMutation();
-  const [deletePlan, { isSuccess: isSuccessDelete, isError: isErrorDelete, error}] = useDestroyDietPlanMutation();
+  const [deletePlan, { isSuccess: isSuccessDelete, isError: isErrorDelete, error }] = useDestroyDietPlanMutation();
   const dispatch = useAppDispatch();
 
   const {
@@ -41,7 +41,7 @@ const EditPlanMeal: React.FC = () => {
     planUpdateTrigger({
       id: parseInt(planId),
       data: { ...preparePlan(data), user: plan.user, specialist: specialistId },
-    }).then(() => navigate(`/nutrition-report?id=${planId}`));
+    }).then(() => navigate(`${PATH_MEAL_REPORT}?id=${planId}`));
   });
 
   useEffect(() => {
@@ -62,12 +62,12 @@ const EditPlanMeal: React.FC = () => {
         }),
       );
       setTimeout(() => {
-        dispatch(closeModal())
-        navigate(`/meal-plans?id=${plan?.user}`)
-      }, 3000)
+        dispatch(closeModal());
+        navigate(`${PATH_MEAL_ALL_PLANS}?id=${plan?.user}`);
+      }, 3000);
     }
-    if(!isSuccess && isErrorDelete) {
-      console.log(error)
+    if (!isSuccess && isErrorDelete) {
+      console.log(error);
       dispatch(
         openModal({
           modalId: 'tooltipModal',
@@ -82,7 +82,7 @@ const EditPlanMeal: React.FC = () => {
 
   const handleDeletePlan = () => {
     deletePlan(Number(planId));
-  }
+  };
 
   if (!isSuccess) return <p>Loading...</p>;
 

@@ -1,15 +1,18 @@
-import { useNavigate, Link } from 'react-router-dom';
-import styles from './TitleBlock.module.scss';
+import { Link, useNavigate } from 'react-router-dom';
 import editIcon from '../../assets/images/icons/edit-icon.svg';
+import SortBlock from '../SortBlock/SortBlock';
+import styles from './TitleBlock.module.scss';
 
 type TitleBlockProps = {
-  text: string;
+  text?: string;
   isBack?: boolean;
   isEdit?: boolean;
   path?: string;
+  isVisibleLinkLike?: boolean;
+  isSort?: boolean;
 };
 
-const TitleBlock = ({ text, isBack, isEdit, path }: TitleBlockProps) => {
+const TitleBlock = ({ text, isBack, isEdit, path, isVisibleLinkLike, isSort }: TitleBlockProps) => {
   const navigate = useNavigate();
   const goBack = () => {
     navigate(-1);
@@ -32,6 +35,12 @@ const TitleBlock = ({ text, isBack, isEdit, path }: TitleBlockProps) => {
             <img src={editIcon} alt="кнопка редактирования" />
           </Link>
         )}
+        {isVisibleLinkLike && (
+          <div className={styles.titlePage__wrap}>
+            <button type="submit" className={`${styles.titlePage__btn} ${styles.titlePage__like}`}></button>
+          </div>
+        )}
+        {isSort && <SortBlock />}
       </div>
     </nav>
   );

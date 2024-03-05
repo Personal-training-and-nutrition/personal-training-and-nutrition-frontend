@@ -1,23 +1,24 @@
-import styles from './LandingPage.module.scss';
-import Header from '../../components/LandingPage/Header/Header.tsx';
-import PromoSection from '../../components/LandingPage/PromoSection/PromoSection.tsx';
-import MainSection from '../../components/LandingPage/MainSection/MainSection.tsx';
-import BtnStart from '../../components/LandingPage/BtnStart/BtnStart.tsx';
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { useLocation, useNavigate } from 'react-router-dom';
+import BtnStart from '../../components/LandingPage/BtnStart/BtnStart';
+import Header from '../../components/LandingPage/Header/Header';
+import MainSection from '../../components/LandingPage/MainSection/MainSection';
+import PromoSection from '../../components/LandingPage/PromoSection/PromoSection';
+import Toggle from '../../components/LandingPage/Toggle/Toggle';
+import useResize from '../../hooks/useResize';
+import { useWindowPosition } from '../../hooks/useWindowPosition';
+import { selectStatus } from '../../redux/slices/landingPageSlice';
+import { openModal } from '../../redux/slices/modalsSlice';
+import { useAppDispatch, useAppSelector } from '../../redux/store';
+import { PATH_CLIENTS } from '../../utils/constants';
 import {
   landingPageSpeciatistParams,
   landingPageSpecImagesFromDesktop,
   landingPageUsersImagesFromDesktop,
   landingPageUsersParams,
-} from '../../utils/LandingPageParams.ts';
-import { useSelector } from 'react-redux';
-import { selectStatus } from '../../redux/slices/landingPageSlice.ts';
-import useResize from '../../hooks/useResize.ts';
-import { useWindowPosition } from '../../hooks/useWindowPosition.tsx';
-import Toggle from '../../components/LandingPage/Toggle/Toggle.tsx';
-import { useEffect } from 'react';
-import {useAppDispatch, useAppSelector} from '../../redux/store.ts';
-import {useLocation, useNavigate} from 'react-router-dom';
-import {openModal} from "../../redux/slices/modalsSlice.ts";
+} from '../../utils/LandingPageParams';
+import styles from './LandingPage.module.scss';
 
 const LandingPage: React.FC = () => {
   const size = useResize();
@@ -33,15 +34,15 @@ const LandingPage: React.FC = () => {
   const listImages =
     size.width >= 1440 && isStatusSpecialist ? landingPageSpecImagesFromDesktop : landingPageUsersImagesFromDesktop;
 
-    useEffect(() => {
-    if (isLoggedIn) navigate('/clients');
+  useEffect(() => {
+    if (isLoggedIn) navigate(PATH_CLIENTS);
   }, [isLoggedIn]);
 
-    useEffect(()=>{
-      if (location.pathname === '/reset-password/'){
-        dispatch(openModal({ modalId: 'resetPasswordModal' }));
-      }
-    }, [location]);
+  useEffect(() => {
+    if (location.pathname === '/reset-password/') {
+      dispatch(openModal({ modalId: 'resetPasswordModal' }));
+    }
+  }, [location]);
 
   return (
     <div className={styles.landing}>
